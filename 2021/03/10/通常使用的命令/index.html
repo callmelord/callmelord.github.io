@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>容器部署常用的命令 | TQ&#39;s Blog</title>
+    
+    
+        <meta name="keywords" content="技巧" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="如果hyp用uuid连不进去，估计是对面服务器cgroupv2（hyp的进程）进程假死解决方法：使用ssh直接连进去，然后重启cgroupv2程序systemctl restart cgroupv2查看程序状态是否为activesystemctl status cgroupv2 查看对面机器的信息hyp --info $uuid 某个之前部署好的机器重新部署为host模式先用del函数删除拨号，然">
+<meta property="og:type" content="article">
+<meta property="og:title" content="容器部署常用的命令">
+<meta property="og:url" content="http://example.com/2021/03/10/%E9%80%9A%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="TQ&#39;s Blog">
+<meta property="og:description" content="如果hyp用uuid连不进去，估计是对面服务器cgroupv2（hyp的进程）进程假死解决方法：使用ssh直接连进去，然后重启cgroupv2程序systemctl restart cgroupv2查看程序状态是否为activesystemctl status cgroupv2 查看对面机器的信息hyp --info $uuid 某个之前部署好的机器重新部署为host模式先用del函数删除拨号，然">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-03-11T13:28:06.182Z">
+<meta property="article:author" content="TQ">
+<meta property="article:tag" content="技巧">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="TQ&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">TQ&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Xshell
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/11/Xshell%E7%AA%81%E5%87%BA%E6%98%BE%E7%A4%BA%E9%9B%86%E6%AD%A3%E5%88%99/">Xshell突出显示集正则配置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            galgame
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/07/08/%E5%AF%86%E8%AF%AD%E6%8F%90%E5%8F%96CG%E8%AE%B0%E5%BD%95/">密语提取CG记录</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/10/13/linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/">linux磁盘分区</a></li>  <li class="file"><a href="/2020/10/27/VBOX%E4%B8%AD%E7%9A%84centos%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%95%91%E6%8F%B4/">centos虚拟机系统救援</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/11/20/pip%E5%AE%89%E8%A3%85%E6%9C%AC%E5%9C%B0%E5%8C%85/">pip安装本地包</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            vim
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/07/10/vim%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">vim使用总结</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            博客主题日志
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/11/26/Hexo%E4%B8%BB%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%80/">Hexo主题记录一</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            文件提取
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2019/12/01/%E6%96%87%E4%BB%B6%E6%8F%90%E5%8F%96%E6%95%B4%E5%90%88/">文件提取整合</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            服务器容器
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/2021/03/10/%E9%80%9A%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/">容器部署常用的命令</a></li>  <li class="file"><a href="/2021/03/11/%E6%8B%A8%E5%8F%B7%E5%AE%B9%E5%99%A8/">docker内拨号</a></li>  <li class="file"><a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&查看服务器信息</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            网络工具
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/08/20/aircrack-ng/">aircrack-ng的使用</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/1000/02/01/linux%E6%80%BB%E7%BB%93/"></a></li>  <li class="file"><a href="/2020/09/13/FFmpeg/">FFmpeg</a></li>  <li class="file"><a href="/2020/10/13/muban/"></a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-通常使用的命令" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%B9%E5%99%A8/">服务器容器</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/03/10/%E9%80%9A%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/">
+            <time datetime="2021-03-09T16:00:00.000Z" itemprop="datePublished">2021-03-10</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/通常使用的命令.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/通常使用的命令.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/通常使用的命令.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            容器部署常用的命令
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <p>如果hyp用uuid连不进去，估计是对面服务器cgroupv2（hyp的进程）进程假死<br>解决方法：<br>使用ssh直接连进去，然后重启cgroupv2程序<br><code>systemctl restart cgroupv2</code><br>查看程序状态是否为active<br><code>systemctl status cgroupv2</code></p>
+<p>查看对面机器的信息<br><code>hyp --info $uuid</code></p>
+<h3 id="某个之前部署好的机器重新部署为host模式"><a href="#某个之前部署好的机器重新部署为host模式" class="headerlink" title="某个之前部署好的机器重新部署为host模式"></a>某个之前部署好的机器重新部署为host模式</h3><p>先用del函数删除拨号，然后分盘更新容器</p>
+<h4 id="分盘更新容器"><a href="#分盘更新容器" class="headerlink" title="分盘更新容器"></a>分盘更新容器</h4><p><code>curl -sSL https://automateplus.oss-accelerate.aliyuncs.com/container-partition.sh | bash -s -- -u &#123;pcdn/vdp/cp2p/p2p/ksp2p&#125; $version</code></p>
+<h4 id="其他的分盘命令"><a href="#其他的分盘命令" class="headerlink" title="其他的分盘命令"></a>其他的分盘命令</h4><h4 id="分盘部署"><a href="#分盘部署" class="headerlink" title="分盘部署"></a>分盘部署</h4><p><code>curl -sSL https://automateplus.oss-accelerate.aliyuncs.com/container-partition.sh | bash -s -- -c &#123;pcdn/vdp/cp2p/p2p/ksp2p&#125; $num $version</code></p>
+<h4 id="分盘删除"><a href="#分盘删除" class="headerlink" title="分盘删除"></a>分盘删除</h4><p><code>curl -sSL https://automateplus.oss-accelerate.aliyuncs.com/container-partition.sh | bash -s -- -d &#123;pcdn/vdp/cp2p/p2p/ksp2p&#125; $num</code></p>
+<h4 id="分盘删除某个盘上的所有容器"><a href="#分盘删除某个盘上的所有容器" class="headerlink" title="分盘删除某个盘上的所有容器"></a>分盘删除某个盘上的所有容器</h4><p><code>curl -sSL https://automateplus.oss-accelerate.aliyuncs.com/container-partition.sh | bash -s -- -q $盘符名称</code></p>
+<h3 id="快手静态IP部署（这台快手有空帮忙改一下一对一线-192-168-2-3-192-168-2-44-42条线路-网关192-168-2-1）"><a href="#快手静态IP部署（这台快手有空帮忙改一下一对一线-192-168-2-3-192-168-2-44-42条线路-网关192-168-2-1）" class="headerlink" title="快手静态IP部署（这台快手有空帮忙改一下一对一线,192.168.2.3-192.168.2.44, 42条线路, 网关192.168.2.1）"></a>快手静态IP部署（这台快手有空帮忙改一下一对一线,192.168.2.3-192.168.2.44, 42条线路, 网关192.168.2.1）</h3><p><strong>！！！先删除原有的容器</strong><br><code>docker rm -f `docker ps -a --format &quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Names&#125;&#125;&quot; |grep ksp2p_|awk &#39;&#123;print $1&#125;&#39;`</code></p>
+<h4 id="创建快手容器"><a href="#创建快手容器" class="headerlink" title="创建快手容器"></a>创建快手容器</h4><p><code>curl -sSL https://automateplus.oss-cn-hangzhou.aliyuncs.com/createksp2pip.py | python - 192.168.1.101 192.168.1.118 v1.0.62.500_5</code></p>
+<h4 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h4><p>IP地址是静态ip的开始地址和结束地址，最后一个参数是快手版本<br>容器部署成功就表示OK了</p>
+<h3 id="显示docker容器的ID和Names"><a href="#显示docker容器的ID和Names" class="headerlink" title="显示docker容器的ID和Names"></a>显示docker容器的ID和Names</h3><p><code>docker ps --format &quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Names&#125;&#125;&quot;</code></p>
+<h3 id="输出docker容器的最后一列（例子快手容器）"><a href="#输出docker容器的最后一列（例子快手容器）" class="headerlink" title="输出docker容器的最后一列（例子快手容器）"></a>输出docker容器的最后一列（例子快手容器）</h3><p><code>docker ps |grep ksp2p_| awk &#39;&#123;print $NF&#125;&#39;</code>  </p>
+<h4 id="查看有多少的快手容器"><a href="#查看有多少的快手容器" class="headerlink" title="查看有多少的快手容器"></a>查看有多少的快手容器</h4><p><code>docker ps |grep ksp2p_| wc -l</code></p>
+<h3 id="查看服务器上面的硬盘"><a href="#查看服务器上面的硬盘" class="headerlink" title="查看服务器上面的硬盘"></a>查看服务器上面的硬盘</h3><p>p.s. 安装阵列卡的硬盘看不出到底有几块硬盘<br>查看硬盘信息<br><code>lsscsi</code><br>$ lsscsiscsi 设备及其属性<br>[0:0:8:0]—-disk—-FUJITSU—-MAM3184MP—-0105—-/dev/sda<br>[2:0:0:0]—-cd——CREATIVE—CD5233E——1.00—-/dev/scd0<br>[3:0:5:0]—-tape—-HP———C5713A——-H910—-/dev/st0<br>[3:0:5:1]—-mediumx-HP———C5713A——-H910—–<br>[4:0:0:0]—-disk—-Linux——scsi_debug—0004—-/dev/sdb<br>第一列：SCSI设备id：host, channel,id,lun。<br><strong>第二列：设备类型。（有可能是阵列卡）</strong><br>第3，4，5列：设备厂商，型号，版本信息。<br>最后一列：设备主节点名。lsscsi -s显示容量大小。-c 用全称显示默认的信息。-d 显示设备主，次设备号。-g 显示对应的sg设备名。-H 显示主机控制器列表，-Hl,-Hlv。-l 显示相关属性，-ll,-lll=-L。-v 显示设备属性所在目录。-x 以16进制显示lun号。-p 输出DIF,DIX 保护类型。-P 输出有效的保护模式信息。-i 显示udev相关的属性-w 显示WWN<br>-t显示相应传输信息(ATA,FC,SBP,ISCSI,SPI,SAS,SATA,USB)，-Ht,-tl.（包括sas地址）</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    更改uuid&amp;查看服务器信息
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/11/20/pip%E5%AE%89%E8%A3%85%E6%9C%AC%E5%9C%B0%E5%8C%85/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">pip安装本地包</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            TQ &copy; 2021 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
