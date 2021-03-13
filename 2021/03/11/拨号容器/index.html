@@ -17,7 +17,7 @@
 <meta property="og:description" content="（头条是主机拨号） 如果之前有服务正在运行则停掉容器docker kill &#96;docker ps -a --format &quot;table &amp;#123;&amp;#123;.ID&amp;#125;&amp;#125;\t&amp;#123;&amp;#123;.Names&amp;#125;&amp;#125;&quot; |grep -E &#39;ksp2p_|pcdn_|cp2p_&#39;|awk &#39;&amp;#123;print $1">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-03-11T13:44:41.016Z">
+<meta property="article:modified_time" content="2021-03-12T09:50:53.000Z">
 <meta property="article:author" content="TQ">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
@@ -192,6 +192,15 @@
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
                             &nbsp;
+                            docker
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/12/docker%E5%B8%B8%E5%91%BD/">docker常用命令</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
                             galgame
                         </a>
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/07/08/%E5%AF%86%E8%AF%AD%E6%8F%90%E5%8F%96CG%E8%AE%B0%E5%BD%95/">密语提取CG记录</a></li>  </ul> 
@@ -203,7 +212,7 @@
                             &nbsp;
                             linux
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/10/13/linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/">linux磁盘分区</a></li>  <li class="file"><a href="/2020/10/27/VBOX%E4%B8%AD%E7%9A%84centos%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%95%91%E6%8F%B4/">centos虚拟机系统救援</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/10/13/linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/">linux磁盘分区</a></li>  <li class="file"><a href="/2020/10/27/VBOX%E4%B8%AD%E7%9A%84centos%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%95%91%E6%8F%B4/">centos虚拟机系统救援</a></li>  <li class="file"><a href="/2021/03/12/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux常用命令</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -394,9 +403,8 @@
             <p><strong>（头条是主机拨号）</strong></p>
 <p>如果之前有服务正在运行则停掉容器<br><code>docker kill `docker ps -a --format &quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Names&#125;&#125;&quot; |grep -E &#39;ksp2p_|pcdn_|cp2p_&#39;|awk &#39;&#123;print $1&#125;&#39;`</code></p>
 <h3 id="拨号镜像地址"><a href="#拨号镜像地址" class="headerlink" title="拨号镜像地址"></a>拨号镜像地址</h3><p>registry.cn-hangzhou.aliyuncs.com/pcdn-images/pppoe:v5.9</p>
-<h3 id="拨号脚本"><a href="#拨号脚本" class="headerlink" title="拨号脚本"></a>拨号脚本</h3><p>curl -sSL <a target="_blank" rel="noopener" href="https://automateplus.oss-cn-hangzhou.aliyuncs.com/docker_pppoe_multieth.sh|bash">https://automateplus.oss-cn-hangzhou.aliyuncs.com/docker_pppoe_multieth.sh|bash</a> -s – -c 拨号镜像版本</p>
-<h3 id="创建拨号虚拟网卡脚本"><a href="#创建拨号虚拟网卡脚本" class="headerlink" title="创建拨号虚拟网卡脚本"></a>创建拨号虚拟网卡脚本</h3><p>curl -sSL <a target="_blank" rel="noopener" href="https://automateplus.oss-cn-hangzhou.aliyuncs.com/host_pppoe_vlan.sh|sh">https://automateplus.oss-cn-hangzhou.aliyuncs.com/host_pppoe_vlan.sh|sh</a></p>
-<p>可以使用以下脚本直接直接执行操作  \</p>
+<h3 id="拨号脚本"><a href="#拨号脚本" class="headerlink" title="拨号脚本"></a>拨号脚本</h3><p><code>curl -sSL https://automateplus.oss-cn-hangzhou.aliyuncs.com/docker_pppoe_multieth.sh|bash -s -- -c 拨号镜像版本</code></p>
+<h3 id="创建拨号虚拟网卡脚本"><a href="#创建拨号虚拟网卡脚本" class="headerlink" title="创建拨号虚拟网卡脚本"></a>创建拨号虚拟网卡脚本</h3><p><code>curl -sSL https://automateplus.oss-cn-hangzhou.aliyuncs.com/host_pppoe_vlan.sh|sh</code></p>
 <font color=#0099ff face="黑体">
 查看网卡，有state up的，并且有ip的网卡是主机网卡（内网ip），有state up，并且没有ip的是拨号网卡
 </font>
@@ -406,85 +414,23 @@
 <li>创建拨号配置文件<br><code>/opt/pppoe/pppoe_user.txt</code><br>文件格式：<br>vlanid 拨号账户 账户密码 拨号网卡名 带宽大小（M）<br>例：<br>novlan 77561213412 00000000 ens3 100<br>novlan 77539581907 00000000 ens3 100<br>novlan 77515478098 00000000 ens3 100<br>novlan 77531248304 00000000 ens3 100<br>注意：第一列为vlanid，如果线路未设置vlan，则值为“novlan”</li>
 <li>检验拨号是否成功  </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">for i in &#96;seq 1 $(cat &#x2F;opt&#x2F;pppoe&#x2F;pppoe_user.txt |wc -l)&#96;</span><br><span class="line">do  </span><br><span class="line"> echo pppoe_$i  </span><br><span class="line"> &#x2F;usr&#x2F;bin&#x2F;docker exec -it pppoe_$i ifconfig ppp0 2&gt; &#x2F;dev&#x2F;null  </span><br><span class="line">done</span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line"></span><br><span class="line">**拨号失败的解决方案**  </span><br><span class="line">手动恢复拨号</span><br><span class="line"></span><br><span class="line">1. 进入拨号容器  </span><br><span class="line">   &#96; docker exec -it pppoe_1 bash &#96;</span><br><span class="line">2. 启动ppp0网卡，eth0网卡  </span><br><span class="line">   &#96;ifup ppp0&#96;  </span><br><span class="line">   &#96;ifup eth0&#96;  </span><br><span class="line">   (ifup eth0   启动eth0网卡)  </span><br><span class="line">   (ifdown eth0   关闭eth0网卡)</span><br><span class="line"></span><br><span class="line">----------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 分盘部署</span><br><span class="line">&#96;curl -sSL https:&#x2F;&#x2F;automateplus.oss-accelerate.aliyuncs.com&#x2F;container-partition.sh | bash -s -- -c &#123;pcdn&#x2F;vdp&#x2F;cp2p&#x2F;p2p&#x2F;ksp2p&#125; $num $version&#96;</span><br><span class="line"></span><br><span class="line">看看部署的容器的类型、数量、版本、然后依次填入</span><br><span class="line"></span><br><span class="line">分盘部署完了之后再次使用create pppoe函数，直接复制到shell里，然后启动，也可以在本地服务器直接使用hyp执行脚本  </span><br></pre></td></tr></table></figure>
-<p>hyp -l $uuid -p “/opt/test/test.sh”</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">**检验是否拨号成功**  </span><br><span class="line">查看任意一个容器的NetworkMode，如果为container，则该容器使用的是容器的拨号网络，表示OK  </span><br><span class="line">如果为host，表示容器使用的网络仍然为主机网络，则需要将网络格式改为拨号网络  </span><br><span class="line">运行pppoe.sh中的create_pppoe即可，然后再次查看任意一个容器的网络模式  </span><br><span class="line"></span><br><span class="line">显示所有容器  </span><br><span class="line">&#96;&#96; docker ps -a &#96;&#96;  </span><br><span class="line"></span><br><span class="line">查看任意一个容器的网络模式（以pcdn为例）  </span><br><span class="line">&#96;&#96; docker inspect pcdn_1| grep Net &#96;&#96;</span><br><span class="line"></span><br><span class="line">pppoe.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>#1、写入拨号帐号密码<br>mkdir /opt/pppoe<br>cd /opt/pppoe<br>vi /opt/pppoe/pppoe_user.txt</p>
-<p>function del_pppoe()<br>{<br>    docker rm -f <code>docker ps -a --format &quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Names&#125;&#125;&quot; |grep pppoe_|awk &#39;&#123;print $1&#125;&#39;</code><br>    #清空 echo “”</p>
-<pre><code>cat /var/spool/cron/root
-echo &gt; /var/spool/cron/root
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for i in &#96;seq 1 $(cat &#x2F;opt&#x2F;pppoe&#x2F;pppoe_user.txt |wc -l)&#96;</span><br><span class="line">do  </span><br><span class="line"> echo pppoe_$i  </span><br><span class="line"> &#x2F;usr&#x2F;bin&#x2F;docker exec -it pppoe_$i ifconfig ppp0 2&gt; &#x2F;dev&#x2F;null  </span><br><span class="line">done</span><br></pre></td></tr></table></figure>
 
-#删除
-cat /etc/rc.local
-sed -i &#39;/host_pppoe_vlan.sh/d&#39; /etc/rc.local
+<p><strong>拨号失败的解决方案</strong><br>手动恢复拨号</p>
+<ol>
+<li>进入拨号容器<br><code>docker exec -it pppoe_1 bash</code></li>
+<li>启动ppp0网卡，eth0网卡<br><code>ifup ppp0</code><br><code>ifup eth0</code><br>(ifup eth0   启动eth0网卡)<br>(ifdown eth0   关闭eth0网卡)</li>
+</ol>
+<hr>
+<h3 id="分盘部署"><a href="#分盘部署" class="headerlink" title="分盘部署"></a>分盘部署</h3><p><code>curl -sSL https://automateplus.oss-accelerate.aliyuncs.com/container-partition.sh | bash -s -- -c &#123;pcdn/vdp/cp2p/p2p/ksp2p&#125; $num $version</code></p>
+<p>看看部署的容器的类型、数量、版本、然后依次填入</p>
+<p>分盘部署完了之后再次使用create pppoe函数，直接复制到shell里，然后启动，也可以在本地服务器直接使用hyp执行脚本  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hyp -l $uuid -p &quot;&#x2F;opt&#x2F;test&#x2F;test.sh&quot;</span><br></pre></td></tr></table></figure>
 
-
-
-rm -rf  /etc/sysconfig/network-scripts/ifcfg-macv*
-for j in $(/usr/sbin/ip addr  | grep -Eo &quot;\w+\.[0-9]+@&quot; | awk -F&#39;@&#39; &#39;&#123;print $1&#125;&#39;)
-do
-    #echo $j
-    #ifdown $&#123;j&#125;
-    /usr/sbin/ip link delete $&#123;j&#125;
-done
-for i in $(/usr/sbin/ip addr | grep -Eo &quot;macv[0-9]+&quot;)
-do
-    #echo $i
-    #ifdown-macvlan $i
-    /usr/sbin/ip link delete $&#123;i&#125;
-done</code></pre>
-<p>}<br>del_pppoe</p>
-<p>function create_pppoe()<br>{<br>    declare -A param_map<br>    param_map=([p2p]=”-v /etc/localtime:/etc/localtime” [pcdn]=”–cpus=1 -m 1G –memory-swap -1 -v /etc/localtime:/etc/localtime” [cp2p]=”-v /etc/localtime:/etc/localtime”  [vdp]=”–cpus=1 -v /etc/localtime:/etc/localtime -v /opt/oort:/opt/oort” [ksp2p]=”-v /opt/hyops:/opt/hyops -v /etc/salt:/etc/salt” [wsp2p]=”-v /etc/localtime:/etc/localtime” [pop2p]=”-v /etc/localtime:/etc/localtime -v /etc/salt/minion_id:/etc/salt/minion_id”)<br>    ver=v5.9<br>    docker kill <code>docker ps -a --format &quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Names&#125;&#125;&quot; |grep -E &#39;ksp2p_|pcdn_|cp2p_&#39;|awk &#39;&#123;print $1&#125;&#39;</code><br>    if [[ $(docker ps | grep -c “pppoe_”) -eq 0 ]];then<br>        curl -sSL <a target="_blank" rel="noopener" href="https://automateplus.oss-cn-hangzhou.aliyuncs.com/docker_pppoe_multieth.sh|bash">https://automateplus.oss-cn-hangzhou.aliyuncs.com/docker_pppoe_multieth.sh|bash</a> -s – -c ${ver}<br>    fi</p>
-<pre><code>###################重启服务###########
-mountstr=&quot;-v /etc/resolv.conf:/etc/resolv.conf&quot;
-envstr=&quot;&quot;
-for str_service in $(docker ps -a | awk &#39;&#123;print $NF&#125;&#39; | awk -F&#39;_&#39; &#39;&#123;print $1&#125;&#39;| uniq | grep -vE &#39;dcache|NAMES|monitor|ipes-manager|pppoe|k8s&#39;);do
-    docker_version=$(docker ps  -a | grep &quot;$&#123;str_service&#125;_&quot; | head -n1 | awk   &#39;&#123;print $2&#125;&#39; |  awk  -F&#39;:&#39; &#39;&#123;print $2&#125;&#39;)
-    service_Num=$(docker ps -a | grep -c $&#123;str_service&#125;_)
-    param=$&#123;param_map[&quot;$str_service&quot;]&#125;
-    pppoe_Num=$(docker ps | grep -c &quot;pppoe_&quot;)
-    num_a=1
-    num_b=1
-    while [[ $num_a -le $service_Num ]]; do
-        if [[ $num_b -eq $(($&#123;pppoe_Num&#125;+1)) ]]; then
-            num_b=1
-        else
-            path=`docker inspect $&#123;str_service&#125;_$&#123;num_a&#125; |grep Mounts -A 30|grep &quot;Source&quot;|grep &quot;/data[1-9]*[0-9]*&quot;|sed -r &#39;s/&quot;.*?&quot;: &quot;(.*?)&quot;,/\1/&#39;|sed &#39;s/ //g&#39;`
-            echo $&#123;str_service&#125;_$&#123;num_a&#125; pppoe_$num_b
-            if [[ $str_service = &quot;cp2p&quot; ]]; then
-                docker rm -f $&#123;str_service&#125;_$&#123;num_a&#125;
-                docker run --restart=always --net=container:pppoe_$num_b --name=$&#123;str_service&#125;_$&#123;num_a&#125;  $param $envstr  $mountstr -v $&#123;path&#125;:/storage -d registry.cn-hangzhou.aliyuncs.com/pcdn-images/coldp2p:$&#123;docker_version&#125;
-            elif [[ $str_service = &quot;pcdn&quot; ]]; then
-                docker rm -f $&#123;str_service&#125;_$&#123;num_a&#125;
-                echo &quot;docker run --restart=always --net=container:pppoe_$num_b --name=$&#123;str_service&#125;_$&#123;num_a&#125;   $param $envstr  $mountstr -v $path:/storage -d registry.cn-hangzhou.aliyuncs.com/pcdn-images/pcdn:$&#123;docker_version&#125;&quot;
-                docker run --restart=always --net=container:pppoe_$num_b --name=$&#123;str_service&#125;_$&#123;num_a&#125;   $param $envstr  $mountstr -v $path:/storage -d registry.cn-hangzhou.aliyuncs.com/pcdn-images/pcdn:$&#123;docker_version&#125;             
-            elif [[ $str_service = &quot;ksp2p&quot; ]];then
-                docker rm -f $&#123;str_service&#125;_$&#123;num_a&#125;
-                start_port=$((17999+num_a))
-                res=`netstat -lnp|grep &quot;$start_port&quot; |wc -l`
-                while [[ $res -gt 0 ]];do
-                    strat_port=$((strat_port+1))
-                    res=`netstat -lnp|grep $strat_port |wc -l`
-                done
-                envstr=&quot; -e ConName=$&#123;str_service&#125;_$&#123;num_a&#125; -e BasePort=$start_port &quot;
-                docker run --restart=always --net=container:pppoe_$num_b --name=$&#123;str_service&#125;_$&#123;num_a&#125;  -v /opt/hyops:/opt/hyops -v /etc/salt:/etc/salt  $envstr $&#123;mountstr&#125; -v $&#123;path&#125;:/storage -d registry.cn-hangzhou.aliyuncs.com/p2pcdn/ksp2p:$&#123;docker_version&#125;
-            elif [[ $str_service == &quot;vdp&quot; ]]; then
-                envstr=&quot; -e OORT_ENV_POD_NAME=btvdp-$&#123;num_a&#125; &quot;
-                mountstr=&quot;-v /opt/hyops/dns/vdp/resolv.conf:/etc/resolv.conf&quot;
-                docker rm -f $&#123;str_service&#125;_$&#123;num_a&#125;
-                echo &quot;docker run --restart=always --net=container:pppoe_$num_b --name=$&#123;str_service&#125;_$&#123;num_a&#125; $param $envstr $mountstr -v $path:/storage -d registry.cn-hangzhou.aliyuncs.com/p2pcdn/btvdp:$&#123;docker_version&#125;&quot;
-                docker run --restart=always --net=container:pppoe_$num_b --name=$&#123;str_service&#125;_$&#123;num_a&#125; $param $envstr $mountstr -v $path:/storage -d registry.cn-hangzhou.aliyuncs.com/p2pcdn/btvdp:$&#123;docker_version&#125;
-            fi
-            ((num_a++))
-            ((num_b++))
-        fi
-    done
-done
-
-docker start monitor</code></pre>
-<p>}<br>create_pppoe</p>
-<pre><code></code></pre>
-
+<p><strong>检验是否拨号成功</strong><br>查看任意一个容器的NetworkMode，如果为container，则该容器使用的是容器的拨号网络，表示OK<br>如果为host，表示容器使用的网络仍然为主机网络，则需要将网络格式改为拨号网络<br>运行pppoe.sh中的create_pppoe即可，然后再次查看任意一个容器的网络模式  </p>
+<p>显示所有容器<br><code>docker ps -a</code></p>
+<p>查看任意一个容器的网络模式（以pcdn为例）<br><code>docker inspect pcdn_1| grep Net</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">function del_pppoe()</span><br><span class="line">&#123;</span><br><span class="line">    docker rm -f `docker ps -a --format &quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Names&#125;&#125;&quot; |grep pppoe_|awk &#x27;&#123;print $1&#125;&#x27;`</span><br><span class="line">    #清空 echo &quot;&quot;</span><br><span class="line"></span><br><span class="line">    cat /var/spool/cron/root</span><br><span class="line">    echo &gt; /var/spool/cron/root</span><br><span class="line"></span><br><span class="line">    #删除</span><br><span class="line">    cat /etc/rc.local</span><br><span class="line">    sed -i &#x27;/host_pppoe_vlan.sh/d&#x27; /etc/rc.local</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    rm -rf  /etc/sysconfig/network-scripts/ifcfg-macv*</span><br><span class="line">    for j in $(/usr/sbin/ip addr  | grep -Eo &quot;\w+\.[0-9]+@&quot; | awk -F&#x27;@&#x27; &#x27;&#123;print $1&#125;&#x27;)</span><br><span class="line">    do</span><br><span class="line">        #echo $j</span><br><span class="line">        #ifdown $&#123;j&#125;</span><br><span class="line">        /usr/sbin/ip link delete $&#123;j&#125;</span><br><span class="line">    done</span><br><span class="line">    for i in $(/usr/sbin/ip addr | grep -Eo &quot;macv[0-9]+&quot;)</span><br><span class="line">    do</span><br><span class="line">        #echo $i</span><br><span class="line">        #ifdown-macvlan $i</span><br><span class="line">        /usr/sbin/ip link delete $&#123;i&#125;</span><br><span class="line">    done</span><br><span class="line">&#125;</span><br><span class="line">del_pppoe</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function create_pppoe()</span><br><span class="line">&#123;</span><br><span class="line">    declare -A param_map</span><br><span class="line">    param_map=([p2p]=&quot;-v /etc/localtime:/etc/localtime&quot; [pcdn]=&quot;--cpus=1 -m 1G --memory-swap -1 -v /etc/localtime:/etc/localtime&quot; [cp2p]=&quot;-v /etc/localtime:/etc/localtime&quot;  [vdp]=&quot;--cpus=1 -v /etc/localtime:/etc/localtime -v /opt/oort:/opt/oort&quot; [ksp2p]=&quot;-v /opt/hyops:/opt/hyops -v /etc/salt:/etc/salt&quot; [wsp2p]=&quot;-v /etc/localtime:/etc/localtime&quot; [pop2p]=&quot;-v /etc/localtime:/etc/localtime -v /etc/salt/minion_id:/etc/salt/minion_id&quot;)</span><br><span class="line">    ver=v5.9</span><br><span class="line">    docker kill `docker ps -a --format &quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Names&#125;&#125;&quot; |grep -E &#x27;ksp2p_|pcdn_|cp2p_&#x27;|awk &#x27;&#123;print $1&#125;&#x27;`</span><br><span class="line">    if [[ $(docker ps | grep -c &quot;pppoe_&quot;) -eq 0 ]];then</span><br><span class="line">        curl -sSL https://automateplus.oss-cn-hangzhou.aliyuncs.com/docker_pppoe_multieth.sh|bash -s -- -c $&#123;ver&#125;</span><br><span class="line">    fi</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    ###################重启服务###########</span><br><span class="line">    mountstr=&quot;-v /etc/resolv.conf:/etc/resolv.conf&quot;</span><br><span class="line">    envstr=&quot;&quot;</span><br><span class="line">    for str_service in $(docker ps -a | awk &#x27;&#123;print $NF&#125;&#x27; | awk -F&#x27;_&#x27; &#x27;&#123;print $1&#125;&#x27;| uniq | grep -vE &#x27;dcache|NAMES|monitor|ipes-manager|pppoe|k8s&#x27;);do</span><br><span class="line">		docker_version=$(docker ps  -a | grep &quot;$&#123;str_service&#125;_&quot; | head -n1 | awk   &#x27;&#123;print $2&#125;&#x27; |  awk  -F&#x27;:&#x27; &#x27;&#123;print $2&#125;&#x27;)</span><br><span class="line">        service_Num=$(docker ps -a | grep -c $&#123;str_service&#125;_)</span><br><span class="line">        param=$&#123;param_map[&quot;$str_service&quot;]&#125;</span><br><span class="line">        pppoe_Num=$(docker ps | grep -c &quot;pppoe_&quot;)</span><br><span class="line">        num_a=1</span><br><span class="line">        num_b=1</span><br><span class="line">        while [[ $num_a -le $service_Num ]]; do</span><br><span class="line">            if [[ $num_b -eq $(($&#123;pppoe_Num&#125;+1)) ]]; then</span><br><span class="line">                num_b=1</span><br><span class="line">            else</span><br><span class="line">                path=`docker inspect $&#123;str_service&#125;_$&#123;num_a&#125; |grep Mounts -A 30|grep &quot;Source&quot;|grep &quot;/data[1-9]*[0-9]*&quot;|sed -r &#x27;s/&quot;.*?&quot;: &quot;(.*?)&quot;,/\1/&#x27;|sed &#x27;s/ //g&#x27;`</span><br><span class="line">                echo $&#123;str_service&#125;_$&#123;num_a&#125; pppoe_$num_b</span><br><span class="line">                if [[ $str_service = &quot;cp2p&quot; ]]; then</span><br><span class="line">                    docker rm -f $&#123;str_service&#125;_$&#123;num_a&#125;</span><br><span class="line">                    docker run --restart=always --net=container:pppoe_$num_b --name=$&#123;str_service&#125;_$&#123;num_a&#125;  $param $envstr  $mountstr -v $&#123;path&#125;:/storage -d registry.cn-hangzhou.aliyuncs.com/pcdn-images/coldp2p:$&#123;docker_version&#125;</span><br><span class="line">                elif [[ $str_service = &quot;pcdn&quot; ]]; then</span><br><span class="line">                    docker rm -f $&#123;str_service&#125;_$&#123;num_a&#125;</span><br><span class="line">                    echo &quot;docker run --restart=always --net=container:pppoe_$num_b --name=$&#123;str_service&#125;_$&#123;num_a&#125;   $param $envstr  $mountstr -v $path:/storage -d registry.cn-hangzhou.aliyuncs.com/pcdn-images/pcdn:$&#123;docker_version&#125;&quot;</span><br><span class="line">                    docker run --restart=always --net=container:pppoe_$num_b --name=$&#123;str_service&#125;_$&#123;num_a&#125;   $param $envstr  $mountstr -v $path:/storage -d registry.cn-hangzhou.aliyuncs.com/pcdn-images/pcdn:$&#123;docker_version&#125;             </span><br><span class="line">                elif [[ $str_service = &quot;ksp2p&quot; ]];then</span><br><span class="line">                    docker rm -f $&#123;str_service&#125;_$&#123;num_a&#125;</span><br><span class="line">                    start_port=$((17999+num_a))</span><br><span class="line">                    res=`netstat -lnp|grep &quot;$start_port&quot; |wc -l`</span><br><span class="line">                    while [[ $res -gt 0 ]];do</span><br><span class="line">                        strat_port=$((strat_port+1))</span><br><span class="line">                        res=`netstat -lnp|grep $strat_port |wc -l`</span><br><span class="line">                    done</span><br><span class="line">                    envstr=&quot; -e ConName=$&#123;str_service&#125;_$&#123;num_a&#125; -e BasePort=$start_port &quot;</span><br><span class="line">                    docker run --restart=always --net=container:pppoe_$num_b --name=$&#123;str_service&#125;_$&#123;num_a&#125;  -v /opt/hyops:/opt/hyops -v /etc/salt:/etc/salt  $envstr $&#123;mountstr&#125; -v $&#123;path&#125;:/storage -d registry.cn-hangzhou.aliyuncs.com/p2pcdn/ksp2p:$&#123;docker_version&#125;</span><br><span class="line">                elif [[ $str_service == &quot;vdp&quot; ]]; then</span><br><span class="line">					envstr=&quot; -e OORT_ENV_POD_NAME=btvdp-$&#123;num_a&#125; &quot;</span><br><span class="line">					mountstr=&quot;-v /opt/hyops/dns/vdp/resolv.conf:/etc/resolv.conf&quot;</span><br><span class="line">                    docker rm -f $&#123;str_service&#125;_$&#123;num_a&#125;</span><br><span class="line">                    echo &quot;docker run --restart=always --net=container:pppoe_$num_b --name=$&#123;str_service&#125;_$&#123;num_a&#125; $param $envstr $mountstr -v $path:/storage -d registry.cn-hangzhou.aliyuncs.com/p2pcdn/btvdp:$&#123;docker_version&#125;&quot;</span><br><span class="line">                    docker run --restart=always --net=container:pppoe_$num_b --name=$&#123;str_service&#125;_$&#123;num_a&#125; $param $envstr $mountstr -v $path:/storage -d registry.cn-hangzhou.aliyuncs.com/p2pcdn/btvdp:$&#123;docker_version&#125;</span><br><span class="line">                fi</span><br><span class="line">                ((num_a++))</span><br><span class="line">                ((num_b++))</span><br><span class="line">            fi</span><br><span class="line">        done</span><br><span class="line">    done</span><br><span class="line"></span><br><span class="line">    docker start monitor</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">create_pppoe</span><br></pre></td></tr></table></figure>
             </div>
         
         <footer class="article-footer">
@@ -496,19 +442,19 @@ docker start monitor</code></pre>
     
 <nav id="article-nav">
     
-        <a href="/2021/03/11/Xshell%E7%AA%81%E5%87%BA%E6%98%BE%E7%A4%BA%E9%9B%86%E6%AD%A3%E5%88%99/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    Xshell突出显示集正则配置
+                    更改uuid&amp;查看服务器信息
                 
             </div>
         </a>
     
     
-        <a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2021/03/10/%E9%80%9A%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">更改uuid&amp;查看服务器信息</div>
+            <div class="article-nav-title">容器部署常用的命令</div>
         </a>
     
 </nav>
