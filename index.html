@@ -252,7 +252,7 @@
                             &nbsp;
                             服务器容器
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/10/%E9%80%9A%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/">容器部署常用的命令</a></li>  <li class="file"><a href="/2021/03/11/%E6%8B%A8%E5%8F%B7%E5%AE%B9%E5%99%A8/">docker内拨号</a></li>  <li class="file"><a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&查看服务器信息</a></li>  <li class="file"><a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">容器部署常见问题</a></li>  <li class="file"><a href="/2021/03/15/docker%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/">docker启动失败</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/10/%E9%80%9A%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/">容器部署常用的命令</a></li>  <li class="file"><a href="/2021/03/11/docker%E5%86%85%E6%8B%A8%E5%8F%B7/">docker内拨号</a></li>  <li class="file"><a href="/2021/03/11/%E6%8B%A8%E5%8F%B7%E5%AE%B9%E5%99%A8/">docker内拨号</a></li>  <li class="file"><a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&查看服务器信息</a></li>  <li class="file"><a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">容器部署常见问题</a></li>  <li class="file"><a href="/2021/03/15/docker%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/">docker启动失败</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -344,110 +344,6 @@
 </aside>
             
             <section id="main">
-        <article id="post-容器部署常见问腿" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%B9%E5%99%A8/">服务器容器</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/docker/" rel="tag">docker</a>, <a class="tag-link-link" href="/tags/hyp/" rel="tag">hyp</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">
-            <time datetime="2021-03-14T16:00:00.000Z" itemprop="datePublished">2021-03-15</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/容器部署常见问腿.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/容器部署常见问腿.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/容器部署常见问腿.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">容器部署常见问题</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><h3 id="使用uuid无法登录服务器"><a href="#使用uuid无法登录服务器" class="headerlink" title="使用uuid无法登录服务器"></a>使用uuid无法登录服务器</h3><p>如果hyp用uuid连不进去，估计是对面服务器cgroupv2（hyp的进程）进程假死<br>解决方法：<br>使用ssh直接连进去，然后重启cgroupv2程序<br><code>systemctl restart cgroupv2</code><br>查看程序状态是否为active<br><code>systemctl status cgroupv2</code><br>然后退出来，清理缓存<br><code>hyp --clear</code><br>重新载入uuid<br><code>hyp -l $uuid -dst a</code>  </p>
-<p>查看对面机器的信息<br><code>hyp --info $uuid</code></p>
-<h3 id="机器无法连接问题-排查步骤"><a href="#机器无法连接问题-排查步骤" class="headerlink" title="机器无法连接问题-排查步骤"></a>机器无法连接问题-排查步骤</h3><ol>
-<li>检查机器是否可以ssh登录  </li>
-<li>检查机器根目录储存空间是否已满<code>df -h</code>  </li>
-<p>
-                
-            
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
         <article id="post-修改centos7网卡名" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -539,6 +435,110 @@
             </div>   
             <div class="article-more-link">
                 <a href="/2021/03/15/%E4%BF%AE%E6%94%B9centos7%E7%BD%91%E5%8D%A1%E5%90%8D/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-容器部署常见问腿" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%B9%E5%99%A8/">服务器容器</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/docker/" rel="tag">docker</a>, <a class="tag-link-link" href="/tags/hyp/" rel="tag">hyp</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">
+            <time datetime="2021-03-14T16:00:00.000Z" itemprop="datePublished">2021-03-15</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/容器部署常见问腿.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/容器部署常见问腿.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/容器部署常见问腿.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">容器部署常见问题</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h3 id="使用uuid无法登录服务器"><a href="#使用uuid无法登录服务器" class="headerlink" title="使用uuid无法登录服务器"></a>使用uuid无法登录服务器</h3><p>如果hyp用uuid连不进去，估计是对面服务器cgroupv2（hyp的进程）进程假死<br>解决方法：<br>使用ssh直接连进去，然后重启cgroupv2程序<br><code>systemctl restart cgroupv2</code><br>查看程序状态是否为active<br><code>systemctl status cgroupv2</code><br>然后退出来，清理缓存<br><code>hyp --clear</code><br>重新载入uuid<br><code>hyp -l $uuid -dst a</code>  </p>
+<p>查看对面机器的信息<br><code>hyp --info $uuid</code></p>
+<h3 id="机器无法连接问题-排查步骤"><a href="#机器无法连接问题-排查步骤" class="headerlink" title="机器无法连接问题-排查步骤"></a>机器无法连接问题-排查步骤</h3><ol>
+<li>检查机器是否可以ssh登录  </li>
+<li>检查机器根目录储存空间是否已满<code>df -h</code>  </li>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/#more">Read More</a>
             </div>
         
         <footer class="article-footer">
@@ -953,7 +953,7 @@
 
 
     
-        <article id="post-拨号容器" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-更改uuid" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -969,13 +969,13 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/docker/" rel="tag">docker</a>
+        <a class="tag-link-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a>
     </div>
 
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2021/03/11/%E6%8B%A8%E5%8F%B7%E5%AE%B9%E5%99%A8/">
+        <a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">
             <time datetime="2021-03-10T16:00:00.000Z" itemprop="datePublished">2021-03-11</time>
         </a>
     </div>
@@ -987,13 +987,13 @@
                         
                         
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/拨号容器.md'> Source </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/更改uuid.md'> Source </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/拨号容器.md'> Edit </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/更改uuid.md'> Edit </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/拨号容器.md'> History </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/更改uuid.md'> History </a>
                             </div>
                         
                     </div>
@@ -1001,7 +1001,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2021/03/11/%E6%8B%A8%E5%8F%B7%E5%AE%B9%E5%99%A8/">docker内拨号</a>
+            <a class="article-title" href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&amp;查看服务器信息</a>
         </h1>
     
 
@@ -1020,30 +1020,11 @@
                     
                     
                 
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><p><strong>（头条是主机拨号）</strong></p>
-<p>如果之前有服务正在运行则停掉容器<br><code>docker kill `docker ps -a --format &quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Names&#125;&#125;&quot; |grep -E &#39;ksp2p_|pcdn_|cp2p_&#39;|awk &#39;&#123;print $1&#125;&#39;`</code></p>
-<h3 id="拨号镜像地址"><a href="#拨号镜像地址" class="headerlink" title="拨号镜像地址"></a>拨号镜像地址</h3><p>registry.cn-hangzhou.aliyuncs.com/pcdn-images/pppoe:v5.9</p>
-<h3 id="拨号脚本"><a href="#拨号脚本" class="headerlink" title="拨号脚本"></a>拨号脚本</h3><p><code>curl -sSL https://automateplus.oss-cn-hangzhou.aliyuncs.com/docker_pppoe_multieth.sh|bash -s -- -c 拨号镜像版本</code></p>
-<h3 id="创建拨号虚拟网卡脚本"><a href="#创建拨号虚拟网卡脚本" class="headerlink" title="创建拨号虚拟网卡脚本"></a>创建拨号虚拟网卡脚本</h3><p><code>curl -sSL https://automateplus.oss-cn-hangzhou.aliyuncs.com/host_pppoe_vlan.sh|sh</code></p>
-<p>
-                
             
         
         
-            </div>   
-            <div class="article-more-link">
-                <a href="/2021/03/11/%E6%8B%A8%E5%8F%B7%E5%AE%B9%E5%99%A8/#more">Read More</a>
+            <h2 id="更改uuid"><a href="#更改uuid" class="headerlink" title="更改uuid"></a>更改uuid</h2><p>在客户端新增一个设备，得到新的uuid<br>使用之前的uuid登录服务器，修改/etc/salt/minion_id文件，删除里面原有的uuid并加入新的uuid，重启cgroupv2（<code>systemctl restart cgroupv2</code>）<br>然后清理hyp的缓存 <code>hyp --clear</code>，接收这个uuid <code>hyp -l $uuid -dst a</code><br>然后就可以使用uuid登录进去了</p>
+
             </div>
         
         <footer class="article-footer">
@@ -1161,7 +1142,7 @@
 
 
     
-        <article id="post-更改uuid" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-docker内拨号" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -1177,13 +1158,13 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a>
+        <a class="tag-link-link" href="/tags/docker/" rel="tag">docker</a>
     </div>
 
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">
+        <a href="/2021/03/11/docker%E5%86%85%E6%8B%A8%E5%8F%B7/">
             <time datetime="2021-03-10T16:00:00.000Z" itemprop="datePublished">2021-03-11</time>
         </a>
     </div>
@@ -1195,13 +1176,13 @@
                         
                         
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/更改uuid.md'> Source </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/docker内拨号.md'> Source </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/更改uuid.md'> Edit </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/docker内拨号.md'> Edit </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/更改uuid.md'> History </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/docker内拨号.md'> History </a>
                             </div>
                         
                     </div>
@@ -1209,7 +1190,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&amp;查看服务器信息</a>
+            <a class="article-title" href="/2021/03/11/docker%E5%86%85%E6%8B%A8%E5%8F%B7/">docker内拨号</a>
         </h1>
     
 
@@ -1228,11 +1209,30 @@
                     
                     
                 
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p><strong>（头条是主机拨号）</strong></p>
+<p>如果之前有服务正在运行则停掉容器<br><code>docker kill `docker ps -a --format &quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Names&#125;&#125;&quot; |grep -E &#39;ksp2p_|pcdn_|cp2p_&#39;|awk &#39;&#123;print $1&#125;&#39;`</code></p>
+<h3 id="拨号镜像地址"><a href="#拨号镜像地址" class="headerlink" title="拨号镜像地址"></a>拨号镜像地址</h3><p>registry.cn-hangzhou.aliyuncs.com/pcdn-images/pppoe:v5.9</p>
+<h3 id="拨号脚本"><a href="#拨号脚本" class="headerlink" title="拨号脚本"></a>拨号脚本</h3><p><code>curl -sSL https://automateplus.oss-cn-hangzhou.aliyuncs.com/docker_pppoe_multieth.sh|bash -s -- -c 拨号镜像版本</code></p>
+<h3 id="创建拨号虚拟网卡脚本"><a href="#创建拨号虚拟网卡脚本" class="headerlink" title="创建拨号虚拟网卡脚本"></a>创建拨号虚拟网卡脚本</h3><p><code>curl -sSL https://automateplus.oss-cn-hangzhou.aliyuncs.com/host_pppoe_vlan.sh|sh</code></p>
+<p>
+                
             
         
         
-            <h2 id="更改uuid"><a href="#更改uuid" class="headerlink" title="更改uuid"></a>更改uuid</h2><p>在客户端新增一个设备，得到新的uuid<br>使用之前的uuid登录服务器，修改/etc/salt/minion_id文件，删除里面原有的uuid并加入新的uuid，重启cgroupv2（<code>systemctl restart cgroupv2</code>）<br>然后清理hyp的缓存 <code>hyp --clear</code>，接收这个uuid <code>hyp -l $uuid -dst a</code><br>然后就可以使用uuid登录进去了</p>
-
+            </div>   
+            <div class="article-more-link">
+                <a href="/2021/03/11/docker%E5%86%85%E6%8B%A8%E5%8F%B7/#more">Read More</a>
             </div>
         
         <footer class="article-footer">
@@ -1246,7 +1246,7 @@
 
 
     
-        <article id="post-通常使用的命令" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-拨号容器" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -1262,14 +1262,14 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a>
+        <a class="tag-link-link" href="/tags/docker/" rel="tag">docker</a>
     </div>
 
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2021/03/10/%E9%80%9A%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/">
-            <time datetime="2021-03-09T16:00:00.000Z" itemprop="datePublished">2021-03-10</time>
+        <a href="/2021/03/11/%E6%8B%A8%E5%8F%B7%E5%AE%B9%E5%99%A8/">
+            <time datetime="2021-03-10T16:00:00.000Z" itemprop="datePublished">2021-03-11</time>
         </a>
     </div>
 
@@ -1280,13 +1280,13 @@
                         
                         
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/通常使用的命令.md'> Source </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/拨号容器.md'> Source </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/通常使用的命令.md'> Edit </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/拨号容器.md'> Edit </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/通常使用的命令.md'> History </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/拨号容器.md'> History </a>
                             </div>
                         
                     </div>
@@ -1294,7 +1294,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2021/03/10/%E9%80%9A%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/">容器部署常用的命令</a>
+            <a class="article-title" href="/2021/03/11/%E6%8B%A8%E5%8F%B7%E5%AE%B9%E5%99%A8/">docker内拨号</a>
         </h1>
     
 
@@ -1324,11 +1324,11 @@
                 
                 
                     
-                    <p><h3 id="某个之前部署好的机器重新部署为host模式"><a href="#某个之前部署好的机器重新部署为host模式" class="headerlink" title="某个之前部署好的机器重新部署为host模式"></a>某个之前部署好的机器重新部署为host模式</h3><p>先用del函数删除拨号，然后分盘更新容器</p>
-<h4 id="分盘更新容器"><a href="#分盘更新容器" class="headerlink" title="分盘更新容器"></a>分盘更新容器</h4><p><code>curl -sSL https://automateplus.oss-accelerate.aliyuncs.com/container-partition.sh | bash -s -- -u &#123;pcdn/vdp/cp2p/p2p/ksp2p&#125; $version</code></p>
-<h4 id="其他的分盘命令"><a href="#其他的分盘命令" class="headerlink" title="其他的分盘命令"></a>其他的分盘命令</h4><h4 id="分盘部署"><a href="#分盘部署" class="headerlink" title="分盘部署"></a>分盘部署</h4><p><code>curl -sSL https://automateplus.oss-accelerate.aliyuncs.com/container-partition.sh | bash -s -- -c &#123;pcdn/vdp/cp2p/p2p/ksp2p&#125; $num $version</code></p>
-<h4 id="分盘删除"><a href="#分盘删除" class="headerlink" title="分盘删除"></a>分盘删除</h4><p><code>curl -sSL https://automateplus.oss-accelerate.aliyuncs.com/container-partition.sh | bash -s -- -d &#123;pcdn/vdp/cp2p/p2p/ksp2p&#125; $num</code></p>
-<h4 id="分盘删除某个盘上的所有容器"><a href="#分盘删除某个盘上的所有容器" class="headerlink" title="分盘删除某个盘上的所有容器"></a>分盘删除某个盘上的所有容器</h4><p><code>curl -sSL https://automateplus.oss-accelerate.aliyuncs.com/container-partition.sh | bash -s -- -q $盘符名称</code></p>
+                    <p><p><strong>（头条是主机拨号）</strong></p>
+<p>如果之前有服务正在运行则停掉容器<br><code>docker kill `docker ps -a --format &quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Names&#125;&#125;&quot; |grep -E &#39;ksp2p_|pcdn_|cp2p_&#39;|awk &#39;&#123;print $1&#125;&#39;`</code></p>
+<h3 id="拨号镜像地址"><a href="#拨号镜像地址" class="headerlink" title="拨号镜像地址"></a>拨号镜像地址</h3><p>registry.cn-hangzhou.aliyuncs.com/pcdn-images/pppoe:v5.9</p>
+<h3 id="拨号脚本"><a href="#拨号脚本" class="headerlink" title="拨号脚本"></a>拨号脚本</h3><p><code>curl -sSL https://automateplus.oss-cn-hangzhou.aliyuncs.com/docker_pppoe_multieth.sh|bash -s -- -c 拨号镜像版本</code></p>
+<h3 id="创建拨号虚拟网卡脚本"><a href="#创建拨号虚拟网卡脚本" class="headerlink" title="创建拨号虚拟网卡脚本"></a>创建拨号虚拟网卡脚本</h3><p><code>curl -sSL https://automateplus.oss-cn-hangzhou.aliyuncs.com/host_pppoe_vlan.sh|sh</code></p>
 <p>
                 
             
@@ -1336,7 +1336,7 @@
         
             </div>   
             <div class="article-more-link">
-                <a href="/2021/03/10/%E9%80%9A%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/#more">Read More</a>
+                <a href="/2021/03/11/%E6%8B%A8%E5%8F%B7%E5%AE%B9%E5%99%A8/#more">Read More</a>
             </div>
         
         <footer class="article-footer">

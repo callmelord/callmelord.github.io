@@ -252,7 +252,7 @@
                             &nbsp;
                             服务器容器
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/10/%E9%80%9A%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/">容器部署常用的命令</a></li>  <li class="file"><a href="/2021/03/11/%E6%8B%A8%E5%8F%B7%E5%AE%B9%E5%99%A8/">docker内拨号</a></li>  <li class="file"><a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&查看服务器信息</a></li>  <li class="file"><a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">容器部署常见问题</a></li>  <li class="file"><a href="/2021/03/15/docker%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/">docker启动失败</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/10/%E9%80%9A%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/">容器部署常用的命令</a></li>  <li class="file"><a href="/2021/03/11/docker%E5%86%85%E6%8B%A8%E5%8F%B7/">docker内拨号</a></li>  <li class="file"><a href="/2021/03/11/%E6%8B%A8%E5%8F%B7%E5%AE%B9%E5%99%A8/">docker内拨号</a></li>  <li class="file"><a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&查看服务器信息</a></li>  <li class="file"><a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">容器部署常见问题</a></li>  <li class="file"><a href="/2021/03/15/docker%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/">docker启动失败</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -344,6 +344,110 @@
 </aside>
             
             <section id="main">
+        <article id="post-通常使用的命令" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%B9%E5%99%A8/">服务器容器</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/03/10/%E9%80%9A%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/">
+            <time datetime="2021-03-09T16:00:00.000Z" itemprop="datePublished">2021-03-10</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/通常使用的命令.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/通常使用的命令.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/通常使用的命令.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/03/10/%E9%80%9A%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/">容器部署常用的命令</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h3 id="某个之前部署好的机器重新部署为host模式"><a href="#某个之前部署好的机器重新部署为host模式" class="headerlink" title="某个之前部署好的机器重新部署为host模式"></a>某个之前部署好的机器重新部署为host模式</h3><p>先用del函数删除拨号，然后分盘更新容器</p>
+<h4 id="分盘更新容器"><a href="#分盘更新容器" class="headerlink" title="分盘更新容器"></a>分盘更新容器</h4><p><code>curl -sSL https://automateplus.oss-accelerate.aliyuncs.com/container-partition.sh | bash -s -- -u &#123;pcdn/vdp/cp2p/p2p/ksp2p&#125; $version</code></p>
+<h4 id="其他的分盘命令"><a href="#其他的分盘命令" class="headerlink" title="其他的分盘命令"></a>其他的分盘命令</h4><h4 id="分盘部署"><a href="#分盘部署" class="headerlink" title="分盘部署"></a>分盘部署</h4><p><code>curl -sSL https://automateplus.oss-accelerate.aliyuncs.com/container-partition.sh | bash -s -- -c &#123;pcdn/vdp/cp2p/p2p/ksp2p&#125; $num $version</code></p>
+<h4 id="分盘删除"><a href="#分盘删除" class="headerlink" title="分盘删除"></a>分盘删除</h4><p><code>curl -sSL https://automateplus.oss-accelerate.aliyuncs.com/container-partition.sh | bash -s -- -d &#123;pcdn/vdp/cp2p/p2p/ksp2p&#125; $num</code></p>
+<h4 id="分盘删除某个盘上的所有容器"><a href="#分盘删除某个盘上的所有容器" class="headerlink" title="分盘删除某个盘上的所有容器"></a>分盘删除某个盘上的所有容器</h4><p><code>curl -sSL https://automateplus.oss-accelerate.aliyuncs.com/container-partition.sh | bash -s -- -q $盘符名称</code></p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2021/03/10/%E9%80%9A%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-pip安装本地包" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1151,110 +1255,6 @@
             </div>   
             <div class="article-more-link">
                 <a href="/2018/11/26/Hexo%E4%B8%BB%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%80/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-vim使用总结" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/vim/">vim</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/07/10/vim%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">
-            <time datetime="2018-07-09T16:00:00.000Z" itemprop="datePublished">2018-07-10</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/vim使用总结.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/vim使用总结.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/vim使用总结.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/07/10/vim%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">vim使用总结</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>以下所有输入均在命令模式下： </p>
-<ul>
-<li>1.删除光标位置到本行开头<br>d0</li>
-<li>2.转到文件结尾<br>G<br>或转到第9行<br>9G </li>
-<li>3.删除所有内容(先用G转到文件尾) ，使用：<br>:1,.d<br>或者删除第9行到第200行的内容(先用200G转到第200行) ，使用<br>:9,.d</li>
-<p>
-                
-            
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2018/07/10/vim%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/#more">Read More</a>
             </div>
         
         <footer class="article-footer">
