@@ -380,7 +380,7 @@
 </aside>
             
             <section id="main">
-        <article id="post-docker常命" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-linux常用命令" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -390,7 +390,7 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/docker/">docker</a>
+        <a class="article-category-link" href="/categories/linux/">linux</a>
     </div>
 
                         
@@ -402,7 +402,7 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2021/03/12/docker%E5%B8%B8%E5%91%BD/">
+        <a href="/2021/03/12/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
             <time datetime="2021-03-11T16:00:00.000Z" itemprop="datePublished">2021-03-12</time>
         </a>
     </div>
@@ -414,13 +414,13 @@
                         
                         
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/docker常命.md'> Source </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/linux常用命令.md'> Source </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/docker常命.md'> Edit </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/linux常用命令.md'> Edit </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/docker常命.md'> History </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/linux常用命令.md'> History </a>
                             </div>
                         
                     </div>
@@ -428,7 +428,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2021/03/12/docker%E5%B8%B8%E5%91%BD/">docker常用命令</a>
+            <a class="article-title" href="/2021/03/12/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux常用命令</a>
         </h1>
     
 
@@ -458,10 +458,10 @@
                 
                 
                     
-                    <p><p>列出本地镜像<br><code>docker images</code>  </p>
-<p>查看docker容器<br><code>docker ps -a --format &quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Names&#125;&#125;\t&#123;&#123;.Image&#125;&#125;&quot; |grep -E &#39;ksp2p_|pcdn_|cp2p_|vdp_|pop2p_&#39;</code>  </p>
-<p>删除容器  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f &#96;docker ps -a --format &quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Names&#125;&#125;&quot; |grep -E &#39;pppoe_|pcdn_|ksp2p_|cp2p_|vdp_|pop2p_&#39; |awk &#39;&#123;print $1&#125;&#39;&#96;</span><br></pre></td></tr></table></figure>
+                    <p><p><strong>不区分终端，显示所有用户的所有进程</strong><br><code>ps aux</code>  </p>
+<p><strong>查看网络是否通畅</strong><br><code>ping 8.8.8.8</code></p>
+<h2 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h2><p><strong>查看路由</strong><br><code>ip route</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@linux ~]# ip route show  &lt;&#x3D;&#x3D;单纯的显示出路由的配置而已</span><br><span class="line">[root@linux ~]# ip route [add|del] [IP或网域] [via gateway] [dev 装置]</span><br><span class="line">参数：</span><br><span class="line">show ：单纯的显示出路由表，也可以使用 list ；</span><br><span class="line">add|del ：添加 (add) 或删除 (del) 路由的意思。</span><br><span class="line">    IP或网域：可使用 192.168.50.0&#x2F;24 之类的网域或者是单纯的 IP ；</span><br><span class="line">    via     ：从那个 gateway 出去，不一定需要；</span><br><span class="line">    dev     ：由那个装置连出去，这就需要了！</span><br><span class="line">    mtu     ：可以额外的配置 MTU 的数值喔！</span><br><span class="line"></span><br><span class="line">范例一：显示出目前的路由数据</span><br><span class="line">[root@linux ~]# ip route show</span><br><span class="line">192.168.1.0&#x2F;24 dev eth0  proto kernel  scope link  src 192.168.1.2</span><br><span class="line">169.254.0.0&#x2F;16 dev eth1  scope link</span><br><span class="line">default via 192.168.1.254 dev eth1</span><br></pre></td></tr></table></figure>
 
 <p>
                 
@@ -470,7 +470,92 @@
         
             </div>   
             <div class="article-more-link">
-                <a href="/2021/03/12/docker%E5%B8%B8%E5%91%BD/#more">Read More</a>
+                <a href="/2021/03/12/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-更改uuid" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%B9%E5%99%A8/">服务器容器</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">
+            <time datetime="2021-03-10T16:00:00.000Z" itemprop="datePublished">2021-03-11</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/更改uuid.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/更改uuid.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/更改uuid.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&amp;查看服务器信息</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+            
+        
+        
+            <h2 id="更改uuid"><a href="#更改uuid" class="headerlink" title="更改uuid"></a>更改uuid</h2><p>在客户端新增一个设备，得到新的uuid<br>使用之前的uuid登录服务器，修改/etc/salt/minion_id文件，删除里面原有的uuid并加入新的uuid，重启cgroupv2（<code>systemctl restart cgroupv2</code>）<br>然后清理hyp的缓存 <code>hyp --clear</code>，接收这个uuid <code>hyp -l $uuid -dst a</code><br>然后就可以使用uuid登录进去了</p>
+
             </div>
         
         <footer class="article-footer">
@@ -577,7 +662,7 @@
 
 
     
-        <article id="post-更改uuid" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Xshell突出显示集正则" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -587,19 +672,19 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%B9%E5%99%A8/">服务器容器</a>
+        <a class="article-category-link" href="/categories/Xshell/">Xshell</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a>
+        <a class="tag-link-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a>
     </div>
 
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">
+        <a href="/2021/03/11/Xshell%E7%AA%81%E5%87%BA%E6%98%BE%E7%A4%BA%E9%9B%86%E6%AD%A3%E5%88%99/">
             <time datetime="2021-03-10T16:00:00.000Z" itemprop="datePublished">2021-03-11</time>
         </a>
     </div>
@@ -611,13 +696,13 @@
                         
                         
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/更改uuid.md'> Source </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/Xshell突出显示集正则.md'> Source </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/更改uuid.md'> Edit </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/Xshell突出显示集正则.md'> Edit </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/更改uuid.md'> History </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/Xshell突出显示集正则.md'> History </a>
                             </div>
                         
                     </div>
@@ -625,7 +710,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&amp;查看服务器信息</a>
+            <a class="article-title" href="/2021/03/11/Xshell%E7%AA%81%E5%87%BA%E6%98%BE%E7%A4%BA%E9%9B%86%E6%AD%A3%E5%88%99/">Xshell突出显示集正则配置</a>
         </h1>
     
 
@@ -644,11 +729,30 @@
                     
                     
                 
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h1 id="Xshell突出显示集正则配置"><a href="#Xshell突出显示集正则配置" class="headerlink" title="Xshell突出显示集正则配置"></a>Xshell突出显示集正则配置</h1><ol>
+<li>错误规则  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(\b((bad|wrong|incorrect|improper|invalid|unsupported|bad)( file| memory)? (descriptor|alloc(ation)?|addr(ess)?|owner(ship)?|arg(ument)?|param(eter)?|setting|length|filename)|not properly|improperly|(operation |connection |authentication |access |permission )?(false|no|ko|denied|disallowed|not allowed|refused|problem|failed|failure|not permitted)|no [A-Za-z]+( [A-Za-z]+)? found|invalid|unsupported|not supported|seg(mentation )?fault|corruption|corrupted|corrupt|overflow|underrun|not ok|unimplemented|unsuccessfull|not implemented|permerrors?|fehlers?|errore|errors?|erreurs?|fejl|virhe|greška|erro|fel|\(ee\)|\(ni\))\b) </span><br></pre></td></tr></table></figure></li>
+<li>成功规则  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(\b(true|yes|ok|accepted|allowed|enabled|connected|erfolgreich|exitoso|successo|sucedido|framgångsrik|successfully|successful|succeeded|success)\b) </span><br></pre></td></tr></table></figure></li>
+<li>警告规则  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(\b(\[\-w[A-Za-z-]+\]|caught signal [0-9]+|cannot|(connection (to (remote host|[a-z0-9.]+) )?)?(closed|terminated|stopped|not responding)|exited|no more [A-Za-z] available|unexpected|(command |binary |file )?not found|(o)+ps|out of (space|memory)|low (memory|disk)|unknown|disabled|disconnected|deprecated|refused|disconnect(ion)?|advertencia|avvertimento|attention|warnings?|achtung|exclamation|alerts?|warnungs?|advarsel|pedwarn|aviso|varoitus|upozorenje|peringatan|uyari|varning|avertissement|\(ww\)|\(\?\?\)|could not|unable to)\b) </span><br></pre></td></tr></table></figure></li>
+<li>提示规则  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(\b(last (failed )?login:|launching|checking|loading|creating|building|important|booting|starting|notice|informational|informationen|informazioni|informação|oplysninger|informations?|info|información|informasi|note|\(ii\)|\(\!\!\))\b) </span><br></pre></td></tr></table></figure></li>
+<p>
+                
             
         
         
-            <h2 id="更改uuid"><a href="#更改uuid" class="headerlink" title="更改uuid"></a>更改uuid</h2><p>在客户端新增一个设备，得到新的uuid<br>使用之前的uuid登录服务器，修改/etc/salt/minion_id文件，删除里面原有的uuid并加入新的uuid，重启cgroupv2（<code>systemctl restart cgroupv2</code>）<br>然后清理hyp的缓存 <code>hyp --clear</code>，接收这个uuid <code>hyp -l $uuid -dst a</code><br>然后就可以使用uuid登录进去了</p>
-
+            </div>   
+            <div class="article-more-link">
+                <a href="/2021/03/11/Xshell%E7%AA%81%E5%87%BA%E6%98%BE%E7%A4%BA%E9%9B%86%E6%AD%A3%E5%88%99/#more">Read More</a>
             </div>
         
         <footer class="article-footer">
@@ -753,110 +857,6 @@
             </div>   
             <div class="article-more-link">
                 <a href="/2021/03/11/docker%E5%86%85%E6%8B%A8%E5%8F%B7/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-Xshell突出显示集正则" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Xshell/">Xshell</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2021/03/11/Xshell%E7%AA%81%E5%87%BA%E6%98%BE%E7%A4%BA%E9%9B%86%E6%AD%A3%E5%88%99/">
-            <time datetime="2021-03-10T16:00:00.000Z" itemprop="datePublished">2021-03-11</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/Xshell突出显示集正则.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/Xshell突出显示集正则.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/Xshell突出显示集正则.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2021/03/11/Xshell%E7%AA%81%E5%87%BA%E6%98%BE%E7%A4%BA%E9%9B%86%E6%AD%A3%E5%88%99/">Xshell突出显示集正则配置</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><h1 id="Xshell突出显示集正则配置"><a href="#Xshell突出显示集正则配置" class="headerlink" title="Xshell突出显示集正则配置"></a>Xshell突出显示集正则配置</h1><ol>
-<li>错误规则  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(\b((bad|wrong|incorrect|improper|invalid|unsupported|bad)( file| memory)? (descriptor|alloc(ation)?|addr(ess)?|owner(ship)?|arg(ument)?|param(eter)?|setting|length|filename)|not properly|improperly|(operation |connection |authentication |access |permission )?(false|no|ko|denied|disallowed|not allowed|refused|problem|failed|failure|not permitted)|no [A-Za-z]+( [A-Za-z]+)? found|invalid|unsupported|not supported|seg(mentation )?fault|corruption|corrupted|corrupt|overflow|underrun|not ok|unimplemented|unsuccessfull|not implemented|permerrors?|fehlers?|errore|errors?|erreurs?|fejl|virhe|greška|erro|fel|\(ee\)|\(ni\))\b) </span><br></pre></td></tr></table></figure></li>
-<li>成功规则  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(\b(true|yes|ok|accepted|allowed|enabled|connected|erfolgreich|exitoso|successo|sucedido|framgångsrik|successfully|successful|succeeded|success)\b) </span><br></pre></td></tr></table></figure></li>
-<li>警告规则  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(\b(\[\-w[A-Za-z-]+\]|caught signal [0-9]+|cannot|(connection (to (remote host|[a-z0-9.]+) )?)?(closed|terminated|stopped|not responding)|exited|no more [A-Za-z] available|unexpected|(command |binary |file )?not found|(o)+ps|out of (space|memory)|low (memory|disk)|unknown|disabled|disconnected|deprecated|refused|disconnect(ion)?|advertencia|avvertimento|attention|warnings?|achtung|exclamation|alerts?|warnungs?|advarsel|pedwarn|aviso|varoitus|upozorenje|peringatan|uyari|varning|avertissement|\(ww\)|\(\?\?\)|could not|unable to)\b) </span><br></pre></td></tr></table></figure></li>
-<li>提示规则  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(\b(last (failed )?login:|launching|checking|loading|creating|building|important|booting|starting|notice|informational|informationen|informazioni|informação|oplysninger|informations?|info|información|informasi|note|\(ii\)|\(\!\!\))\b) </span><br></pre></td></tr></table></figure></li>
-<p>
-                
-            
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2021/03/11/Xshell%E7%AA%81%E5%87%BA%E6%98%BE%E7%A4%BA%E9%9B%86%E6%AD%A3%E5%88%99/#more">Read More</a>
             </div>
         
         <footer class="article-footer">
