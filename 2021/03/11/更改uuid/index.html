@@ -17,7 +17,7 @@
 <meta property="og:description" content="更改uuid在客户端新增一个设备，得到新的uuid使用之前的uuid登录服务器，修改&#x2F;etc&#x2F;salt&#x2F;minion_id文件，删除里面原有的uuid并加入新的uuid，重启cgroupv2（systemctl restart cgroupv2）然后清理hyp的缓存 hyp --clear，接收这个uuid hyp -l $uuid -dst a然后就可以使用uuid登录进去了">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-04-01T09:24:46.000Z">
+<meta property="article:modified_time" content="2021-04-08T09:44:48.000Z">
 <meta property="article:author" content="TQ">
 <meta property="article:tag" content="技巧">
 <meta name="twitter:card" content="summary">
@@ -284,7 +284,7 @@
                             &nbsp;
                             服务器容器
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/10/%E5%BF%AB%E6%89%8B%E9%9D%99%E6%80%81IP%E9%83%A8%E7%BD%B2/">快手静态IP部署</a></li>  <li class="file"><a href="/2021/03/11/docker%E5%86%85%E6%8B%A8%E5%8F%B7/">docker内拨号</a></li>  <li class="file"><a href="/2021/03/11/docker%E5%AE%B9%E5%99%A8%E6%9B%B4%E6%8D%A2%E6%9C%8D%E5%8A%A1/">docker容器更换服务</a></li>  <li class="file active"><a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&查看服务器信息</a></li>  <li class="file"><a href="/2021/03/11/%E7%A3%81%E7%9B%98%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BD/">磁盘无法挂载（VMFS_volume_member的解决办法）</a></li>  <li class="file"><a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">容器部署常见问题</a></li>  <li class="file"><a href="/2021/03/15/docker%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/">docker启动失败</a></li>  <li class="file"><a href="/2021/03/23/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%A8%E5%8F%B7%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">服务器拨号注意事项（爱奇艺拨号）</a></li>  <li class="file"><a href="/2021/03/29/%E5%A4%B4%E6%9D%A1%E6%9C%BA%E5%99%A8%E9%83%A8%E7%BD%B2/">头条机器部署</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/10/%E5%BF%AB%E6%89%8B%E9%9D%99%E6%80%81IP%E9%83%A8%E7%BD%B2/">快手静态IP部署</a></li>  <li class="file"><a href="/2021/03/11/docker%E5%86%85%E6%8B%A8%E5%8F%B7/">docker内拨号</a></li>  <li class="file"><a href="/2021/03/11/docker%E5%AE%B9%E5%99%A8%E6%9B%B4%E6%8D%A2%E6%9C%8D%E5%8A%A1/">docker容器更换服务</a></li>  <li class="file active"><a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&查看服务器信息</a></li>  <li class="file"><a href="/2021/03/11/%E7%A3%81%E7%9B%98%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BD/">磁盘无法挂载（VMFS_volume_member的解决办法）</a></li>  <li class="file"><a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">容器部署常见问题</a></li>  <li class="file"><a href="/2021/03/15/docker%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/">docker启动失败</a></li>  <li class="file"><a href="/2021/03/23/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%A8%E5%8F%B7%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">服务器拨号注意事项（爱奇艺拨号）</a></li>  <li class="file"><a href="/2021/03/29/%E5%A4%B4%E6%9D%A1%E6%9C%BA%E5%99%A8%E9%83%A8%E7%BD%B2/">头条机器部署</a></li>  <li class="file"><a href="/2021/04/07/xshell%E5%BF%AB%E6%8D%B7%E9%94%AE/">xshell快捷键</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -458,11 +458,11 @@
     
 <nav id="article-nav">
     
-        <a href="/2021/03/15/docker%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2021/03/15/%E4%BF%AE%E6%94%B9centos7%E7%BD%91%E5%8D%A1%E5%90%8D/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    docker启动失败
+                    修改centos7网卡名称
                 
             </div>
         </a>
