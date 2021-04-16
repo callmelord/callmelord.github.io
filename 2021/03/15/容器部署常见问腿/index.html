@@ -17,7 +17,7 @@
 <meta property="og:description" content="docker容器更换服务（例子：视频的业务换成快手的） 删除视频的容器，清理缓存（rm -rf &#x2F;data1&#x2F;pcdn），不清理缓存可能导致空间不足，安装不了别的业务  使用uuid无法登录服务器如果hyp用uuid连不进去，估计是对面服务器cgroupv2（hyp的进程）进程假死解决方法：使用ssh直接连进去，然后重启cgroupv2程序systemctl restart cgroupv2查看程">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-04-08T09:44:48.000Z">
+<meta property="article:modified_time" content="2021-04-16T10:20:22.000Z">
 <meta property="article:author" content="TQ">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="hyp">
@@ -213,7 +213,7 @@
                             &nbsp;
                             galgame
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/07/08/%E5%AF%86%E8%AF%AD%E6%8F%90%E5%8F%96CG%E8%AE%B0%E5%BD%95/">密语提取CG记录</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/07/08/%E5%AF%86%E8%AF%AD%E6%8F%90%E5%8F%96CG%E8%AE%B0%E5%BD%95/">密语提取CG记录</a></li>  <li class="file"><a href="/2021/04/13/clarias/">clarias提取记录</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -241,6 +241,15 @@
                             python
                         </a>
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/11/20/pip%E5%AE%89%E8%A3%85%E6%9C%AC%E5%9C%B0%E5%8C%85/">pip安装本地包</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            shell
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/04/15/shell%E8%84%9A%E6%9C%AC%E9%97%AE%E9%A2%98/">shell脚本问题</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -314,7 +323,16 @@
                         </a>
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/15/linux%E8%B7%AF%E7%94%B1/">linux路由</a></li>  </ul> 
                     </li> 
-                     <li class="file"><a href="/2020/09/13/FFmpeg/">FFmpeg</a></li>  </ul> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            路由规则
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/04/16/%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99ip%20rule/">路由规则ip rule</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2020/09/13/FFmpeg/">FFmpeg</a></li>  <li class="file"><a href="/2021/04/16/%E3%80%90%E5%A4%A9%E5%B9%95%E3%80%91mv%E4%BC%81%E5%88%92%E4%B9%A6/"></a></li>  </ul> 
     </div>
     <script>
         $(document).ready(function() {
@@ -486,6 +504,13 @@
 
 <hr>
 <h3 id="查看服务器上面的硬盘"><a href="#查看服务器上面的硬盘" class="headerlink" title="查看服务器上面的硬盘"></a>查看服务器上面的硬盘</h3><p>p.s. 安装阵列卡的硬盘看不出到底有几块硬盘<br>查看硬盘信息<br><code>lsscsi</code><br>$ lsscsiscsi 设备及其属性<br>[0:0:8:0]—-disk—-FUJITSU—-MAM3184MP—-0105—-/dev/sda<br>[2:0:0:0]—-cd——CREATIVE—CD5233E——1.00—-/dev/scd0<br>[3:0:5:0]—-tape—-HP———C5713A——-H910—-/dev/st0<br>[3:0:5:1]—-mediumx-HP———C5713A——-H910—–<br>[4:0:0:0]—-disk—-Linux——scsi_debug—0004—-/dev/sdb<br>第一列：SCSI设备id：host, channel,id,lun。<br><strong>第二列：设备类型。（有可能是阵列卡）</strong><br>第3，4，5列：设备厂商，型号，版本信息。<br>最后一列：设备主节点名。lsscsi -s显示容量大小。-c 用全称显示默认的信息。-d 显示设备主，次设备号。-g 显示对应的sg设备名。-H 显示主机控制器列表，-Hl,-Hlv。-l 显示相关属性，-ll,-lll=-L。-v 显示设备属性所在目录。-x 以16进制显示lun号。-p 输出DIF,DIX 保护类型。-P 输出有效的保护模式信息。-i 显示udev相关的属性-w 显示WWN<br>-t显示相应传输信息(ATA,FC,SBP,ISCSI,SPI,SAS,SATA,USB)，-Ht,-tl.（包括sas地址）</p>
+<p><strong>看容器日志</strong><br>docker logs ksp2p_1</p>
+<p><strong>给TP开服务器的权限</strong>  </p>
+<ol>
+<li>hyp -l $uuid -login 1</li>
+<li>进去$uuid里删除黑名单<br>sed -i ‘/sshd:all/s/sshd/#sshd/g’ /etc/hosts.deny &amp;&amp; sed -i ‘/sshd:ALL/s/sshd/#sshd/g’ /etc/hosts.deny<br>service xinetd restart</li>
+</ol>
+<p><strong>收回权限</strong><br>hyp -l $uuid -login 2</p>
 
             </div>
         
@@ -498,19 +523,19 @@
     
 <nav id="article-nav">
     
-        <a href="/2021/03/16/linux%E7%BD%91%E7%BB%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2021/03/15/%E4%BF%AE%E6%94%B9centos7%E7%BD%91%E5%8D%A1%E5%90%8D/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    常用命令
+                    修改centos7网卡名称
                 
             </div>
         </a>
     
     
-        <a href="/2021/03/15/docker%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2021/03/15/linux%E8%B7%AF%E7%94%B1/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">docker启动失败</div>
+            <div class="article-nav-title">linux路由</div>
         </a>
     
 </nav>
