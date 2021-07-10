@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-06-25T12:43:55.000Z</updated>
+  <updated>2021-07-09T11:57:15.000Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,218 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>软件包管理器yum</title>
+    <link href="http://example.com/2021/07/09/yum/"/>
+    <id>http://example.com/2021/07/09/yum/</id>
+    <published>2021-07-08T16:00:00.000Z</published>
+    <updated>2021-07-09T11:57:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>yum的搜索功能<br>yum whatprovides <em>tshark</em></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;yum的搜索功能&lt;br&gt;yum whatprovides &lt;em&gt;tshark&lt;/em&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="linux" scheme="http://example.com/categories/linux/"/>
+    
+    
+    <category term="yum" scheme="http://example.com/tags/yum/"/>
+    
+    <category term="软件包管理器" scheme="http://example.com/tags/%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>pip问题</title>
+    <link href="http://example.com/2021/07/09/pip%E5%AE%89%E8%A3%85python3.6/"/>
+    <id>http://example.com/2021/07/09/pip%E5%AE%89%E8%A3%85python3.6/</id>
+    <published>2021-07-08T16:00:00.000Z</published>
+    <updated>2021-07-09T11:57:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>安装python3.6<br>pip3 install wheel –target=/usr/lib/python3.6/site-packages<br>pip3 install pyshark –target=/usr/lib/python3.6/site-packages</p><h4 id="导入pyshark报错"><a href="#导入pyshark报错" class="headerlink" title="导入pyshark报错"></a>导入pyshark报错</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pyshark&#x2F;__init__.py&quot;, line 13, in &lt;module&gt;</span><br><span class="line">    from pyshark.capture.live_capture import LiveCapture</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pyshark&#x2F;capture&#x2F;live_capture.py&quot;, line 6, in &lt;module&gt;</span><br><span class="line">    from pyshark.capture.capture import Capture</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pyshark&#x2F;capture&#x2F;capture.py&quot;, line 13, in &lt;module&gt;</span><br><span class="line">    from pyshark.tshark.tshark_xml import packet_from_xml_packet, psml_structure_from_xml</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pyshark&#x2F;tshark&#x2F;tshark_xml.py&quot;, line 2, in &lt;module&gt;</span><br><span class="line">    import lxml.objectify</span><br><span class="line">ModuleNotFoundError: No module named &#39;lxml&#39;</span><br></pre></td></tr></table></figure><p>pip3 install lxml –target=/usr/lib/python3.6/site-packages</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;安装python3.6&lt;br&gt;pip3 install wheel –target=/usr/lib/python3.6/site-packages&lt;br&gt;pip3 install pyshark –target=/usr/lib/python3.6/site-packag</summary>
+      
+    
+    
+    
+    <category term="python" scheme="http://example.com/categories/python/"/>
+    
+    
+    <category term="pip" scheme="http://example.com/tags/pip/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux命令路径</title>
+    <link href="http://example.com/2021/07/02/%E6%9F%A5%E7%9C%8Blinux%E5%91%BD%E4%BB%A4%E7%9A%84%E8%B7%AF%E5%BE%84/"/>
+    <id>http://example.com/2021/07/02/%E6%9F%A5%E7%9C%8Blinux%E5%91%BD%E4%BB%A4%E7%9A%84%E8%B7%AF%E5%BE%84/</id>
+    <published>2021-07-01T16:00:00.000Z</published>
+    <updated>2021-07-09T11:57:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>linux下有2个命令可完成该功能：which ,whereis</p><p>which 用来查看当，前要执行的命令所在的路径。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which命令的原理：在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</span><br></pre></td></tr></table></figure><p>whereis 用来查看一个命令或者文件所在的路径。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis命令原理：只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;linux下有2个命令可完成该功能：which ,whereis&lt;/p&gt;
+&lt;p&gt;which 用来查看当，前要执行的命令所在的路径。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;</summary>
+      
+    
+    
+    
+    <category term="linux" scheme="http://example.com/categories/linux/"/>
+    
+    
+    <category term="路径" scheme="http://example.com/tags/%E8%B7%AF%E5%BE%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tcp重传</title>
+    <link href="http://example.com/2021/07/02/tcp%E9%87%8D%E4%BC%A0/"/>
+    <id>http://example.com/2021/07/02/tcp%E9%87%8D%E4%BC%A0/</id>
+    <published>2021-07-01T16:00:00.000Z</published>
+    <updated>2021-07-09T11:57:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>RtoAlgorithm ：<br>RtoMin :<br>RtoMax :<br>MaxConn :<br>ActiveOpens : 服务器主动连接的TCP请求数<br>PassiveOpens ：服务器接收到的TCP请求数<br>AttemptFailsEstabResets ：TCP连接失败个数(AttemptFails)包含：主动连接失败收到syn包回包syn+ack给对方后，被对方reset收到的请求中，同时有syn+rst flag<br>CurrEstab ：TCP当前建立连接的个数<br>InSegs ：TCP接收的分片数<br>OutSegs ：TCP发送的分片数<br>RetransSegs ：重传分片数<br>InErrs ：TCP入包错误(pkg/m,通常是校验错误)<br>OutRsts ：<br>TCP重传率 =重传分片数 / TCP发送的分片数</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;RtoAlgorithm ：&lt;br&gt;RtoMin :&lt;br&gt;RtoMax :&lt;br&gt;MaxConn :&lt;br&gt;ActiveOpens : 服务器主动连接的TCP请求数&lt;br&gt;PassiveOpens ：服务器接收到的TCP请求数&lt;br&gt;AttemptFailsEstabRe</summary>
+      
+    
+    
+    
+    <category term="tcp重传" scheme="http://example.com/categories/tcp%E9%87%8D%E4%BC%A0/"/>
+    
+    
+    <category term="网络抓包" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/"/>
+    
+    <category term="tcp" scheme="http://example.com/tags/tcp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tcp_ip详解</title>
+    <link href="http://example.com/2021/07/02/tcp_ip/"/>
+    <id>http://example.com/2021/07/02/tcp_ip/</id>
+    <published>2021-07-01T16:00:00.000Z</published>
+    <updated>2021-07-09T11:57:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>ACK (Acknowledge character）: 确认字符</p><p>RTT（Round-trip delay time）: 发送一个数据包到收到对应的ACK，所花费的时间</p><p>RTO: 发送数据包失败了，要在100ms内重新发送，RTO的值就是100ms</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;ACK (Acknowledge character）: 确认字符&lt;/p&gt;
+&lt;p&gt;RTT（Round-trip delay time）: 发送一个数据包到收到对应的ACK，所花费的时间&lt;/p&gt;
+&lt;p&gt;RTO: 发送数据包失败了，要在100ms内重新发送，RTO的值就是100</summary>
+      
+    
+    
+    
+    <category term="tcp_ip" scheme="http://example.com/categories/tcp-ip/"/>
+    
+    
+    <category term="tcp_ip" scheme="http://example.com/tags/tcp-ip/"/>
+    
+    <category term="网络抓包" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu修改时区</title>
+    <link href="http://example.com/2021/06/28/ubuntu%E4%BF%AE%E6%94%B9%E6%97%B6%E5%8C%BA/"/>
+    <id>http://example.com/2021/06/28/ubuntu%E4%BF%AE%E6%94%B9%E6%97%B6%E5%8C%BA/</id>
+    <published>2021-06-27T16:00:00.000Z</published>
+    <updated>2021-07-09T11:57:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>查找当前时区：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># cat &#x2F;etc&#x2F;timezone</span><br><span class="line">UTC</span><br></pre></td></tr></table></figure><p>查看时钟与互联网是否同步</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timedatectl</span><br></pre></td></tr></table></figure><p>重启时钟服务</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart systemd-timesyncd.service</span><br></pre></td></tr></table></figure><ul><li>更改时区<br>列出可用的时区<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">timedatectl list-timezones</span><br><span class="line"></span><br><span class="line">设置时区</span><br><span class="line">sudo timedatectl set-timezone Asia&#x2F;Shanghai</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;查找当前时区：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;</summary>
+      
+    
+    
+    
+    <category term="ubuntu" scheme="http://example.com/categories/ubuntu/"/>
+    
+    
+    <category term="时间" scheme="http://example.com/tags/%E6%97%B6%E9%97%B4/"/>
+    
+    <category term="时区" scheme="http://example.com/tags/%E6%97%B6%E5%8C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu版本</title>
+    <link href="http://example.com/2021/06/28/%E6%9F%A5%E7%9C%8Bubuntu%E7%89%88%E6%9C%AC/"/>
+    <id>http://example.com/2021/06/28/%E6%9F%A5%E7%9C%8Bubuntu%E7%89%88%E6%9C%AC/</id>
+    <published>2021-06-27T16:00:00.000Z</published>
+    <updated>2021-07-09T11:57:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># lsb_release -a</span><br><span class="line"></span><br><span class="line">No LSB modules are available.</span><br><span class="line">Distributor ID:Ubuntu</span><br><span class="line">Description:Ubuntu 20.04.2 LTS</span><br><span class="line">Release:20.04</span><br><span class="line">Codename:focal</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line"># cat &#x2F;etc&#x2F;issue</span><br><span class="line">Ubuntu 20.04.2 LTS \n \l</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class</summary>
+      
+    
+    
+    
+    <category term="ubuntu" scheme="http://example.com/categories/ubuntu/"/>
+    
+    
+    <category term="版本" scheme="http://example.com/tags/%E7%89%88%E6%9C%AC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>npc内网穿透</title>
+    <link href="http://example.com/2021/06/25/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    <id>http://example.com/2021/06/25/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</id>
+    <published>2021-06-24T16:00:00.000Z</published>
+    <updated>2021-07-09T11:57:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>C:\NPS&gt;npc.exe -server=39.103.157.108:8024 -vkey=zme6m0r8pto83rtp -type=tcp</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;C:\NPS&amp;gt;npc.exe -server=39.103.157.108:8024 -vkey=zme6m0r8pto83rtp -type=tcp&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="内网穿透" scheme="http://example.com/categories/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    
+    
+    <category term="npc" scheme="http://example.com/tags/npc/"/>
+    
+  </entry>
+  
+  <entry>
     <title>tcping  pingIP的端口</title>
     <link href="http://example.com/2021/06/25/tcping/"/>
     <id>http://example.com/2021/06/25/tcping/</id>
     <published>2021-06-24T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
+    <updated>2021-07-09T11:57:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>软件地址：<br><a href="https://elifulkerson.com/projects/tcping.php">https://elifulkerson.com/projects/tcping.php</a></p><p>用法:</p><p>tcping.exe $ip $port</p>]]></content>
     
@@ -45,28 +252,11 @@
   </entry>
   
   <entry>
-    <title>npc内网穿透</title>
-    <link href="http://example.com/2021/06/25/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
-    <id>http://example.com/2021/06/25/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</id>
-    <published>2021-06-24T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
-    
-    
-    
-    
-    <category term="内网穿透" scheme="http://example.com/categories/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
-    
-    
-    <category term="npc" scheme="http://example.com/tags/npc/"/>
-    
-  </entry>
-  
-  <entry>
     <title>ubuntu创建vlanid</title>
     <link href="http://example.com/2021/06/24/macvlan/"/>
     <id>http://example.com/2021/06/24/macvlan/</id>
     <published>2021-06-23T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
+    <updated>2021-07-09T11:57:15.000Z</updated>
     
     <content type="html"><![CDATA[<p><code>ip link add link $interface name $interface.$vlanid type vlan id $vlanid</code></p>]]></content>
     
@@ -87,35 +277,11 @@
   </entry>
   
   <entry>
-    <title>shell脚本自增</title>
-    <link href="http://example.com/2021/06/17/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%A2%9E/"/>
-    <id>http://example.com/2021/06/17/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%A2%9E/</id>
-    <published>2021-06-16T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;sh</span><br><span class="line">#本脚本测试shell脚本中整型变量自增 加1的几种方法</span><br><span class="line"> </span><br><span class="line">#定义整型变量</span><br><span class="line">a&#x3D;1</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第一种整型变量自增方式</span><br><span class="line">a&#x3D;$(($a+1))</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第二种整型变量自增方式</span><br><span class="line">a&#x3D;$[$a+1]</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第三种整型变量自增方式</span><br><span class="line">a&#x3D;&#96;expr $a + 1&#96;</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第四种整型变量自增方式</span><br><span class="line">let a++</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第五种整型变量自增方式</span><br><span class="line">let a+&#x3D;1</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第六种整型变量自增方式</span><br><span class="line">((a++))</span><br><span class="line">echo $a</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class</summary>
-      
-    
-    
-    
-    <category term="shell" scheme="http://example.com/categories/shell/"/>
-    
-    
-    <category term="自增" scheme="http://example.com/tags/%E8%87%AA%E5%A2%9E/"/>
-    
-  </entry>
-  
-  <entry>
     <title>利用环境变量IFS自定义分隔符</title>
     <link href="http://example.com/2021/06/17/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FIFS/"/>
     <id>http://example.com/2021/06/17/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FIFS/</id>
     <published>2021-06-16T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
+    <updated>2021-07-09T11:57:15.000Z</updated>
     
     <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ cat test.txt </span><br><span class="line">apple pear banana orange </span><br><span class="line">$ cat test.sh</span><br><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">ifs_old&#x3D;$IFS</span><br><span class="line">IFS&#x3D;$&#39;\n&#39;</span><br><span class="line">for val in &#96;cat test.txt&#96;</span><br><span class="line">do</span><br><span class="line">  echo &quot;n&#x3D;$val&quot;</span><br><span class="line">done</span><br><span class="line">IFS&#x3D;$ifs_old</span><br><span class="line">$ .&#x2F;test.sh</span><br><span class="line">n&#x3D;apple pear banana orange </span><br></pre></td></tr></table></figure>]]></content>
     
@@ -135,11 +301,35 @@
   </entry>
   
   <entry>
+    <title>shell脚本自增</title>
+    <link href="http://example.com/2021/06/17/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%A2%9E/"/>
+    <id>http://example.com/2021/06/17/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%A2%9E/</id>
+    <published>2021-06-16T16:00:00.000Z</published>
+    <updated>2021-07-09T11:57:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;sh</span><br><span class="line">#本脚本测试shell脚本中整型变量自增 加1的几种方法</span><br><span class="line"> </span><br><span class="line">#定义整型变量</span><br><span class="line">a&#x3D;1</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第一种整型变量自增方式</span><br><span class="line">a&#x3D;$(($a+1))</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第二种整型变量自增方式</span><br><span class="line">a&#x3D;$[$a+1]</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第三种整型变量自增方式</span><br><span class="line">a&#x3D;&#96;expr $a + 1&#96;</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第四种整型变量自增方式</span><br><span class="line">let a++</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第五种整型变量自增方式</span><br><span class="line">let a+&#x3D;1</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第六种整型变量自增方式</span><br><span class="line">((a++))</span><br><span class="line">echo $a</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class</summary>
+      
+    
+    
+    
+    <category term="shell" scheme="http://example.com/categories/shell/"/>
+    
+    
+    <category term="自增" scheme="http://example.com/tags/%E8%87%AA%E5%A2%9E/"/>
+    
+  </entry>
+  
+  <entry>
     <title>linux磁盘坏道的检测和修复</title>
     <link href="http://example.com/2021/06/04/linux%E7%A3%81%E7%9B%98%E5%9D%8F%E9%81%93/"/>
     <id>http://example.com/2021/06/04/linux%E7%A3%81%E7%9B%98%E5%9D%8F%E9%81%93/</id>
     <published>2021-06-03T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
+    <updated>2021-07-09T11:57:15.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="如何检测磁盘坏道"><a href="#如何检测磁盘坏道" class="headerlink" title="如何检测磁盘坏道"></a>如何检测磁盘坏道</h3><ol><li>使用dmesg检查是否有关于磁盘错误的信息，果不其然发现大量磁盘扇区错误的信息，如下： end_request: I/O error, dev 03:06 (sda), sector  </li></ol><blockquote><p>dmesg命令 被用于检查和控制内核的环形缓冲区。kernel会将开机信息存储在ring buffer中。您若是开机时来不及查看信息，可利用dmesg来查看。开机信息保存在/var/log/dmesg文件里。</p></blockquote><ol start="2"><li>使用badblocks -s -v -o /root/badblocks.log /dev/sda 检查硬盘是否产生坏道并输出到badblocks.log中。log大约是这样的模式：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">64039224 64039240 64039241 64039242 64039243 64039256 64039257 64039258 64039259 687056</span><br></pre></td></tr></table></figure></li><li>可修复修复坏道修复方法：1 使用 badblocks -s -w  /dev/sda END START END代表需要修复的扇区末端，START代表需要修复的扇区起始端。2 使用fsck -a /dev/sda1</li></ol><h4 id="磁盘坏道分为三种"><a href="#磁盘坏道分为三种" class="headerlink" title="磁盘坏道分为三种"></a>磁盘坏道分为三种</h4><ol><li>0磁道坏道<br>0磁道坏道的修复方法是隔离0磁道，使用fdsk划分区的时候从1磁道开始划分区</li><li>逻辑坏道<br>逻辑坏道可以使用上面的方法修复</li><li>硬盘坏道<br>如果是硬盘坏道的话，只能隔离不能修复</li></ol><p>硬盘坏道的监测方法：使用上述方法检测修复后，再使用<code>badblocks -s -v -o /root/badblocks.log /dev/sda</code>监测看是否还有坏道存在，如果坏道还是存在的话说明坏道属于硬盘坏道。硬盘坏道隔离方法，首先记录监测出的硬盘坏道，然后分区的时候把硬盘坏道所在的扇区分在一个分区（大小一般大于坏扇区大小），划分出的坏道分区不使用即可达到隔离的目的。隔离只是暂时方案，建议尽快更换硬盘，因为坏道会扩散，以免以后出现严重的数据问题</p>]]></content>
     
@@ -164,7 +354,7 @@
     <link href="http://example.com/2021/05/19/docker%E9%97%AE%E9%A2%98(Your%20kernel%20does%20not%20support%20cgroup%20memory%20limit)/"/>
     <id>http://example.com/2021/05/19/docker%E9%97%AE%E9%A2%98(Your%20kernel%20does%20not%20support%20cgroup%20memory%20limit)/</id>
     <published>2021-05-18T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
+    <updated>2021-07-09T11:57:15.000Z</updated>
     
     <content type="html"><![CDATA[<p><strong>docker启动失败，查看日志发现如下警告</strong>  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">WARN Your kernel does not support cgroup memory limit </span><br><span class="line">WARN Unable to find cpu cgroup in mounts          </span><br><span class="line">WARN Unable to find blkio cgroup in mounts        </span><br><span class="line">WARN Unable to find cpuset cgroup in mounts       </span><br><span class="line">WARN mountpoint for pids not found    </span><br></pre></td></tr></table></figure><p><strong>解决方法</strong><br>这是在ubuntu或其他基于Debian的系统上才会出现的问题，原因是系统默认未开启swap限制。(开启后会使系统内存占用多1%,性能下降约10%,即使没有运行docker)</p><p>修改系统的/etc/default/grub file文件，加一行  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRUB_CMDLINE_LINUX&#x3D;&quot;cgroup_enable&#x3D;memory swapaccount&#x3D;1&quot;</span><br></pre></td></tr></table></figure><p>上一步是固定的<br>下一步就多了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Run: “sudo update-bootloader –refresh”</span><br></pre></td></tr></table></figure><p>或者是更新系统的GRUB：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-grub</span><br></pre></td></tr></table></figure><p>这应该是不通版本更新GRUB的方法吧<br>最后reboot<br>我是直接reboot的，然后就OK了</p>]]></content>
     
@@ -189,7 +379,7 @@
     <link href="http://example.com/2021/05/10/centos_yum/"/>
     <id>http://example.com/2021/05/10/centos_yum/</id>
     <published>2021-05-09T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
+    <updated>2021-07-09T11:57:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>CentOS7 yum安装软件提示:<br>another app is currently holding the yum lock;waiting for it to exit</p><p>yum在锁定状态中。<br>可以通过强制关掉yum进程：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -f &#x2F;var&#x2F;run&#x2F;yum.pid</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -217,7 +407,7 @@
     <link href="http://example.com/2021/05/06/python%E5%AE%89%E8%A3%85face_recognition%E5%92%8Cdlib/"/>
     <id>http://example.com/2021/05/06/python%E5%AE%89%E8%A3%85face_recognition%E5%92%8Cdlib/</id>
     <published>2021-05-05T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
+    <updated>2021-07-09T11:57:15.000Z</updated>
     
     <content type="html"><![CDATA[<h4 id="在是用机器学习的时候总会用到dlib库，万恶的win总是搞事情（虽然lin在其他地方也搞事情），废话不多说，下面是我的解决方法"><a href="#在是用机器学习的时候总会用到dlib库，万恶的win总是搞事情（虽然lin在其他地方也搞事情），废话不多说，下面是我的解决方法" class="headerlink" title="在是用机器学习的时候总会用到dlib库，万恶的win总是搞事情（虽然lin在其他地方也搞事情），废话不多说，下面是我的解决方法"></a>在是用机器学习的时候总会用到dlib库，万恶的win总是搞事情（虽然lin在其他地方也搞事情），废话不多说，下面是我的解决方法</h4><p>使用Anaconda对python进行版本控制，说人话就是虚拟个环境，跟linux里的virtualenv差不多</p><p>安装最新版的Anaconda（也没得选，就这一个）  </p><blockquote><p>anaconda中内置了一个用来管理包的工具叫做： conda，类似python的pip，arch中的pacman.</p></blockquote><p>虚拟一个python 3.6的环境（亲测可行）  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">conda create -n $环境名 python&#x3D;3.6 tensorflow ipython</span><br><span class="line"></span><br><span class="line">进入环境</span><br><span class="line">conda activate $环境名</span><br><span class="line">退出环境</span><br><span class="line">conda deactivate</span><br></pre></td></tr></table></figure><blockquote><p>需要注意的是，在安装的时候，可能会报下面这个错。这是表示，可以下载的地方(channels)太多了，求求你挑一个把。显然这么多的地方，鬼知道哪个好使，有个默认的就好了。配置一下即可</p></blockquote><p><img src="data:image/png;base64,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Snu8HY9c/QDKKZK2xplE9YCttMeJkE45xcaAc/2MYwNIVA/YSnuIiIiIiPzR/Onf//nv/xAREREREZkhEURERERERGZMBBERERERkRkTQUREREREZMZEEBERERERmTERREREREREZkwEERERERGRGRNBRERERERkxkQQERERERGZMRFERDPL/hUAACAASURBVERERERmTAQREREREZEZE0FERERERGTGRBAREREREZkxEURERERERGZMBBERERERkRkTQUREREREZMZEEBERERERmTERREREREREZkwEERERERGRGRNBRERERERkxkQQERERERGZMRFERERERERmTAQREREREZEZE0FERERERGTGRBAREREREZkxEURERERERGZMBBERERERkRkTQUREREREZMZEEBERERERmTERREREREREZkwEERERERGRGRNB3qOQTtlhWgEfjpBO2WGsw1iHKXcJERERERH5dUV4G5MmxjqMdRjrMK2AD96kibFNAuQqj1x9yHg05LAaR0RERETktxDhZwQthyk+Y21/yHg0ZDwaMr73mMYEERERERGR9+Ij3mTa5Zs25Lc3yUW5EFtmBRERERERkfcjwhuE//iefnyVfIzXmzQxtkJnyoVJE2ObBJyadinZCp0pBC2HsQ5jHaVeyLlpl5Kt0JlC0HIY6zDWUeqFXDHtUrIOYx3GOky5S8iFsFfBlLuEkybGOox1GFuhM+VY2KtgrMMU94A9Fq3DWIexjlIv5PoCGtZhrMNYh7GOxoSXBC2HsQ5jHabcJeSqoOUw1mGsw1hHqRdyIaBhHY1JSKfsMNZhrMO0Ai4ENKyjMQnplB3GOox1mFbAi4KWw1iHsQ5jHY0J7yCgYR3GOox1GOso9UJeMu1Ssg5T7hIiIiIiIvJ2PuINfno6gDtf4HETBmxkHInqAeORB5MmpvgVnT9vkotyasBGxpGoHjAeeTBpYopf0fnzJrkoMO1SytSY3x6yFeNY0HIky3BYz+JxalAjySqHoyEeELQci193uVvP4qU3GaeBSRNThN3RMj7vaNqllKnRz+8wXvJ5rXaBb6oHjEceENCwBdqTLCsxjoW9Co/uDRkvcWLSxBRTNG4PWYlxrl1Mkd8eMq4D0y6lTIHGvSErMc61iyny20PGdWDapZQp0Lg3ZCXGsaDlWHyyyuEoi8dz0y6ljKOx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" alt="1.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 尝试使用此命令将conda-forge通道添加到通道列表中</span><br><span class="line"># 它告诉conda 在搜索包时也会查看conda-forge通道,也就是列出来的那些额外channel。</span><br><span class="line"># 然后你可以简单地安装dlib，管它从哪里下载呢!</span><br><span class="line"></span><br><span class="line"># 查看</span><br><span class="line">anaconda show conda-forge&#x2F;dlib</span><br><span class="line"># 配置</span><br><span class="line">conda config --append channels conda-forge</span><br><span class="line"># 安装dlib</span><br><span class="line">conda install dlib</span><br><span class="line"># 安装face_recognition</span><br><span class="line">conda install face_recognition</span><br></pre></td></tr></table></figure><hr><h4 id="conda的一些命令"><a href="#conda的一些命令" class="headerlink" title="conda的一些命令"></a>conda的一些命令</h4><p>查看已经安装过的镜像<br><code>conda config --show</code></p><p>删除镜像<br><code>conda config --remove channels $url</code></p><p>添加镜像<br><code>conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/</code></p><p>清除索引缓存，保证用的是镜像站提供的索引<br><code>conda clean -i</code></p><p>Windows 用户无法直接创建名为 .condarc 的文件，可先执行<br> <code>conda config --set show_channel_urls yes</code><br> 生成该文件之后再修改。</p><p>conda的配置文件在<code>C:\Users\用户\.condarc</code>中(windows)</p><p>显示环境信息<br><code>conda info</code></p><p>升级conda<br><code>conda update -n base -c defaults conda</code></p><p>查看包的版本信息<br><code>anaconda show conda-forge/dlib</code></p><p>查看某个安装包的依赖项  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda search XXX -info</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -243,7 +433,7 @@
     <link href="http://example.com/2021/04/30/docker%E7%9B%91%E6%8E%A7%E8%B5%B7%E4%B8%8D%E6%9D%A5/"/>
     <id>http://example.com/2021/04/30/docker%E7%9B%91%E6%8E%A7%E8%B5%B7%E4%B8%8D%E6%9D%A5/</id>
     <published>2021-04-29T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
+    <updated>2021-07-09T11:57:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>报错信息</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker:Error response from daemon:endpoint with name monitor already exists in network host.</span><br></pre></td></tr></table></figure><p>docker info</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"># docker info</span><br><span class="line"></span><br><span class="line">Client:</span><br><span class="line"> Debug Mode: false</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Containers: 250</span><br><span class="line">  Running: 250</span><br><span class="line">  Paused: 0</span><br><span class="line">  Stopped: 0</span><br><span class="line"> Images: 5</span><br><span class="line"> Server Version: 19.03.8</span><br><span class="line"> Storage Driver: overlay2</span><br><span class="line">  Backing Filesystem: &lt;unknown&gt;</span><br><span class="line">  Supports d_type: true</span><br><span class="line">  Native Overlay Diff: true</span><br><span class="line"> Logging Driver: json-file</span><br><span class="line"> Cgroup Driver: cgroupfs</span><br><span class="line"> Plugins:</span><br><span class="line">  Volume: local</span><br><span class="line">  Network: bridge host ipvlan macvlan null overlay</span><br><span class="line">  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog</span><br><span class="line"> Swarm: inactive</span><br><span class="line"> Runtimes: runc</span><br><span class="line"> Default Runtime: runc</span><br><span class="line"> Init Binary: docker-init</span><br><span class="line"> containerd version: 7ad184331fa3e55e52b890ea95e65ba581ae3429</span><br><span class="line"> runc version: dc9208a3303feef5b3839f4323d9beb36df0a9dd</span><br><span class="line"> init version: fec3683</span><br><span class="line"> Security Options:</span><br><span class="line">  seccomp</span><br><span class="line">   Profile: default</span><br><span class="line"> Kernel Version: 5.5.11-1.el7.elrepo.x86_64</span><br><span class="line"> Operating System: CentOS Linux 7 (Core)</span><br><span class="line"> OSType: linux</span><br><span class="line"> Architecture: x86_64</span><br><span class="line"> CPUs: 48</span><br><span class="line"> Total Memory: 125.9GiB</span><br><span class="line"> Name: d1a1e70b5f676226cb7ee2de95a79f79</span><br><span class="line"> ID: V64J:KRRC:C6OI:PR2F:BIKW:XF26:YGPE:O2FW:B6NE:XASJ:TQMM:FUA7</span><br><span class="line"> Docker Root Dir: &#x2F;var&#x2F;lib&#x2F;docker</span><br><span class="line"> Debug Mode: false</span><br><span class="line"> Registry: https:&#x2F;&#x2F;index.docker.io&#x2F;v1&#x2F;</span><br><span class="line"> Labels:</span><br><span class="line"> Experimental: false</span><br><span class="line"> Insecure Registries:</span><br><span class="line">  127.0.0.0&#x2F;8</span><br><span class="line"> Live Restore Enabled: false</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>解决方法</p><ol><li>重启docker或者重启机器</li><li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker network inspect &lt;network name&gt;</span><br><span class="line">docker network disconnect &lt;network name&gt; &lt;container id&#x2F; container name&gt;</span><br></pre></td></tr></table></figure></li><li><code>docker network disconnect --force bridge monitor</code>(这个好像也可以)</li></ol>]]></content>
     
@@ -266,38 +456,11 @@
   </entry>
   
   <entry>
-    <title>CentOS7 出現 slice User 信息的解法</title>
-    <link href="http://example.com/2021/04/29/CentOS7%20%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/"/>
-    <id>http://example.com/2021/04/29/CentOS7%20%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/</id>
-    <published>2021-04-28T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>CentOS 7 的 /var/log/messages 系統紀錄內會大量出現 slice User 的訊息如下:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Aug 18 08:34:49 ct-squid systemd: Removed slice User Slice of root.</span><br><span class="line">Aug 18 09:30:01 ct-squid systemd: Created slice User Slice of root.</span><br><span class="line">Aug 18 09:30:01 ct-squid systemd: Started Session c616 of user root.</span><br><span class="line">Aug 18 09:41:07 ct-squid systemd: Removed slice User Slice of root.</span><br><span class="line">Aug 18 10:30:01 ct-squid systemd: Created slice User Slice of root.</span><br><span class="line">Aug 18 10:30:01 ct-squid systemd: Started Session c617 of user root.</span><br><span class="line">Aug 18 10:36:28 ct-squid systemd: Removed slice User Slice of root.</span><br><span class="line">Aug 18 10:54:22 ct-squid systemd: Created slice User Slice of root.</span><br><span class="line">Aug 18 10:54:22 ct-squid systemd: Started Session 33128 of user root.</span><br><span class="line">Aug 18 10:54:22 ct-squid systemd-logind: New session 33128 of user root.</span><br></pre></td></tr></table></figure><p>主要的原因是和 systemd 服務有關, 可以透過紀錄篩選規則設定, 來隱藏這些 slice User 訊息, 設定方式如下:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &#39;if $programname &#x3D;&#x3D; &quot;systemd&quot; and ($msg contains &quot;Starting Session&quot; or $msg contains &quot;Started Session&quot; or $msg contains &quot;Created slice&quot; or $msg contains &quot;Starting user-&quot; or $msg contains &quot;Starting User Slice of&quot; or $msg contains &quot;Removed session&quot; or $msg contains &quot;Removed slice User Slice of&quot; or $msg contains &quot;Stopping User Slice of&quot;) then stop&#39; &gt;&#x2F;etc&#x2F;rsyslog.d&#x2F;ignore-systemd-session-slice.conf</span><br><span class="line">systemctl restart rsyslog</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;CentOS 7 的 /var/log/messages 系統紀錄內會大量出現 slice User 的訊息如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span cl</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
-    
-    
-    <category term="centos7" scheme="http://example.com/tags/centos7/"/>
-    
-    <category term="slice User" scheme="http://example.com/tags/slice-User/"/>
-    
-  </entry>
-  
-  <entry>
     <title>linux磁盘挂载</title>
     <link href="http://example.com/2021/04/29/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/"/>
     <id>http://example.com/2021/04/29/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/</id>
     <published>2021-04-28T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
+    <updated>2021-07-09T11:57:15.000Z</updated>
     
     <content type="html"><![CDATA[<p><strong>查看磁盘的uuid</strong>  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">命令查看：blkid</span><br><span class="line">文件查看：ls -l &#x2F;dev&#x2F;disk&#x2F;by-uuid</span><br><span class="line">命令查看：vol_id &#x2F;dev&#x2F;sda1</span><br></pre></td></tr></table></figure><p><strong>检测磁盘有没有损坏</strong><br>通过hdparm 测试硬盘读写速度的方法</p><p>测试各硬盘读取速度判断硬盘故障</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hdparm -t &#x2F;dev&#x2F;hda (IDE硬盘)</span><br><span class="line"></span><br><span class="line">hdparm -t &#x2F;dev&#x2F;sda (SATA、SCSI、硬RAID卡阵列)</span><br><span class="line"></span><br><span class="line">hdparm -t &#x2F;dev&#x2F;md0 (软RAID设备)</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">参　　数：</span><br><span class="line"></span><br><span class="line">-a 设定读取文件时，预先存入块区的分区数，若不加上选项，则显示目前的设定。</span><br><span class="line"></span><br><span class="line">-A&lt;0或1&gt; 启动或关闭读取文件时的快取功能。</span><br><span class="line"></span><br><span class="line">-c 设定IDE32位I&#x2F;O模式。</span><br><span class="line"></span><br><span class="line">-C 检测IDE硬盘的电源管理模式。</span><br><span class="line"></span><br><span class="line">-d&lt;0或1&gt; 设定磁盘的DMA模式。</span><br><span class="line"></span><br><span class="line">-f 将内存缓冲区的数据写入硬盘，并清楚缓冲区。</span><br><span class="line"></span><br><span class="line">-g 显示硬盘的磁轨，磁头，磁区等参数。</span><br><span class="line"></span><br><span class="line">-h 显示帮助。</span><br><span class="line"></span><br><span class="line">-i 显示硬盘的硬件规格信息，这些信息是在开机时由硬盘本身所提供。</span><br><span class="line"></span><br><span class="line">-I 直接读取硬盘所提供的硬件规格信息。</span><br><span class="line"></span><br><span class="line">-k&lt;0或1&gt; 重设硬盘时，保留-dmu参数的设定。</span><br><span class="line"></span><br><span class="line">-K&lt;0或1&gt; 重设硬盘时，保留-APSWXZ参数的设定。</span><br><span class="line"></span><br><span class="line">-m 设定硬盘多重分区存取的分区数。</span><br><span class="line"></span><br><span class="line">-n&lt;0或1&gt; 忽略硬盘写入时所发生的错误。</span><br><span class="line"></span><br><span class="line">-p 设定硬盘的PIO模式。</span><br><span class="line"></span><br><span class="line">-P 设定硬盘内部快取的分区数。</span><br><span class="line"></span><br><span class="line">-q 在执行后续的参数时，不在屏幕上显示任何信息。</span><br><span class="line"></span><br><span class="line">-r&lt;0或1&gt; 设定硬盘的读写模式。</span><br><span class="line"></span><br><span class="line">-S 设定硬盘进入省电模式前的等待时间。</span><br><span class="line"></span><br><span class="line">-t 评估硬盘的读取效率。</span><br><span class="line"></span><br><span class="line">-T 平谷硬盘快取的读取效率。</span><br><span class="line"></span><br><span class="line">-u&lt;0或1&gt; 在硬盘存取时，允许其他中断要求同时执行。</span><br><span class="line"></span><br><span class="line">-v 显示硬盘的相关设定。</span><br><span class="line"></span><br><span class="line">-W&lt;0或1&gt; 设定硬盘的写入快取。</span><br><span class="line"></span><br><span class="line">-X 设定硬盘的传输模式。</span><br><span class="line"></span><br><span class="line">-y 使IDE硬盘进入省电模式。</span><br><span class="line"></span><br><span class="line">-Y 使IDE硬盘进入睡眠模式。</span><br><span class="line"></span><br><span class="line">-Z 关闭某些Seagate硬盘的自动省电功能</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -320,11 +483,38 @@
   </entry>
   
   <entry>
+    <title>CentOS7 出現 slice User 信息的解法</title>
+    <link href="http://example.com/2021/04/29/CentOS7%20%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/"/>
+    <id>http://example.com/2021/04/29/CentOS7%20%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/</id>
+    <published>2021-04-28T16:00:00.000Z</published>
+    <updated>2021-07-09T11:57:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>CentOS 7 的 /var/log/messages 系統紀錄內會大量出現 slice User 的訊息如下:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Aug 18 08:34:49 ct-squid systemd: Removed slice User Slice of root.</span><br><span class="line">Aug 18 09:30:01 ct-squid systemd: Created slice User Slice of root.</span><br><span class="line">Aug 18 09:30:01 ct-squid systemd: Started Session c616 of user root.</span><br><span class="line">Aug 18 09:41:07 ct-squid systemd: Removed slice User Slice of root.</span><br><span class="line">Aug 18 10:30:01 ct-squid systemd: Created slice User Slice of root.</span><br><span class="line">Aug 18 10:30:01 ct-squid systemd: Started Session c617 of user root.</span><br><span class="line">Aug 18 10:36:28 ct-squid systemd: Removed slice User Slice of root.</span><br><span class="line">Aug 18 10:54:22 ct-squid systemd: Created slice User Slice of root.</span><br><span class="line">Aug 18 10:54:22 ct-squid systemd: Started Session 33128 of user root.</span><br><span class="line">Aug 18 10:54:22 ct-squid systemd-logind: New session 33128 of user root.</span><br></pre></td></tr></table></figure><p>主要的原因是和 systemd 服務有關, 可以透過紀錄篩選規則設定, 來隱藏這些 slice User 訊息, 設定方式如下:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &#39;if $programname &#x3D;&#x3D; &quot;systemd&quot; and ($msg contains &quot;Starting Session&quot; or $msg contains &quot;Started Session&quot; or $msg contains &quot;Created slice&quot; or $msg contains &quot;Starting user-&quot; or $msg contains &quot;Starting User Slice of&quot; or $msg contains &quot;Removed session&quot; or $msg contains &quot;Removed slice User Slice of&quot; or $msg contains &quot;Stopping User Slice of&quot;) then stop&#39; &gt;&#x2F;etc&#x2F;rsyslog.d&#x2F;ignore-systemd-session-slice.conf</span><br><span class="line">systemctl restart rsyslog</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;CentOS 7 的 /var/log/messages 系統紀錄內會大量出現 slice User 的訊息如下:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span cl</summary>
+      
+    
+    
+    
+    <category term="linux" scheme="http://example.com/categories/linux/"/>
+    
+    
+    <category term="centos7" scheme="http://example.com/tags/centos7/"/>
+    
+    <category term="slice User" scheme="http://example.com/tags/slice-User/"/>
+    
+  </entry>
+  
+  <entry>
     <title>docker监控挂掉（Error response from daemon:chown /etc/resolv.conf:operation not permitted）</title>
     <link href="http://example.com/2021/04/27/docker%E7%9B%91%E6%8E%A7%E6%8C%82%E6%8E%89/"/>
     <id>http://example.com/2021/04/27/docker%E7%9B%91%E6%8E%A7%E6%8C%82%E6%8E%89/</id>
     <published>2021-04-26T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
+    <updated>2021-07-09T11:57:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>看报错是权限不足，<code>ls -l /etv/resolv.conf</code>,权限也没问题<br>有可能曾经用chattr命令锁定该文件了<br>查看文件权限</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ lsattr &#x2F;etc&#x2F;resolv.conf</span><br><span class="line">----i----------- &#x2F;etc&#x2F;resolv.conf</span><br></pre></td></tr></table></figure><p>i：设定文件不能被删除、改名、设定链接关系，同时不能写入或新增内容。</p><p>移除权限就可以了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chattr -i resolv.conf</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -343,183 +533,6 @@
     <category term="技巧" scheme="http://example.com/tags/%E6%8A%80%E5%B7%A7/"/>
     
     <category term="报错解决" scheme="http://example.com/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>du查看文件或文件夹的大小</title>
-    <link href="http://example.com/2021/04/27/du%E5%91%BD%E4%BB%A4/"/>
-    <id>http://example.com/2021/04/27/du%E5%91%BD%E4%BB%A4/</id>
-    <published>2021-04-26T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>语法</strong>  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du [-abcDhHklmsSx][-L &lt;符号连接&gt;][-X &lt;文件&gt;][--block-size][--exclude&#x3D;&lt;目录或文件&gt;][--max-depth&#x3D;&lt;目录层数&gt;][--help][--version][目录或文件]</span><br></pre></td></tr></table></figure><p><strong>例子</strong>  </p><p>查看当前目录总共占的容量，而不单独列出各子项占用的容量  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ du -sh</span><br><span class="line">15G</span><br></pre></td></tr></table></figure><p>查看当前目录下一级子文件和子目录占用的磁盘容量</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ du -lh --max-depth&#x3D;1</span><br><span class="line">13M    .&#x2F;.cache</span><br><span class="line">0    .&#x2F;.config</span><br><span class="line">1.2M    .&#x2F;mongo-hacker</span><br><span class="line">0    .&#x2F;.pki</span><br><span class="line">14M    .</span><br></pre></td></tr></table></figure><p>查看指定文件大小可以使用du -sh或du -a  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ du -sh check_vdpppoe.sh</span><br><span class="line">4.0Kcheck_vdpppoe.sh</span><br></pre></td></tr></table></figure><p>列出当前目录中的目录名不包括某字符串的目录的总大小</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ u -sh --exclude&#x3D;&quot;check_vdpppoe.sh&quot;</span><br><span class="line">24K.</span><br></pre></td></tr></table></figure><hr><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">常用参数说明：</span><br><span class="line">-a或-all 显示目录中个别文件的大小。</span><br><span class="line"></span><br><span class="line">-b或-bytes 显示目录或文件大小时，以byte为单位。</span><br><span class="line"></span><br><span class="line">-c或--total 除了显示个别目录或文件的大小外，同时也显示所有目录或文件的总和。</span><br><span class="line"></span><br><span class="line">-D或--dereference-args 显示指定符号连接的源文件大小。</span><br><span class="line"></span><br><span class="line">-h或--human-readable 以K，M，G为单位，提高信息的可读性。</span><br><span class="line"></span><br><span class="line">-H或--si 与-h参数相同，但是K，M，G是以1000为换算单位。</span><br><span class="line"></span><br><span class="line">-k或--kilobytes 以1024 bytes为单位。</span><br><span class="line"></span><br><span class="line">-l或--count-links 重复计算硬件连接的文件。</span><br><span class="line"></span><br><span class="line">-L&lt;符号连接&gt;或--dereference&lt;符号连接&gt; 显示选项中所指定符号连接的源文件大小。</span><br><span class="line"></span><br><span class="line">-m或--megabytes 以1MB为单位。</span><br><span class="line"></span><br><span class="line">-s或--summarize 仅显示总计。</span><br><span class="line"></span><br><span class="line">-S或--separate-dirs 显示个别目录的大小时，并不含其子目录的大小。</span><br><span class="line"></span><br><span class="line">-x或--one-file-xystem 以一开始处理时的文件系统为准，若遇上其它不同的文件系统目录则略过。</span><br><span class="line"></span><br><span class="line">-X&lt;文件&gt;或--exclude-from&#x3D;&lt;文件&gt; 在&lt;文件&gt;指定目录或文件。</span><br><span class="line"></span><br><span class="line">--exclude&#x3D;&lt;目录或文件&gt; 略过指定的目录或文件。</span><br><span class="line"></span><br><span class="line">--max-depth&#x3D;&lt;目录层数&gt; 超过指定层数的目录后，予以忽略。</span><br><span class="line"></span><br><span class="line">--help 显示帮助。</span><br><span class="line"></span><br><span class="line">--version 显示版本信息。</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;strong&gt;语法&lt;/strong&gt;  &lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;t</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
-    
-    
-    <category term="技巧" scheme="http://example.com/tags/%E6%8A%80%E5%B7%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>chattr与lsattr命令</title>
-    <link href="http://example.com/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/"/>
-    <id>http://example.com/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/</id>
-    <published>2021-04-26T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>有时候你发现用root权限都不能修改某个文件，大部分原因是曾经用chattr命令锁定该文件了。<br>通过chattr命令修改属性能够提高系统的安全性，但是它并不适合所有的目录。chattr命令不能保护/、/dev、/tmp、/var目录。lsattr命令是显示chattr命令设置的文件属性。</p><p>这两个命令是用来查看和改变文件、目录属性的，与chmod这个命令相比，chmod只是改变文件的读写、执行权限，更底层的属性控制是由chattr来改变的。</p><p><strong>chattr</strong><br>修改文件在Linux第二扩展文件系统(E2fs)上的特有属性<br>chattr [ -RVf ] [ -v version ] [ mode ] files…<br>[ mode ]部分是由+-=和[ ASacDdIijsTtu ]这些字符组合的，这部分是用来控制文件的<br>属性。</p><p>-R  递归地修改目录以及其下内容的属性. 如果在递归目录时遇到了符号链接,遍历将跳过<br>-V  详尽地给出chattr的输出信息并打印出程序的版本<br>-vversion  设置文件系统的版本  </p><p>操作符<code>+</code>用来在文件已有属性的基础上增加选定的属性; <code>-</code>用来去掉文件上的选定的属性;而<code>=</code>用来指定该文件的唯一属性</p><p>字符`ASacdisu’用作文件新属性的选项: 不更新atime(A),同步更新(S),只能添加(a), 压缩(c),不可变(i),不可转移(d),删除保护(s)以及不可删除(u)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ chattr -i resolv.conf</span><br><span class="line"></span><br><span class="line">$ chattr +a &#x2F;var&#x2F;log&#x2F;messages   #让某个文件只能往里面追加数据，但不能删，适合日志文件</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">当修改设置了&#39;A&#39;属性的文件时,它的atime记录不会改变. 这可以在笔记本电脑系统中避免某些磁盘I&#x2F;O处理.</span><br><span class="line">设置了&#96;a&#39;属性的文件只能在添加模式下打开用于写入. 只有超级用户可以设置或清除该属性.</span><br><span class="line">设置了&#96;c&#39;属性的文件在磁盘上由内核自动进行压缩处理. 从该文件读取时返回的是未压缩的数据. 对该文件的一次写入会在保存它们到磁盘之前进行数据压缩.</span><br><span class="line">设置了&#96;d&#39;属性的文件不能对其运行 dump(8) 程序进行备份.</span><br><span class="line">设置了&#96;i&#39;属性的文件不能进行修改:你既不能删除它, 也不能给它重新命名,你不能对该文件创建链接, 而且也不能对该文件写入任何数据. 只有超级用户可以设置或清除该属性.</span><br><span class="line">当删除设置了&#96;s&#39;属性的文件时,将对其数据块清零 并写回到磁盘上.</span><br><span class="line">当修改设置了&#96;S&#39;属性的文件时, 修改会同步写入到磁盘上;这与应用 到文件子系统上的&#96;sync&#39;挂载选项有相同的效果.</span><br><span class="line">当删除设置了&#96;u&#39;属性的文件时, 将会保存其内容. 这使得用户可以请求恢复被删除的文件.</span><br></pre></td></tr></table></figure><p><strong>lsattr</strong><br>-R  递归地列出目录以及其下内容的属性<br>-V  显示程序版本<br>-a  列出目录中的所有文件,包括以`.’开头的文件的属性<br>-d  以列出其它文件的方式那样列出目录的属性, 而不列出其下的内容<br>-v  显示文件版本  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ lsattr &#x2F;etc&#x2F;resolv.conf</span><br><span class="line">----i----------- &#x2F;etc&#x2F;resolv.conf</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;有时候你发现用root权限都不能修改某个文件，大部分原因是曾经用chattr命令锁定该文件了。&lt;br&gt;通过chattr命令修改属性能够提高系统的安全性，但是它并不适合所有的目录。chattr命令不能保护/、/dev、/tmp、/var目录。lsattr命令是显示chattr</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
-    
-    
-    <category term="技巧" scheme="http://example.com/tags/%E6%8A%80%E5%B7%A7/"/>
-    
-    <category term="文件权限" scheme="http://example.com/tags/%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>awk命令</title>
-    <link href="http://example.com/2021/04/23/awk%E5%91%BD%E4%BB%A4/"/>
-    <id>http://example.com/2021/04/23/awk%E5%91%BD%E4%BB%A4/</id>
-    <published>2021-04-22T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>使用awk命令获取文本的某一行，某一列</strong>  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">打印文件的第一列</span><br><span class="line">awk &#39;&#123;print $1&#125;&#39; filename</span><br><span class="line"></span><br><span class="line">打印文件的前两列</span><br><span class="line">awk &#39;&#123;print $1,$2&#125;&#39; filename</span><br><span class="line"></span><br><span class="line">打印完第一列，然后打印第二列</span><br><span class="line">awk &#39;&#123;print $1 $2&#125;&#39; filename</span><br><span class="line"></span><br><span class="line">打印文本文件的总行数</span><br><span class="line">awk &#39;END&#123;print NR&#125;&#39; filename</span><br><span class="line"></span><br><span class="line">打印文本第一行</span><br><span class="line">awk &#39;NR&#x3D;&#x3D;1&#123;print&#125;&#39; filename</span><br><span class="line"></span><br><span class="line">打印文本第二行第一列</span><br><span class="line">sed -n &quot;2, 1p&quot; filename | awk &#39;print $1&#39;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>awk分隔符</strong>  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ cat test</span><br><span class="line">a#b#c#d</span><br><span class="line"></span><br><span class="line">$ awk -F# &#39;&#123;print $1,$2&#125;&#39;  test</span><br><span class="line">a b</span><br><span class="line"></span><br><span class="line">$ awk -v FS&#39;#&#39; &#39;&#123;print $1,$2&#125;&#39; test</span><br><span class="line">a b</span><br><span class="line">awk内置变量FS可以用于指定输入分隔符，但是在使用变量时，需要使用-v选项，用于指定对应的变量，比如 -v FS&#x3D;’#</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>输出分隔符</strong><br>awk输出每一列的时候，会使用空格隔开每一列，其实，这个空格，就是awk的默认的输出分隔符<br>可以使用awk的内置变量OFS来设定awk的输出分隔符，当然，使用变量的时候要配合使用-v选项</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">awk -v FS&#x3D;&quot;#&quot; -v OFS&#x3D;&#39;----&#39; &#39;&#123;print $1,$2&#125;&#39; test</span><br><span class="line">a----b</span><br><span class="line">默认输出分隔符为空格</span><br><span class="line">awk &#39;&#123;print $1,$2&#125;&#39; test</span><br><span class="line">a b</span><br><span class="line"></span><br><span class="line">awk &#39;&#123;print $1$2&#125;&#39; test</span><br><span class="line">ab</span><br><span class="line"></span><br><span class="line">awk &#39;&#123;print $1 $2&#125;&#39; test</span><br><span class="line">ab</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;strong&gt;使用awk命令获取文本的某一行，某一列&lt;/strong&gt;  &lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;</summary>
-      
-    
-    
-    
-    <category term="文本" scheme="http://example.com/categories/%E6%96%87%E6%9C%AC/"/>
-    
-    
-    <category term="awk" scheme="http://example.com/tags/awk/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>paste命令</title>
-    <link href="http://example.com/2021/04/23/paste%E5%91%BD%E4%BB%A4/"/>
-    <id>http://example.com/2021/04/23/paste%E5%91%BD%E4%BB%A4/</id>
-    <published>2021-04-22T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>paste：合并拼接文件</strong><br>例子  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ cat p1.txt</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">$ cat p2.txt</span><br><span class="line">a</span><br><span class="line">b</span><br><span class="line">c</span><br><span class="line"></span><br><span class="line">$ paste p1.txt p2.txt</span><br><span class="line">1    a</span><br><span class="line">2    b</span><br><span class="line">3    c</span><br><span class="line"></span><br><span class="line">paste使用了制表符(Tab)作为间隔符</span><br><span class="line">三个文件也可以拼接，paste 拼接和文件列表的顺序有关</span><br></pre></td></tr></table></figure><p>paste默认的拼接符是tab,可以使用<code>-d</code>选项就可以设定间隔符</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ paste -d &#39;*&#39; p2.txt p1.txt</span><br><span class="line">a*1</span><br><span class="line">b*2</span><br><span class="line">c*3</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>要注意一点，此处一定要把星号用引号括起来（单引号双引号均可），否则 Shell 会把星号扩展为当前目录下的文件列表，千万小心。</p><p><strong>paste 命令的 -s 选项</strong><br>看以下例子更容易懂一些  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$ cat p1.txt</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">$ cat p2.txt</span><br><span class="line">a</span><br><span class="line">b</span><br><span class="line">c</span><br><span class="line"></span><br><span class="line">$ cat p3.txt</span><br><span class="line">I</span><br><span class="line">II</span><br><span class="line">III</span><br><span class="line"></span><br><span class="line">$ paste -s -d &quot;*&quot; p1.txt p2.txt p3.txt</span><br><span class="line">1*2*3</span><br><span class="line">a*b*c</span><br><span class="line">I*II*III</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;strong&gt;paste：合并拼接文件&lt;/strong&gt;&lt;br&gt;例子  &lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;</summary>
-      
-    
-    
-    
-    <category term="文本" scheme="http://example.com/categories/%E6%96%87%E6%9C%AC/"/>
-    
-    
-    <category term="paste" scheme="http://example.com/tags/paste/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vim命令</title>
-    <link href="http://example.com/2021/04/23/vim%E5%91%BD%E4%BB%A4/"/>
-    <id>http://example.com/2021/04/23/vim%E5%91%BD%E4%BB%A4/</id>
-    <published>2021-04-22T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>删除每行后10个字符（替换+正则匹配到每行后10给字符）<br>:%s/.{10}$//<br>删除每行后10个字符<br>:%s/^.{10}//</p><p>\n匹配行尾（换行符），而\r匹配回车符。另一方面，在替换中\n插入空字符，而\r插入换行符（更准确地说，它被视为输入 ）。这是一个小的非交互式示例，使用 Vim 命令行功能来说明这一点（换句话说，您可以将以下内容复制并粘贴到终端中以运行它）。 xxd显示结果文件的 hexdump。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">echo bar &gt; test</span><br><span class="line">(echo &#39;Before:&#39;; xxd test) &gt; output.txt</span><br><span class="line">vim test &#39;+s&#x2F;b&#x2F;\n&#x2F;&#39; &#39;+s&#x2F;a&#x2F;\r&#x2F;&#39; +wq</span><br><span class="line">(echo &#39;After:&#39;; xxd test) &gt;&gt; output.txt</span><br><span class="line">more output.txt</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Before:</span><br><span class="line">0000000: 6261 720a                                bar.</span><br><span class="line">After:</span><br><span class="line">0000000: 000a 720a                                ..r.</span><br></pre></td></tr></table></figure><p>换句话说， \n已将字节 0x00 插入到文本中; \r已插入字节 0x0a。</p><h4 id="删除空行"><a href="#删除空行" class="headerlink" title="删除空行"></a>删除空行</h4><p>可以使用 :%g/^$/d 命令来删除只有一个换行符的空行</p><h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><p>:copy 命令 (缩写形式 :co，或 :t) </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:3,5t.把第 3 行到第 5 行的内容复制到当前行下方</span><br><span class="line">:t5把当前行复制到第 5 行下方</span><br><span class="line">:t$把当前行复制到文本结尾</span><br><span class="line">:&#39;&lt;,&#39;&gt;t0把高亮选中的行复制到文件开头</span><br></pre></td></tr></table></figure><h4 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h4><p>:move 命令 (缩写形式为 :m) </p><h4 id="TAB替换为空格："><a href="#TAB替换为空格：" class="headerlink" title="TAB替换为空格："></a>TAB替换为空格：</h4><p>:set ts=4</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;删除每行后10个字符（替换+正则匹配到每行后10给字符）&lt;br&gt;:%s/.{10}$//&lt;br&gt;删除每行后10个字符&lt;br&gt;:%s/^.{10}//&lt;/p&gt;
-&lt;p&gt;\n匹配行尾（换行符），而\r匹配回车符。另一方面，在替换中\n插入空字符，而\r插入换行符（更准确地说，它被</summary>
-      
-    
-    
-    
-    <category term="文本" scheme="http://example.com/categories/%E6%96%87%E6%9C%AC/"/>
-    
-    
-    <category term="vim" scheme="http://example.com/tags/vim/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ping 的使用方法</title>
-    <link href="http://example.com/2021/04/22/Ping%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/"/>
-    <id>http://example.com/2021/04/22/Ping%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</id>
-    <published>2021-04-21T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping -i 0.2 -c 30 -I 192.168.10.208 180.149.132.47 -q</span><br></pre></td></tr></table></figure><p>-i 指定发送数据包时间间隔<br>-c 指定一共发送多少个数据包<br>-q指定直接显示程序的启动和最后结果<br>-I 网络界面：使用指定的网络界面送出数据包，即192.168.10.208是发出ping命令的主机IP地址，180.149.132.47是被ping的主机的IP地址<br>-w 等待指定时间后停止ping程序的执行。当试图测试不可达主机时此选项很有用，时间单位是秒。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span cla</summary>
-      
-    
-    
-    
-    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
-    
-    
-    <category term="常识" scheme="http://example.com/tags/%E5%B8%B8%E8%AF%86/"/>
-    
-    <category term="技巧" scheme="http://example.com/tags/%E6%8A%80%E5%B7%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux查看服务器的型号</title>
-    <link href="http://example.com/2021/04/22/linux%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9E%8B%E5%8F%B7/"/>
-    <id>http://example.com/2021/04/22/linux%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9E%8B%E5%8F%B7/</id>
-    <published>2021-04-21T16:00:00.000Z</published>
-    <updated>2021-06-25T12:43:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>查询服务器的型号</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dmidecode -t 1</span><br><span class="line">或者是</span><br><span class="line">dmidecode |grep &quot;Product Name&quot;</span><br></pre></td></tr></table></figure><p>查询主板信息</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dmidecode -t 2</span><br></pre></td></tr></table></figure><p>查看cpu型号</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;proc&#x2F;cpuinfo | grep name | cut -f2 -d: | uniq -c</span><br></pre></td></tr></table></figure><p>查看cpu物理数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;proc&#x2F;cpuinfo |grep &quot;physical id&quot; | sort | uniq | wc -l</span><br></pre></td></tr></table></figure><p>查看单个cpu核数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;proc&#x2F;cpuinfo| grep &quot;cpu cores&quot;| uniq</span><br></pre></td></tr></table></figure><p>查看cpu逻辑数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;proc&#x2F;cpuinfo| grep &quot;processor&quot;| wc -l</span><br></pre></td></tr></table></figure><p>查看内存型号</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dmidecode -t 17</span><br></pre></td></tr></table></figure><p>查看内存插槽数和当前内存数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dmidecode|grep -P -A5 &quot;Memory Device&quot; |grep Size</span><br></pre></td></tr></table></figure><p>大部分服务器都配置了阵列卡，对硬盘做了raid，可以通过MegaCli这个工具进行命令查询阵列卡及硬盘信息（安装包见附件）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">MegaCli64 -cfgdsply -aALL</span><br><span class="line"></span><br><span class="line">RAID型号对应表信息如下：</span><br><span class="line"></span><br><span class="line">RAID Level        : Primary-1, Secondary-0, RAID Level Qualifier-0&quot;         #代表Raid 1</span><br><span class="line"></span><br><span class="line">RAID Level        : Primary-0, Secondary-0, RAID Level Qualifier-0&quot;         #代表Raid 0</span><br><span class="line"></span><br><span class="line">RAID Level        : Primary-5, Secondary-0, RAID Level Qualifier-3&quot;         #代表Raid 5</span><br><span class="line"></span><br><span class="line">RAID Level        : Primary-1, Secondary-3, RAID Level Qualifier-0&quot;         #代表Raid10</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;查询服务器的型号&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
-    
-    
-    <category term="硬件信息" scheme="http://example.com/tags/%E7%A1%AC%E4%BB%B6%E4%BF%A1%E6%81%AF/"/>
     
   </entry>
   
