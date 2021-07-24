@@ -58,14 +58,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/2021/07/15/centos%E5%BC%80%E5%90%AFbbr/</loc>
+    <loc>http://example.com/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/</loc>
     
     <lastmod>2021-07-16</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/</loc>
+    <loc>http://example.com/2021/07/15/centos%E5%BC%80%E5%90%AFbbr/</loc>
     
     <lastmod>2021-07-16</lastmod>
     
@@ -422,7 +422,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/about/index.html</loc>
+    <loc>http://example.com/categories/index.html</loc>
     
     <lastmod>2020-10-13</lastmod>
     
@@ -436,7 +436,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/index.html</loc>
+    <loc>http://example.com/about/index.html</loc>
     
     <lastmod>2020-10-13</lastmod>
     
