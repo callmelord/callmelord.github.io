@@ -261,7 +261,7 @@
                             &nbsp;
                             shell
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/17/shell%E8%84%9A%E6%9C%AC%E5%B8%B8%E8%AF%86/">shell脚本常识</a></li>  <li class="file"><a href="/2021/03/31/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC/">linux中/etc/rc.local脚本的作用</a></li>  <li class="file"><a href="/2021/04/15/shell%E8%84%9A%E6%9C%AC%E9%97%AE%E9%A2%98/">shell脚本问题</a></li>  <li class="file"><a href="/2021/06/17/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%A2%9E/">shell脚本自增</a></li>  <li class="file"><a href="/2021/06/17/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FIFS/">利用环境变量IFS自定义分隔符</a></li>  <li class="file"><a href="/2021/07/28/shell%E6%97%B6%E9%97%B4%E6%88%B3/">shell时间戳</a></li>  <li class="file"><a href="/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/">shell后台运行脚本</a></li>  <li class="file"><a href="/2021/07/28/shell%E8%BF%90%E7%AE%97/">shell运算</a></li>  <li class="file"><a href="/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/">expect 介绍和用法</a></li>  <li class="file"><a href="/2021/08/08/sort%E6%8E%92%E5%BA%8F/">sort排序</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/17/shell%E8%84%9A%E6%9C%AC%E5%B8%B8%E8%AF%86/">shell脚本常识</a></li>  <li class="file"><a href="/2021/03/31/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC/">linux中/etc/rc.local脚本的作用</a></li>  <li class="file"><a href="/2021/04/15/shell%E8%84%9A%E6%9C%AC%E9%97%AE%E9%A2%98/">shell脚本问题</a></li>  <li class="file"><a href="/2021/06/17/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%A2%9E/">shell脚本自增</a></li>  <li class="file"><a href="/2021/06/17/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FIFS/">利用环境变量IFS自定义分隔符</a></li>  <li class="file"><a href="/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/">shell后台运行脚本</a></li>  <li class="file"><a href="/2021/07/28/shell%E6%97%B6%E9%97%B4%E6%88%B3/">shell时间戳</a></li>  <li class="file"><a href="/2021/07/28/shell%E8%BF%90%E7%AE%97/">shell运算</a></li>  <li class="file"><a href="/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/">expect 介绍和用法</a></li>  <li class="file"><a href="/2021/08/08/sort%E6%8E%92%E5%BA%8F/">sort排序</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -474,6 +474,91 @@
 
 
     
+        <article id="post-linux开机自执行脚本" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/shell/">shell</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E5%B8%B8%E8%AF%86/" rel="tag">常识</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/03/31/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC/">
+            <time datetime="2021-03-30T16:00:00.000Z" itemprop="datePublished">2021-03-31</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/linux开机自执行脚本.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/linux开机自执行脚本.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/linux开机自执行脚本.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/03/31/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC/">linux中/etc/rc.local脚本的作用</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+            
+        
+        
+            <p><strong>linux会在开机之后自动source执行/etc/rc.local脚本</strong></p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-linux上的定时任务" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -565,91 +650,6 @@
             </div>   
             <div class="article-more-link">
                 <a href="/2021/03/31/linux%E4%B8%8A%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-linux开机自执行脚本" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/shell/">shell</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E5%B8%B8%E8%AF%86/" rel="tag">常识</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2021/03/31/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC/">
-            <time datetime="2021-03-30T16:00:00.000Z" itemprop="datePublished">2021-03-31</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/linux开机自执行脚本.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/linux开机自执行脚本.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/linux开机自执行脚本.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2021/03/31/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC/">linux中/etc/rc.local脚本的作用</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-            
-        
-        
-            <p><strong>linux会在开机之后自动source执行/etc/rc.local脚本</strong></p>
-
             </div>
         
         <footer class="article-footer">

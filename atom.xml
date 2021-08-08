@@ -44,6 +44,30 @@
   </entry>
   
   <entry>
+    <title>curl用法</title>
+    <link href="http://example.com/2021/08/08/curl/"/>
+    <id>http://example.com/2021/08/08/curl/</id>
+    <published>2021-08-07T16:00:00.000Z</published>
+    <updated>2021-08-08T00:40:08.660Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">不带有任何参数时，curl 就是发出 GET 请求。</span><br><span class="line">curl https:&#x2F;&#x2F;www.example.com</span><br><span class="line"></span><br><span class="line">-O参数将服务器回应保存成文件，并将 URL 的最后部分当作文件名。</span><br><span class="line">curl -O https:&#x2F;&#x2F;www.example.com&#x2F;foo&#x2F;bar.html</span><br><span class="line"></span><br><span class="line">-s参数将不输出错误和进度信息。</span><br><span class="line">curl -s https:&#x2F;&#x2F;www.example.com</span><br><span class="line"></span><br><span class="line">-S参数指定只输出错误信息，通常与-s一起使用。</span><br><span class="line">curl -s -o &#x2F;dev&#x2F;null https:&#x2F;&#x2F;google.com</span><br><span class="line"></span><br><span class="line">-L参数会让 HTTP 请求跟随服务器的重定向。curl 默认不跟随重定向。</span><br><span class="line">curl -L -d &#39;tweet&#x3D;hi&#39; https:&#x2F;&#x2F;api.twitter.com&#x2F;tweet</span><br></pre></td></tr></table></figure><blockquote><p>参考：<a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class</summary>
+      
+    
+    
+    
+    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
+    
+    
+    <category term="curl" scheme="http://example.com/tags/curl/"/>
+    
+  </entry>
+  
+  <entry>
     <title>expect 介绍和用法</title>
     <link href="http://example.com/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/"/>
     <id>http://example.com/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/</id>
@@ -94,30 +118,6 @@
   </entry>
   
   <entry>
-    <title>curl用法</title>
-    <link href="http://example.com/2021/08/08/curl/"/>
-    <id>http://example.com/2021/08/08/curl/</id>
-    <published>2021-08-07T16:00:00.000Z</published>
-    <updated>2021-08-08T00:40:08.660Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">不带有任何参数时，curl 就是发出 GET 请求。</span><br><span class="line">curl https:&#x2F;&#x2F;www.example.com</span><br><span class="line"></span><br><span class="line">-O参数将服务器回应保存成文件，并将 URL 的最后部分当作文件名。</span><br><span class="line">curl -O https:&#x2F;&#x2F;www.example.com&#x2F;foo&#x2F;bar.html</span><br><span class="line"></span><br><span class="line">-s参数将不输出错误和进度信息。</span><br><span class="line">curl -s https:&#x2F;&#x2F;www.example.com</span><br><span class="line"></span><br><span class="line">-S参数指定只输出错误信息，通常与-s一起使用。</span><br><span class="line">curl -s -o &#x2F;dev&#x2F;null https:&#x2F;&#x2F;google.com</span><br><span class="line"></span><br><span class="line">-L参数会让 HTTP 请求跟随服务器的重定向。curl 默认不跟随重定向。</span><br><span class="line">curl -L -d &#39;tweet&#x3D;hi&#39; https:&#x2F;&#x2F;api.twitter.com&#x2F;tweet</span><br></pre></td></tr></table></figure><blockquote><p>参考：<a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class</summary>
-      
-    
-    
-    
-    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
-    
-    
-    <category term="curl" scheme="http://example.com/tags/curl/"/>
-    
-  </entry>
-  
-  <entry>
     <title>shell运算</title>
     <link href="http://example.com/2021/07/28/shell%E8%BF%90%E7%AE%97/"/>
     <id>http://example.com/2021/07/28/shell%E8%BF%90%E7%AE%97/</id>
@@ -139,6 +139,31 @@
     
     
     <category term="shell运算" scheme="http://example.com/tags/shell%E8%BF%90%E7%AE%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shell后台运行脚本</title>
+    <link href="http://example.com/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"/>
+    <id>http://example.com/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</id>
+    <published>2021-07-27T16:00:00.000Z</published>
+    <updated>2021-07-28T10:11:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>参考链接：<a href="https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html">https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html</a></p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;参考链接：&lt;a href=&quot;https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html&quot;&gt;https://www.huaweicloud.com/articl</summary>
+      
+    
+    
+    
+    <category term="shell" scheme="http://example.com/categories/shell/"/>
+    
+    
+    <category term="shell后台运行脚本" scheme="http://example.com/tags/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"/>
     
   </entry>
   
@@ -187,31 +212,6 @@
     
     
     <category term="wget" scheme="http://example.com/tags/wget/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>shell后台运行脚本</title>
-    <link href="http://example.com/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"/>
-    <id>http://example.com/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</id>
-    <published>2021-07-27T16:00:00.000Z</published>
-    <updated>2021-07-28T10:11:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>参考链接：<a href="https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html">https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html</a></p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;参考链接：&lt;a href=&quot;https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html&quot;&gt;https://www.huaweicloud.com/articl</summary>
-      
-    
-    
-    
-    <category term="shell" scheme="http://example.com/categories/shell/"/>
-    
-    
-    <category term="shell后台运行脚本" scheme="http://example.com/tags/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"/>
     
   </entry>
   
@@ -342,28 +342,28 @@
   </entry>
   
   <entry>
-    <title>linux命令路径</title>
-    <link href="http://example.com/2021/07/02/%E6%9F%A5%E7%9C%8Blinux%E5%91%BD%E4%BB%A4%E7%9A%84%E8%B7%AF%E5%BE%84/"/>
-    <id>http://example.com/2021/07/02/%E6%9F%A5%E7%9C%8Blinux%E5%91%BD%E4%BB%A4%E7%9A%84%E8%B7%AF%E5%BE%84/</id>
+    <title>tcp重传</title>
+    <link href="http://example.com/2021/07/02/tcp%E9%87%8D%E4%BC%A0/"/>
+    <id>http://example.com/2021/07/02/tcp%E9%87%8D%E4%BC%A0/</id>
     <published>2021-07-01T16:00:00.000Z</published>
-    <updated>2021-07-28T10:11:43.000Z</updated>
+    <updated>2021-08-08T00:43:26.587Z</updated>
     
-    <content type="html"><![CDATA[<p>linux下有2个命令可完成该功能：which ,whereis</p><p>which 用来查看当，前要执行的命令所在的路径。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which命令的原理：在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</span><br></pre></td></tr></table></figure><p>whereis 用来查看一个命令或者文件所在的路径。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis命令原理：只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>RtoAlgorithm ：<br>RtoMin :<br>RtoMax :<br>MaxConn :<br>ActiveOpens : 服务器主动连接的TCP请求数<br>PassiveOpens ：服务器接收到的TCP请求数<br>AttemptFailsEstabResets ：TCP连接失败个数(AttemptFails)包含：主动连接失败收到syn包回包syn+ack给对方后，被对方reset收到的请求中，同时有syn+rst flag<br>CurrEstab ：TCP当前建立连接的个数<br>InSegs ：TCP接收的分片数<br>OutSegs ：TCP发送的分片数<br>RetransSegs ：重传分片数<br>InErrs ：TCP入包错误(pkg/m,通常是校验错误)<br>OutRsts ：<br>TCP重传率 =重传分片数 / TCP发送的分片数</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;linux下有2个命令可完成该功能：which ,whereis&lt;/p&gt;
-&lt;p&gt;which 用来查看当，前要执行的命令所在的路径。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;</summary>
+    <summary type="html">&lt;p&gt;RtoAlgorithm ：&lt;br&gt;RtoMin :&lt;br&gt;RtoMax :&lt;br&gt;MaxConn :&lt;br&gt;ActiveOpens : 服务器主动连接的TCP请求数&lt;br&gt;PassiveOpens ：服务器接收到的TCP请求数&lt;br&gt;AttemptFailsEstabRe</summary>
       
     
     
     
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
+    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
     
     
-    <category term="路径" scheme="http://example.com/tags/%E8%B7%AF%E5%BE%84/"/>
+    <category term="网络抓包" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/"/>
+    
+    <category term="tcp重传" scheme="http://example.com/tags/tcp%E9%87%8D%E4%BC%A0/"/>
     
   </entry>
   
@@ -396,28 +396,28 @@
   </entry>
   
   <entry>
-    <title>tcp重传</title>
-    <link href="http://example.com/2021/07/02/tcp%E9%87%8D%E4%BC%A0/"/>
-    <id>http://example.com/2021/07/02/tcp%E9%87%8D%E4%BC%A0/</id>
+    <title>linux命令路径</title>
+    <link href="http://example.com/2021/07/02/%E6%9F%A5%E7%9C%8Blinux%E5%91%BD%E4%BB%A4%E7%9A%84%E8%B7%AF%E5%BE%84/"/>
+    <id>http://example.com/2021/07/02/%E6%9F%A5%E7%9C%8Blinux%E5%91%BD%E4%BB%A4%E7%9A%84%E8%B7%AF%E5%BE%84/</id>
     <published>2021-07-01T16:00:00.000Z</published>
-    <updated>2021-08-08T00:43:26.587Z</updated>
+    <updated>2021-07-28T10:11:43.000Z</updated>
     
-    <content type="html"><![CDATA[<p>RtoAlgorithm ：<br>RtoMin :<br>RtoMax :<br>MaxConn :<br>ActiveOpens : 服务器主动连接的TCP请求数<br>PassiveOpens ：服务器接收到的TCP请求数<br>AttemptFailsEstabResets ：TCP连接失败个数(AttemptFails)包含：主动连接失败收到syn包回包syn+ack给对方后，被对方reset收到的请求中，同时有syn+rst flag<br>CurrEstab ：TCP当前建立连接的个数<br>InSegs ：TCP接收的分片数<br>OutSegs ：TCP发送的分片数<br>RetransSegs ：重传分片数<br>InErrs ：TCP入包错误(pkg/m,通常是校验错误)<br>OutRsts ：<br>TCP重传率 =重传分片数 / TCP发送的分片数</p>]]></content>
+    <content type="html"><![CDATA[<p>linux下有2个命令可完成该功能：which ,whereis</p><p>which 用来查看当，前要执行的命令所在的路径。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which命令的原理：在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</span><br></pre></td></tr></table></figure><p>whereis 用来查看一个命令或者文件所在的路径。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis命令原理：只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。</span><br></pre></td></tr></table></figure>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;RtoAlgorithm ：&lt;br&gt;RtoMin :&lt;br&gt;RtoMax :&lt;br&gt;MaxConn :&lt;br&gt;ActiveOpens : 服务器主动连接的TCP请求数&lt;br&gt;PassiveOpens ：服务器接收到的TCP请求数&lt;br&gt;AttemptFailsEstabRe</summary>
+    <summary type="html">&lt;p&gt;linux下有2个命令可完成该功能：which ,whereis&lt;/p&gt;
+&lt;p&gt;which 用来查看当，前要执行的命令所在的路径。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;</summary>
       
     
     
     
-    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
+    <category term="linux" scheme="http://example.com/categories/linux/"/>
     
     
-    <category term="网络抓包" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/"/>
-    
-    <category term="tcp重传" scheme="http://example.com/tags/tcp%E9%87%8D%E4%BC%A0/"/>
+    <category term="路径" scheme="http://example.com/tags/%E8%B7%AF%E5%BE%84/"/>
     
   </entry>
   
@@ -473,6 +473,31 @@
   </entry>
   
   <entry>
+    <title>npc内网穿透</title>
+    <link href="http://example.com/2021/06/25/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    <id>http://example.com/2021/06/25/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</id>
+    <published>2021-06-24T16:00:00.000Z</published>
+    <updated>2021-08-04T06:46:38.611Z</updated>
+    
+    <content type="html"><![CDATA[<p>C:\NPS&gt;npc.exe -server=XX.XX.XX.XX:XXXX -vkey=zmo83rtp -type=tcp</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;C:\NPS&amp;gt;npc.exe -server=XX.XX.XX.XX:XXXX -vkey=zmo83rtp -type=tcp&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="内网穿透" scheme="http://example.com/categories/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    
+    
+    <category term="npc" scheme="http://example.com/tags/npc/"/>
+    
+  </entry>
+  
+  <entry>
     <title>tcping  pingIP的端口</title>
     <link href="http://example.com/2021/06/25/tcping/"/>
     <id>http://example.com/2021/06/25/tcping/</id>
@@ -497,31 +522,6 @@
     <category term="ping" scheme="http://example.com/tags/ping/"/>
     
     <category term="tcping" scheme="http://example.com/tags/tcping/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>npc内网穿透</title>
-    <link href="http://example.com/2021/06/25/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
-    <id>http://example.com/2021/06/25/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</id>
-    <published>2021-06-24T16:00:00.000Z</published>
-    <updated>2021-08-04T06:46:38.611Z</updated>
-    
-    <content type="html"><![CDATA[<p>C:\NPS&gt;npc.exe -server=XX.XX.XX.XX:XXXX -vkey=zmo83rtp -type=tcp</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;C:\NPS&amp;gt;npc.exe -server=XX.XX.XX.XX:XXXX -vkey=zmo83rtp -type=tcp&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="内网穿透" scheme="http://example.com/categories/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
-    
-    
-    <category term="npc" scheme="http://example.com/tags/npc/"/>
     
   </entry>
   
