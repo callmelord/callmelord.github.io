@@ -261,7 +261,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/</loc>
+    <loc>http://example.com/2021/03/18/DNS-Resolv%E8%AE%BE%E7%BD%AE%E5%92%8C%E9%87%8D%E5%90%AF%E6%97%A0%E6%95%88/</loc>
     
     <lastmod>2021-08-23</lastmod>
     
@@ -359,7 +359,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2021/03/18/DNS-Resolv%E8%AE%BE%E7%BD%AE%E5%92%8C%E9%87%8D%E5%90%AF%E6%97%A0%E6%95%88/</loc>
+    <loc>http://example.com/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/</loc>
     
     <lastmod>2021-08-23</lastmod>
     
@@ -443,14 +443,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/2021/03/15/linux%E8%B7%AF%E7%94%B1/</loc>
+    <loc>http://example.com/2021/08/20/docker%E5%AE%B9%E5%99%A8%E4%B8%80%E7%9B%B4%E9%87%8D%E5%90%AF/</loc>
     
     <lastmod>2021-08-23</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/2021/08/20/docker%E5%AE%B9%E5%99%A8%E4%B8%80%E7%9B%B4%E9%87%8D%E5%90%AF/</loc>
+    <loc>http://example.com/2021/03/15/linux%E8%B7%AF%E7%94%B1/</loc>
     
     <lastmod>2021-08-23</lastmod>
     
@@ -529,20 +529,6 @@
 
   
   <url>
-    <loc>http://example.com/tags/%E5%B8%B8%E8%AF%86/</loc>
-    <lastmod>2021-08-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/DNS/</loc>
-    <lastmod>2021-08-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/tags/centos7/</loc>
     <lastmod>2021-08-29</lastmod>
     <changefreq>daily</changefreq>
@@ -551,6 +537,20 @@
   
   <url>
     <loc>http://example.com/tags/slice-User/</loc>
+    <lastmod>2021-08-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E5%B8%B8%E8%AF%86/</loc>
+    <lastmod>2021-08-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/DNS/</loc>
     <lastmod>2021-08-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -937,14 +937,14 @@
 
   
   <url>
-    <loc>http://example.com/categories/linux%E7%BD%91%E7%BB%9C/</loc>
+    <loc>http://example.com/categories/linux/</loc>
     <lastmod>2021-08-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/linux/</loc>
+    <loc>http://example.com/categories/linux%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2021-08-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

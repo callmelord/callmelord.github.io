@@ -93,56 +93,6 @@
   </entry>
   
   <entry>
-    <title>expect 介绍和用法</title>
-    <link href="http://example.com/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/"/>
-    <id>http://example.com/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/</id>
-    <published>2021-08-07T16:00:00.000Z</published>
-    <updated>2021-08-23T10:19:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h3><p>expect是一个自动化交互套件，主要应用于执行命令和程序时，系统以交互形式要求输入指定字符串，实现交互通信。</p><p>expect自动交互流程：</p><p>spawn启动指定进程—expect获取指定关键字—send向指定程序发送指定字符—执行完成退出.</p><h3 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install expect -y</span><br></pre></td></tr></table></figure><h3 id="expect常用命令总结"><a href="#expect常用命令总结" class="headerlink" title="expect常用命令总结:"></a>expect常用命令总结:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">spawn               交互程序开始后面跟命令或者指定程序</span><br><span class="line">expect              获取匹配信息匹配成功则执行expect后面的程序动作</span><br><span class="line">send exp_send       用于发送指定的字符串信息</span><br><span class="line">exp_continue        在expect中多次匹配就需要用到</span><br><span class="line">send_user           用来打印输出 相当于shell中的echo</span><br><span class="line">exit                退出expect脚本</span><br><span class="line">eof                 expect执行结束 退出</span><br><span class="line">set                 定义变量</span><br><span class="line">puts                输出变量</span><br><span class="line">set timeout         设置超时时间</span><br></pre></td></tr></table></figure><h3 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#! &#x2F;usr&#x2F;bin&#x2F;expect</span><br><span class="line"></span><br><span class="line">set timeout 3                       </span><br><span class="line">spawn ssh root@X.X.X.X -p 12345</span><br><span class="line">expect &quot;*password*&quot; </span><br><span class="line">#期待匹配到 &#39;user_name@ip_string&#39;s password:&#39;</span><br><span class="line"></span><br><span class="line">send &quot;passwd\r&quot;</span><br><span class="line">interact </span><br></pre></td></tr></table></figure><h3 id="在脚本中使用："><a href="#在脚本中使用：" class="headerlink" title="在脚本中使用："></a>在脚本中使用：</h3><pre><code>/usr/bin/expect &lt;&lt; EOFspawn /usr/bin/ssh -t -p 22022 admin@$i &quot;sudo su -&quot;expect &#123;    &quot;yes/no&quot; &#123; send &quot;yes\r&quot; &#125;&#125;   expect &#123;    &quot;password:&quot; &#123; send &quot;xxo1#qaz\r&quot; &#125;&#125;expect &#123;    &quot;*password*:&quot; &#123; send &quot;xx1#qaz\r&quot; &#125;&#125;expect eofEOF</code></pre><blockquote><p>参考：<a href="https://www.cnblogs.com/saneri/p/10819348.html">https://www.cnblogs.com/saneri/p/10819348.html</a></p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;介绍：&quot;&gt;&lt;a href=&quot;#介绍：&quot; class=&quot;headerlink&quot; title=&quot;介绍：&quot;&gt;&lt;/a&gt;介绍：&lt;/h3&gt;&lt;p&gt;expect是一个自动化交互套件，主要应用于执行命令和程序时，系统以交互形式要求输入指定字符串，实现交互通信。&lt;/p&gt;
-&lt;p&gt;exp</summary>
-      
-    
-    
-    
-    <category term="shell" scheme="http://example.com/categories/shell/"/>
-    
-    
-    <category term="自动化交互" scheme="http://example.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E4%BA%A4%E4%BA%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>只读文件系统 /var/cache/yum/x86 64/7/base/repomd.xml.old.tmp</title>
-    <link href="http://example.com/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
-    <id>http://example.com/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</id>
-    <published>2021-08-07T16:00:00.000Z</published>
-    <updated>2021-08-23T13:09:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>问题：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Errno 30] 只读文件系统: &#39;&#x2F;var&#x2F;cache&#x2F;yum&#x2F;x86_64&#x2F;7&#x2F;base&#x2F;repomd.xml.old.tmp&#39;</span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">不知道到底是什么，但一定yum源有了问题；</span><br><span class="line">网上搜了一大堆，大多是yum clean清缓存的，没试，应该也行；</span><br><span class="line"></span><br><span class="line">解决：</span><br><span class="line">进入&#x2F;var&#x2F;cache&#x2F;yum&#x2F;, 执行rm -rf x86_64&#x2F;c, 删除缓存；</span><br><span class="line">报错：rm: 无法删除&quot;xxx&quot;: 只读文件系统</span><br><span class="line">执行mount -o remount,rw &#x2F;, 再次删除；</span><br><span class="line">执行yum repolist;</span><br></pre></td></tr></table></figure><p>ok, 搞定</p><blockquote><p>参考：<a href="https://blog.csdn.net/xue15029240296/article/details/103211911">https://blog.csdn.net/xue15029240296/article/details/103211911</a></p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;问题：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
-    
-    
-    <category term="技巧" scheme="http://example.com/tags/%E6%8A%80%E5%B7%A7/"/>
-    
-  </entry>
-  
-  <entry>
     <title>sort排序</title>
     <link href="http://example.com/2021/08/08/sort%E6%8E%92%E5%BA%8F/"/>
     <id>http://example.com/2021/08/08/sort%E6%8E%92%E5%BA%8F/</id>
@@ -195,6 +145,31 @@
   </entry>
   
   <entry>
+    <title>expect 介绍和用法</title>
+    <link href="http://example.com/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/"/>
+    <id>http://example.com/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/</id>
+    <published>2021-08-07T16:00:00.000Z</published>
+    <updated>2021-08-23T10:19:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h3><p>expect是一个自动化交互套件，主要应用于执行命令和程序时，系统以交互形式要求输入指定字符串，实现交互通信。</p><p>expect自动交互流程：</p><p>spawn启动指定进程—expect获取指定关键字—send向指定程序发送指定字符—执行完成退出.</p><h3 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install expect -y</span><br></pre></td></tr></table></figure><h3 id="expect常用命令总结"><a href="#expect常用命令总结" class="headerlink" title="expect常用命令总结:"></a>expect常用命令总结:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">spawn               交互程序开始后面跟命令或者指定程序</span><br><span class="line">expect              获取匹配信息匹配成功则执行expect后面的程序动作</span><br><span class="line">send exp_send       用于发送指定的字符串信息</span><br><span class="line">exp_continue        在expect中多次匹配就需要用到</span><br><span class="line">send_user           用来打印输出 相当于shell中的echo</span><br><span class="line">exit                退出expect脚本</span><br><span class="line">eof                 expect执行结束 退出</span><br><span class="line">set                 定义变量</span><br><span class="line">puts                输出变量</span><br><span class="line">set timeout         设置超时时间</span><br></pre></td></tr></table></figure><h3 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#! &#x2F;usr&#x2F;bin&#x2F;expect</span><br><span class="line"></span><br><span class="line">set timeout 3                       </span><br><span class="line">spawn ssh root@X.X.X.X -p 12345</span><br><span class="line">expect &quot;*password*&quot; </span><br><span class="line">#期待匹配到 &#39;user_name@ip_string&#39;s password:&#39;</span><br><span class="line"></span><br><span class="line">send &quot;passwd\r&quot;</span><br><span class="line">interact </span><br></pre></td></tr></table></figure><h3 id="在脚本中使用："><a href="#在脚本中使用：" class="headerlink" title="在脚本中使用："></a>在脚本中使用：</h3><pre><code>/usr/bin/expect &lt;&lt; EOFspawn /usr/bin/ssh -t -p 22022 admin@$i &quot;sudo su -&quot;expect &#123;    &quot;yes/no&quot; &#123; send &quot;yes\r&quot; &#125;&#125;   expect &#123;    &quot;password:&quot; &#123; send &quot;xxo1#qaz\r&quot; &#125;&#125;expect &#123;    &quot;*password*:&quot; &#123; send &quot;xx1#qaz\r&quot; &#125;&#125;expect eofEOF</code></pre><blockquote><p>参考：<a href="https://www.cnblogs.com/saneri/p/10819348.html">https://www.cnblogs.com/saneri/p/10819348.html</a></p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;介绍：&quot;&gt;&lt;a href=&quot;#介绍：&quot; class=&quot;headerlink&quot; title=&quot;介绍：&quot;&gt;&lt;/a&gt;介绍：&lt;/h3&gt;&lt;p&gt;expect是一个自动化交互套件，主要应用于执行命令和程序时，系统以交互形式要求输入指定字符串，实现交互通信。&lt;/p&gt;
+&lt;p&gt;exp</summary>
+      
+    
+    
+    
+    <category term="shell" scheme="http://example.com/categories/shell/"/>
+    
+    
+    <category term="自动化交互" scheme="http://example.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E4%BA%A4%E4%BA%92/"/>
+    
+  </entry>
+  
+  <entry>
     <title>curl用法</title>
     <link href="http://example.com/2021/08/08/curl/"/>
     <id>http://example.com/2021/08/08/curl/</id>
@@ -219,26 +194,27 @@
   </entry>
   
   <entry>
-    <title>shell时间戳</title>
-    <link href="http://example.com/2021/07/28/shell%E6%97%B6%E9%97%B4%E6%88%B3/"/>
-    <id>http://example.com/2021/07/28/shell%E6%97%B6%E9%97%B4%E6%88%B3/</id>
-    <published>2021-07-27T16:00:00.000Z</published>
-    <updated>2021-08-23T10:19:00.000Z</updated>
+    <title>只读文件系统 /var/cache/yum/x86 64/7/base/repomd.xml.old.tmp</title>
+    <link href="http://example.com/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://example.com/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</id>
+    <published>2021-08-07T16:00:00.000Z</published>
+    <updated>2021-08-23T13:09:38.000Z</updated>
     
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">用shell将时间字符串与时间戳互转：</span><br><span class="line">date -d &quot;2010-10-18 00:00:00&quot; +%s         </span><br><span class="line">输出形如：1287331200</span><br><span class="line"></span><br><span class="line">而时间戳转换为字符串可以这样做：</span><br><span class="line">date -d @1287331200  &quot;+%Y-%m-%d&quot;    </span><br><span class="line">输出形如：2010-10-18</span><br><span class="line"></span><br><span class="line">时间戳可以理解为秒数，是可以加减的</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>问题：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Errno 30] 只读文件系统: &#39;&#x2F;var&#x2F;cache&#x2F;yum&#x2F;x86_64&#x2F;7&#x2F;base&#x2F;repomd.xml.old.tmp&#39;</span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">不知道到底是什么，但一定yum源有了问题；</span><br><span class="line">网上搜了一大堆，大多是yum clean清缓存的，没试，应该也行；</span><br><span class="line"></span><br><span class="line">解决：</span><br><span class="line">进入&#x2F;var&#x2F;cache&#x2F;yum&#x2F;, 执行rm -rf x86_64&#x2F;c, 删除缓存；</span><br><span class="line">报错：rm: 无法删除&quot;xxx&quot;: 只读文件系统</span><br><span class="line">执行mount -o remount,rw &#x2F;, 再次删除；</span><br><span class="line">执行yum repolist;</span><br></pre></td></tr></table></figure><p>ok, 搞定</p><blockquote><p>参考：<a href="https://blog.csdn.net/xue15029240296/article/details/103211911">https://blog.csdn.net/xue15029240296/article/details/103211911</a></p></blockquote>]]></content>
     
     
       
       
-    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class</summary>
+    <summary type="html">&lt;p&gt;问题：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;</summary>
       
     
     
     
-    <category term="shell" scheme="http://example.com/categories/shell/"/>
+    <category term="linux" scheme="http://example.com/categories/linux/"/>
     
     
-    <category term="shell时间戳" scheme="http://example.com/tags/shell%E6%97%B6%E9%97%B4%E6%88%B3/"/>
+    <category term="技巧" scheme="http://example.com/tags/%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
@@ -267,31 +243,6 @@
   </entry>
   
   <entry>
-    <title>shell后台运行脚本</title>
-    <link href="http://example.com/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"/>
-    <id>http://example.com/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</id>
-    <published>2021-07-27T16:00:00.000Z</published>
-    <updated>2021-08-23T10:19:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>参考链接：<a href="https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html">https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html</a></p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;参考链接：&lt;a href=&quot;https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html&quot;&gt;https://www.huaweicloud.com/articl</summary>
-      
-    
-    
-    
-    <category term="shell" scheme="http://example.com/categories/shell/"/>
-    
-    
-    <category term="shell后台运行脚本" scheme="http://example.com/tags/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"/>
-    
-  </entry>
-  
-  <entry>
     <title>shell运算</title>
     <link href="http://example.com/2021/07/28/shell%E8%BF%90%E7%AE%97/"/>
     <id>http://example.com/2021/07/28/shell%E8%BF%90%E7%AE%97/</id>
@@ -313,6 +264,55 @@
     
     
     <category term="shell运算" scheme="http://example.com/tags/shell%E8%BF%90%E7%AE%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shell时间戳</title>
+    <link href="http://example.com/2021/07/28/shell%E6%97%B6%E9%97%B4%E6%88%B3/"/>
+    <id>http://example.com/2021/07/28/shell%E6%97%B6%E9%97%B4%E6%88%B3/</id>
+    <published>2021-07-27T16:00:00.000Z</published>
+    <updated>2021-08-23T10:19:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">用shell将时间字符串与时间戳互转：</span><br><span class="line">date -d &quot;2010-10-18 00:00:00&quot; +%s         </span><br><span class="line">输出形如：1287331200</span><br><span class="line"></span><br><span class="line">而时间戳转换为字符串可以这样做：</span><br><span class="line">date -d @1287331200  &quot;+%Y-%m-%d&quot;    </span><br><span class="line">输出形如：2010-10-18</span><br><span class="line"></span><br><span class="line">时间戳可以理解为秒数，是可以加减的</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class</summary>
+      
+    
+    
+    
+    <category term="shell" scheme="http://example.com/categories/shell/"/>
+    
+    
+    <category term="shell时间戳" scheme="http://example.com/tags/shell%E6%97%B6%E9%97%B4%E6%88%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shell后台运行脚本</title>
+    <link href="http://example.com/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"/>
+    <id>http://example.com/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</id>
+    <published>2021-07-27T16:00:00.000Z</published>
+    <updated>2021-08-23T10:19:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>参考链接：<a href="https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html">https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html</a></p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;参考链接：&lt;a href=&quot;https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html&quot;&gt;https://www.huaweicloud.com/articl</summary>
+      
+    
+    
+    
+    <category term="shell" scheme="http://example.com/categories/shell/"/>
+    
+    
+    <category term="shell后台运行脚本" scheme="http://example.com/tags/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"/>
     
   </entry>
   
@@ -392,6 +392,30 @@
   </entry>
   
   <entry>
+    <title>pip问题</title>
+    <link href="http://example.com/2021/07/09/pip%E5%AE%89%E8%A3%85python3.6/"/>
+    <id>http://example.com/2021/07/09/pip%E5%AE%89%E8%A3%85python3.6/</id>
+    <published>2021-07-08T16:00:00.000Z</published>
+    <updated>2021-08-23T10:19:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>安装python3.6<br>pip3 install wheel –target=/usr/lib/python3.6/site-packages<br>pip3 install pyshark –target=/usr/lib/python3.6/site-packages</p><h4 id="导入pyshark报错"><a href="#导入pyshark报错" class="headerlink" title="导入pyshark报错"></a>导入pyshark报错</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pyshark&#x2F;__init__.py&quot;, line 13, in &lt;module&gt;</span><br><span class="line">    from pyshark.capture.live_capture import LiveCapture</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pyshark&#x2F;capture&#x2F;live_capture.py&quot;, line 6, in &lt;module&gt;</span><br><span class="line">    from pyshark.capture.capture import Capture</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pyshark&#x2F;capture&#x2F;capture.py&quot;, line 13, in &lt;module&gt;</span><br><span class="line">    from pyshark.tshark.tshark_xml import packet_from_xml_packet, psml_structure_from_xml</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pyshark&#x2F;tshark&#x2F;tshark_xml.py&quot;, line 2, in &lt;module&gt;</span><br><span class="line">    import lxml.objectify</span><br><span class="line">ModuleNotFoundError: No module named &#39;lxml&#39;</span><br></pre></td></tr></table></figure><p>pip3 install lxml –target=/usr/lib/python3.6/site-packages</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;安装python3.6&lt;br&gt;pip3 install wheel –target=/usr/lib/python3.6/site-packages&lt;br&gt;pip3 install pyshark –target=/usr/lib/python3.6/site-packag</summary>
+      
+    
+    
+    
+    <category term="python" scheme="http://example.com/categories/python/"/>
+    
+    
+    <category term="pip" scheme="http://example.com/tags/pip/"/>
+    
+  </entry>
+  
+  <entry>
     <title>软件包管理器yum</title>
     <link href="http://example.com/2021/07/09/yum/"/>
     <id>http://example.com/2021/07/09/yum/</id>
@@ -419,26 +443,30 @@
   </entry>
   
   <entry>
-    <title>pip问题</title>
-    <link href="http://example.com/2021/07/09/pip%E5%AE%89%E8%A3%85python3.6/"/>
-    <id>http://example.com/2021/07/09/pip%E5%AE%89%E8%A3%85python3.6/</id>
-    <published>2021-07-08T16:00:00.000Z</published>
+    <title>tcp_ip详解</title>
+    <link href="http://example.com/2021/07/02/tcp_ip/"/>
+    <id>http://example.com/2021/07/02/tcp_ip/</id>
+    <published>2021-07-01T16:00:00.000Z</published>
     <updated>2021-08-23T10:19:00.000Z</updated>
     
-    <content type="html"><![CDATA[<p>安装python3.6<br>pip3 install wheel –target=/usr/lib/python3.6/site-packages<br>pip3 install pyshark –target=/usr/lib/python3.6/site-packages</p><h4 id="导入pyshark报错"><a href="#导入pyshark报错" class="headerlink" title="导入pyshark报错"></a>导入pyshark报错</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pyshark&#x2F;__init__.py&quot;, line 13, in &lt;module&gt;</span><br><span class="line">    from pyshark.capture.live_capture import LiveCapture</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pyshark&#x2F;capture&#x2F;live_capture.py&quot;, line 6, in &lt;module&gt;</span><br><span class="line">    from pyshark.capture.capture import Capture</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pyshark&#x2F;capture&#x2F;capture.py&quot;, line 13, in &lt;module&gt;</span><br><span class="line">    from pyshark.tshark.tshark_xml import packet_from_xml_packet, psml_structure_from_xml</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pyshark&#x2F;tshark&#x2F;tshark_xml.py&quot;, line 2, in &lt;module&gt;</span><br><span class="line">    import lxml.objectify</span><br><span class="line">ModuleNotFoundError: No module named &#39;lxml&#39;</span><br></pre></td></tr></table></figure><p>pip3 install lxml –target=/usr/lib/python3.6/site-packages</p>]]></content>
+    <content type="html"><![CDATA[<p>ACK (Acknowledge character）: 确认字符</p><p>RTT（Round-trip delay time）: 发送一个数据包到收到对应的ACK，所花费的时间</p><p>RTO: 发送数据包失败了，要在100ms内重新发送，RTO的值就是100ms</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;安装python3.6&lt;br&gt;pip3 install wheel –target=/usr/lib/python3.6/site-packages&lt;br&gt;pip3 install pyshark –target=/usr/lib/python3.6/site-packag</summary>
+    <summary type="html">&lt;p&gt;ACK (Acknowledge character）: 确认字符&lt;/p&gt;
+&lt;p&gt;RTT（Round-trip delay time）: 发送一个数据包到收到对应的ACK，所花费的时间&lt;/p&gt;
+&lt;p&gt;RTO: 发送数据包失败了，要在100ms内重新发送，RTO的值就是100</summary>
       
     
     
     
-    <category term="python" scheme="http://example.com/categories/python/"/>
+    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
     
     
-    <category term="pip" scheme="http://example.com/tags/pip/"/>
+    <category term="tcp_ip" scheme="http://example.com/tags/tcp-ip/"/>
+    
+    <category term="网络抓包" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/"/>
     
   </entry>
   
@@ -491,34 +519,6 @@
     <category term="网络抓包" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/"/>
     
     <category term="tcp重传" scheme="http://example.com/tags/tcp%E9%87%8D%E4%BC%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>tcp_ip详解</title>
-    <link href="http://example.com/2021/07/02/tcp_ip/"/>
-    <id>http://example.com/2021/07/02/tcp_ip/</id>
-    <published>2021-07-01T16:00:00.000Z</published>
-    <updated>2021-08-23T10:19:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>ACK (Acknowledge character）: 确认字符</p><p>RTT（Round-trip delay time）: 发送一个数据包到收到对应的ACK，所花费的时间</p><p>RTO: 发送数据包失败了，要在100ms内重新发送，RTO的值就是100ms</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;ACK (Acknowledge character）: 确认字符&lt;/p&gt;
-&lt;p&gt;RTT（Round-trip delay time）: 发送一个数据包到收到对应的ACK，所花费的时间&lt;/p&gt;
-&lt;p&gt;RTO: 发送数据包失败了，要在100ms内重新发送，RTO的值就是100</summary>
-      
-    
-    
-    
-    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
-    
-    
-    <category term="tcp_ip" scheme="http://example.com/tags/tcp-ip/"/>
-    
-    <category term="网络抓包" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/"/>
     
   </entry>
   

@@ -799,214 +799,6 @@
 
 
     
-        <article id="post-容器部署常见问腿" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%B9%E5%99%A8/">服务器容器</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/docker/" rel="tag">docker</a>, <a class="tag-link-link" href="/tags/hyp/" rel="tag">hyp</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">
-            <time datetime="2021-03-14T16:00:00.000Z" itemprop="datePublished">2021-03-15</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/容器部署常见问腿.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/容器部署常见问腿.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/容器部署常见问腿.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">容器部署常见问题</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><h3 id="查看当前ip地区运营商"><a href="#查看当前ip地区运营商" class="headerlink" title="查看当前ip地区运营商"></a>查看当前ip地区运营商</h3><p><code>curl  --connect-timeout 5 myip.ipip.net</code>  </p>
-<h3 id="查看内存容量"><a href="#查看内存容量" class="headerlink" title="查看内存容量"></a>查看内存容量</h3><p><code>free -g</code>  </p>
-<h3 id="查看cpu逻辑内核"><a href="#查看cpu逻辑内核" class="headerlink" title="查看cpu逻辑内核"></a>查看cpu逻辑内核</h3><p><code>cat /proc/cpuinfo |grep -c &quot;processor&quot;</code></p>
-<h3 id="根目录爆满"><a href="#根目录爆满" class="headerlink" title="根目录爆满"></a>根目录爆满</h3><ol>
-<li><p>清理根目录缓存（一般是core的缓存/var/lib/docker/overlay2/$uuid/diff/P2P/core.25914）<br><code>find  /var/lib/docker/ -name  &#39;core\.[0-9]*&#39; -type  f -print -exec  rm -rf  &#123;&#125; \; &amp;&amp;  truncate -s 0 /var/lib/docker/containers/*/*-json.log;find  /var/lib/docker/ -name  &#39;popmachine\.log\.[0-9]*&#39; -type  f -print -exec  rm -rf  &#123;&#125; \;</code></p>
-<p>
-                
-            
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-修改centos7网卡名" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/linux/">linux</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1/" rel="tag">修改网卡</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2021/03/15/%E4%BF%AE%E6%94%B9centos7%E7%BD%91%E5%8D%A1%E5%90%8D/">
-            <time datetime="2021-03-14T16:00:00.000Z" itemprop="datePublished">2021-03-15</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/修改centos7网卡名.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/修改centos7网卡名.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/修改centos7网卡名.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2021/03/15/%E4%BF%AE%E6%94%B9centos7%E7%BD%91%E5%8D%A1%E5%90%8D/">修改centos7网卡名称</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><p>首先进入网卡配置文件，先把文件里的名字改过来<br><code>vi /etc/sysconfig/network-scripts/ifcfg-eno32</code><br>保存退出<br><code>cd /etc/sysconfig/network-scripts/</code><br><code>mv ifcfg-eno32 ifcfg-eth0</code>  </p>
-<p>修改grub配置文件/etc/grub2.cfg，把net.ifnames=0 biosdevname=0参数 加入指定位置<br>要加的位置 menuentry 下 linux 16 rhgb quiet 之前</p>
-<p>vim /etc/default/grub</p>
-<p>运行命令grub2-mkconfig -o /boot/grub2/grub.cfg 来重新生成GRUB配置并更新内核参数。</p>
-<p>reboot 重启</p>
-<p>
-                
-            
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2021/03/15/%E4%BF%AE%E6%94%B9centos7%E7%BD%91%E5%8D%A1%E5%90%8D/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
         <article id="post-linux路由" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1215,6 +1007,299 @@
 
 
     
+        <article id="post-容器部署常见问腿" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%B9%E5%99%A8/">服务器容器</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/docker/" rel="tag">docker</a>, <a class="tag-link-link" href="/tags/hyp/" rel="tag">hyp</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">
+            <time datetime="2021-03-14T16:00:00.000Z" itemprop="datePublished">2021-03-15</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/容器部署常见问腿.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/容器部署常见问腿.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/容器部署常见问腿.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">容器部署常见问题</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h3 id="查看当前ip地区运营商"><a href="#查看当前ip地区运营商" class="headerlink" title="查看当前ip地区运营商"></a>查看当前ip地区运营商</h3><p><code>curl  --connect-timeout 5 myip.ipip.net</code>  </p>
+<h3 id="查看内存容量"><a href="#查看内存容量" class="headerlink" title="查看内存容量"></a>查看内存容量</h3><p><code>free -g</code>  </p>
+<h3 id="查看cpu逻辑内核"><a href="#查看cpu逻辑内核" class="headerlink" title="查看cpu逻辑内核"></a>查看cpu逻辑内核</h3><p><code>cat /proc/cpuinfo |grep -c &quot;processor&quot;</code></p>
+<h3 id="根目录爆满"><a href="#根目录爆满" class="headerlink" title="根目录爆满"></a>根目录爆满</h3><ol>
+<li><p>清理根目录缓存（一般是core的缓存/var/lib/docker/overlay2/$uuid/diff/P2P/core.25914）<br><code>find  /var/lib/docker/ -name  &#39;core\.[0-9]*&#39; -type  f -print -exec  rm -rf  &#123;&#125; \; &amp;&amp;  truncate -s 0 /var/lib/docker/containers/*/*-json.log;find  /var/lib/docker/ -name  &#39;popmachine\.log\.[0-9]*&#39; -type  f -print -exec  rm -rf  &#123;&#125; \;</code></p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-修改centos7网卡名" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/linux/">linux</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1/" rel="tag">修改网卡</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/03/15/%E4%BF%AE%E6%94%B9centos7%E7%BD%91%E5%8D%A1%E5%90%8D/">
+            <time datetime="2021-03-14T16:00:00.000Z" itemprop="datePublished">2021-03-15</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/修改centos7网卡名.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/修改centos7网卡名.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/修改centos7网卡名.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/03/15/%E4%BF%AE%E6%94%B9centos7%E7%BD%91%E5%8D%A1%E5%90%8D/">修改centos7网卡名称</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>首先进入网卡配置文件，先把文件里的名字改过来<br><code>vi /etc/sysconfig/network-scripts/ifcfg-eno32</code><br>保存退出<br><code>cd /etc/sysconfig/network-scripts/</code><br><code>mv ifcfg-eno32 ifcfg-eth0</code>  </p>
+<p>修改grub配置文件/etc/grub2.cfg，把net.ifnames=0 biosdevname=0参数 加入指定位置<br>要加的位置 menuentry 下 linux 16 rhgb quiet 之前</p>
+<p>vim /etc/default/grub</p>
+<p>运行命令grub2-mkconfig -o /boot/grub2/grub.cfg 来重新生成GRUB配置并更新内核参数。</p>
+<p>reboot 重启</p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2021/03/15/%E4%BF%AE%E6%94%B9centos7%E7%BD%91%E5%8D%A1%E5%90%8D/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-更改uuid" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%B9%E5%99%A8/">服务器容器</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">
+            <time datetime="2021-03-10T16:00:00.000Z" itemprop="datePublished">2021-03-11</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/更改uuid.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/更改uuid.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/更改uuid.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&amp;查看服务器信息</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+            
+        
+        
+            <h2 id="更改uuid"><a href="#更改uuid" class="headerlink" title="更改uuid"></a>更改uuid</h2><p>在客户端新增一个设备，得到新的uuid<br>使用之前的uuid登录服务器，修改<code>/etc/salt/minion_id</code>文件，删除里面原有的uuid并加入新的uuid，重启cgroupv2（<code>systemctl restart cgroupv2</code>）<br>然后清理hyp的缓存 <code>hyp --clear</code>，接收这个uuid <code>hyp -l $uuid -dst a</code><br>然后就可以使用uuid登录进去了</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-磁盘无法挂载" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1306,91 +1391,6 @@
             </div>   
             <div class="article-more-link">
                 <a href="/2021/03/11/%E7%A3%81%E7%9B%98%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BD/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-更改uuid" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%B9%E5%99%A8/">服务器容器</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">
-            <time datetime="2021-03-10T16:00:00.000Z" itemprop="datePublished">2021-03-11</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/更改uuid.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/更改uuid.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/更改uuid.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&amp;查看服务器信息</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-            
-        
-        
-            <h2 id="更改uuid"><a href="#更改uuid" class="headerlink" title="更改uuid"></a>更改uuid</h2><p>在客户端新增一个设备，得到新的uuid<br>使用之前的uuid登录服务器，修改<code>/etc/salt/minion_id</code>文件，删除里面原有的uuid并加入新的uuid，重启cgroupv2（<code>systemctl restart cgroupv2</code>）<br>然后清理hyp的缓存 <code>hyp --clear</code>，接收这个uuid <code>hyp -l $uuid -dst a</code><br>然后就可以使用uuid登录进去了</p>
-
             </div>
         
         <footer class="article-footer">
