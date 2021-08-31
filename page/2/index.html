@@ -270,7 +270,7 @@
                             &nbsp;
                             shell
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/17/shell%E8%84%9A%E6%9C%AC%E5%B8%B8%E8%AF%86/">shell脚本常识</a></li>  <li class="file"><a href="/2021/03/31/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC/">linux中/etc/rc.local脚本的作用</a></li>  <li class="file"><a href="/2021/04/15/shell%E8%84%9A%E6%9C%AC%E9%97%AE%E9%A2%98/">shell脚本问题</a></li>  <li class="file"><a href="/2021/06/17/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%A2%9E/">shell脚本自增</a></li>  <li class="file"><a href="/2021/06/17/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FIFS/">利用环境变量IFS自定义分隔符</a></li>  <li class="file"><a href="/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/">shell后台运行脚本</a></li>  <li class="file"><a href="/2021/07/28/shell%E6%97%B6%E9%97%B4%E6%88%B3/">shell时间戳</a></li>  <li class="file"><a href="/2021/07/28/shell%E8%BF%90%E7%AE%97/">shell运算</a></li>  <li class="file"><a href="/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/">expect 介绍和用法</a></li>  <li class="file"><a href="/2021/08/08/sort%E6%8E%92%E5%BA%8F/">sort排序</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/17/shell%E8%84%9A%E6%9C%AC%E5%B8%B8%E8%AF%86/">shell脚本常识</a></li>  <li class="file"><a href="/2021/03/31/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC/">linux中/etc/rc.local脚本的作用</a></li>  <li class="file"><a href="/2021/04/15/shell%E8%84%9A%E6%9C%AC%E9%97%AE%E9%A2%98/">shell脚本问题</a></li>  <li class="file"><a href="/2021/06/17/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%A2%9E/">shell脚本自增</a></li>  <li class="file"><a href="/2021/06/17/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FIFS/">利用环境变量IFS自定义分隔符</a></li>  <li class="file"><a href="/2021/07/28/shell%E6%97%B6%E9%97%B4%E6%88%B3/">shell时间戳</a></li>  <li class="file"><a href="/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/">shell后台运行脚本</a></li>  <li class="file"><a href="/2021/07/28/shell%E8%BF%90%E7%AE%97/">shell运算</a></li>  <li class="file"><a href="/2021/08/08/sort%E6%8E%92%E5%BA%8F/">sort排序</a></li>  <li class="file"><a href="/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/">expect 介绍和用法</a></li>  <li class="file"><a href="/2021/08/31/shell%E4%B8%AD%E7%BB%99%E5%91%BD%E4%BB%A4%E8%AE%BE%E7%BD%AE%E8%B6%85%E6%97%B6%E6%97%B6%E9%97%B4/">shell 中给命令设置超时时间</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -398,6 +398,110 @@
 </aside>
             
             <section id="main">
+        <article id="post-shell运算" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/shell/">shell</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/shell%E8%BF%90%E7%AE%97/" rel="tag">shell运算</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/07/28/shell%E8%BF%90%E7%AE%97/">
+            <time datetime="2021-07-27T16:00:00.000Z" itemprop="datePublished">2021-07-28</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/shell运算.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/shell运算.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/shell运算.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/07/28/shell%E8%BF%90%E7%AE%97/">shell运算</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>使用let命令 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let &quot;sum&#x3D;3+5&quot;    # sum &lt;- 8</span><br><span class="line">let &quot;sum&#x3D;3*5&quot;    # sum &lt;- 15 </span><br><span class="line">let &quot;sum&#x3D;2&#x2F;5&quot;    # sum &lt;- 0 </span><br><span class="line">let &quot;sum&#x3D;11&#x2F;5&quot;   # sum &lt;- 2 </span><br><span class="line">let &quot;sum&#x3D;11%5&quot;   # sum &lt;- 1 </span><br><span class="line">let &quot;sum&#x3D;-6-9&quot;   # sum &lt;- -15</span><br><span class="line">let &quot;sum&#x3D;(-6-9)*5&quot;  # sum &lt;- -75</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/shimazhuge/article/details/38703523">https://blog.csdn.net/shimazhuge/article/details/38703523</a></p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2021/07/28/shell%E8%BF%90%E7%AE%97/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-shell时间戳" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -479,7 +583,7 @@
 
 
     
-        <article id="post-shell后台运行脚本" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-下载离线网页" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -489,19 +593,19 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/shell/">shell</a>
+        <a class="article-category-link" href="/categories/linux%E7%BD%91%E7%BB%9C/">linux网络</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/" rel="tag">shell后台运行脚本</a>
+        <a class="tag-link-link" href="/tags/wget/" rel="tag">wget</a>
     </div>
 
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/">
+        <a href="/2021/07/28/%E4%B8%8B%E8%BD%BD%E7%A6%BB%E7%BA%BF%E7%BD%91%E9%A1%B5/">
             <time datetime="2021-07-27T16:00:00.000Z" itemprop="datePublished">2021-07-28</time>
         </a>
     </div>
@@ -513,13 +617,13 @@
                         
                         
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/shell后台运行脚本.md'> Source </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/下载离线网页.md'> Source </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/shell后台运行脚本.md'> Edit </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/下载离线网页.md'> Edit </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/shell后台运行脚本.md'> History </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/下载离线网页.md'> History </a>
                             </div>
                         
                     </div>
@@ -527,7 +631,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/">shell后台运行脚本</a>
+            <a class="article-title" href="/2021/07/28/%E4%B8%8B%E8%BD%BD%E7%A6%BB%E7%BA%BF%E7%BD%91%E9%A1%B5/">下载离线网页</a>
         </h1>
     
 
@@ -543,22 +647,10 @@
                     
                     
                 
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
             
         
         
-            <blockquote>
-<p>参考链接：<a target="_blank" rel="noopener" href="https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html">https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html</a></p>
-</blockquote>
-
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget -r -p -np -k http:&#x2F;&#x2F;xxx.com&#x2F;xxx</span><br><span class="line"></span><br><span class="line">-r, --recursive（递归） specify recursive download.（指定递归下载）</span><br><span class="line">-k, --convert-links（转换链接） make links in downloaded HTML point to local files.（将下载的HTML页面中的链接转换为相对链接即本地链接）</span><br><span class="line">-p, --page-requisites（页面必需元素） get all images, etc. needed to display HTML page.（下载所有的图片等页面显示所需的内容）</span><br><span class="line">-np, --no-parent（不追溯至父级） don&#39;t ascend to the parent directory.</span><br><span class="line">另外断点续传用-nc参数 日志 用-o参数</span><br></pre></td></tr></table></figure>
             </div>
         
         <footer class="article-footer">
@@ -861,6 +953,91 @@
 
 
     
+        <article id="post-yum" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/linux/">linux</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/yum/" rel="tag">yum</a>, <a class="tag-link-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/" rel="tag">软件包管理器</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/07/09/yum/">
+            <time datetime="2021-07-08T16:00:00.000Z" itemprop="datePublished">2021-07-09</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/yum.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/yum.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/yum.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/07/09/yum/">软件包管理器yum</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+            
+        
+        
+            <p>yum的搜索功能<br>yum whatprovides <em>tshark</em></p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-pip安装python3.6" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -958,92 +1135,7 @@
 
 
     
-        <article id="post-yum" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/linux/">linux</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/yum/" rel="tag">yum</a>, <a class="tag-link-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/" rel="tag">软件包管理器</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2021/07/09/yum/">
-            <time datetime="2021-07-08T16:00:00.000Z" itemprop="datePublished">2021-07-09</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/yum.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/yum.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/yum.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2021/07/09/yum/">软件包管理器yum</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-            
-        
-        
-            <p>yum的搜索功能<br>yum whatprovides <em>tshark</em></p>
-
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-tcp_ip" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-tcp重传" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -1059,13 +1151,13 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/tcp-ip/" rel="tag">tcp_ip</a>, <a class="tag-link-link" href="/tags/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/" rel="tag">网络抓包</a>
+        <a class="tag-link-link" href="/tags/tcp%E9%87%8D%E4%BC%A0/" rel="tag">tcp重传</a>, <a class="tag-link-link" href="/tags/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/" rel="tag">网络抓包</a>
     </div>
 
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2021/07/02/tcp_ip/">
+        <a href="/2021/07/02/tcp%E9%87%8D%E4%BC%A0/">
             <time datetime="2021-07-01T16:00:00.000Z" itemprop="datePublished">2021-07-02</time>
         </a>
     </div>
@@ -1077,13 +1169,13 @@
                         
                         
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/tcp_ip.md'> Source </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/tcp重传.md'> Source </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/tcp_ip.md'> Edit </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/tcp重传.md'> Edit </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/tcp_ip.md'> History </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/tcp重传.md'> History </a>
                             </div>
                         
                     </div>
@@ -1091,7 +1183,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2021/07/02/tcp_ip/">tcp_ip详解</a>
+            <a class="article-title" href="/2021/07/02/tcp%E9%87%8D%E4%BC%A0/">tcp重传</a>
         </h1>
     
 
@@ -1110,18 +1202,10 @@
                     
                     
                 
-                    
-                    
-                
-                    
-                    
-                
             
         
         
-            <p>ACK (Acknowledge character）: 确认字符</p>
-<p>RTT（Round-trip delay time）: 发送一个数据包到收到对应的ACK，所花费的时间</p>
-<p>RTO: 发送数据包失败了，要在100ms内重新发送，RTO的值就是100ms</p>
+            <p>RtoAlgorithm ：<br>RtoMin :<br>RtoMax :<br>MaxConn :<br>ActiveOpens : 服务器主动连接的TCP请求数<br>PassiveOpens ：服务器接收到的TCP请求数<br>AttemptFailsEstabResets ：TCP连接失败个数(AttemptFails)包含：主动连接失败收到syn包回包syn+ack给对方后，被对方reset收到的请求中，同时有syn+rst flag<br>CurrEstab ：TCP当前建立连接的个数<br>InSegs ：TCP接收的分片数<br>OutSegs ：TCP发送的分片数<br>RetransSegs ：重传分片数<br>InErrs ：TCP入包错误(pkg/m,通常是校验错误)<br>OutRsts ：<br>TCP重传率 =重传分片数 / TCP发送的分片数</p>
 
             </div>
         
@@ -1227,91 +1311,6 @@
             </div>   
             <div class="article-more-link">
                 <a href="/2021/07/02/%E6%9F%A5%E7%9C%8Blinux%E5%91%BD%E4%BB%A4%E7%9A%84%E8%B7%AF%E5%BE%84/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-tcp重传" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/linux%E7%BD%91%E7%BB%9C/">linux网络</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/tcp%E9%87%8D%E4%BC%A0/" rel="tag">tcp重传</a>, <a class="tag-link-link" href="/tags/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/" rel="tag">网络抓包</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2021/07/02/tcp%E9%87%8D%E4%BC%A0/">
-            <time datetime="2021-07-01T16:00:00.000Z" itemprop="datePublished">2021-07-02</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/tcp重传.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/tcp重传.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/tcp重传.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2021/07/02/tcp%E9%87%8D%E4%BC%A0/">tcp重传</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-            
-        
-        
-            <p>RtoAlgorithm ：<br>RtoMin :<br>RtoMax :<br>MaxConn :<br>ActiveOpens : 服务器主动连接的TCP请求数<br>PassiveOpens ：服务器接收到的TCP请求数<br>AttemptFailsEstabResets ：TCP连接失败个数(AttemptFails)包含：主动连接失败收到syn包回包syn+ack给对方后，被对方reset收到的请求中，同时有syn+rst flag<br>CurrEstab ：TCP当前建立连接的个数<br>InSegs ：TCP接收的分片数<br>OutSegs ：TCP发送的分片数<br>RetransSegs ：重传分片数<br>InErrs ：TCP入包错误(pkg/m,通常是校验错误)<br>OutRsts ：<br>TCP重传率 =重传分片数 / TCP发送的分片数</p>
-
             </div>
         
         <footer class="article-footer">
