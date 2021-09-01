@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-08-31T16:38:50.000Z</updated>
+  <updated>2021-09-01T16:09:24.000Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,86 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>wget命令</title>
+    <link href="http://example.com/2021/09/01/wget%E5%91%BD%E4%BB%A4/"/>
+    <id>http://example.com/2021/09/01/wget%E5%91%BD%E4%BB%A4/</id>
+    <published>2021-08-31T16:00:00.000Z</published>
+    <updated>2021-09-01T16:09:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="如何在Windows下的git-bash中添加wget"><a href="#如何在Windows下的git-bash中添加wget" class="headerlink" title="如何在Windows下的git bash中添加wget"></a>如何在Windows下的git bash中添加wget</h3><ol><li>下载wget二进制安装包，地址：<a href="https://eternallybored.org/misc/wget/">https://eternallybored.org/misc/wget/</a></li><li>2、解压安装包，将wget.exe 拷贝到C:\Program Files\Git\mingw64\bin\ 下面</li></ol><h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>参考连接<br><a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/wget.html">https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/wget.html</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;如何在Windows下的git-bash中添加wget&quot;&gt;&lt;a href=&quot;#如何在Windows下的git-bash中添加wget&quot; class=&quot;headerlink&quot; title=&quot;如何在Windows下的git bash中添加wget&quot;&gt;&lt;/a&gt;如何在Wi</summary>
+      
+    
+    
+    
+    <category term="文本" scheme="http://example.com/categories/%E6%96%87%E6%9C%AC/"/>
+    
+    
+    <category term="wget" scheme="http://example.com/tags/wget/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git修改分支名</title>
+    <link href="http://example.com/2021/09/01/git%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D/"/>
+    <id>http://example.com/2021/09/01/git%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D/</id>
+    <published>2021-08-31T16:00:00.000Z</published>
+    <updated>2021-09-01T17:48:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="本地分支重命名-还没有推送到远程"><a href="#本地分支重命名-还没有推送到远程" class="headerlink" title="本地分支重命名(还没有推送到远程)"></a>本地分支重命名(还没有推送到远程)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -m oldName newName</span><br></pre></td></tr></table></figure><h3 id="远程分支重命名-已经推送远程-假设本地分支和远程对应分支名称相同"><a href="#远程分支重命名-已经推送远程-假设本地分支和远程对应分支名称相同" class="headerlink" title="远程分支重命名 (已经推送远程-假设本地分支和远程对应分支名称相同)"></a>远程分支重命名 (已经推送远程-假设本地分支和远程对应分支名称相同)</h3><p>重命名远程分支对应的本地分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -m oldName newName</span><br></pre></td></tr></table></figure><p>删除远程分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --delete origin oldName</span><br></pre></td></tr></table></figure><p>上传新命名的本地分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin newName</span><br></pre></td></tr></table></figure><p>把修改后的本地分支与远程分支关联</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to origin&#x2F;newName</span><br></pre></td></tr></table></figure><p>参考连接</p><p><a href="https://www.jianshu.com/p/cc740394faf5">https://www.jianshu.com/p/cc740394faf5</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;本地分支重命名-还没有推送到远程&quot;&gt;&lt;a href=&quot;#本地分支重命名-还没有推送到远程&quot; class=&quot;headerlink&quot; title=&quot;本地分支重命名(还没有推送到远程)&quot;&gt;&lt;/a&gt;本地分支重命名(还没有推送到远程)&lt;/h3&gt;&lt;figure class=&quot;</summary>
+      
+    
+    
+    
+    <category term="github仓库" scheme="http://example.com/categories/github%E4%BB%93%E5%BA%93/"/>
+    
+    
+    <category term="branch" scheme="http://example.com/tags/branch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git进行项目管理和版本控制</title>
+    <link href="http://example.com/2021/09/01/git%E4%BD%BF%E7%94%A8/"/>
+    <id>http://example.com/2021/09/01/git%E4%BD%BF%E7%94%A8/</id>
+    <published>2021-08-31T16:00:00.000Z</published>
+    <updated>2021-09-01T19:14:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>整理一下git的使用吧，时间长了老是忘，然后重新找，然后接着忘，记录一下吧</p></blockquote><p>如何将本地文件上传到git仓库？当然是先建一个本地仓库喽</p><p>windows下安装一个git bash即可，下载链接：<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p><h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><h4 id="1-创建一个文件夹test然后进入，输入git-init就可以把这个目录变成git的本地仓库了"><a href="#1-创建一个文件夹test然后进入，输入git-init就可以把这个目录变成git的本地仓库了" class="headerlink" title="1.创建一个文件夹test然后进入，输入git init就可以把这个目录变成git的本地仓库了"></a>1.创建一个文件夹test然后进入，输入git init就可以把这个目录变成git的本地仓库了</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">Initialized empty Git repository in C:&#x2F;Users&#x2F;Administrator&#x2F;Desktop&#x2F;test&#x2F;.git&#x2F;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>一个文件夹可以被初始化成一个本地仓库</p><p>我们来查看一下当前文件夹的状态</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        std_lvm_v1.2.sh</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure><p>这里可以看出，此文件夹已被初始化为仓库,分支的默认名为master</p><p>为了方便观察，我们将分支修改为test1</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -m master test1</span><br><span class="line"></span><br><span class="line">$ git status</span><br><span class="line">On branch test1</span><br></pre></td></tr></table></figure><p>下面看一下没执行过git init的文件夹</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">fatal: not a git repository (or any of the parent directories): .git</span><br></pre></td></tr></table></figure><h4 id="2-配置用户信息，这样提交代码时，git就知道是谁提交的"><a href="#2-配置用户信息，这样提交代码时，git就知道是谁提交的" class="headerlink" title="2. 配置用户信息，这样提交代码时，git就知道是谁提交的"></a>2. 配置用户信息，这样提交代码时，git就知道是谁提交的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">查看全部的用户信息</span><br><span class="line">cat ~&#x2F;.gitconfig</span><br><span class="line"></span><br><span class="line">添加用户信息</span><br><span class="line">git config --global user.name yourname</span><br><span class="line">git config --global user.email youremail</span><br></pre></td></tr></table></figure><h4 id="3-把文件夹里的文件添加到缓存区"><a href="#3-把文件夹里的文件添加到缓存区" class="headerlink" title="3.把文件夹里的文件添加到缓存区"></a>3.把文件夹里的文件添加到缓存区</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">清理git缓存</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure><h4 id="4-将文件提交到本地仓库"><a href="#4-将文件提交到本地仓库" class="headerlink" title="4.将文件提交到本地仓库"></a>4.将文件提交到本地仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#39;备注&#39;</span><br></pre></td></tr></table></figure><h4 id="5-关联远程仓库"><a href="#5-关联远程仓库" class="headerlink" title="5.关联远程仓库"></a>5.关联远程仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin</span><br></pre></td></tr></table></figure><h4 id="6-同步仓库（push这个分支）"><a href="#6-同步仓库（push这个分支）" class="headerlink" title="6.同步仓库（push这个分支）"></a>6.同步仓库（push这个分支）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin test1</span><br></pre></td></tr></table></figure><p>这个push可以是SSH或HTTPS</p><h3 id="如果是SSH"><a href="#如果是SSH" class="headerlink" title="如果是SSH"></a>如果是SSH</h3><p><strong>把本地ssh私钥加进github上</strong></p><h4 id="1-生成ssh-key"><a href="#1-生成ssh-key" class="headerlink" title="1.生成ssh key"></a>1.生成ssh key</h4><p>用户是X在执行 ssh-keygen 时会在~/.ssh这个目录里面产生所需要的两把Keys</p><p>分别是私钥(id_rsa) 与公钥(id_rsa.pub)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail@email.com&quot;</span><br><span class="line"></span><br><span class="line">引号中是你在github上的注册邮箱</span><br><span class="line">之后设定你的ssh密码</span><br></pre></td></tr></table></figure><h4 id="2-执行以下命令"><a href="#2-执行以下命令" class="headerlink" title="2.执行以下命令"></a>2.执行以下命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">eval  &quot;ssh-agent -s&quot;</span><br><span class="line"></span><br><span class="line">ssh-agent bash</span><br><span class="line"></span><br><span class="line">ssh-add ~&#x2F;.ssh&#x2F;id_rsa</span><br><span class="line">提示Identity added :说明已添加成功</span><br><span class="line"></span><br><span class="line">查看公钥</span><br><span class="line">cat ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br><span class="line"></span><br><span class="line">然后在github中添加即可</span><br></pre></td></tr></table></figure><h3 id="如果是HTTPS"><a href="#如果是HTTPS" class="headerlink" title="如果是HTTPS"></a>如果是HTTPS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">还没测试</span><br></pre></td></tr></table></figure><p>参考链接：</p><p><a href="https://www.huaweicloud.com/articles/a309afc2a9bcf498763ab43770993587.html">https://www.huaweicloud.com/articles/a309afc2a9bcf498763ab43770993587.html</a></p><p>git官方文档</p><p><a href="https://git-scm.com/book/zh/v2/">https://git-scm.com/book/zh/v2/</a></p><p>生成ssh key</p><p><a href="https://blog.csdn.net/Suo_ivy/article/details/79940839">https://blog.csdn.net/Suo_ivy/article/details/79940839</a></p><p>有关commit的解释</p><p><a href="https://segmentfault.com/a/1190000005638174">https://segmentfault.com/a/1190000005638174</a></p><p>有关branch（分支）的解释</p><p><a href="https://backlog.com/git-tutorial/cn/stepup/stepup1_1.html">https://backlog.com/git-tutorial/cn/stepup/stepup1_1.html</a></p><p>git常用命令</p><p><a href="https://cloud.tencent.com/developer/article/1148355">https://cloud.tencent.com/developer/article/1148355</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;整理一下git的使用吧，时间长了老是忘，然后重新找，然后接着忘，记录一下吧&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如何将本地文件上传到git仓库？当然是先建一个本地仓库喽&lt;/p&gt;
+&lt;p&gt;windows下安装一个git bash即可，下载链接：&lt;</summary>
+      
+    
+    
+    
+    <category term="github仓库" scheme="http://example.com/categories/github%E4%BB%93%E5%BA%93/"/>
+    
+    
+    <category term="git" scheme="http://example.com/tags/git/"/>
+    
+    <category term="版本控制" scheme="http://example.com/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+    
+    <category term="项目管理" scheme="http://example.com/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>shell 中给命令设置超时时间</title>
@@ -118,31 +198,6 @@
   </entry>
   
   <entry>
-    <title>sort排序</title>
-    <link href="http://example.com/2021/08/08/sort%E6%8E%92%E5%BA%8F/"/>
-    <id>http://example.com/2021/08/08/sort%E6%8E%92%E5%BA%8F/</id>
-    <published>2021-08-07T16:00:00.000Z</published>
-    <updated>2021-08-23T10:19:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>参考：<a href="https://blog.csdn.net/monkeyduck/article/details/10097829">https://blog.csdn.net/monkeyduck/article/details/10097829</a></p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://blog.csdn.net/monkeyduck/article/details/10097829&quot;&gt;https://blog.csdn.net/monkeyduck/article/details/1009</summary>
-      
-    
-    
-    
-    <category term="shell" scheme="http://example.com/categories/shell/"/>
-    
-    
-    <category term="sort" scheme="http://example.com/tags/sort/"/>
-    
-  </entry>
-  
-  <entry>
     <title>lvm分区</title>
     <link href="http://example.com/2021/08/08/lvm%E4%BB%8B%E7%BB%8D/"/>
     <id>http://example.com/2021/08/08/lvm%E4%BB%8B%E7%BB%8D/</id>
@@ -166,30 +221,6 @@
     
     
     <category term="lvm" scheme="http://example.com/tags/lvm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>curl用法</title>
-    <link href="http://example.com/2021/08/08/curl/"/>
-    <id>http://example.com/2021/08/08/curl/</id>
-    <published>2021-08-07T16:00:00.000Z</published>
-    <updated>2021-08-23T10:19:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">不带有任何参数时，curl 就是发出 GET 请求。</span><br><span class="line">curl https:&#x2F;&#x2F;www.example.com</span><br><span class="line"></span><br><span class="line">-O参数将服务器回应保存成文件，并将 URL 的最后部分当作文件名。</span><br><span class="line">curl -O https:&#x2F;&#x2F;www.example.com&#x2F;foo&#x2F;bar.html</span><br><span class="line"></span><br><span class="line">-s参数将不输出错误和进度信息。</span><br><span class="line">curl -s https:&#x2F;&#x2F;www.example.com</span><br><span class="line"></span><br><span class="line">-S参数指定只输出错误信息，通常与-s一起使用。</span><br><span class="line">curl -s -o &#x2F;dev&#x2F;null https:&#x2F;&#x2F;google.com</span><br><span class="line"></span><br><span class="line">-L参数会让 HTTP 请求跟随服务器的重定向。curl 默认不跟随重定向。</span><br><span class="line">curl -L -d &#39;tweet&#x3D;hi&#39; https:&#x2F;&#x2F;api.twitter.com&#x2F;tweet</span><br></pre></td></tr></table></figure><blockquote><p>参考：<a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class</summary>
-      
-    
-    
-    
-    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
-    
-    
-    <category term="curl" scheme="http://example.com/tags/curl/"/>
     
   </entry>
   
@@ -219,6 +250,31 @@
   </entry>
   
   <entry>
+    <title>sort排序</title>
+    <link href="http://example.com/2021/08/08/sort%E6%8E%92%E5%BA%8F/"/>
+    <id>http://example.com/2021/08/08/sort%E6%8E%92%E5%BA%8F/</id>
+    <published>2021-08-07T16:00:00.000Z</published>
+    <updated>2021-08-23T10:19:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>参考：<a href="https://blog.csdn.net/monkeyduck/article/details/10097829">https://blog.csdn.net/monkeyduck/article/details/10097829</a></p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://blog.csdn.net/monkeyduck/article/details/10097829&quot;&gt;https://blog.csdn.net/monkeyduck/article/details/1009</summary>
+      
+    
+    
+    
+    <category term="shell" scheme="http://example.com/categories/shell/"/>
+    
+    
+    <category term="sort" scheme="http://example.com/tags/sort/"/>
+    
+  </entry>
+  
+  <entry>
     <title>expect 介绍和用法</title>
     <link href="http://example.com/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/"/>
     <id>http://example.com/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/</id>
@@ -244,6 +300,30 @@
   </entry>
   
   <entry>
+    <title>curl用法</title>
+    <link href="http://example.com/2021/08/08/curl/"/>
+    <id>http://example.com/2021/08/08/curl/</id>
+    <published>2021-08-07T16:00:00.000Z</published>
+    <updated>2021-08-23T10:19:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">不带有任何参数时，curl 就是发出 GET 请求。</span><br><span class="line">curl https:&#x2F;&#x2F;www.example.com</span><br><span class="line"></span><br><span class="line">-O参数将服务器回应保存成文件，并将 URL 的最后部分当作文件名。</span><br><span class="line">curl -O https:&#x2F;&#x2F;www.example.com&#x2F;foo&#x2F;bar.html</span><br><span class="line"></span><br><span class="line">-s参数将不输出错误和进度信息。</span><br><span class="line">curl -s https:&#x2F;&#x2F;www.example.com</span><br><span class="line"></span><br><span class="line">-S参数指定只输出错误信息，通常与-s一起使用。</span><br><span class="line">curl -s -o &#x2F;dev&#x2F;null https:&#x2F;&#x2F;google.com</span><br><span class="line"></span><br><span class="line">-L参数会让 HTTP 请求跟随服务器的重定向。curl 默认不跟随重定向。</span><br><span class="line">curl -L -d &#39;tweet&#x3D;hi&#39; https:&#x2F;&#x2F;api.twitter.com&#x2F;tweet</span><br></pre></td></tr></table></figure><blockquote><p>参考：<a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class</summary>
+      
+    
+    
+    
+    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
+    
+    
+    <category term="curl" scheme="http://example.com/tags/curl/"/>
+    
+  </entry>
+  
+  <entry>
     <title>下载离线网页</title>
     <link href="http://example.com/2021/07/28/%E4%B8%8B%E8%BD%BD%E7%A6%BB%E7%BA%BF%E7%BD%91%E9%A1%B5/"/>
     <id>http://example.com/2021/07/28/%E4%B8%8B%E8%BD%BD%E7%A6%BB%E7%BA%BF%E7%BD%91%E9%A1%B5/</id>
@@ -264,6 +344,31 @@
     
     
     <category term="wget" scheme="http://example.com/tags/wget/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shell后台运行脚本</title>
+    <link href="http://example.com/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"/>
+    <id>http://example.com/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</id>
+    <published>2021-07-27T16:00:00.000Z</published>
+    <updated>2021-08-23T10:19:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>参考链接：<a href="https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html">https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html</a></p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;参考链接：&lt;a href=&quot;https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html&quot;&gt;https://www.huaweicloud.com/articl</summary>
+      
+    
+    
+    
+    <category term="shell" scheme="http://example.com/categories/shell/"/>
+    
+    
+    <category term="shell后台运行脚本" scheme="http://example.com/tags/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"/>
     
   </entry>
   
@@ -313,31 +418,6 @@
     
     
     <category term="shell时间戳" scheme="http://example.com/tags/shell%E6%97%B6%E9%97%B4%E6%88%B3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>shell后台运行脚本</title>
-    <link href="http://example.com/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"/>
-    <id>http://example.com/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</id>
-    <published>2021-07-27T16:00:00.000Z</published>
-    <updated>2021-08-23T10:19:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>参考链接：<a href="https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html">https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html</a></p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;参考链接：&lt;a href=&quot;https://www.huaweicloud.com/articles/84e5df15472f1f9d3011e2fdda7ed825.html&quot;&gt;https://www.huaweicloud.com/articl</summary>
-      
-    
-    
-    
-    <category term="shell" scheme="http://example.com/categories/shell/"/>
-    
-    
-    <category term="shell后台运行脚本" scheme="http://example.com/tags/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"/>
     
   </entry>
   
@@ -437,87 +517,6 @@
     
     
     <category term="pip" scheme="http://example.com/tags/pip/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>软件包管理器yum</title>
-    <link href="http://example.com/2021/07/09/yum/"/>
-    <id>http://example.com/2021/07/09/yum/</id>
-    <published>2021-07-08T16:00:00.000Z</published>
-    <updated>2021-08-23T10:19:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>yum的搜索功能<br>yum whatprovides <em>tshark</em></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;yum的搜索功能&lt;br&gt;yum whatprovides &lt;em&gt;tshark&lt;/em&gt;&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
-    
-    
-    <category term="yum" scheme="http://example.com/tags/yum/"/>
-    
-    <category term="软件包管理器" scheme="http://example.com/tags/%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>tcp_ip详解</title>
-    <link href="http://example.com/2021/07/02/tcp_ip/"/>
-    <id>http://example.com/2021/07/02/tcp_ip/</id>
-    <published>2021-07-01T16:00:00.000Z</published>
-    <updated>2021-08-23T10:19:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>ACK (Acknowledge character）: 确认字符</p><p>RTT（Round-trip delay time）: 发送一个数据包到收到对应的ACK，所花费的时间</p><p>RTO: 发送数据包失败了，要在100ms内重新发送，RTO的值就是100ms</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;ACK (Acknowledge character）: 确认字符&lt;/p&gt;
-&lt;p&gt;RTT（Round-trip delay time）: 发送一个数据包到收到对应的ACK，所花费的时间&lt;/p&gt;
-&lt;p&gt;RTO: 发送数据包失败了，要在100ms内重新发送，RTO的值就是100</summary>
-      
-    
-    
-    
-    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
-    
-    
-    <category term="tcp_ip" scheme="http://example.com/tags/tcp-ip/"/>
-    
-    <category term="网络抓包" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>tcp重传</title>
-    <link href="http://example.com/2021/07/02/tcp%E9%87%8D%E4%BC%A0/"/>
-    <id>http://example.com/2021/07/02/tcp%E9%87%8D%E4%BC%A0/</id>
-    <published>2021-07-01T16:00:00.000Z</published>
-    <updated>2021-08-23T10:19:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>RtoAlgorithm ：<br>RtoMin :<br>RtoMax :<br>MaxConn :<br>ActiveOpens : 服务器主动连接的TCP请求数<br>PassiveOpens ：服务器接收到的TCP请求数<br>AttemptFailsEstabResets ：TCP连接失败个数(AttemptFails)包含：主动连接失败收到syn包回包syn+ack给对方后，被对方reset收到的请求中，同时有syn+rst flag<br>CurrEstab ：TCP当前建立连接的个数<br>InSegs ：TCP接收的分片数<br>OutSegs ：TCP发送的分片数<br>RetransSegs ：重传分片数<br>InErrs ：TCP入包错误(pkg/m,通常是校验错误)<br>OutRsts ：<br>TCP重传率 =重传分片数 / TCP发送的分片数</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;RtoAlgorithm ：&lt;br&gt;RtoMin :&lt;br&gt;RtoMax :&lt;br&gt;MaxConn :&lt;br&gt;ActiveOpens : 服务器主动连接的TCP请求数&lt;br&gt;PassiveOpens ：服务器接收到的TCP请求数&lt;br&gt;AttemptFailsEstabRe</summary>
-      
-    
-    
-    
-    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
-    
-    
-    <category term="网络抓包" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/"/>
-    
-    <category term="tcp重传" scheme="http://example.com/tags/tcp%E9%87%8D%E4%BC%A0/"/>
     
   </entry>
   
