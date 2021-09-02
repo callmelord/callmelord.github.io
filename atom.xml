@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-09-01T16:09:24.000Z</updated>
+  <updated>2021-09-02T18:31:12.000Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,26 +17,58 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>wget命令</title>
-    <link href="http://example.com/2021/09/01/wget%E5%91%BD%E4%BB%A4/"/>
-    <id>http://example.com/2021/09/01/wget%E5%91%BD%E4%BB%A4/</id>
+    <title>git常用命令</title>
+    <link href="http://example.com/2021/09/02/git%E5%91%BD%E4%BB%A4/"/>
+    <id>http://example.com/2021/09/02/git%E5%91%BD%E4%BB%A4/</id>
+    <published>2021-09-01T16:00:00.000Z</published>
+    <updated>2021-09-02T18:31:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="git查看远程仓库地址命令"><a href="#git查看远程仓库地址命令" class="headerlink" title="git查看远程仓库地址命令"></a>git查看远程仓库地址命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure><h4 id="git修改远程仓库地址"><a href="#git修改远程仓库地址" class="headerlink" title="git修改远程仓库地址"></a>git修改远程仓库地址</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1、 直接修改</span><br><span class="line">git remote set-url origin [url]</span><br><span class="line"></span><br><span class="line">2、 先删后加</span><br><span class="line">git remote rm origin</span><br><span class="line">git remote add origin [url]</span><br><span class="line"></span><br></pre></td></tr></table></figure><h4 id="删除commit"><a href="#删除commit" class="headerlink" title="删除commit"></a>删除commit</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1.被提交到仓库的某个文件需要删除</span><br><span class="line"></span><br><span class="line">git rm &lt;file&gt; </span><br><span class="line">从工作区和暂存区删除某个文件</span><br><span class="line"></span><br><span class="line">git commit -m &quot;&quot; </span><br><span class="line">再次提交到仓库</span><br><span class="line"></span><br><span class="line">2.如果只想从暂存区删除文件，本地工作区不做出改变</span><br><span class="line"></span><br><span class="line">git rm --cached &lt;file&gt;</span><br><span class="line"></span><br><span class="line">3.如果在工作区不小心删错了某个文件，可以用 git checkout 将暂存区的文件覆盖工作区的文件，从而把误删的文件恢复：</span><br><span class="line"></span><br><span class="line">git checkout -- &lt;file&gt;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;git查看远程仓库地址命令&quot;&gt;&lt;a href=&quot;#git查看远程仓库地址命令&quot; class=&quot;headerlink&quot; title=&quot;git查看远程仓库地址命令&quot;&gt;&lt;/a&gt;git查看远程仓库地址命令&lt;/h4&gt;&lt;figure class=&quot;highlight plai</summary>
+      
+    
+    
+    
+    <category term="github仓库" scheme="http://example.com/categories/github%E4%BB%93%E5%BA%93/"/>
+    
+    
+    <category term="git" scheme="http://example.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git进行项目管理和版本控制</title>
+    <link href="http://example.com/2021/09/01/git%E4%BD%BF%E7%94%A8/"/>
+    <id>http://example.com/2021/09/01/git%E4%BD%BF%E7%94%A8/</id>
     <published>2021-08-31T16:00:00.000Z</published>
-    <updated>2021-09-01T16:09:24.000Z</updated>
+    <updated>2021-09-02T17:51:26.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="如何在Windows下的git-bash中添加wget"><a href="#如何在Windows下的git-bash中添加wget" class="headerlink" title="如何在Windows下的git bash中添加wget"></a>如何在Windows下的git bash中添加wget</h3><ol><li>下载wget二进制安装包，地址：<a href="https://eternallybored.org/misc/wget/">https://eternallybored.org/misc/wget/</a></li><li>2、解压安装包，将wget.exe 拷贝到C:\Program Files\Git\mingw64\bin\ 下面</li></ol><h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>参考连接<br><a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/wget.html">https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/wget.html</a></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>整理一下git的使用吧，时间长了老是忘，然后重新找，然后接着忘，记录一下吧</p></blockquote><p>如何将本地文件上传到git仓库？当然是先建一个本地仓库喽</p><p>windows下安装一个git bash即可，下载链接：<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p><h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><h4 id="1-创建一个文件夹test然后进入，输入git-init就可以把这个目录变成git的本地仓库了"><a href="#1-创建一个文件夹test然后进入，输入git-init就可以把这个目录变成git的本地仓库了" class="headerlink" title="1.创建一个文件夹test然后进入，输入git init就可以把这个目录变成git的本地仓库了"></a>1.创建一个文件夹test然后进入，输入git init就可以把这个目录变成git的本地仓库了</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">Initialized empty Git repository in C:&#x2F;Users&#x2F;Administrator&#x2F;Desktop&#x2F;test&#x2F;.git&#x2F;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>一个文件夹可以被初始化成一个本地仓库</p><p>我们来查看一下当前文件夹的状态</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        std_lvm_v1.2.sh</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure><p>这里可以看出，此文件夹已被初始化为仓库,分支的默认名为master</p><p>为了方便观察，我们将分支修改为test1</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -m master test1</span><br><span class="line"></span><br><span class="line">$ git status</span><br><span class="line">On branch test1</span><br></pre></td></tr></table></figure><p>下面看一下没执行过git init的文件夹</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">fatal: not a git repository (or any of the parent directories): .git</span><br></pre></td></tr></table></figure><h4 id="2-配置用户信息，这样提交代码时，git就知道是谁提交的"><a href="#2-配置用户信息，这样提交代码时，git就知道是谁提交的" class="headerlink" title="2. 配置用户信息，这样提交代码时，git就知道是谁提交的"></a>2. 配置用户信息，这样提交代码时，git就知道是谁提交的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">查看全部的用户信息</span><br><span class="line">cat ~&#x2F;.gitconfig</span><br><span class="line"></span><br><span class="line">添加用户信息</span><br><span class="line">git config --global user.name yourname</span><br><span class="line">git config --global user.email youremail</span><br></pre></td></tr></table></figure><h4 id="3-把文件夹里的文件添加到缓存区"><a href="#3-把文件夹里的文件添加到缓存区" class="headerlink" title="3.把文件夹里的文件添加到缓存区"></a>3.把文件夹里的文件添加到缓存区</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">清理git缓存</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure><h4 id="4-将文件提交到本地仓库"><a href="#4-将文件提交到本地仓库" class="headerlink" title="4.将文件提交到本地仓库"></a>4.将文件提交到本地仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#39;备注&#39;</span><br></pre></td></tr></table></figure><h4 id="5-关联远程仓库"><a href="#5-关联远程仓库" class="headerlink" title="5.关联远程仓库"></a>5.关联远程仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin 你的远程仓库地址</span><br></pre></td></tr></table></figure><h4 id="6-同步仓库（push这个分支）"><a href="#6-同步仓库（push这个分支）" class="headerlink" title="6.同步仓库（push这个分支）"></a>6.同步仓库（push这个分支）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin test1</span><br></pre></td></tr></table></figure><p>这个push可以是SSH或HTTPS</p><h3 id="如果是SSH"><a href="#如果是SSH" class="headerlink" title="如果是SSH"></a>如果是SSH</h3><p><strong>把本地ssh私钥加进github上</strong></p><h4 id="1-生成ssh-key"><a href="#1-生成ssh-key" class="headerlink" title="1.生成ssh key"></a>1.生成ssh key</h4><p>用户是X在执行 ssh-keygen 时会在~/.ssh这个目录里面产生所需要的两把Keys</p><p>分别是私钥(id_rsa) 与公钥(id_rsa.pub)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail@email.com&quot;</span><br><span class="line"></span><br><span class="line">引号中是你在github上的注册邮箱</span><br><span class="line">之后设定你的ssh密码</span><br></pre></td></tr></table></figure><h4 id="2-执行以下命令"><a href="#2-执行以下命令" class="headerlink" title="2.执行以下命令"></a>2.执行以下命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">eval  &quot;ssh-agent -s&quot;</span><br><span class="line"></span><br><span class="line">ssh-agent bash</span><br><span class="line"></span><br><span class="line">ssh-add ~&#x2F;.ssh&#x2F;id_rsa</span><br><span class="line">提示Identity added :说明已添加成功</span><br><span class="line"></span><br><span class="line">查看公钥</span><br><span class="line">cat ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br><span class="line"></span><br><span class="line">然后在github中添加即可</span><br></pre></td></tr></table></figure><h3 id="如果是HTTPS"><a href="#如果是HTTPS" class="headerlink" title="如果是HTTPS"></a>如果是HTTPS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">还没测试</span><br></pre></td></tr></table></figure><p>参考链接：</p><p><a href="https://www.huaweicloud.com/articles/a309afc2a9bcf498763ab43770993587.html">https://www.huaweicloud.com/articles/a309afc2a9bcf498763ab43770993587.html</a></p><p>git官方文档</p><p><a href="https://git-scm.com/book/zh/v2/">https://git-scm.com/book/zh/v2/</a></p><p>生成ssh key</p><p><a href="https://blog.csdn.net/Suo_ivy/article/details/79940839">https://blog.csdn.net/Suo_ivy/article/details/79940839</a></p><p>有关commit的解释</p><p><a href="https://segmentfault.com/a/1190000005638174">https://segmentfault.com/a/1190000005638174</a></p><p>有关branch（分支）的解释</p><p><a href="https://backlog.com/git-tutorial/cn/stepup/stepup1_1.html">https://backlog.com/git-tutorial/cn/stepup/stepup1_1.html</a></p><p>git常用命令</p><p><a href="https://cloud.tencent.com/developer/article/1148355">https://cloud.tencent.com/developer/article/1148355</a></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h3 id=&quot;如何在Windows下的git-bash中添加wget&quot;&gt;&lt;a href=&quot;#如何在Windows下的git-bash中添加wget&quot; class=&quot;headerlink&quot; title=&quot;如何在Windows下的git bash中添加wget&quot;&gt;&lt;/a&gt;如何在Wi</summary>
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;整理一下git的使用吧，时间长了老是忘，然后重新找，然后接着忘，记录一下吧&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如何将本地文件上传到git仓库？当然是先建一个本地仓库喽&lt;/p&gt;
+&lt;p&gt;windows下安装一个git bash即可，下载链接：&lt;</summary>
       
     
     
     
-    <category term="文本" scheme="http://example.com/categories/%E6%96%87%E6%9C%AC/"/>
+    <category term="github仓库" scheme="http://example.com/categories/github%E4%BB%93%E5%BA%93/"/>
     
     
-    <category term="wget" scheme="http://example.com/tags/wget/"/>
+    <category term="git" scheme="http://example.com/tags/git/"/>
+    
+    <category term="版本控制" scheme="http://example.com/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+    
+    <category term="项目管理" scheme="http://example.com/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/"/>
     
   </entry>
   
@@ -65,34 +97,26 @@
   </entry>
   
   <entry>
-    <title>git进行项目管理和版本控制</title>
-    <link href="http://example.com/2021/09/01/git%E4%BD%BF%E7%94%A8/"/>
-    <id>http://example.com/2021/09/01/git%E4%BD%BF%E7%94%A8/</id>
+    <title>wget命令</title>
+    <link href="http://example.com/2021/09/01/wget%E5%91%BD%E4%BB%A4/"/>
+    <id>http://example.com/2021/09/01/wget%E5%91%BD%E4%BB%A4/</id>
     <published>2021-08-31T16:00:00.000Z</published>
-    <updated>2021-09-01T19:14:06.000Z</updated>
+    <updated>2021-09-01T16:09:24.000Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>整理一下git的使用吧，时间长了老是忘，然后重新找，然后接着忘，记录一下吧</p></blockquote><p>如何将本地文件上传到git仓库？当然是先建一个本地仓库喽</p><p>windows下安装一个git bash即可，下载链接：<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p><h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><h4 id="1-创建一个文件夹test然后进入，输入git-init就可以把这个目录变成git的本地仓库了"><a href="#1-创建一个文件夹test然后进入，输入git-init就可以把这个目录变成git的本地仓库了" class="headerlink" title="1.创建一个文件夹test然后进入，输入git init就可以把这个目录变成git的本地仓库了"></a>1.创建一个文件夹test然后进入，输入git init就可以把这个目录变成git的本地仓库了</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">Initialized empty Git repository in C:&#x2F;Users&#x2F;Administrator&#x2F;Desktop&#x2F;test&#x2F;.git&#x2F;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>一个文件夹可以被初始化成一个本地仓库</p><p>我们来查看一下当前文件夹的状态</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        std_lvm_v1.2.sh</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure><p>这里可以看出，此文件夹已被初始化为仓库,分支的默认名为master</p><p>为了方便观察，我们将分支修改为test1</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -m master test1</span><br><span class="line"></span><br><span class="line">$ git status</span><br><span class="line">On branch test1</span><br></pre></td></tr></table></figure><p>下面看一下没执行过git init的文件夹</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">fatal: not a git repository (or any of the parent directories): .git</span><br></pre></td></tr></table></figure><h4 id="2-配置用户信息，这样提交代码时，git就知道是谁提交的"><a href="#2-配置用户信息，这样提交代码时，git就知道是谁提交的" class="headerlink" title="2. 配置用户信息，这样提交代码时，git就知道是谁提交的"></a>2. 配置用户信息，这样提交代码时，git就知道是谁提交的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">查看全部的用户信息</span><br><span class="line">cat ~&#x2F;.gitconfig</span><br><span class="line"></span><br><span class="line">添加用户信息</span><br><span class="line">git config --global user.name yourname</span><br><span class="line">git config --global user.email youremail</span><br></pre></td></tr></table></figure><h4 id="3-把文件夹里的文件添加到缓存区"><a href="#3-把文件夹里的文件添加到缓存区" class="headerlink" title="3.把文件夹里的文件添加到缓存区"></a>3.把文件夹里的文件添加到缓存区</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">清理git缓存</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure><h4 id="4-将文件提交到本地仓库"><a href="#4-将文件提交到本地仓库" class="headerlink" title="4.将文件提交到本地仓库"></a>4.将文件提交到本地仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#39;备注&#39;</span><br></pre></td></tr></table></figure><h4 id="5-关联远程仓库"><a href="#5-关联远程仓库" class="headerlink" title="5.关联远程仓库"></a>5.关联远程仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin</span><br></pre></td></tr></table></figure><h4 id="6-同步仓库（push这个分支）"><a href="#6-同步仓库（push这个分支）" class="headerlink" title="6.同步仓库（push这个分支）"></a>6.同步仓库（push这个分支）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin test1</span><br></pre></td></tr></table></figure><p>这个push可以是SSH或HTTPS</p><h3 id="如果是SSH"><a href="#如果是SSH" class="headerlink" title="如果是SSH"></a>如果是SSH</h3><p><strong>把本地ssh私钥加进github上</strong></p><h4 id="1-生成ssh-key"><a href="#1-生成ssh-key" class="headerlink" title="1.生成ssh key"></a>1.生成ssh key</h4><p>用户是X在执行 ssh-keygen 时会在~/.ssh这个目录里面产生所需要的两把Keys</p><p>分别是私钥(id_rsa) 与公钥(id_rsa.pub)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail@email.com&quot;</span><br><span class="line"></span><br><span class="line">引号中是你在github上的注册邮箱</span><br><span class="line">之后设定你的ssh密码</span><br></pre></td></tr></table></figure><h4 id="2-执行以下命令"><a href="#2-执行以下命令" class="headerlink" title="2.执行以下命令"></a>2.执行以下命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">eval  &quot;ssh-agent -s&quot;</span><br><span class="line"></span><br><span class="line">ssh-agent bash</span><br><span class="line"></span><br><span class="line">ssh-add ~&#x2F;.ssh&#x2F;id_rsa</span><br><span class="line">提示Identity added :说明已添加成功</span><br><span class="line"></span><br><span class="line">查看公钥</span><br><span class="line">cat ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br><span class="line"></span><br><span class="line">然后在github中添加即可</span><br></pre></td></tr></table></figure><h3 id="如果是HTTPS"><a href="#如果是HTTPS" class="headerlink" title="如果是HTTPS"></a>如果是HTTPS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">还没测试</span><br></pre></td></tr></table></figure><p>参考链接：</p><p><a href="https://www.huaweicloud.com/articles/a309afc2a9bcf498763ab43770993587.html">https://www.huaweicloud.com/articles/a309afc2a9bcf498763ab43770993587.html</a></p><p>git官方文档</p><p><a href="https://git-scm.com/book/zh/v2/">https://git-scm.com/book/zh/v2/</a></p><p>生成ssh key</p><p><a href="https://blog.csdn.net/Suo_ivy/article/details/79940839">https://blog.csdn.net/Suo_ivy/article/details/79940839</a></p><p>有关commit的解释</p><p><a href="https://segmentfault.com/a/1190000005638174">https://segmentfault.com/a/1190000005638174</a></p><p>有关branch（分支）的解释</p><p><a href="https://backlog.com/git-tutorial/cn/stepup/stepup1_1.html">https://backlog.com/git-tutorial/cn/stepup/stepup1_1.html</a></p><p>git常用命令</p><p><a href="https://cloud.tencent.com/developer/article/1148355">https://cloud.tencent.com/developer/article/1148355</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="如何在Windows下的git-bash中添加wget"><a href="#如何在Windows下的git-bash中添加wget" class="headerlink" title="如何在Windows下的git bash中添加wget"></a>如何在Windows下的git bash中添加wget</h3><ol><li>下载wget二进制安装包，地址：<a href="https://eternallybored.org/misc/wget/">https://eternallybored.org/misc/wget/</a></li><li>2、解压安装包，将wget.exe 拷贝到C:\Program Files\Git\mingw64\bin\ 下面</li></ol><h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>参考连接<br><a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/wget.html">https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/wget.html</a></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;整理一下git的使用吧，时间长了老是忘，然后重新找，然后接着忘，记录一下吧&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;如何将本地文件上传到git仓库？当然是先建一个本地仓库喽&lt;/p&gt;
-&lt;p&gt;windows下安装一个git bash即可，下载链接：&lt;</summary>
+    <summary type="html">&lt;h3 id=&quot;如何在Windows下的git-bash中添加wget&quot;&gt;&lt;a href=&quot;#如何在Windows下的git-bash中添加wget&quot; class=&quot;headerlink&quot; title=&quot;如何在Windows下的git bash中添加wget&quot;&gt;&lt;/a&gt;如何在Wi</summary>
       
     
     
     
-    <category term="github仓库" scheme="http://example.com/categories/github%E4%BB%93%E5%BA%93/"/>
+    <category term="文本" scheme="http://example.com/categories/%E6%96%87%E6%9C%AC/"/>
     
     
-    <category term="git" scheme="http://example.com/tags/git/"/>
-    
-    <category term="版本控制" scheme="http://example.com/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
-    
-    <category term="项目管理" scheme="http://example.com/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/"/>
+    <category term="wget" scheme="http://example.com/tags/wget/"/>
     
   </entry>
   
@@ -198,6 +222,31 @@
   </entry>
   
   <entry>
+    <title>只读文件系统 /var/cache/yum/x86 64/7/base/repomd.xml.old.tmp</title>
+    <link href="http://example.com/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://example.com/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</id>
+    <published>2021-08-07T16:00:00.000Z</published>
+    <updated>2021-08-23T13:09:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>问题：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Errno 30] 只读文件系统: &#39;&#x2F;var&#x2F;cache&#x2F;yum&#x2F;x86_64&#x2F;7&#x2F;base&#x2F;repomd.xml.old.tmp&#39;</span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">不知道到底是什么，但一定yum源有了问题；</span><br><span class="line">网上搜了一大堆，大多是yum clean清缓存的，没试，应该也行；</span><br><span class="line"></span><br><span class="line">解决：</span><br><span class="line">进入&#x2F;var&#x2F;cache&#x2F;yum&#x2F;, 执行rm -rf x86_64&#x2F;c, 删除缓存；</span><br><span class="line">报错：rm: 无法删除&quot;xxx&quot;: 只读文件系统</span><br><span class="line">执行mount -o remount,rw &#x2F;, 再次删除；</span><br><span class="line">执行yum repolist;</span><br></pre></td></tr></table></figure><p>ok, 搞定</p><blockquote><p>参考：<a href="https://blog.csdn.net/xue15029240296/article/details/103211911">https://blog.csdn.net/xue15029240296/article/details/103211911</a></p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;问题：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;</summary>
+      
+    
+    
+    
+    <category term="linux" scheme="http://example.com/categories/linux/"/>
+    
+    
+    <category term="技巧" scheme="http://example.com/tags/%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
+  
+  <entry>
     <title>lvm分区</title>
     <link href="http://example.com/2021/08/08/lvm%E4%BB%8B%E7%BB%8D/"/>
     <id>http://example.com/2021/08/08/lvm%E4%BB%8B%E7%BB%8D/</id>
@@ -221,31 +270,6 @@
     
     
     <category term="lvm" scheme="http://example.com/tags/lvm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>只读文件系统 /var/cache/yum/x86 64/7/base/repomd.xml.old.tmp</title>
-    <link href="http://example.com/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
-    <id>http://example.com/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</id>
-    <published>2021-08-07T16:00:00.000Z</published>
-    <updated>2021-08-23T13:09:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>问题：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Errno 30] 只读文件系统: &#39;&#x2F;var&#x2F;cache&#x2F;yum&#x2F;x86_64&#x2F;7&#x2F;base&#x2F;repomd.xml.old.tmp&#39;</span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">不知道到底是什么，但一定yum源有了问题；</span><br><span class="line">网上搜了一大堆，大多是yum clean清缓存的，没试，应该也行；</span><br><span class="line"></span><br><span class="line">解决：</span><br><span class="line">进入&#x2F;var&#x2F;cache&#x2F;yum&#x2F;, 执行rm -rf x86_64&#x2F;c, 删除缓存；</span><br><span class="line">报错：rm: 无法删除&quot;xxx&quot;: 只读文件系统</span><br><span class="line">执行mount -o remount,rw &#x2F;, 再次删除；</span><br><span class="line">执行yum repolist;</span><br></pre></td></tr></table></figure><p>ok, 搞定</p><blockquote><p>参考：<a href="https://blog.csdn.net/xue15029240296/article/details/103211911">https://blog.csdn.net/xue15029240296/article/details/103211911</a></p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;问题：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
-    
-    
-    <category term="技巧" scheme="http://example.com/tags/%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
@@ -324,30 +348,6 @@
   </entry>
   
   <entry>
-    <title>下载离线网页</title>
-    <link href="http://example.com/2021/07/28/%E4%B8%8B%E8%BD%BD%E7%A6%BB%E7%BA%BF%E7%BD%91%E9%A1%B5/"/>
-    <id>http://example.com/2021/07/28/%E4%B8%8B%E8%BD%BD%E7%A6%BB%E7%BA%BF%E7%BD%91%E9%A1%B5/</id>
-    <published>2021-07-27T16:00:00.000Z</published>
-    <updated>2021-08-23T10:19:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget -r -p -np -k http:&#x2F;&#x2F;xxx.com&#x2F;xxx</span><br><span class="line"></span><br><span class="line">-r, --recursive（递归） specify recursive download.（指定递归下载）</span><br><span class="line">-k, --convert-links（转换链接） make links in downloaded HTML point to local files.（将下载的HTML页面中的链接转换为相对链接即本地链接）</span><br><span class="line">-p, --page-requisites（页面必需元素） get all images, etc. needed to display HTML page.（下载所有的图片等页面显示所需的内容）</span><br><span class="line">-np, --no-parent（不追溯至父级） don&#39;t ascend to the parent directory.</span><br><span class="line">另外断点续传用-nc参数 日志 用-o参数</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class</summary>
-      
-    
-    
-    
-    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
-    
-    
-    <category term="wget" scheme="http://example.com/tags/wget/"/>
-    
-  </entry>
-  
-  <entry>
     <title>shell后台运行脚本</title>
     <link href="http://example.com/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"/>
     <id>http://example.com/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</id>
@@ -369,6 +369,30 @@
     
     
     <category term="shell后台运行脚本" scheme="http://example.com/tags/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>下载离线网页</title>
+    <link href="http://example.com/2021/07/28/%E4%B8%8B%E8%BD%BD%E7%A6%BB%E7%BA%BF%E7%BD%91%E9%A1%B5/"/>
+    <id>http://example.com/2021/07/28/%E4%B8%8B%E8%BD%BD%E7%A6%BB%E7%BA%BF%E7%BD%91%E9%A1%B5/</id>
+    <published>2021-07-27T16:00:00.000Z</published>
+    <updated>2021-08-23T10:19:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget -r -p -np -k http:&#x2F;&#x2F;xxx.com&#x2F;xxx</span><br><span class="line"></span><br><span class="line">-r, --recursive（递归） specify recursive download.（指定递归下载）</span><br><span class="line">-k, --convert-links（转换链接） make links in downloaded HTML point to local files.（将下载的HTML页面中的链接转换为相对链接即本地链接）</span><br><span class="line">-p, --page-requisites（页面必需元素） get all images, etc. needed to display HTML page.（下载所有的图片等页面显示所需的内容）</span><br><span class="line">-np, --no-parent（不追溯至父级） don&#39;t ascend to the parent directory.</span><br><span class="line">另外断点续传用-nc参数 日志 用-o参数</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class</summary>
+      
+    
+    
+    
+    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
+    
+    
+    <category term="wget" scheme="http://example.com/tags/wget/"/>
     
   </entry>
   
@@ -493,30 +517,6 @@
     
     
     <category term="技巧" scheme="http://example.com/tags/%E6%8A%80%E5%B7%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>pip问题</title>
-    <link href="http://example.com/2021/07/09/pip%E5%AE%89%E8%A3%85python3.6/"/>
-    <id>http://example.com/2021/07/09/pip%E5%AE%89%E8%A3%85python3.6/</id>
-    <published>2021-07-08T16:00:00.000Z</published>
-    <updated>2021-08-23T10:19:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>安装python3.6<br>pip3 install wheel –target=/usr/lib/python3.6/site-packages<br>pip3 install pyshark –target=/usr/lib/python3.6/site-packages</p><h4 id="导入pyshark报错"><a href="#导入pyshark报错" class="headerlink" title="导入pyshark报错"></a>导入pyshark报错</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pyshark&#x2F;__init__.py&quot;, line 13, in &lt;module&gt;</span><br><span class="line">    from pyshark.capture.live_capture import LiveCapture</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pyshark&#x2F;capture&#x2F;live_capture.py&quot;, line 6, in &lt;module&gt;</span><br><span class="line">    from pyshark.capture.capture import Capture</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pyshark&#x2F;capture&#x2F;capture.py&quot;, line 13, in &lt;module&gt;</span><br><span class="line">    from pyshark.tshark.tshark_xml import packet_from_xml_packet, psml_structure_from_xml</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;pyshark&#x2F;tshark&#x2F;tshark_xml.py&quot;, line 2, in &lt;module&gt;</span><br><span class="line">    import lxml.objectify</span><br><span class="line">ModuleNotFoundError: No module named &#39;lxml&#39;</span><br></pre></td></tr></table></figure><p>pip3 install lxml –target=/usr/lib/python3.6/site-packages</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;安装python3.6&lt;br&gt;pip3 install wheel –target=/usr/lib/python3.6/site-packages&lt;br&gt;pip3 install pyshark –target=/usr/lib/python3.6/site-packag</summary>
-      
-    
-    
-    
-    <category term="python" scheme="http://example.com/categories/python/"/>
-    
-    
-    <category term="pip" scheme="http://example.com/tags/pip/"/>
     
   </entry>
   

@@ -225,7 +225,7 @@
                             &nbsp;
                             github仓库
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/09/01/git%E4%BD%BF%E7%94%A8/">git进行项目管理和版本控制</a></li>  <li class="file"><a href="/2021/09/01/git%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D/">git修改分支名</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/09/01/git%E4%BD%BF%E7%94%A8/">git进行项目管理和版本控制</a></li>  <li class="file"><a href="/2021/09/01/git%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D/">git修改分支名</a></li>  <li class="file"><a href="/2021/09/02/git%E5%91%BD%E4%BB%A4/">git常用命令</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -407,6 +407,110 @@
 </aside>
             
             <section id="main">
+        <article id="post-charrt与lsattr命令" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/linux/">linux</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a>, <a class="tag-link-link" href="/tags/%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/" rel="tag">文件权限</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/">
+            <time datetime="2021-04-26T16:00:00.000Z" itemprop="datePublished">2021-04-27</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/charrt与lsattr命令.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/charrt与lsattr命令.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/charrt与lsattr命令.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/">chattr与lsattr命令</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>有时候你发现用root权限都不能修改某个文件，大部分原因是曾经用chattr命令锁定该文件了。<br>通过chattr命令修改属性能够提高系统的安全性，但是它并不适合所有的目录。chattr命令不能保护/、/dev、/tmp、/var目录。lsattr命令是显示chattr命令设置的文件属性。</p>
+<p>这两个命令是用来查看和改变文件、目录属性的，与chmod这个命令相比，chmod只是改变文件的读写、执行权限，更底层的属性控制是由chattr来改变的。</p>
+<p><strong>chattr</strong><br>修改文件在Linux第二扩展文件系统(E2fs)上的特有属性<br>chattr [ -RVf ] [ -v version ] [ mode ] files…<br>[ mode ]部分是由+-=和[ ASacDdIijsTtu ]这些字符组合的，这部分是用来控制文件的<br>属性。</p>
+<p>-R  递归地修改目录以及其下内容的属性. 如果在递归目录时遇到了符号链接,遍历将跳过<br>-V  详尽地给出chattr的输出信息并打印出程序的版本<br>-vversion  设置文件系统的版本  </p>
+<p>操作符<code>+</code>用来在文件已有属性的基础上增加选定的属性; <code>-</code>用来去掉文件上的选定的属性;而<code>=</code>用来指定该文件的唯一属性</p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-du命令" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -589,11 +693,11 @@
                 
                 
                     
-                    <p><p><strong>使用awk命令获取文本的某一行，某一列</strong>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">打印文件的第一列</span><br><span class="line">awk &#39;&#123;print $1&#125;&#39; filename</span><br><span class="line"></span><br><span class="line">打印文件的前两列</span><br><span class="line">awk &#39;&#123;print $1,$2&#125;&#39; filename</span><br><span class="line"></span><br><span class="line">打印完第一列，然后打印第二列</span><br><span class="line">awk &#39;&#123;print $1 $2&#125;&#39; filename</span><br><span class="line"></span><br><span class="line">打印文本文件的总行数</span><br><span class="line">awk &#39;END&#123;print NR&#125;&#39; filename</span><br><span class="line"></span><br><span class="line">打印文本第一行</span><br><span class="line">awk &#39;NR&#x3D;&#x3D;1&#123;print&#125;&#39; filename</span><br><span class="line"></span><br><span class="line">打印文本第二行第一列</span><br><span class="line">sed -n &quot;2, 1p&quot; filename | awk &#39;print $1&#39;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                    <p><h4 id="使用awk命令获取文本的某一行，某一列"><a href="#使用awk命令获取文本的某一行，某一列" class="headerlink" title="使用awk命令获取文本的某一行，某一列"></a>使用awk命令获取文本的某一行，某一列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">打印文件的第一列</span><br><span class="line">awk &#39;&#123;print $1&#125;&#39; filename</span><br><span class="line"></span><br><span class="line">打印文件的前两列</span><br><span class="line">awk &#39;&#123;print $1,$2&#125;&#39; filename</span><br><span class="line"></span><br><span class="line">打印完第一列，然后打印第二列</span><br><span class="line">awk &#39;&#123;print $1 $2&#125;&#39; filename</span><br><span class="line"></span><br><span class="line">打印文本文件的总行数</span><br><span class="line">awk &#39;END&#123;print NR&#125;&#39; filename</span><br><span class="line"></span><br><span class="line">打印文本第一行</span><br><span class="line">awk &#39;NR&#x3D;&#x3D;1&#123;print&#125;&#39; filename</span><br><span class="line"></span><br><span class="line">打印文本第二行第一列</span><br><span class="line">sed -n &quot;2, 1p&quot; filename | awk &#39;print $1&#39;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><strong>awk分隔符</strong>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ cat test</span><br><span class="line">a#b#c#d</span><br><span class="line"></span><br><span class="line">$ awk -F# &#39;&#123;print $1,$2&#125;&#39;  test</span><br><span class="line">a b</span><br><span class="line"></span><br><span class="line">$ awk -v FS&#39;#&#39; &#39;&#123;print $1,$2&#125;&#39; test</span><br><span class="line">a b</span><br><span class="line">awk内置变量FS可以用于指定输入分隔符，但是在使用变量时，需要使用-v选项，用于指定对应的变量，比如 -v FS&#x3D;’#</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="awk分隔符"><a href="#awk分隔符" class="headerlink" title="awk分隔符"></a>awk分隔符</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ cat test</span><br><span class="line">a#b#c#d</span><br><span class="line"></span><br><span class="line">$ awk -F# &#39;&#123;print $1,$2&#125;&#39;  test</span><br><span class="line">a b</span><br><span class="line"></span><br><span class="line">$ awk -v FS&#39;#&#39; &#39;&#123;print $1,$2&#125;&#39; test</span><br><span class="line">a b</span><br><span class="line">awk内置变量FS可以用于指定输入分隔符，但是在使用变量时，需要使用-v选项，用于指定对应的变量，比如 -v FS&#x3D;’#</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="输出分隔符"><a href="#输出分隔符" class="headerlink" title="输出分隔符"></a>输出分隔符</h4><p>awk输出每一列的时候，会使用空格隔开每一列，其实，这个空格，就是awk的默认的输出分隔符<br>可以使用awk的内置变量OFS来设定awk的输出分隔符，当然，使用变量的时候要配合使用-v选项</p>
 <p>
                 
             
@@ -1284,91 +1388,6 @@
         
         
             <p>注释：明天记得把图片合成一下（局部的和整体的）</p>
-
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-linux开机自执行脚本" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/shell/">shell</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E5%B8%B8%E8%AF%86/" rel="tag">常识</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2021/03/31/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC/">
-            <time datetime="2021-03-30T16:00:00.000Z" itemprop="datePublished">2021-03-31</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/linux开机自执行脚本.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/linux开机自执行脚本.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/linux开机自执行脚本.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2021/03/31/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC/">linux中/etc/rc.local脚本的作用</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-            
-        
-        
-            <p><strong>linux会在开机之后自动source执行/etc/rc.local脚本</strong></p>
 
             </div>
         

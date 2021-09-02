@@ -225,7 +225,7 @@
                             &nbsp;
                             github仓库
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/09/01/git%E4%BD%BF%E7%94%A8/">git进行项目管理和版本控制</a></li>  <li class="file"><a href="/2021/09/01/git%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D/">git修改分支名</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/09/01/git%E4%BD%BF%E7%94%A8/">git进行项目管理和版本控制</a></li>  <li class="file"><a href="/2021/09/01/git%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D/">git修改分支名</a></li>  <li class="file"><a href="/2021/09/02/git%E5%91%BD%E4%BB%A4/">git常用命令</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -407,6 +407,87 @@
 </aside>
             
             <section id="main">
+        <article id="post-shell脚本自增" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/shell/">shell</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E8%87%AA%E5%A2%9E/" rel="tag">自增</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/06/17/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%A2%9E/">
+            <time datetime="2021-06-16T16:00:00.000Z" itemprop="datePublished">2021-06-17</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/shell脚本自增.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/shell脚本自增.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/shell脚本自增.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/06/17/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%A2%9E/">shell脚本自增</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+            
+        
+        
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;sh</span><br><span class="line">#本脚本测试shell脚本中整型变量自增 加1的几种方法</span><br><span class="line"> </span><br><span class="line">#定义整型变量</span><br><span class="line">a&#x3D;1</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第一种整型变量自增方式</span><br><span class="line">a&#x3D;$(($a+1))</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第二种整型变量自增方式</span><br><span class="line">a&#x3D;$[$a+1]</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第三种整型变量自增方式</span><br><span class="line">a&#x3D;&#96;expr $a + 1&#96;</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第四种整型变量自增方式</span><br><span class="line">let a++</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第五种整型变量自增方式</span><br><span class="line">let a+&#x3D;1</span><br><span class="line">echo $a</span><br><span class="line"> </span><br><span class="line">#第六种整型变量自增方式</span><br><span class="line">((a++))</span><br><span class="line">echo $a</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-环境变量IFS" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -993,110 +1074,6 @@
 
 
     
-        <article id="post-CentOS7出現 slice User信息的解法" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/linux/">linux</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/centos7/" rel="tag">centos7</a>, <a class="tag-link-link" href="/tags/slice-User/" rel="tag">slice User</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/">
-            <time datetime="2021-04-28T16:00:00.000Z" itemprop="datePublished">2021-04-29</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/CentOS7出現 slice User信息的解法.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/CentOS7出現 slice User信息的解法.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/CentOS7出現 slice User信息的解法.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/">CentOS7 出現 slice User 信息的解法</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><p>CentOS 7 的 /var/log/messages 系統紀錄內會大量出現 slice User 的訊息如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Aug 18 08:34:49 ct-squid systemd: Removed slice User Slice of root.</span><br><span class="line">Aug 18 09:30:01 ct-squid systemd: Created slice User Slice of root.</span><br><span class="line">Aug 18 09:30:01 ct-squid systemd: Started Session c616 of user root.</span><br><span class="line">Aug 18 09:41:07 ct-squid systemd: Removed slice User Slice of root.</span><br><span class="line">Aug 18 10:30:01 ct-squid systemd: Created slice User Slice of root.</span><br><span class="line">Aug 18 10:30:01 ct-squid systemd: Started Session c617 of user root.</span><br><span class="line">Aug 18 10:36:28 ct-squid systemd: Removed slice User Slice of root.</span><br><span class="line">Aug 18 10:54:22 ct-squid systemd: Created slice User Slice of root.</span><br><span class="line">Aug 18 10:54:22 ct-squid systemd: Started Session 33128 of user root.</span><br><span class="line">Aug 18 10:54:22 ct-squid systemd-logind: New session 33128 of user root.</span><br></pre></td></tr></table></figure>
-
-<p>主要的原因是和 systemd 服務有關, 可以透過紀錄篩選規則設定, 來隱藏這些 slice User 訊息, 設定方式如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &#39;if $programname &#x3D;&#x3D; &quot;systemd&quot; and ($msg contains &quot;Starting Session&quot; or $msg contains &quot;Started Session&quot; or $msg contains &quot;Created slice&quot; or $msg contains &quot;Starting user-&quot; or $msg contains &quot;Starting User Slice of&quot; or $msg contains &quot;Removed session&quot; or $msg contains &quot;Removed slice User Slice of&quot; or $msg contains &quot;Stopping User Slice of&quot;) then stop&#39; &gt;&#x2F;etc&#x2F;rsyslog.d&#x2F;ignore-systemd-session-slice.conf</span><br><span class="line">systemctl restart rsyslog</span><br></pre></td></tr></table></figure>
-<p>
-                
-            
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
         <article id="post-磁盘挂载" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1201,6 +1178,110 @@
 
 
     
+        <article id="post-CentOS7出現 slice User信息的解法" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/linux/">linux</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/centos7/" rel="tag">centos7</a>, <a class="tag-link-link" href="/tags/slice-User/" rel="tag">slice User</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/">
+            <time datetime="2021-04-28T16:00:00.000Z" itemprop="datePublished">2021-04-29</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/CentOS7出現 slice User信息的解法.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/CentOS7出現 slice User信息的解法.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/CentOS7出現 slice User信息的解法.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/">CentOS7 出現 slice User 信息的解法</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>CentOS 7 的 /var/log/messages 系統紀錄內會大量出現 slice User 的訊息如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Aug 18 08:34:49 ct-squid systemd: Removed slice User Slice of root.</span><br><span class="line">Aug 18 09:30:01 ct-squid systemd: Created slice User Slice of root.</span><br><span class="line">Aug 18 09:30:01 ct-squid systemd: Started Session c616 of user root.</span><br><span class="line">Aug 18 09:41:07 ct-squid systemd: Removed slice User Slice of root.</span><br><span class="line">Aug 18 10:30:01 ct-squid systemd: Created slice User Slice of root.</span><br><span class="line">Aug 18 10:30:01 ct-squid systemd: Started Session c617 of user root.</span><br><span class="line">Aug 18 10:36:28 ct-squid systemd: Removed slice User Slice of root.</span><br><span class="line">Aug 18 10:54:22 ct-squid systemd: Created slice User Slice of root.</span><br><span class="line">Aug 18 10:54:22 ct-squid systemd: Started Session 33128 of user root.</span><br><span class="line">Aug 18 10:54:22 ct-squid systemd-logind: New session 33128 of user root.</span><br></pre></td></tr></table></figure>
+
+<p>主要的原因是和 systemd 服務有關, 可以透過紀錄篩選規則設定, 來隱藏這些 slice User 訊息, 設定方式如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &#39;if $programname &#x3D;&#x3D; &quot;systemd&quot; and ($msg contains &quot;Starting Session&quot; or $msg contains &quot;Started Session&quot; or $msg contains &quot;Created slice&quot; or $msg contains &quot;Starting user-&quot; or $msg contains &quot;Starting User Slice of&quot; or $msg contains &quot;Removed session&quot; or $msg contains &quot;Removed slice User Slice of&quot; or $msg contains &quot;Stopping User Slice of&quot;) then stop&#39; &gt;&#x2F;etc&#x2F;rsyslog.d&#x2F;ignore-systemd-session-slice.conf</span><br><span class="line">systemctl restart rsyslog</span><br></pre></td></tr></table></figure>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-docker监控挂掉" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1285,110 +1366,6 @@
 <p>i：设定文件不能被删除、改名、设定链接关系，同时不能写入或新增内容。</p>
 <p>移除权限就可以了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chattr -i resolv.conf</span><br></pre></td></tr></table></figure>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-charrt与lsattr命令" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/linux/">linux</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a>, <a class="tag-link-link" href="/tags/%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/" rel="tag">文件权限</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/">
-            <time datetime="2021-04-26T16:00:00.000Z" itemprop="datePublished">2021-04-27</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/charrt与lsattr命令.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/charrt与lsattr命令.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/charrt与lsattr命令.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/">chattr与lsattr命令</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><p>有时候你发现用root权限都不能修改某个文件，大部分原因是曾经用chattr命令锁定该文件了。<br>通过chattr命令修改属性能够提高系统的安全性，但是它并不适合所有的目录。chattr命令不能保护/、/dev、/tmp、/var目录。lsattr命令是显示chattr命令设置的文件属性。</p>
-<p>这两个命令是用来查看和改变文件、目录属性的，与chmod这个命令相比，chmod只是改变文件的读写、执行权限，更底层的属性控制是由chattr来改变的。</p>
-<p><strong>chattr</strong><br>修改文件在Linux第二扩展文件系统(E2fs)上的特有属性<br>chattr [ -RVf ] [ -v version ] [ mode ] files…<br>[ mode ]部分是由+-=和[ ASacDdIijsTtu ]这些字符组合的，这部分是用来控制文件的<br>属性。</p>
-<p>-R  递归地修改目录以及其下内容的属性. 如果在递归目录时遇到了符号链接,遍历将跳过<br>-V  详尽地给出chattr的输出信息并打印出程序的版本<br>-vversion  设置文件系统的版本  </p>
-<p>操作符<code>+</code>用来在文件已有属性的基础上增加选定的属性; <code>-</code>用来去掉文件上的选定的属性;而<code>=</code>用来指定该文件的唯一属性</p>
-<p>
-                
-            
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/#more">Read More</a>
             </div>
         
         <footer class="article-footer">
