@@ -184,30 +184,6 @@
   </entry>
   
   <entry>
-    <title>文件系统错误</title>
-    <link href="http://example.com/2021/09/09/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%94%99%E8%AF%AF/"/>
-    <id>http://example.com/2021/09/09/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%94%99%E8%AF%AF/</id>
-    <published>2021-09-08T16:00:00.000Z</published>
-    <updated>2021-09-09T11:19:04.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="EXT4-fs-sda2-I-0-error-while-writing-superblock"><a href="#EXT4-fs-sda2-I-0-error-while-writing-superblock" class="headerlink" title="EXT4-fs (sda2): I/0 error while writing superblock"></a>EXT4-fs (sda2): I/0 error while writing superblock</h4><p>用livecd挂载磁盘</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo umount &#x2F;dev&#x2F;sda2</span><br><span class="line">sudo fsck -f &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure><p><a href="http://blog.chinaunix.net/uid-29956640-id-5055552.html">使用fsck修复文件系统错误</a></p><h4 id="pvcreate-error-Can’t-open-dev-sdb1-exclusively-Mounted-filesystem"><a href="#pvcreate-error-Can’t-open-dev-sdb1-exclusively-Mounted-filesystem" class="headerlink" title="pvcreate error : Can’t open /dev/sdb1 exclusively. Mounted filesystem?"></a>pvcreate error : Can’t open /dev/sdb1 exclusively. Mounted filesystem?</h4><p>lvm分区，创建物理卷报错</p><p>1.这个分区可能被使用了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ll &#x2F;dev&#x2F;mapper&#x2F;</span><br><span class="line"></span><br><span class="line">看看分区被谁占了</span><br><span class="line"></span><br><span class="line">使用dmsetup remove xxx，清除即可</span><br></pre></td></tr></table></figure><p>2.它的实际原因是分区中已经存在分区表，导致pvcreate扫描出来已经存在分区表放弃新建了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用</span><br><span class="line">dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;dev&#x2F;sdb bs&#x3D;512K count&#x3D;1</span><br><span class="line"></span><br><span class="line">清除分区即可（慎用！！！）</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h4 id=&quot;EXT4-fs-sda2-I-0-error-while-writing-superblock&quot;&gt;&lt;a href=&quot;#EXT4-fs-sda2-I-0-error-while-writing-superblock&quot; class=&quot;headerlink&quot; title</summary>
-      
-    
-    
-    
-    <category term="Linux磁盘" scheme="http://example.com/categories/Linux%E7%A3%81%E7%9B%98/"/>
-    
-    
-    <category term="磁盘报错" scheme="http://example.com/tags/%E7%A3%81%E7%9B%98%E6%8A%A5%E9%94%99/"/>
-    
-  </entry>
-  
-  <entry>
     <title>dd命令</title>
     <link href="http://example.com/2021/09/09/dd%E5%91%BD%E4%BB%A4/"/>
     <id>http://example.com/2021/09/09/dd%E5%91%BD%E4%BB%A4/</id>
@@ -235,6 +211,30 @@
   </entry>
   
   <entry>
+    <title>文件系统错误</title>
+    <link href="http://example.com/2021/09/09/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%94%99%E8%AF%AF/"/>
+    <id>http://example.com/2021/09/09/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%94%99%E8%AF%AF/</id>
+    <published>2021-09-08T16:00:00.000Z</published>
+    <updated>2021-09-09T11:19:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="EXT4-fs-sda2-I-0-error-while-writing-superblock"><a href="#EXT4-fs-sda2-I-0-error-while-writing-superblock" class="headerlink" title="EXT4-fs (sda2): I/0 error while writing superblock"></a>EXT4-fs (sda2): I/0 error while writing superblock</h4><p>用livecd挂载磁盘</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo umount &#x2F;dev&#x2F;sda2</span><br><span class="line">sudo fsck -f &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure><p><a href="http://blog.chinaunix.net/uid-29956640-id-5055552.html">使用fsck修复文件系统错误</a></p><h4 id="pvcreate-error-Can’t-open-dev-sdb1-exclusively-Mounted-filesystem"><a href="#pvcreate-error-Can’t-open-dev-sdb1-exclusively-Mounted-filesystem" class="headerlink" title="pvcreate error : Can’t open /dev/sdb1 exclusively. Mounted filesystem?"></a>pvcreate error : Can’t open /dev/sdb1 exclusively. Mounted filesystem?</h4><p>lvm分区，创建物理卷报错</p><p>1.这个分区可能被使用了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ll &#x2F;dev&#x2F;mapper&#x2F;</span><br><span class="line"></span><br><span class="line">看看分区被谁占了</span><br><span class="line"></span><br><span class="line">使用dmsetup remove xxx，清除即可</span><br></pre></td></tr></table></figure><p>2.它的实际原因是分区中已经存在分区表，导致pvcreate扫描出来已经存在分区表放弃新建了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用</span><br><span class="line">dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;dev&#x2F;sdb bs&#x3D;512K count&#x3D;1</span><br><span class="line"></span><br><span class="line">清除分区即可（慎用！！！）</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;EXT4-fs-sda2-I-0-error-while-writing-superblock&quot;&gt;&lt;a href=&quot;#EXT4-fs-sda2-I-0-error-while-writing-superblock&quot; class=&quot;headerlink&quot; title</summary>
+      
+    
+    
+    
+    <category term="Linux磁盘" scheme="http://example.com/categories/Linux%E7%A3%81%E7%9B%98/"/>
+    
+    
+    <category term="磁盘报错" scheme="http://example.com/tags/%E7%A3%81%E7%9B%98%E6%8A%A5%E9%94%99/"/>
+    
+  </entry>
+  
+  <entry>
     <title>git常用命令</title>
     <link href="http://example.com/2021/09/02/git%E5%91%BD%E4%BB%A4/"/>
     <id>http://example.com/2021/09/02/git%E5%91%BD%E4%BB%A4/</id>
@@ -255,6 +255,30 @@
     
     
     <category term="git" scheme="http://example.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>wget命令</title>
+    <link href="http://example.com/2021/09/01/wget%E5%91%BD%E4%BB%A4/"/>
+    <id>http://example.com/2021/09/01/wget%E5%91%BD%E4%BB%A4/</id>
+    <published>2021-08-31T16:00:00.000Z</published>
+    <updated>2021-09-01T16:09:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="如何在Windows下的git-bash中添加wget"><a href="#如何在Windows下的git-bash中添加wget" class="headerlink" title="如何在Windows下的git bash中添加wget"></a>如何在Windows下的git bash中添加wget</h3><ol><li>下载wget二进制安装包，地址：<a href="https://eternallybored.org/misc/wget/">https://eternallybored.org/misc/wget/</a></li><li>2、解压安装包，将wget.exe 拷贝到C:\Program Files\Git\mingw64\bin\ 下面</li></ol><h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>参考连接<br><a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/wget.html">https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/wget.html</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;如何在Windows下的git-bash中添加wget&quot;&gt;&lt;a href=&quot;#如何在Windows下的git-bash中添加wget&quot; class=&quot;headerlink&quot; title=&quot;如何在Windows下的git bash中添加wget&quot;&gt;&lt;/a&gt;如何在Wi</summary>
+      
+    
+    
+    
+    <category term="文本" scheme="http://example.com/categories/%E6%96%87%E6%9C%AC/"/>
+    
+    
+    <category term="wget" scheme="http://example.com/tags/wget/"/>
     
   </entry>
   
@@ -311,30 +335,6 @@
     
     
     <category term="branch" scheme="http://example.com/tags/branch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>wget命令</title>
-    <link href="http://example.com/2021/09/01/wget%E5%91%BD%E4%BB%A4/"/>
-    <id>http://example.com/2021/09/01/wget%E5%91%BD%E4%BB%A4/</id>
-    <published>2021-08-31T16:00:00.000Z</published>
-    <updated>2021-09-01T16:09:24.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="如何在Windows下的git-bash中添加wget"><a href="#如何在Windows下的git-bash中添加wget" class="headerlink" title="如何在Windows下的git bash中添加wget"></a>如何在Windows下的git bash中添加wget</h3><ol><li>下载wget二进制安装包，地址：<a href="https://eternallybored.org/misc/wget/">https://eternallybored.org/misc/wget/</a></li><li>2、解压安装包，将wget.exe 拷贝到C:\Program Files\Git\mingw64\bin\ 下面</li></ol><h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>参考连接<br><a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/wget.html">https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/wget.html</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;如何在Windows下的git-bash中添加wget&quot;&gt;&lt;a href=&quot;#如何在Windows下的git-bash中添加wget&quot; class=&quot;headerlink&quot; title=&quot;如何在Windows下的git bash中添加wget&quot;&gt;&lt;/a&gt;如何在Wi</summary>
-      
-    
-    
-    
-    <category term="文本" scheme="http://example.com/categories/%E6%96%87%E6%9C%AC/"/>
-    
-    
-    <category term="wget" scheme="http://example.com/tags/wget/"/>
     
   </entry>
   
@@ -440,26 +440,27 @@
   </entry>
   
   <entry>
-    <title>curl用法</title>
-    <link href="http://example.com/2021/08/08/curl/"/>
-    <id>http://example.com/2021/08/08/curl/</id>
+    <title>只读文件系统 /var/cache/yum/x86 64/7/base/repomd.xml.old.tmp</title>
+    <link href="http://example.com/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://example.com/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</id>
     <published>2021-08-07T16:00:00.000Z</published>
-    <updated>2021-10-15T18:44:24.000Z</updated>
+    <updated>2021-08-23T13:09:38.000Z</updated>
     
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">不带有任何参数时，curl 就是发出 GET 请求。</span><br><span class="line">curl https:&#x2F;&#x2F;www.example.com</span><br><span class="line"></span><br><span class="line">-O参数将服务器回应保存成文件，并将 URL 的最后部分当作文件名。</span><br><span class="line">curl -O https:&#x2F;&#x2F;www.example.com&#x2F;foo&#x2F;bar.html</span><br><span class="line"></span><br><span class="line">-s参数将不输出错误和进度信息。</span><br><span class="line">curl -s https:&#x2F;&#x2F;www.example.com</span><br><span class="line"></span><br><span class="line">-S参数指定只输出错误信息，通常与-s一起使用。</span><br><span class="line">curl -s -o &#x2F;dev&#x2F;null https:&#x2F;&#x2F;google.com</span><br><span class="line"></span><br><span class="line">-L参数会让 HTTP 请求跟随服务器的重定向。curl 默认不跟随重定向。</span><br><span class="line">curl -L -d &#39;tweet&#x3D;hi&#39; https:&#x2F;&#x2F;api.twitter.com&#x2F;tweet</span><br></pre></td></tr></table></figure><p>指定网卡</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --interface ppp3 cip.cc</span><br></pre></td></tr></table></figure><blockquote><p>参考：<a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p></blockquote>]]></content>
+    <content type="html"><![CDATA[<p>问题：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Errno 30] 只读文件系统: &#39;&#x2F;var&#x2F;cache&#x2F;yum&#x2F;x86_64&#x2F;7&#x2F;base&#x2F;repomd.xml.old.tmp&#39;</span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">不知道到底是什么，但一定yum源有了问题；</span><br><span class="line">网上搜了一大堆，大多是yum clean清缓存的，没试，应该也行；</span><br><span class="line"></span><br><span class="line">解决：</span><br><span class="line">进入&#x2F;var&#x2F;cache&#x2F;yum&#x2F;, 执行rm -rf x86_64&#x2F;c, 删除缓存；</span><br><span class="line">报错：rm: 无法删除&quot;xxx&quot;: 只读文件系统</span><br><span class="line">执行mount -o remount,rw &#x2F;, 再次删除；</span><br><span class="line">执行yum repolist;</span><br></pre></td></tr></table></figure><p>ok, 搞定</p><blockquote><p>参考：<a href="https://blog.csdn.net/xue15029240296/article/details/103211911">https://blog.csdn.net/xue15029240296/article/details/103211911</a></p></blockquote>]]></content>
     
     
       
       
-    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class</summary>
+    <summary type="html">&lt;p&gt;问题：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;</summary>
       
     
     
     
-    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
+    <category term="linux" scheme="http://example.com/categories/linux/"/>
     
     
-    <category term="curl" scheme="http://example.com/tags/curl/"/>
+    <category term="技巧" scheme="http://example.com/tags/%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
@@ -489,31 +490,6 @@
   </entry>
   
   <entry>
-    <title>sort排序</title>
-    <link href="http://example.com/2021/08/08/sort%E6%8E%92%E5%BA%8F/"/>
-    <id>http://example.com/2021/08/08/sort%E6%8E%92%E5%BA%8F/</id>
-    <published>2021-08-07T16:00:00.000Z</published>
-    <updated>2021-08-23T10:19:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>参考：<a href="https://blog.csdn.net/monkeyduck/article/details/10097829">https://blog.csdn.net/monkeyduck/article/details/10097829</a></p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://blog.csdn.net/monkeyduck/article/details/10097829&quot;&gt;https://blog.csdn.net/monkeyduck/article/details/1009</summary>
-      
-    
-    
-    
-    <category term="shell" scheme="http://example.com/categories/shell/"/>
-    
-    
-    <category term="sort" scheme="http://example.com/tags/sort/"/>
-    
-  </entry>
-  
-  <entry>
     <title>lvm分区</title>
     <link href="http://example.com/2021/08/08/lvm%E4%BB%8B%E7%BB%8D/"/>
     <id>http://example.com/2021/08/08/lvm%E4%BB%8B%E7%BB%8D/</id>
@@ -537,6 +513,31 @@
     
     
     <category term="lvm" scheme="http://example.com/tags/lvm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CMOS放电</title>
+    <link href="http://example.com/2021/08/08/CMOS%E6%94%BE%E7%94%B5/"/>
+    <id>http://example.com/2021/08/08/CMOS%E6%94%BE%E7%94%B5/</id>
+    <published>2021-08-07T16:00:00.000Z</published>
+    <updated>2021-10-29T17:06:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://www.kiaic.com/article/detail/1790.html">http://www.kiaic.com/article/detail/1790.html</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;http://www.kiaic.com/article/detail/1790.html&quot;&gt;http://www.kiaic.com/article/detail/1790.html&lt;/a&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="linux" scheme="http://example.com/categories/linux/"/>
+    
+    
+    <category term="CMOS" scheme="http://example.com/tags/CMOS/"/>
     
   </entry>
   
