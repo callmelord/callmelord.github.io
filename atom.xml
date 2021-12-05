@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-10-22T18:40:14.000Z</updated>
+  <updated>2021-12-03T17:02:20.000Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,128 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>centos修改网卡名称</title>
+    <link href="http://example.com/2021/12/03/centos%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/"/>
+    <id>http://example.com/2021/12/03/centos%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/</id>
+    <published>2021-12-02T16:00:00.000Z</published>
+    <updated>2021-12-03T17:02:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="内核启用biosdevname，禁用net-ifnames"><a href="#内核启用biosdevname，禁用net-ifnames" class="headerlink" title="内核启用biosdevname，禁用net.ifnames"></a>内核启用biosdevname，禁用net.ifnames</h4><p><a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/networking_guide/sec-consistent_network_device_naming_using_biosdevname">biosdevname详解</a></p><p>net.ifnames（也是一种网卡的命名规范）</p><p>修改/etc/default/grub</p><p>在GRUB_CMDLINE_LINUX后添加 net.ifnames=0 biosdevname=1</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRUB_CMDLINE_LINUX&#x3D;&quot;crashkernel&#x3D;auto rhgb quiet net.ifnames&#x3D;0 biosdevname&#x3D;1&quot;）</span><br></pre></td></tr></table></figure><p>重设一下引导</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo grub2-mkconfig -o &#x2F;etc&#x2F;grub2.cfg</span><br></pre></td></tr></table></figure><h4 id="启用udev的60-net-rules规则"><a href="#启用udev的60-net-rules规则" class="headerlink" title="启用udev的60-net.rules规则"></a>启用udev的60-net.rules规则</h4><p>/usr/lib/udev/rules.d/60-net.rules文件中的规则指示udev辅助工具/lib/udev/renamedevice查看所有/etc/sysconfig/networkscripts/ifcfg-suffix文件。如果是ifcfg文件如果发现包含 HWADDR 条目与接口的 MAC 地址匹配，它将将该接口重命名为 ifcfg 文件中的 DEVICE 指令指定的名称。如果不相符，则按照/etc/udev/rules.d/60-net.rules下的规则来</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp &#x2F;usr&#x2F;lib&#x2F;udev&#x2F;rules.d&#x2F;60-net.rules &#x2F;etc&#x2F;udev&#x2F;rules.d&#x2F;</span><br><span class="line"></span><br><span class="line">cat &#x2F;etc&#x2F;udev&#x2F;rules.d&#x2F;60-net.rules</span><br><span class="line">ACTION&#x3D;&#x3D;&quot;add&quot;, SUBSYSTEM&#x3D;&#x3D;&quot;net&quot;, DRIVERS&#x3D;&#x3D;&quot;?*&quot;, ATTR&#123;type&#125;&#x3D;&#x3D;&quot;1&quot;, PROGRAM&#x3D;&quot;&#x2F;lib&#x2F;udev&#x2F;rename_device&quot;, RESULT&#x3D;&#x3D;&quot;?*&quot;, NAME&#x3D;&quot;$result&quot;</span><br></pre></td></tr></table></figure><p>通过udev指定网卡名</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ACTION&#x3D;&#x3D;&quot;add&quot;, SUBSYSTEM&#x3D;&#x3D;&quot;net&quot;, DRIVERS&#x3D;&#x3D;&quot;?*&quot;, ATTR&#123;type&#125;&#x3D;&#x3D;&quot;1&quot;, ATTR&#123;address&#125;&#x3D;&#x3D;&quot;d8:9e:*:10:*11&quot;, NAME&#x3D;&quot;eth0&quot;</span><br></pre></td></tr></table></figure><h4 id="修改网卡配置文件"><a href="#修改网卡配置文件" class="headerlink" title="修改网卡配置文件"></a>修改网卡配置文件</h4><p>如果要把em2网卡改成eth0</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;</span><br><span class="line">mv ifcfg-em2 ifcfg-eth0</span><br><span class="line">把配置文件里的NAME、DEVICE改为eth0</span><br><span class="line">在对应网卡的配置文件中添加对应网卡的mac地址，HWADDR&#x3D;ec:**:**:e1:0*:c5</span><br></pre></td></tr></table></figure><p>如果没有配置文件，可使用以下命令添加</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nmcli connection add type ethernet ifname em1 con-name em1 autoconnect yes</span><br><span class="line"></span><br><span class="line">警告：名为 &#39;em1&#39; 的连接已存在。使用 uuid &#39;3b563e41-be15-4a21-98b9-9ca9e8777e25&#39; 来指代连接</span><br><span class="line">连接 &quot;em1&quot; (3b563e41-be15-4a21-98b9-9ca9e8777e25) 已成功添加。</span><br></pre></td></tr></table></figure><h4 id="重启机器"><a href="#重启机器" class="headerlink" title="重启机器"></a>重启机器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>上述的方法用了两个网卡命名规范，一个是biosdevname、一个是systemd</p><p>经测试，biosdevname命名规范必须启用，否则修改网卡为eth0（ethX系列）会出现莫名的错误，而非eth的名字则可正常修改</p><p>内核在boot过程是默认使用ethX方式来命名的，每次启动的时候都不确定，启动会后再通过udev等方式去rename，这种不确定因素太多，所以启用biosdevname比较好</p><p>启用biosdevname，禁用net.ifnames，（两种规范用一个就行）</p><p><strong>！！！如果用户自定义了udev rules，则用户自定义的rules优先！</strong></p><p>使用biosdevname命名规范，所命名的网卡名如下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">em1 板载网卡</span><br><span class="line">p3p4 pci网卡</span><br><span class="line">p3p4_1 虚拟网卡</span><br></pre></td></tr></table></figure><p>参考文档</p><p><a href="https://www.cnblogs.com/yanh0606/p/10910808.html">centos7中的网卡名称相关知识</a></p><p><a href="https://git.vcmq.workers.dev/eZioPan/Learning_Linux/blob/markdown/88.3%E3%80%81systemd.net-naming-scheme%20-%20systemd%20%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99.md">systemd.net-naming_scheme - 网络设备命名方案</a></p><p><a href="https://programmer.ink/think/rhel7-centos7-modify-network-card-name-to-eth0.html">RHEL7/centos7 修改网卡名称为eth0</a></p><p><a href="https://www.aikaiyuan.com/12535.html">CentOS 7 CentOS 8 网卡命名规则</a></p><p><a href="https://www.jianshu.com/p/b66981dbb389">Centos 7 中网卡配置文件的优先级</a></p><p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/ch-consistent_network_device_naming">一致的网络设备命名</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;内核启用biosdevname，禁用net-ifnames&quot;&gt;&lt;a href=&quot;#内核启用biosdevname，禁用net-ifnames&quot; class=&quot;headerlink&quot; title=&quot;内核启用biosdevname，禁用net.ifnames&quot;&gt;&lt;/a</summary>
+      
+    
+    
+    
+    <category term="linux" scheme="http://example.com/categories/linux/"/>
+    
+    
+    <category term="网卡" scheme="http://example.com/tags/%E7%BD%91%E5%8D%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>md5校验</title>
+    <link href="http://example.com/2021/12/02/md5%E6%A0%A1%E9%AA%8C/"/>
+    <id>http://example.com/2021/12/02/md5%E6%A0%A1%E9%AA%8C/</id>
+    <published>2021-12-01T16:00:00.000Z</published>
+    <updated>2021-12-02T10:33:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CertUtil -hashfile &lt;path to file&gt; MD5</span><br></pre></td></tr></table></figure><h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">md5sum 文件名</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;windows&quot;&gt;&lt;a href=&quot;#windows&quot; class=&quot;headerlink&quot; title=&quot;windows&quot;&gt;&lt;/a&gt;windows&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=</summary>
+      
+    
+    
+    
+    <category term="文本" scheme="http://example.com/categories/%E6%96%87%E6%9C%AC/"/>
+    
+    
+    <category term="md5" scheme="http://example.com/tags/md5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS 删除swap分区</title>
+    <link href="http://example.com/2021/11/16/%E5%88%A0%E9%99%A4swap%E5%88%86%E5%8C%BA/"/>
+    <id>http://example.com/2021/11/16/%E5%88%A0%E9%99%A4swap%E5%88%86%E5%8C%BA/</id>
+    <published>2021-11-15T16:00:00.000Z</published>
+    <updated>2021-11-16T16:42:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="删除swap分区"><a href="#删除swap分区" class="headerlink" title="删除swap分区"></a>删除swap分区</h3><ol><li>先停止swap分区<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;sbin&#x2F;swapoff &#x2F;dev&#x2F;sdb2</span><br></pre></td></tr></table></figure></li><li>把自动挂载的配置清了就行</li></ol><h3 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h3><p><a href="https://www.jb51.net/os/RedHat/515882.html">CentOS如何手动增加 删除swap区</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;删除swap分区&quot;&gt;&lt;a href=&quot;#删除swap分区&quot; class=&quot;headerlink&quot; title=&quot;删除swap分区&quot;&gt;&lt;/a&gt;删除swap分区&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;先停止swap分区&lt;figure class=&quot;highlight plain&quot;</summary>
+      
+    
+    
+    
+    <category term="linux" scheme="http://example.com/categories/linux/"/>
+    
+    
+    <category term="swap" scheme="http://example.com/tags/swap/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>pcie总线报错</title>
+    <link href="http://example.com/2021/11/16/pcie%E6%8A%A5%E9%94%99/"/>
+    <id>http://example.com/2021/11/16/pcie%E6%8A%A5%E9%94%99/</id>
+    <published>2021-11-15T16:00:00.000Z</published>
+    <updated>2021-11-16T16:48:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/caya-yuan/p/10604519.html">排错模板</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/caya-yuan/p/10604519.html&quot;&gt;排错模板&lt;/a&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="linux" scheme="http://example.com/categories/linux/"/>
+    
+    
+    <category term="pcie报错" scheme="http://example.com/tags/pcie%E6%8A%A5%E9%94%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shell数组</title>
+    <link href="http://example.com/2021/11/16/shell%E6%95%B0%E7%BB%84/"/>
+    <id>http://example.com/2021/11/16/shell%E6%95%B0%E7%BB%84/</id>
+    <published>2021-11-15T16:00:00.000Z</published>
+    <updated>2021-11-16T16:54:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="删除数组中的元素"><a href="#删除数组中的元素" class="headerlink" title="删除数组中的元素"></a>删除数组中的元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ array&#x3D;( &quot;one two&quot; &quot;three four&quot; &quot;five six&quot; )</span><br><span class="line">$ unset array[1]</span><br><span class="line">$ array&#x3D;( &quot;$&#123;array[@]&#125;&quot; )</span><br><span class="line">$ echo $&#123;array[0]&#125;</span><br><span class="line">one two</span><br><span class="line">$ echo $&#123;array[1]&#125;</span><br><span class="line">five six</span><br></pre></td></tr></table></figure><p>Shell 数组并不是真正用作可以从中添加和删除项目的数据结构(它们主要用于为以下情况提供第二级引用:提供somecommand有两个，而不是四个参数)。但这应该适用于大多数情况。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr&#x3D;( &quot;one two&quot; &quot;three four&quot; )</span><br><span class="line">somecommand &quot;$&#123;arr[@]&#125;&quot;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;删除数组中的元素&quot;&gt;&lt;a href=&quot;#删除数组中的元素&quot; class=&quot;headerlink&quot; title=&quot;删除数组中的元素&quot;&gt;&lt;/a&gt;删除数组中的元素&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td cl</summary>
+      
+    
+    
+    
+    <category term="shell" scheme="http://example.com/categories/shell/"/>
+    
+    
+    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
+    
+  </entry>
   
   <entry>
     <title>centos升级内核</title>
@@ -184,30 +306,6 @@
   </entry>
   
   <entry>
-    <title>文件系统错误</title>
-    <link href="http://example.com/2021/09/09/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%94%99%E8%AF%AF/"/>
-    <id>http://example.com/2021/09/09/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%94%99%E8%AF%AF/</id>
-    <published>2021-09-08T16:00:00.000Z</published>
-    <updated>2021-09-09T11:19:04.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="EXT4-fs-sda2-I-0-error-while-writing-superblock"><a href="#EXT4-fs-sda2-I-0-error-while-writing-superblock" class="headerlink" title="EXT4-fs (sda2): I/0 error while writing superblock"></a>EXT4-fs (sda2): I/0 error while writing superblock</h4><p>用livecd挂载磁盘</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo umount &#x2F;dev&#x2F;sda2</span><br><span class="line">sudo fsck -f &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure><p><a href="http://blog.chinaunix.net/uid-29956640-id-5055552.html">使用fsck修复文件系统错误</a></p><h4 id="pvcreate-error-Can’t-open-dev-sdb1-exclusively-Mounted-filesystem"><a href="#pvcreate-error-Can’t-open-dev-sdb1-exclusively-Mounted-filesystem" class="headerlink" title="pvcreate error : Can’t open /dev/sdb1 exclusively. Mounted filesystem?"></a>pvcreate error : Can’t open /dev/sdb1 exclusively. Mounted filesystem?</h4><p>lvm分区，创建物理卷报错</p><p>1.这个分区可能被使用了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ll &#x2F;dev&#x2F;mapper&#x2F;</span><br><span class="line"></span><br><span class="line">看看分区被谁占了</span><br><span class="line"></span><br><span class="line">使用dmsetup remove xxx，清除即可</span><br></pre></td></tr></table></figure><p>2.它的实际原因是分区中已经存在分区表，导致pvcreate扫描出来已经存在分区表放弃新建了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用</span><br><span class="line">dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;dev&#x2F;sdb bs&#x3D;512K count&#x3D;1</span><br><span class="line"></span><br><span class="line">清除分区即可（慎用！！！）</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h4 id=&quot;EXT4-fs-sda2-I-0-error-while-writing-superblock&quot;&gt;&lt;a href=&quot;#EXT4-fs-sda2-I-0-error-while-writing-superblock&quot; class=&quot;headerlink&quot; title</summary>
-      
-    
-    
-    
-    <category term="Linux磁盘" scheme="http://example.com/categories/Linux%E7%A3%81%E7%9B%98/"/>
-    
-    
-    <category term="磁盘报错" scheme="http://example.com/tags/%E7%A3%81%E7%9B%98%E6%8A%A5%E9%94%99/"/>
-    
-  </entry>
-  
-  <entry>
     <title>dd命令</title>
     <link href="http://example.com/2021/09/09/dd%E5%91%BD%E4%BB%A4/"/>
     <id>http://example.com/2021/09/09/dd%E5%91%BD%E4%BB%A4/</id>
@@ -231,6 +329,30 @@
     
     
     <category term="dd" scheme="http://example.com/tags/dd/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>文件系统错误</title>
+    <link href="http://example.com/2021/09/09/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%94%99%E8%AF%AF/"/>
+    <id>http://example.com/2021/09/09/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%94%99%E8%AF%AF/</id>
+    <published>2021-09-08T16:00:00.000Z</published>
+    <updated>2021-09-09T11:19:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="EXT4-fs-sda2-I-0-error-while-writing-superblock"><a href="#EXT4-fs-sda2-I-0-error-while-writing-superblock" class="headerlink" title="EXT4-fs (sda2): I/0 error while writing superblock"></a>EXT4-fs (sda2): I/0 error while writing superblock</h4><p>用livecd挂载磁盘</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo umount &#x2F;dev&#x2F;sda2</span><br><span class="line">sudo fsck -f &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure><p><a href="http://blog.chinaunix.net/uid-29956640-id-5055552.html">使用fsck修复文件系统错误</a></p><h4 id="pvcreate-error-Can’t-open-dev-sdb1-exclusively-Mounted-filesystem"><a href="#pvcreate-error-Can’t-open-dev-sdb1-exclusively-Mounted-filesystem" class="headerlink" title="pvcreate error : Can’t open /dev/sdb1 exclusively. Mounted filesystem?"></a>pvcreate error : Can’t open /dev/sdb1 exclusively. Mounted filesystem?</h4><p>lvm分区，创建物理卷报错</p><p>1.这个分区可能被使用了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ll &#x2F;dev&#x2F;mapper&#x2F;</span><br><span class="line"></span><br><span class="line">看看分区被谁占了</span><br><span class="line"></span><br><span class="line">使用dmsetup remove xxx，清除即可</span><br></pre></td></tr></table></figure><p>2.它的实际原因是分区中已经存在分区表，导致pvcreate扫描出来已经存在分区表放弃新建了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用</span><br><span class="line">dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;dev&#x2F;sdb bs&#x3D;512K count&#x3D;1</span><br><span class="line"></span><br><span class="line">清除分区即可（慎用！！！）</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;EXT4-fs-sda2-I-0-error-while-writing-superblock&quot;&gt;&lt;a href=&quot;#EXT4-fs-sda2-I-0-error-while-writing-superblock&quot; class=&quot;headerlink&quot; title</summary>
+      
+    
+    
+    
+    <category term="Linux磁盘" scheme="http://example.com/categories/Linux%E7%A3%81%E7%9B%98/"/>
+    
+    
+    <category term="磁盘报错" scheme="http://example.com/tags/%E7%A3%81%E7%9B%98%E6%8A%A5%E9%94%99/"/>
     
   </entry>
   
@@ -411,130 +533,6 @@
     
     
     <category term="docker" scheme="http://example.com/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nmcli 命令</title>
-    <link href="http://example.com/2021/08/19/nmcli/"/>
-    <id>http://example.com/2021/08/19/nmcli/</id>
-    <published>2021-08-18T16:00:00.000Z</published>
-    <updated>2021-09-13T14:16:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>用户和脚本都可使用命令行工具 nmcli 控制 NetworkManager。</p><h3 id="该命令的基本格式为："><a href="#该命令的基本格式为：" class="headerlink" title="该命令的基本格式为："></a>该命令的基本格式为：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli OPTIONS OBJECT &#123; COMMAND | help &#125;</span><br></pre></td></tr></table></figure><p>其中 OBJECT 可为 general、networking、radio、connection 或 device 之一。最常用的选项为：-t, –terse（用于脚本）、-p, –pretty 选项（用于用户）</p><h3 id="命令实例"><a href="#命令实例" class="headerlink" title="命令实例"></a>命令实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">显示 NetworkManager 总体状态：</span><br><span class="line">nmcli general status</span><br><span class="line"></span><br><span class="line">显示所有链接：</span><br><span class="line">nmcli connection show</span><br><span class="line"></span><br><span class="line">只显示当前活动链接</span><br><span class="line">nmcli connection show --active</span><br><span class="line"></span><br><span class="line">显示由 NetworkManager 识别到设备及其状态：</span><br><span class="line">nmcli device status</span><br><span class="line"></span><br><span class="line">激活eth1</span><br><span class="line">nmcli con up eth1</span><br></pre></td></tr></table></figure><h3 id="使用-nmcli-启动和停止接口"><a href="#使用-nmcli-启动和停止接口" class="headerlink" title="使用 nmcli 启动和停止接口"></a>使用 nmcli 启动和停止接口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nmcli con up id bond0</span><br><span class="line">nmcli con up id port0</span><br><span class="line">nmcli dev disconnect iface bond0</span><br><span class="line">nmcli dev disconnect iface ens3</span><br></pre></td></tr></table></figure><p>注意：<br>建议使用 nmcli dev disconnect iface iface-name 命令，而不是 nmcli con down id id-string 命令，因为连接断开可将该接口放到“手动”模式，这样做用户让 NetworkManager 启动某个连接前，或发生外部事件（比如载波变化、休眠或睡眠）前，不会启动任何自动连接。</p><h3 id="查看网卡MAC地址"><a href="#查看网卡MAC地址" class="headerlink" title="查看网卡MAC地址"></a>查看网卡MAC地址</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nmcli dev show |grep $网卡 -A 20</span><br><span class="line"></span><br><span class="line">ip -br link show $网卡</span><br></pre></td></tr></table></figure><h3 id="查看网卡UUID"><a href="#查看网卡UUID" class="headerlink" title="查看网卡UUID"></a>查看网卡UUID</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli con show </span><br></pre></td></tr></table></figure><h3 id="了解-nmcli-选项"><a href="#了解-nmcli-选项" class="headerlink" title="了解 nmcli 选项"></a>了解 nmcli 选项</h3><p>type — 连接类型。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">允许值为：adsl, bond, bond-slave, bridge, bridge-slave, bluetooth, cdma, </span><br><span class="line">         ethernet, gsm, infiniband, olpc-mesh, team, team-slave, vlan, wifi, wimax.</span><br></pre></td></tr></table></figure><h3 id="查看网卡型号"><a href="#查看网卡型号" class="headerlink" title="查看网卡型号"></a>查看网卡型号</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lspci | grep -i ethernet</span><br></pre></td></tr></table></figure><blockquote><p>参考文件：<a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/networking_guide/sec-using_the_networkmanager_command_line_tool_nmcli">https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/networking_guide/sec-using_the_networkmanager_command_line_tool_nmcli</a></p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;用户和脚本都可使用命令行工具 nmcli 控制 NetworkManager。&lt;/p&gt;
-&lt;h3 id=&quot;该命令的基本格式为：&quot;&gt;&lt;a href=&quot;#该命令的基本格式为：&quot; class=&quot;headerlink&quot; title=&quot;该命令的基本格式为：&quot;&gt;&lt;/a&gt;该命令的基本格式为</summary>
-      
-    
-    
-    
-    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
-    
-    
-    <category term="nmcli" scheme="http://example.com/tags/nmcli/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CMOS放电</title>
-    <link href="http://example.com/2021/08/08/CMOS%E6%94%BE%E7%94%B5/"/>
-    <id>http://example.com/2021/08/08/CMOS%E6%94%BE%E7%94%B5/</id>
-    <published>2021-08-07T16:00:00.000Z</published>
-    <updated>2021-10-29T17:06:24.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="http://www.kiaic.com/article/detail/1790.html">http://www.kiaic.com/article/detail/1790.html</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;http://www.kiaic.com/article/detail/1790.html&quot;&gt;http://www.kiaic.com/article/detail/1790.html&lt;/a&gt;&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
-    
-    
-    <category term="CMOS" scheme="http://example.com/tags/CMOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>rsync用法</title>
-    <link href="http://example.com/2021/08/08/rsync/"/>
-    <id>http://example.com/2021/08/08/rsync/</id>
-    <published>2021-08-07T16:00:00.000Z</published>
-    <updated>2021-10-18T15:17:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://www.ruanyifeng.com/blog/2020/08/rsync.html">参考链接</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.ruanyifeng.com/blog/2020/08/rsync.html&quot;&gt;参考链接&lt;/a&gt;&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
-    
-    
-    <category term="rsync" scheme="http://example.com/tags/rsync/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>curl用法</title>
-    <link href="http://example.com/2021/08/08/curl/"/>
-    <id>http://example.com/2021/08/08/curl/</id>
-    <published>2021-08-07T16:00:00.000Z</published>
-    <updated>2021-10-15T18:44:24.000Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">不带有任何参数时，curl 就是发出 GET 请求。</span><br><span class="line">curl https:&#x2F;&#x2F;www.example.com</span><br><span class="line"></span><br><span class="line">-O参数将服务器回应保存成文件，并将 URL 的最后部分当作文件名。</span><br><span class="line">curl -O https:&#x2F;&#x2F;www.example.com&#x2F;foo&#x2F;bar.html</span><br><span class="line"></span><br><span class="line">-s参数将不输出错误和进度信息。</span><br><span class="line">curl -s https:&#x2F;&#x2F;www.example.com</span><br><span class="line"></span><br><span class="line">-S参数指定只输出错误信息，通常与-s一起使用。</span><br><span class="line">curl -s -o &#x2F;dev&#x2F;null https:&#x2F;&#x2F;google.com</span><br><span class="line"></span><br><span class="line">-L参数会让 HTTP 请求跟随服务器的重定向。curl 默认不跟随重定向。</span><br><span class="line">curl -L -d &#39;tweet&#x3D;hi&#39; https:&#x2F;&#x2F;api.twitter.com&#x2F;tweet</span><br></pre></td></tr></table></figure><p>指定网卡</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --interface ppp3 cip.cc</span><br></pre></td></tr></table></figure><blockquote><p>参考：<a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class</summary>
-      
-    
-    
-    
-    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
-    
-    
-    <category term="curl" scheme="http://example.com/tags/curl/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>查看端口</title>
-    <link href="http://example.com/2021/08/08/%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3/"/>
-    <id>http://example.com/2021/08/08/%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3/</id>
-    <published>2021-08-07T16:00:00.000Z</published>
-    <updated>2021-11-12T16:15:34.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>netstat -tunlp</p><h3 id="Ubuntu-18-04开放指定端口"><a href="#Ubuntu-18-04开放指定端口" class="headerlink" title="Ubuntu 18.04开放指定端口"></a>Ubuntu 18.04开放指定端口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install iptables</span><br><span class="line"></span><br><span class="line">sudo iptables -I INPUT -p tcp --dport [端口号] -j ACCEPT</span><br><span class="line"></span><br><span class="line">sudo iptables -I INPUT -p tcp --dport 9111:9115 -j ACCEPT</span><br><span class="line"></span><br><span class="line">sudo iptables -I INPUT -p tcp --dport 9111 -j ACCEPT</span><br><span class="line"></span><br><span class="line"># 临时保存配置，重启后失效</span><br><span class="line">sudo iptables-save</span><br></pre></td></tr></table></figure><p>安装 iptables-persistent工具，持久化开放端口配置</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install iptables-persistent</span><br><span class="line"></span><br><span class="line">sudo netfilter-persistent save</span><br><span class="line"></span><br><span class="line">sudo netfilter-persistent reload</span><br></pre></td></tr></table></figure><h3 id="centos开放指定端口"><a href="#centos开放指定端口" class="headerlink" title="centos开放指定端口"></a>centos开放指定端口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;9011-9221&#x2F;udp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;9011-9221&#x2F;tcp --permanent</span><br><span class="line"></span><br><span class="line">重新载入配置</span><br><span class="line">firewall-cmd --reload</span><br><span class="line"></span><br><span class="line">显示开放的端口</span><br><span class="line">firewall-cmd --list-ports</span><br></pre></td></tr></table></figure><h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a href="https://blog.csdn.net/nei504293736/article/details/103171829">Ubuntu 与 Centos 开放指定端口</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;netstat -tunlp&lt;/p&gt;
-&lt;h3 id=&quot;Ubuntu-18-04开放指定端口&quot;&gt;&lt;a href=&quot;#Ubuntu-18-04开放指定端口&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu 18.04开放指定端口&quot;&gt;&lt;/a&gt;Ubuntu 18.</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
-    
-    
-    <category term="端口" scheme="http://example.com/tags/%E7%AB%AF%E5%8F%A3/"/>
     
   </entry>
   
