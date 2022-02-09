@@ -3,23 +3,24 @@
 <head>
     <meta charset="utf-8">
     
-    <title>docker启动失败：Your kernel does not support cgroup memory limit | TQ&#39;s Blog</title>
+    <title>docker容器启动失败 | TQ&#39;s Blog</title>
     
     
-        <meta name="keywords" content="docker" />
+        <meta name="keywords" content="技巧,报错解决" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="docker启动失败，查看日志发现如下警告   12345WARN Your kernel does not support cgroup memory limit WARN Unable to find cpu cgroup in mounts          WARN Unable to find blkio cgroup in mounts        WARN Unable to fi">
+    <meta name="description" content="错误一报错信息docker:Error response from daemon:endpoint with name monitor already exists in network host. 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849# docker in">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker启动失败：Your kernel does not support cgroup memory limit">
-<meta property="og:url" content="http://example.com/2021/05/19/docker%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="docker容器启动失败">
+<meta property="og:url" content="http://example.com/2021/04/30/docker%E5%AE%B9%E5%99%A8%E5%BC%82%E5%B8%B8/index.html">
 <meta property="og:site_name" content="TQ&#39;s Blog">
-<meta property="og:description" content="docker启动失败，查看日志发现如下警告   12345WARN Your kernel does not support cgroup memory limit WARN Unable to find cpu cgroup in mounts          WARN Unable to find blkio cgroup in mounts        WARN Unable to fi">
+<meta property="og:description" content="错误一报错信息docker:Error response from daemon:endpoint with name monitor already exists in network host. 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849# docker in">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-05-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-08-23T10:19:00.000Z">
+<meta property="article:published_time" content="2021-04-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-08T16:23:40.000Z">
 <meta property="article:author" content="TQ">
-<meta property="article:tag" content="docker">
+<meta property="article:tag" content="技巧">
+<meta property="article:tag" content="报错解决">
 <meta name="twitter:card" content="summary">
     
 
@@ -239,7 +240,7 @@
                             &nbsp;
                             linux
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/02/01/linux%E6%80%BB%E7%BB%93/">linux总结</a></li>  <li class="file"><a href="/2020/10/13/linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/">linux磁盘分区</a></li>  <li class="file"><a href="/2020/10/27/VBOX%E4%B8%AD%E7%9A%84centos%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%95%91%E6%8F%B4/">centos虚拟机系统救援</a></li>  <li class="file"><a href="/2021/04/22/linux%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9E%8B%E5%8F%B7/">linux查看服务器的型号</a></li>  <li class="file"><a href="/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/">chattr与lsattr命令</a></li>  <li class="file"><a href="/2021/04/27/du%E5%91%BD%E4%BB%A4/">du查看文件或文件夹的大小</a></li>  <li class="file"><a href="/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/">CentOS7 出現 slice User 信息的解法</a></li>  <li class="file"><a href="/2021/05/10/centos_yum/">CentOS7 yum提示:another app is currently holding the yum lock;waiting for it to exit</a></li>  <li class="file"><a href="/2021/06/24/macvlan/">创建虚拟网卡 vlan macvlan</a></li>  <li class="file"><a href="/2021/07/02/%E6%9F%A5%E7%9C%8Blinux%E5%91%BD%E4%BB%A4%E7%9A%84%E8%B7%AF%E5%BE%84/">linux命令路径</a></li>  <li class="file"><a href="/2021/07/09/yum/">软件包管理器yum</a></li>  <li class="file"><a href="/2021/08/08/CMOS%E6%94%BE%E7%94%B5/">CMOS放电</a></li>  <li class="file"><a href="/2021/08/08/rsync/">rsync用法</a></li>  <li class="file"><a href="/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">只读文件系统 /var/cache/yum/x86 64/7/base/repomd.xml.old.tmp</a></li>  <li class="file"><a href="/2021/08/08/%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3/">查看端口</a></li>  <li class="file"><a href="/2021/08/23/linux_iso%E9%95%9C%E5%83%8F%E8%A7%A3%E6%9E%90/">linux_iso镜像解析</a></li>  <li class="file"><a href="/2021/09/09/dd%E5%91%BD%E4%BB%A4/">dd命令</a></li>  <li class="file"><a href="/2021/09/24/grub_rescue/">grub rescue</a></li>  <li class="file"><a href="/2021/09/24/%E5%88%87%E6%A0%B9/">切换根目录</a></li>  <li class="file"><a href="/2021/10/22/centos%E5%86%85%E6%A0%B8%E5%8D%87%E7%BA%A7/">centos升级内核</a></li>  <li class="file"><a href="/2021/11/16/pcie%E6%8A%A5%E9%94%99/">pcie总线报错</a></li>  <li class="file"><a href="/2021/11/16/%E5%88%A0%E9%99%A4swap%E5%88%86%E5%8C%BA/">CentOS 删除swap分区</a></li>  <li class="file"><a href="/2021/12/03/centos%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/">centos修改网卡名称</a></li>  <li class="file"><a href="/2021/12/15/netstat/">netstat</a></li>  <li class="file"><a href="/2022/01/14/centos%E4%BF%AE%E6%94%B9mac%E5%9C%B0%E5%9D%80/">centos修改网卡mac地址</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/02/01/linux%E6%80%BB%E7%BB%93/">linux总结</a></li>  <li class="file"><a href="/2020/10/13/linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/">linux磁盘分区</a></li>  <li class="file"><a href="/2020/10/27/VBOX%E4%B8%AD%E7%9A%84centos%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%95%91%E6%8F%B4/">centos虚拟机系统救援</a></li>  <li class="file"><a href="/2021/04/22/linux%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9E%8B%E5%8F%B7/">linux查看服务器的型号</a></li>  <li class="file"><a href="/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/">chattr与lsattr命令</a></li>  <li class="file"><a href="/2021/04/27/du%E5%91%BD%E4%BB%A4/">du查看文件或文件夹的大小</a></li>  <li class="file"><a href="/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/">CentOS7 出現 slice User 信息的解法</a></li>  <li class="file"><a href="/2021/05/10/centos_yum/">CentOS7 yum提示:another app is currently holding the yum lock;waiting for it to exit</a></li>  <li class="file"><a href="/2021/06/24/macvlan/">创建虚拟网卡 vlan macvlan</a></li>  <li class="file"><a href="/2021/07/02/%E6%9F%A5%E7%9C%8Blinux%E5%91%BD%E4%BB%A4%E7%9A%84%E8%B7%AF%E5%BE%84/">linux命令路径</a></li>  <li class="file"><a href="/2021/07/09/yum/">软件包管理器yum</a></li>  <li class="file"><a href="/2021/08/08/CMOS%E6%94%BE%E7%94%B5/">CMOS放电</a></li>  <li class="file"><a href="/2021/08/08/rsync/">rsync用法</a></li>  <li class="file"><a href="/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">只读文件系统 /var/cache/yum/x86 64/7/base/repomd.xml.old.tmp</a></li>  <li class="file"><a href="/2021/08/23/linux_iso%E9%95%9C%E5%83%8F%E8%A7%A3%E6%9E%90/">linux_iso镜像解析</a></li>  <li class="file"><a href="/2021/09/09/dd%E5%91%BD%E4%BB%A4/">dd命令</a></li>  <li class="file"><a href="/2021/09/24/grub_rescue/">grub rescue</a></li>  <li class="file"><a href="/2021/09/24/%E5%88%87%E6%A0%B9/">切换根目录</a></li>  <li class="file"><a href="/2021/10/22/centos%E5%86%85%E6%A0%B8%E5%8D%87%E7%BA%A7/">centos升级内核</a></li>  <li class="file"><a href="/2021/11/16/pcie%E6%8A%A5%E9%94%99/">pcie总线报错</a></li>  <li class="file"><a href="/2021/11/16/%E5%88%A0%E9%99%A4swap%E5%88%86%E5%8C%BA/">CentOS 删除swap分区</a></li>  <li class="file"><a href="/2021/12/03/centos%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/">centos修改网卡名称</a></li>  <li class="file"><a href="/2021/12/15/netstat/">netstat</a></li>  <li class="file"><a href="/2022/01/14/centos%E4%BF%AE%E6%94%B9mac%E5%9C%B0%E5%9D%80/">centos修改网卡mac地址</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -347,7 +348,7 @@
                             &nbsp;
                             服务器容器
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&查看服务器信息</a></li>  <li class="file"><a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">容器部署常见问题</a></li>  <li class="file"><a href="/2021/03/15/docker%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/">docker启动失败</a></li>  <li class="file"><a href="/2021/03/29/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%A8%E5%8F%B7%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">服务器拨号注意事项</a></li>  <li class="file"><a href="/2021/04/27/docker%E7%9B%91%E6%8E%A7%E6%8C%82%E6%8E%89/">docker监控挂掉（Error response from daemon:chown /etc/resolv.conf:operation not permitted）</a></li>  <li class="file"><a href="/2021/04/30/docker%E7%9B%91%E6%8E%A7%E8%B5%B7%E4%B8%8D%E6%9D%A5/">docker监控起不来（docker:Error response from daemon:endpoint with name monitor already exists in network host.）</a></li>  <li class="file active"><a href="/2021/05/19/docker%E9%97%AE%E9%A2%98/">docker启动失败：Your kernel does not support cgroup memory limit</a></li>  <li class="file"><a href="/2021/08/20/docker%E5%AE%B9%E5%99%A8%E4%B8%80%E7%9B%B4%E9%87%8D%E5%90%AF/">docker容器在部署服务后一直重启</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&查看服务器信息</a></li>  <li class="file"><a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">容器部署常见问题</a></li>  <li class="file"><a href="/2021/03/15/docker%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/">docker启动失败</a></li>  <li class="file"><a href="/2021/03/29/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%A8%E5%8F%B7%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">服务器拨号注意事项</a></li>  <li class="file active"><a href="/2021/04/30/docker%E5%AE%B9%E5%99%A8%E5%BC%82%E5%B8%B8/">docker容器启动失败</a></li>  <li class="file"><a href="/2021/08/20/docker%E5%AE%B9%E5%99%A8%E4%B8%80%E7%9B%B4%E9%87%8D%E5%90%AF/">docker容器在部署服务后一直重启</a></li>  </ul> 
                     </li> 
                      <li class="file"><a href="/2020/09/13/FFmpeg/">FFmpeg</a></li>  </ul> 
     </div>
@@ -420,7 +421,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-docker问题" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-docker容器异常" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -436,14 +437,14 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/docker/" rel="tag">docker</a>
+        <a class="tag-link-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a>, <a class="tag-link-link" href="/tags/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/" rel="tag">报错解决</a>
     </div>
 
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2021/05/19/docker%E9%97%AE%E9%A2%98/">
-            <time datetime="2021-05-18T16:00:00.000Z" itemprop="datePublished">2021-05-19</time>
+        <a href="/2021/04/30/docker%E5%AE%B9%E5%99%A8%E5%BC%82%E5%B8%B8/">
+            <time datetime="2021-04-29T16:00:00.000Z" itemprop="datePublished">2021-04-30</time>
         </a>
     </div>
 
@@ -454,13 +455,13 @@
                         
                         
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/docker问题.md'> Source </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/docker容器异常.md'> Source </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/docker问题.md'> Edit </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/docker容器异常.md'> Edit </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/docker问题.md'> History </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/docker容器异常.md'> History </a>
                             </div>
                         
                     </div>
@@ -468,7 +469,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            docker启动失败：Your kernel does not support cgroup memory limit
+            docker容器启动失败
         </h1>
     
 
@@ -481,22 +482,36 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E4%B8%80"><span class="toc-number">1.</span> <span class="toc-text">错误一</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.</span> <span class="toc-text">报错信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">解决方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E4%BA%8C"><span class="toc-number">2.</span> <span class="toc-text">错误二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%9B%9B"><span class="toc-number">3.</span> <span class="toc-text">错误四</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
                 </div>
             
         
         
-            <p><strong>docker启动失败，查看日志发现如下警告</strong>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">WARN Your kernel does not support cgroup memory limit </span><br><span class="line">WARN Unable to find cpu cgroup in mounts          </span><br><span class="line">WARN Unable to find blkio cgroup in mounts        </span><br><span class="line">WARN Unable to find cpuset cgroup in mounts       </span><br><span class="line">WARN mountpoint for pids not found    </span><br></pre></td></tr></table></figure>
+            <h3 id="错误一"><a href="#错误一" class="headerlink" title="错误一"></a>错误一</h3><h4 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h4><p>docker:Error response from daemon:endpoint with name monitor already exists in network host.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"># docker info</span><br><span class="line"></span><br><span class="line">Client:</span><br><span class="line"> Debug Mode: false</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Containers: 250</span><br><span class="line">  Running: 250</span><br><span class="line">  Paused: 0</span><br><span class="line">  Stopped: 0</span><br><span class="line"> Images: 5</span><br><span class="line"> Server Version: 19.03.8</span><br><span class="line"> Storage Driver: overlay2</span><br><span class="line">  Backing Filesystem: &lt;unknown&gt;</span><br><span class="line">  Supports d_type: true</span><br><span class="line">  Native Overlay Diff: true</span><br><span class="line"> Logging Driver: json-file</span><br><span class="line"> Cgroup Driver: cgroupfs</span><br><span class="line"> Plugins:</span><br><span class="line">  Volume: local</span><br><span class="line">  Network: bridge host ipvlan macvlan null overlay</span><br><span class="line">  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog</span><br><span class="line"> Swarm: inactive</span><br><span class="line"> Runtimes: runc</span><br><span class="line"> Default Runtime: runc</span><br><span class="line"> Init Binary: docker-init</span><br><span class="line"> containerd version: 7ad184331fa3e55e52b890ea95e65ba581ae3429</span><br><span class="line"> runc version: dc9208a3303feef5b3839f4323d9beb36df0a9dd</span><br><span class="line"> init version: fec3683</span><br><span class="line"> Security Options:</span><br><span class="line">  seccomp</span><br><span class="line">   Profile: default</span><br><span class="line"> Kernel Version: 5.5.11-1.el7.elrepo.x86_64</span><br><span class="line"> Operating System: CentOS Linux 7 (Core)</span><br><span class="line"> OSType: linux</span><br><span class="line"> Architecture: x86_64</span><br><span class="line"> CPUs: 48</span><br><span class="line"> Total Memory: 125.9GiB</span><br><span class="line"> Name: d1a1e70b5f676226cb7ee2de95a79f79</span><br><span class="line"> ID: V64J:KRRC:C6OI:PR2F:BIKW:XF26:YGPE:O2FW:B6NE:XASJ:TQMM:FUA7</span><br><span class="line"> Docker Root Dir: &#x2F;var&#x2F;lib&#x2F;docker</span><br><span class="line"> Debug Mode: false</span><br><span class="line"> Registry: https:&#x2F;&#x2F;index.docker.io&#x2F;v1&#x2F;</span><br><span class="line"> Labels:</span><br><span class="line"> Experimental: false</span><br><span class="line"> Insecure Registries:</span><br><span class="line">  127.0.0.0&#x2F;8</span><br><span class="line"> Live Restore Enabled: false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><strong>解决方法</strong><br>这是在ubuntu或其他基于Debian的系统上才会出现的问题，原因是系统默认未开启swap限制。(开启后会使系统内存占用多1%,性能下降约10%,即使没有运行docker)</p>
-<p>修改系统的/etc/default/grub file文件，加一行  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRUB_CMDLINE_LINUX&#x3D;&quot;cgroup_enable&#x3D;memory swapaccount&#x3D;1&quot;</span><br></pre></td></tr></table></figure>
-<p>上一步是固定的<br>下一步就多了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Run: “sudo update-bootloader –refresh”</span><br></pre></td></tr></table></figure>
-<p>或者是更新系统的GRUB：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-grub</span><br></pre></td></tr></table></figure>
-<p>这应该是不通版本更新GRUB的方法吧<br>最后reboot<br>我是直接reboot的，然后就OK了</p>
+
+
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>重启docker或者重启机器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker network inspect &lt;network name&gt;</span><br><span class="line">docker network disconnect &lt;network name&gt; &lt;container id&#x2F; container name&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker network disconnect --force bridge monitor</span><br><span class="line">(这个好像也可以)</span><br></pre></td></tr></table></figure>
+
+<h3 id="错误二"><a href="#错误二" class="headerlink" title="错误二"></a>错误二</h3><p>Error response from daemon:chown /etc/resolv.conf:operation not permitted</p>
+<p>看报错是权限不足，<code>ls -l /etv/resolv.conf</code>,权限也没问题<br>有可能曾经用chattr命令锁定该文件了<br>查看文件权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ lsattr &#x2F;etc&#x2F;resolv.conf</span><br><span class="line">----i----------- &#x2F;etc&#x2F;resolv.conf</span><br></pre></td></tr></table></figure>
+<p>i：设定文件不能被删除、改名、设定链接关系，同时不能写入或新增内容。</p>
+<p>移除权限就可以了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chattr -i resolv.conf</span><br></pre></td></tr></table></figure>
+
+<h3 id="错误四"><a href="#错误四" class="headerlink" title="错误四"></a>错误四</h3><p>container_linux.go:349: starting container process caused “process_linux.go:297:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># docker start a929869eecf0</span><br><span class="line">Error response from daemon: OCI runtime create failed: container_linux.go:349: starting container process caused &quot;process_linux.go:297: applying cgroup configuration for process caused \&quot;failed to write 1 to memory.kmem.limit_in_bytes: write &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;memory&#x2F;kubepods&#x2F;pod8811d42e-5e5e-11ec-b5c1-3e46384a3f85&#x2F;a929869eecf0178555180396c57ea19a7f79298224ea0b5265c2585e6623a457&#x2F;memory.kmem.limit_in_bytes: operation not supported\&quot;&quot;: unknown</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># cd &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;memory&#x2F;kubepods&#x2F;pod8811d42e-5e5e-11ec-b5c1-3e46384a3f85</span><br><span class="line"></span><br><span class="line"># mv 71de757cc45ec758615c2d06f335e47610327ba48824a02d0aa57e9c66b88d8c a929869eecf0178555180396c57ea19a7f79298224ea0b5265c2585e6623a457</span><br></pre></td></tr></table></figure>
+
+<p>容器启动过程中需要对某个文件进行读写，报错提示：操作不支持，应为该路径下没有这个文件，docker run里的文件名不对</p>
+<p>解决方法，将机器上的文件名修改成docker run里的文件名</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yjt1993/p/13223897.html">https://www.cnblogs.com/yjt1993/p/13223897.html</a></p>
 
             </div>
         
@@ -509,19 +524,19 @@
     
 <nav id="article-nav">
     
-        <a href="/2021/06/04/linux%E7%A3%81%E7%9B%98%E5%9D%8F%E9%81%93/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2021/05/06/python%E5%AE%89%E8%A3%85face_recognition%E5%92%8Cdlib/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    linux磁盘坏道的检测和修复
+                    python安装face_recognition和dlib
                 
             </div>
         </a>
     
     
-        <a href="/2021/05/10/centos_yum/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">CentOS7 yum提示:another app is currently holding the yum lock;waiting for it to exit</div>
+            <div class="article-nav-title">CentOS7 出現 slice User 信息的解法</div>
         </a>
     
 </nav>
