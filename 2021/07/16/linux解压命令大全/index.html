@@ -17,7 +17,7 @@
 <meta property="og:description" content="转载：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;eoiioe&#x2F;archive&#x2F;2008&#x2F;09&#x2F;20&#x2F;1294681.html  .tar   123解包：tar xvf FileName.tar打包：tar cvf FileName.tar DirName（注：tar是打包，不是压缩！）  .gz 123解压1：gunzip FileName.gz解压2：gzip -d FileName.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-08-23T02:19:00.000Z">
+<meta property="article:modified_time" content="2022-04-05T17:50:04.161Z">
 <meta property="article:author" content="TQ">
 <meta property="article:tag" content="技巧">
 <meta name="twitter:card" content="summary">
@@ -517,7 +517,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">解压：tar Zxvf FileName.tar.Z</span><br><span class="line">压缩：tar Zcvf FileName.tar.Z DirName</span><br></pre></td></tr></table></figure>
 
 <p>.zip</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">解压：unzip FileName.zip</span><br><span class="line">压缩：zip FileName.zip DirName</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">unzip解压乱码</span><br><span class="line"></span><br><span class="line">原因：由于zip格式中并没有指定编码格式，Windows下生成的zip文件中的编码是GBK&#x2F;GB2312等，因此，导致这些zip文件在Linux下解压时出现乱码问题，因为Linux下的默认编码是UTF8</span><br><span class="line"></span><br><span class="line">解决方法</span><br><span class="line"></span><br><span class="line">unzip -O cp936 mk.zip -d &#x2F;root&#x2F;</span><br><span class="line"></span><br><span class="line">&quot;---------------------------------&quot;</span><br><span class="line"></span><br><span class="line">解压：unzip FileName.zip</span><br><span class="line">压缩：zip FileName.zip DirName</span><br></pre></td></tr></table></figure>
 
 <p>.rar</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">解压：rar x FileName.rar</span><br><span class="line">压缩：rar a FileName.rar DirName</span><br></pre></td></tr></table></figure>
