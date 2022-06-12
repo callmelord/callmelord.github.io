@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-04-26T08:17:02.000Z</updated>
+  <updated>2022-06-10T10:00:34.000Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,85 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>go使用rsa加密</title>
+    <link href="http://example.com/2022/06/10/go%E4%BD%BF%E7%94%A8rsa%E5%8A%A0%E5%AF%86/"/>
+    <id>http://example.com/2022/06/10/go%E4%BD%BF%E7%94%A8rsa%E5%8A%A0%E5%AF%86/</id>
+    <published>2022-06-09T16:00:00.000Z</published>
+    <updated>2022-06-10T10:00:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://studygolang.com/articles/28458">用 Golang 实现 RSA 加密和签名（有示例）</a></p><p><a href="https://www.jianshu.com/p/95fe3fa26d46">go语言RSA API使用示例</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://studygolang.com/articles/28458&quot;&gt;用 Golang 实现 RSA 加密和签名（有示例）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/95fe3fa26d46&quot;&gt;g</summary>
+      
+    
+    
+    
+    <category term="go语言" scheme="http://example.com/categories/go%E8%AF%AD%E8%A8%80/"/>
+    
+    
+    <category term="学习笔记" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="go" scheme="http://example.com/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iperf3使用方法详解</title>
+    <link href="http://example.com/2022/06/10/iperf3%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://example.com/2022/06/10/iperf3%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/</id>
+    <published>2022-06-09T16:00:00.000Z</published>
+    <updated>2022-06-10T10:08:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://zhuanlan.zhihu.com/p/314727150">iperf3使用方法详解</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/314727150&quot;&gt;iperf3使用方法详解&lt;/a&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
+    
+    
+    <category term="iper3" scheme="http://example.com/tags/iper3/"/>
+    
+    <category term="测速" scheme="http://example.com/tags/%E6%B5%8B%E9%80%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何测试端口通不通</title>
+    <link href="http://example.com/2022/06/10/%E5%A6%82%E4%BD%95%E6%B5%8B%E8%AF%95%E7%AB%AF%E5%8F%A3%E9%80%9A%E4%B8%8D%E9%80%9A/"/>
+    <id>http://example.com/2022/06/10/%E5%A6%82%E4%BD%95%E6%B5%8B%E8%AF%95%E7%AB%AF%E5%8F%A3%E9%80%9A%E4%B8%8D%E9%80%9A/</id>
+    <published>2022-06-09T16:00:00.000Z</published>
+    <updated>2022-06-10T10:07:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/swazer_z/article/details/64442730">如何测试端口通不通(四种方法）</a></p><p><a href="https://cloud.tencent.com/developer/article/1473377">Centos查看端口占用情况和开启端口命令</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/swazer_z/article/details/64442730&quot;&gt;如何测试端口通不通(四种方法）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://cloud.tencent.com/developer</summary>
+      
+    
+    
+    
+    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
+    
+    
+    <category term="端口" scheme="http://example.com/tags/%E7%AB%AF%E5%8F%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>vim82编译安装</title>
@@ -93,9 +172,9 @@
     <link href="http://example.com/2022/04/11/go%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/"/>
     <id>http://example.com/2022/04/11/go%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/</id>
     <published>2022-04-10T16:00:00.000Z</published>
-    <updated>2022-04-29T06:32:08.000Z</updated>
+    <updated>2022-05-24T09:06:28.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="go-embed-的使用"><a href="#go-embed-的使用" class="headerlink" title="go:embed 的使用"></a>go:embed 的使用</h3><p>简介</p><p>go:embed 是 go 1.16版本添加的新特性，可以在 go 生成的应用程序中嵌入静态文件（文件，文件夹）。部署的时候，直接扔一个二进制文件即可，不用再包含一些静态文件，考虑文件相对位置，因为它们已经被打包到生成的应用程序中了。</p><p>导入 embed 的 go 源文件可以使用 //go:embed 指令在编译时从包目录或子目录中将读取的内容转换成 string, []byte, 或者 embed.FS 类型的变量。</p><h3 id="nil"><a href="#nil" class="headerlink" title="nil"></a>nil</h3><p>其他语言的null</p><h3 id="fmt-Printf-和fmt-Println-的区别"><a href="#fmt-Printf-和fmt-Println-的区别" class="headerlink" title="fmt.Printf()和fmt.Println()的区别"></a>fmt.Printf()和fmt.Println()的区别</h3><p>获取一个变量类型</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(reflect.TypeOf(var)) </span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(&quot;sss&quot;)</span><br><span class="line"></span><br><span class="line">fmt.Printf(&quot;2**%d &#x3D; %d\n&quot;, index, value)</span><br><span class="line">%d就是value，输出时会将value带进去运算</span><br><span class="line"></span><br><span class="line">fmt.Println(&quot;2**%d &#x3D; %d\n&quot;, index, value)</span><br><span class="line">就是单纯的输出三个变量，不会带进去运算</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><a href="https://blog.csdn.net/pearl8899/article/details/107353102">参考链接</a></p><p>设置代理<br>go env -w GOPROXY=”<a href="https://goproxy.io,direct&quot;/">https://goproxy.io,direct&quot;</a></p><h2 id="go编译报错"><a href="#go编译报错" class="headerlink" title="go编译报错"></a>go编译报错</h2><h3 id="more-than-one-character-in-rune-literal"><a href="#more-than-one-character-in-rune-literal" class="headerlink" title="more than one character in rune literal"></a>more than one character in rune literal</h3><p>在go语法中，双引号是常用的来表达字符串，如果你使用了单引号，编译器会提示出错</p><p>单引号只能包含一个字符，例如’b’ ,程序会输出98表示字符b的ascii码。</p><p>如果非要使用单引号输出必须使用string函数转换</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(string(&#39;b&#39;) )</span><br><span class="line">Printf 和 Println 的区别</span><br><span class="line">printf 输出后不换行， println输出后自动换行；</span><br><span class="line">printf格式化输出，println 直接输出内容</span><br></pre></td></tr></table></figure><h3 id="go-run-cannot-run-non-main-package"><a href="#go-run-cannot-run-non-main-package" class="headerlink" title="go run: cannot run non-main package"></a>go run: cannot run non-main package</h3><p>Go的错误信息提示的很直接了当，main方法只能放在package main中，go run 是执行命令，必须要一个main用来调用，install可以直接编译成包文件，也可以编译出exe（如果有main函数的话）</p><h3 id="too-many-arguments-to-return-have-error-want-to"><a href="#too-many-arguments-to-return-have-error-want-to" class="headerlink" title="too many arguments to return have (error) want ()to"></a>too many arguments to return have (error) want ()to</h3><p>没在函数中添加返回值</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func XXX() (string, error)&#123;</span><br><span class="line">var x string</span><br><span class="line">var c error</span><br><span class="line">return x, c </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">加上就行</span><br></pre></td></tr></table></figure><h3 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var XXX map[string]string</span><br><span class="line"></span><br><span class="line">map[string] 字典key的类型为string</span><br><span class="line">string 字典value的类型为string</span><br></pre></td></tr></table></figure><h3 id="时间戳"><a href="#时间戳" class="headerlink" title="时间戳"></a>时间戳</h3><p>分别使用 time.Now 的 Unix 和 UnixNano， 来获取从 Unix 纪元起，到现在经过的秒数和纳秒数。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;time&quot;</span><br><span class="line">)</span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">    now :&#x3D; time.Now()</span><br><span class="line">    secs :&#x3D; now.Unix()</span><br><span class="line">    nanos :&#x3D; now.UnixNano()</span><br><span class="line">    fmt.Println(now)</span><br><span class="line"></span><br><span class="line">    millis :&#x3D; nanos &#x2F; 1000000</span><br><span class="line">    fmt.Println(secs)</span><br><span class="line">    fmt.Println(millis)</span><br><span class="line">    fmt.Println(nanos)</span><br><span class="line"></span><br><span class="line">    fmt.Println(time.Unix(secs, 0))</span><br><span class="line">    fmt.Println(time.Unix(0, nanos))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ go run epoch.go </span><br><span class="line">2012-10-31 16:13:58.292387 +0000 UTC</span><br><span class="line">1351700038</span><br><span class="line">1351700038292</span><br><span class="line">1351700038292387000</span><br><span class="line">2012-10-31 16:13:58 +0000 UTC</span><br><span class="line">2012-10-31 16:13:58.292387 +0000 UTC</span><br></pre></td></tr></table></figure><p><a href="https://gobyexample-cn.github.io/epoch">Go by Example 中文版: 时间戳</a></p><h3 id="Strconv"><a href="#Strconv" class="headerlink" title="Strconv"></a>Strconv</h3><p>主要提供字符串和其他类型之间转换的函数。常见的比如将字符串<br>转换成整型， 这个可能在脚本类语言没有影响， 但在强类型语言中极其重要</p><h4 id="字符串转整型"><a href="#字符串转整型" class="headerlink" title="字符串转整型"></a>字符串转整型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s :&#x3D; &quot;2&quot;</span><br><span class="line">res, err :&#x3D; strconv.Atoi(s)</span><br><span class="line">fmt.Println(reflect.TypeOf(res))  &#x2F;&#x2F; 这里用 反射 来验证类型有没有转换成功</span><br></pre></td></tr></table></figure><h4 id="整型转字符串"><a href="#整型转字符串" class="headerlink" title="整型转字符串#"></a>整型转字符串#</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">i :&#x3D; 21111</span><br><span class="line">res :&#x3D; strconv.Itoa(i) &#x2F;&#x2F;将十进制数转化成字符串</span><br><span class="line">fmt.Println(reflect.TypeOf(res))</span><br></pre></td></tr></table></figure><p><a href="https://juejin.cn/post/7001639272419688478">Go中的strconv</a></p><h4 id="FormatInt系列函数"><a href="#FormatInt系列函数" class="headerlink" title="FormatInt系列函数"></a>FormatInt系列函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">t :&#x3D; 12132123132</span><br><span class="line">tstring :&#x3D; strconv.FormatInt(t,10)</span><br><span class="line">fmt.Printf(&quot;%T&quot;, tstring)</span><br><span class="line"></span><br><span class="line">string</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h3 id="go-embed-的使用"><a href="#go-embed-的使用" class="headerlink" title="go:embed 的使用"></a>go:embed 的使用</h3><p>简介</p><p>go:embed 是 go 1.16版本添加的新特性，可以在 go 生成的应用程序中嵌入静态文件（文件，文件夹）。部署的时候，直接扔一个二进制文件即可，不用再包含一些静态文件，考虑文件相对位置，因为它们已经被打包到生成的应用程序中了。</p><p>导入 embed 的 go 源文件可以使用 //go:embed 指令在编译时从包目录或子目录中将读取的内容转换成 string, []byte, 或者 embed.FS 类型的变量。</p><h3 id="nil"><a href="#nil" class="headerlink" title="nil"></a>nil</h3><p>其他语言的null</p><h3 id="fmt-Printf-和fmt-Println-的区别"><a href="#fmt-Printf-和fmt-Println-的区别" class="headerlink" title="fmt.Printf()和fmt.Println()的区别"></a>fmt.Printf()和fmt.Println()的区别</h3><p>获取一个变量类型</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(reflect.TypeOf(var)) </span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(&quot;sss&quot;)</span><br><span class="line"></span><br><span class="line">fmt.Printf(&quot;2**%d &#x3D; %d\n&quot;, index, value)</span><br><span class="line">%d就是value，输出时会将value带进去运算</span><br><span class="line"></span><br><span class="line">fmt.Println(&quot;2**%d &#x3D; %d\n&quot;, index, value)</span><br><span class="line">就是单纯的输出三个变量，不会带进去运算</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><a href="https://blog.csdn.net/pearl8899/article/details/107353102">参考链接</a></p><p>设置代理<br>go env -w GOPROXY=”<a href="https://goproxy.io,direct&quot;/">https://goproxy.io,direct&quot;</a></p><h2 id="go编译报错"><a href="#go编译报错" class="headerlink" title="go编译报错"></a>go编译报错</h2><h3 id="more-than-one-character-in-rune-literal"><a href="#more-than-one-character-in-rune-literal" class="headerlink" title="more than one character in rune literal"></a>more than one character in rune literal</h3><p>在go语法中，双引号是常用的来表达字符串，如果你使用了单引号，编译器会提示出错</p><p>单引号只能包含一个字符，例如’b’ ,程序会输出98表示字符b的ascii码。</p><p>如果非要使用单引号输出必须使用string函数转换</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(string(&#39;b&#39;) )</span><br><span class="line">Printf 和 Println 的区别</span><br><span class="line">printf 输出后不换行， println输出后自动换行；</span><br><span class="line">printf格式化输出，println 直接输出内容</span><br></pre></td></tr></table></figure><h3 id="go-run-cannot-run-non-main-package"><a href="#go-run-cannot-run-non-main-package" class="headerlink" title="go run: cannot run non-main package"></a>go run: cannot run non-main package</h3><p>Go的错误信息提示的很直接了当，main方法只能放在package main中，go run 是执行命令，必须要一个main用来调用，install可以直接编译成包文件，也可以编译出exe（如果有main函数的话）</p><h3 id="too-many-arguments-to-return-have-error-want-to"><a href="#too-many-arguments-to-return-have-error-want-to" class="headerlink" title="too many arguments to return have (error) want ()to"></a>too many arguments to return have (error) want ()to</h3><p>没在函数中添加返回值</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func XXX() (string, error)&#123;</span><br><span class="line">var x string</span><br><span class="line">var c error</span><br><span class="line">return x, c </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">加上就行</span><br></pre></td></tr></table></figure><h3 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var XXX map[string]string</span><br><span class="line"></span><br><span class="line">map[string] 字典key的类型为string</span><br><span class="line">string 字典value的类型为string</span><br></pre></td></tr></table></figure><h3 id="时间戳"><a href="#时间戳" class="headerlink" title="时间戳"></a>时间戳</h3><p>分别使用 time.Now 的 Unix 和 UnixNano， 来获取从 Unix 纪元起，到现在经过的秒数和纳秒数。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;time&quot;</span><br><span class="line">)</span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">    now :&#x3D; time.Now()</span><br><span class="line">    secs :&#x3D; now.Unix()</span><br><span class="line">    nanos :&#x3D; now.UnixNano()</span><br><span class="line">    fmt.Println(now)</span><br><span class="line"></span><br><span class="line">    millis :&#x3D; nanos &#x2F; 1000000</span><br><span class="line">    fmt.Println(secs)</span><br><span class="line">    fmt.Println(millis)</span><br><span class="line">    fmt.Println(nanos)</span><br><span class="line"></span><br><span class="line">    fmt.Println(time.Unix(secs, 0))</span><br><span class="line">    fmt.Println(time.Unix(0, nanos))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ go run epoch.go </span><br><span class="line">2012-10-31 16:13:58.292387 +0000 UTC</span><br><span class="line">1351700038</span><br><span class="line">1351700038292</span><br><span class="line">1351700038292387000</span><br><span class="line">2012-10-31 16:13:58 +0000 UTC</span><br><span class="line">2012-10-31 16:13:58.292387 +0000 UTC</span><br></pre></td></tr></table></figure><p><a href="https://gobyexample-cn.github.io/epoch">Go by Example 中文版: 时间戳</a></p><h3 id="Strconv"><a href="#Strconv" class="headerlink" title="Strconv"></a>Strconv</h3><p>主要提供字符串和其他类型之间转换的函数。常见的比如将字符串<br>转换成整型， 这个可能在脚本类语言没有影响， 但在强类型语言中极其重要</p><h4 id="字符串转整型"><a href="#字符串转整型" class="headerlink" title="字符串转整型"></a>字符串转整型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s :&#x3D; &quot;2&quot;</span><br><span class="line">res, err :&#x3D; strconv.Atoi(s)</span><br><span class="line">fmt.Println(reflect.TypeOf(res))  &#x2F;&#x2F; 这里用 反射 来验证类型有没有转换成功</span><br></pre></td></tr></table></figure><h4 id="整型转字符串"><a href="#整型转字符串" class="headerlink" title="整型转字符串#"></a>整型转字符串#</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">i :&#x3D; 21111</span><br><span class="line">res :&#x3D; strconv.Itoa(i) &#x2F;&#x2F;将十进制数转化成字符串</span><br><span class="line">fmt.Println(reflect.TypeOf(res))</span><br></pre></td></tr></table></figure><p><a href="https://juejin.cn/post/7001639272419688478">Go中的strconv</a></p><h4 id="FormatInt系列函数"><a href="#FormatInt系列函数" class="headerlink" title="FormatInt系列函数"></a>FormatInt系列函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">t :&#x3D; 12132123132</span><br><span class="line">tstring :&#x3D; strconv.FormatInt(t,10)</span><br><span class="line">fmt.Printf(&quot;%T&quot;, tstring)</span><br><span class="line"></span><br><span class="line">string</span><br></pre></td></tr></table></figure><h3 id="Go语言-命令行参数（os-Args-flag包）"><a href="#Go语言-命令行参数（os-Args-flag包）" class="headerlink" title="Go语言-命令行参数（os.Args, flag包）"></a>Go语言-命令行参数（os.Args, flag包）</h3><h4 id="os-Args"><a href="#os-Args" class="headerlink" title="os.Args"></a>os.Args</h4><p>程序获取运行他时给出的参数，可以通过os包来实现。先看代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">&quot;fmt&quot;</span><br><span class="line">&quot;os&quot;</span><br><span class="line">&quot;strconv&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main () &#123;</span><br><span class="line">for idx, args :&#x3D; range os.Args &#123;</span><br><span class="line">fmt.Println(&quot;参数&quot; + strconv.Itoa(idx) + &quot;:&quot;, args)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$go run main.go 1 3 -X ?</span><br><span class="line">参数0: &#x2F;tmp&#x2F;go-build116558042&#x2F;command-line-arguments&#x2F;_obj&#x2F;exe&#x2F;main</span><br><span class="line">参数1: 1</span><br><span class="line">参数2: 3</span><br><span class="line">参数3: -X</span><br><span class="line">参数4: ?</span><br></pre></td></tr></table></figure><p>可以看到，命令行参数包括了程序路径本身，以及通常意义上的参数。<br>程序中os.Args的类型是 []string ，也就是字符串切片。所以可以在for循环的range中遍历，还可以用 len(os.Args) 来获取其数量。</p><p>如果不想要输出os.Args的第一个值，也就是可执行文件本身的信息，可以修改上述程序：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for idx, args :&#x3D; range os.Args[1:] &#123;</span><br></pre></td></tr></table></figure><h4 id="flag包"><a href="#flag包" class="headerlink" title="flag包"></a>flag包</h4><p><a href="https://blog.csdn.net/guanchunsheng/article/details/79612153">Go语言-命令行参数（os.Args, flag包）</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">&quot;fmt&quot;</span><br><span class="line">&quot;flag&quot;</span><br><span class="line">)</span><br><span class="line">var b &#x3D; flag.Bool(&quot;b&quot;, false, &quot;bool类型参数&quot;)</span><br><span class="line">var s &#x3D; flag.String(&quot;s&quot;, &quot;&quot;, &quot;string类型参数&quot;)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">flag.Parse()</span><br><span class="line">fmt.Println(&quot;-b:&quot;, *b)</span><br><span class="line">fmt.Println(&quot;-s:&quot;, *s)</span><br><span class="line">fmt.Println(&quot;其他参数：&quot;, flag.Args())</span><br><span class="line">&#125;</span><br><span class="line">------------------------------------</span><br><span class="line">$ go run main.go</span><br><span class="line">-b: false</span><br><span class="line">-s: </span><br><span class="line">其他参数： []</span><br><span class="line">------------------------------------</span><br><span class="line">$ go run main.go -b</span><br><span class="line">-b: true</span><br><span class="line">-s: </span><br><span class="line">其他参数： []</span><br><span class="line">------------------------------------</span><br><span class="line">$ go run main.go -b -s test others</span><br><span class="line">-b: true</span><br><span class="line">-s: test</span><br><span class="line">其他参数： [others]</span><br><span class="line">------------------------------------</span><br><span class="line">$ go run main.go  -help</span><br><span class="line">Usage of &#x2F;tmp&#x2F;go-build080353851&#x2F;command-line-arguments&#x2F;_obj&#x2F;exe&#x2F;main:</span><br><span class="line">  -bbool类型参数</span><br><span class="line">  -s string</span><br><span class="line">    string类型参数</span><br><span class="line">exit status 2</span><br></pre></td></tr></table></figure><p>flag包相比单纯的通过os.Args切片分析命令行参数，提供了更强的能力。</p><p>使用flag包，首先定义待解析命令行参数，也就是以”-“开头的参数，比如这里的 -b -s -help等。-help不需要特别指定，可以自动处理。<br>这里指定了两个参数，-b和-s：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var b &#x3D; flag.Bool(&quot;b&quot;, false, &quot;bool类型参数&quot;)</span><br><span class="line">var s &#x3D; flag.String(&quot;s&quot;, &quot;&quot;, &quot;string类型参数&quot;)</span><br><span class="line"></span><br><span class="line">-----------------</span><br><span class="line">原型：</span><br><span class="line">func Bool(name string, value bool, usage string) *bool</span><br><span class="line">func String(name string, value string, usage string) *string</span><br></pre></td></tr></table></figure><p>flag使用前，必须首先解析：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag.Parse()</span><br></pre></td></tr></table></figure><h3 id="const关键字（常量）"><a href="#const关键字（常量）" class="headerlink" title="const关键字（常量）"></a>const关键字（常量）</h3><p>Go语言中的常量使用关键字 const 定义，用于存储不会改变的数据，常量是在编译时被创建的，即使定义在函数内部也是如此，并且只能是布尔型、数字型（整数型、浮点型和复数）和字符串型。由于编译时的限制，定义常量的表达式必须为能被编译器求值的常量表达式。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const name [type] &#x3D; value</span><br><span class="line"></span><br><span class="line">const (</span><br><span class="line">    e  &#x3D; 2.7182818</span><br><span class="line">    pi &#x3D; 3.1415926</span><br><span class="line">)</span><br></pre></td></tr></table></figure><h3 id="Golang-io-Copy-用法及代码示例"><a href="#Golang-io-Copy-用法及代码示例" class="headerlink" title="Golang io.Copy()用法及代码示例"></a>Golang io.Copy()用法及代码示例</h3><p><a href="https://vimsky.com/examples/usage/io-copy-function-in-golang-with-examples.html#:~:text=%E7%A4%BA%E4%BE%8B%2D%20%E7%BA%AF%E5%87%80%E5%A4%A9%E7%A9%BA-,Golang%20io.Copy()%E7%94%A8%E6%B3%95%E5%8F%8A%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B,%E7%BB%93%E5%B0%BE">Golang io.Copy()用法及代码示例</a>%E6%88%96%E5%BC%95%E5%8F%91%E9%94%99%E8%AF%AF%E4%B8%BA%E6%AD%A2%E3%80%82)</p><p>用法：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func Copy(dst Writer, src Reader) (written int64, err error)</span><br></pre></td></tr></table></figure><p>在此，“dst”是目标，“src”是将内容复制到目标的源。<br>返回值：它返回复制到“dst”的int64类型的字节总数，并且还返回从src复制到dst(如果有)时遇到的第一个错误。如果复制没有错误，则返回“nil”。</p><h3 id="go变量大小写"><a href="#go变量大小写" class="headerlink" title="go变量大小写"></a>go变量大小写</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Go语言通过首字母的大小写来控制访问权限。 无论是方法，变量，常量或是自定义的变量类型，如果首字母大写，则可以被外部包访问，反之则不可以。 而结构体中的字段名，如果首字母小写的话，则该字段无法被外部包访问</span><br></pre></td></tr></table></figure>]]></content>
     
     
       
@@ -453,80 +532,6 @@
     
     
     <category term="md5" scheme="http://example.com/tags/md5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>pcie总线报错</title>
-    <link href="http://example.com/2021/11/16/pcie%E6%8A%A5%E9%94%99/"/>
-    <id>http://example.com/2021/11/16/pcie%E6%8A%A5%E9%94%99/</id>
-    <published>2021-11-15T16:00:00.000Z</published>
-    <updated>2021-11-16T08:48:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/caya-yuan/p/10604519.html">排错模板</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/caya-yuan/p/10604519.html&quot;&gt;排错模板&lt;/a&gt;&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
-    
-    
-    <category term="pcie报错" scheme="http://example.com/tags/pcie%E6%8A%A5%E9%94%99/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>shell数组</title>
-    <link href="http://example.com/2021/11/16/shell%E6%95%B0%E7%BB%84/"/>
-    <id>http://example.com/2021/11/16/shell%E6%95%B0%E7%BB%84/</id>
-    <published>2021-11-15T16:00:00.000Z</published>
-    <updated>2021-11-16T08:54:12.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="删除数组中的元素"><a href="#删除数组中的元素" class="headerlink" title="删除数组中的元素"></a>删除数组中的元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ array&#x3D;( &quot;one two&quot; &quot;three four&quot; &quot;five six&quot; )</span><br><span class="line">$ unset array[1]</span><br><span class="line">$ array&#x3D;( &quot;$&#123;array[@]&#125;&quot; )</span><br><span class="line">$ echo $&#123;array[0]&#125;</span><br><span class="line">one two</span><br><span class="line">$ echo $&#123;array[1]&#125;</span><br><span class="line">five six</span><br></pre></td></tr></table></figure><p>Shell 数组并不是真正用作可以从中添加和删除项目的数据结构(它们主要用于为以下情况提供第二级引用:提供somecommand有两个，而不是四个参数)。但这应该适用于大多数情况。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr&#x3D;( &quot;one two&quot; &quot;three four&quot; )</span><br><span class="line">somecommand &quot;$&#123;arr[@]&#125;&quot;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;删除数组中的元素&quot;&gt;&lt;a href=&quot;#删除数组中的元素&quot; class=&quot;headerlink&quot; title=&quot;删除数组中的元素&quot;&gt;&lt;/a&gt;删除数组中的元素&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td cl</summary>
-      
-    
-    
-    
-    <category term="shell" scheme="http://example.com/categories/shell/"/>
-    
-    
-    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CentOS 删除swap分区</title>
-    <link href="http://example.com/2021/11/16/%E5%88%A0%E9%99%A4swap%E5%88%86%E5%8C%BA/"/>
-    <id>http://example.com/2021/11/16/%E5%88%A0%E9%99%A4swap%E5%88%86%E5%8C%BA/</id>
-    <published>2021-11-15T16:00:00.000Z</published>
-    <updated>2021-11-16T08:42:44.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="删除swap分区"><a href="#删除swap分区" class="headerlink" title="删除swap分区"></a>删除swap分区</h3><ol><li>先停止swap分区<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;sbin&#x2F;swapoff &#x2F;dev&#x2F;sdb2</span><br></pre></td></tr></table></figure></li><li>把自动挂载的配置清了就行</li></ol><h3 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h3><p><a href="https://www.jb51.net/os/RedHat/515882.html">CentOS如何手动增加 删除swap区</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;删除swap分区&quot;&gt;&lt;a href=&quot;#删除swap分区&quot; class=&quot;headerlink&quot; title=&quot;删除swap分区&quot;&gt;&lt;/a&gt;删除swap分区&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;先停止swap分区&lt;figure class=&quot;highlight plain&quot;</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
-    
-    
-    <category term="swap" scheme="http://example.com/tags/swap/"/>
     
   </entry>
   
