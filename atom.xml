@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-06-10T10:00:34.000Z</updated>
+  <updated>2022-07-11T09:26:30.000Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,206 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据读取模块</title>
+    <link href="http://example.com/2022/07/11/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E6%A8%A1%E5%9D%97/"/>
+    <id>http://example.com/2022/07/11/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E6%A8%A1%E5%9D%97/</id>
+    <published>2022-07-10T16:00:00.000Z</published>
+    <updated>2022-07-11T09:26:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="读取xlsx文件"><a href="#读取xlsx文件" class="headerlink" title="读取xlsx文件"></a>读取xlsx文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 读取xlsx文件</span><br><span class="line"># 安装 pip3 install openpyxl</span><br><span class="line"></span><br><span class="line">df_xlsx &#x3D; pd.read_excel(&#39;&#x2F;root&#x2F;test2.xlsx&#39;, engine&#x3D;&#39;openpyxl&#39;, sheet_name&#x3D;&#39;工作表1&#39;,keep_default_na&#x3D;False)</span><br><span class="line"></span><br><span class="line"># keep_default_na&#x3D;False 把空值不变成NaN</span><br><span class="line"></span><br><span class="line">print(df_xlsx)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     uuid             host        init_host  地区 运营商 service_name</span><br><span class="line">0  d78230  183.215.145.111  183.215.145.222  湖南               xx</span><br><span class="line">1  46ef0c    111.8.203.111                   湖南  移动           xx</span><br></pre></td></tr></table></figure><h3 id="df为Dataframe格式数据"><a href="#df为Dataframe格式数据" class="headerlink" title="df为Dataframe格式数据"></a>df为Dataframe格式数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">df.shape    返回df&#x2F;表格的形状（几行几列），例如返回值为(2,6)，则该df是2行6列</span><br><span class="line"></span><br><span class="line">df.shape[0]  返回行数</span><br><span class="line"></span><br><span class="line">de.shape[1]  返回列数</span><br><span class="line"></span><br><span class="line">可以使用for循环对df进行操作：</span><br><span class="line">for row in range(0, df_xlsx.shape[0]):</span><br><span class="line">    print(df_xlsx[&#39;uuid&#39;][row])</span><br><span class="line"></span><br><span class="line">将其转换为列表或者字典</span><br></pre></td></tr></table></figure><h3 id="读取csv文件"><a href="#读取csv文件" class="headerlink" title="读取csv文件"></a>读取csv文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line"># 从csv中读取数据</span><br><span class="line"></span><br><span class="line">with open(&#39;&#x2F;root&#x2F;test.csv&#39;,&#39;r&#39;, encoding&#x3D;&#39;utf-8&#39;) as f:</span><br><span class="line">    lines&#x3D;csv.reader(f)</span><br><span class="line">    for line in lines:</span><br><span class="line">        print(line)</span><br><span class="line"></span><br><span class="line">[&#39;a9e7b4&#39;, &#39;福建省&#39;, &#39;电信&#39;, &#39;845&#39;, &#39;1000&#39;]</span><br><span class="line">[&#39;43908a&#39;, &#39;福建省&#39;, &#39;电信&#39;, &#39;357&#39;, &#39;1000&#39;]</span><br><span class="line">[&#39;8dd28d&#39;, &#39;浙江省&#39;, &#39;电信&#39;, &#39;828&#39;, &#39;1000&#39;]</span><br></pre></td></tr></table></figure><h3 id="写入xlsx文件"><a href="#写入xlsx文件" class="headerlink" title="写入xlsx文件"></a>写入xlsx文件</h3><h4 id="其他类型转为Dataframe"><a href="#其他类型转为Dataframe" class="headerlink" title="其他类型转为Dataframe"></a>其他类型转为Dataframe</h4><p>两个字典嵌套转Dataframe</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import pandas as pd</span><br><span class="line">&gt;&gt;&gt; my_dict &#x3D; &#123;&#39;i&#39;: &#123;&#39;a&#39;:1&#125;, &#39;love&#39;: &#123;&#39;b&#39;:2&#125;, &#39;you&#39;: &#123;&#39;c&#39;:3&#125;&#125;</span><br><span class="line">&gt;&gt;&gt; a&#x3D;pd.DataFrame(my_dict)</span><br><span class="line">&gt;&gt;&gt; print(a)</span><br><span class="line">     i  love  you</span><br><span class="line">a  1.0   NaN  NaN</span><br><span class="line">b  NaN   2.0  NaN</span><br><span class="line">c  NaN   NaN  3.0</span><br><span class="line"></span><br><span class="line">具体例子具体分析吧</span><br><span class="line">建议：其他数据格式转Dataframe，最好先使用其他格式排列好数据，再转df，df直接输出到xlsx就行</span><br></pre></td></tr></table></figure><h3 id="写入csv文件"><a href="#写入csv文件" class="headerlink" title="写入csv文件"></a>写入csv文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line"></span><br><span class="line">with open(&#39;test.csv&#39;, &#39;a&#39;, newline&#x3D;&#39;&#39;,encoding&#x3D;&#39;utf-8&#39;) as f:</span><br><span class="line">    writer &#x3D; csv.writer(f)</span><br><span class="line">#一行行写入</span><br><span class="line">    writer.writerows(list2)</span><br></pre></td></tr></table></figure><h3 id="elk拉取数据"><a href="#elk拉取数据" class="headerlink" title="elk拉取数据"></a>elk拉取数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">from elasticsearch import Elasticsearch</span><br><span class="line"></span><br><span class="line">es &#x3D; Elasticsearch([&quot;192.168.3.1:9200&quot;],timeout&#x3D;120)</span><br><span class="line"></span><br><span class="line">    body&#x3D;&#123;</span><br><span class="line">        &quot;query&quot;: &#123;</span><br><span class="line">            &quot;bool&quot;: &#123;</span><br><span class="line">                &quot;must&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;match&quot;: &#123;</span><br><span class="line">                        &quot;IpMd5.keyword&quot;: uuid</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                ],</span><br><span class="line">                &quot;must_not&quot;: [],</span><br><span class="line">                &quot;should&quot;: [],</span><br><span class="line">                &quot;filter&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;range&quot;: &#123;</span><br><span class="line">                        &quot;Time&quot;: &#123;</span><br><span class="line">                            &quot;gte&quot;: &quot;2022-06-29T20:20:00+08:00&quot;,</span><br><span class="line">                            &quot;lt&quot;: &quot;2022-06-29T20:25:00+08:00&quot;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    res &#x3D; es.search(index&#x3D;&#39;nodeslogW&#39;, size&#x3D;300, body&#x3D;body)</span><br><span class="line">#     返回的是字典的格式</span><br><span class="line">doc &#x3D; res[&#39;hits&#39;][&#39;hits&#39;]</span><br><span class="line">    if len(doc):</span><br><span class="line">        for item in doc:</span><br><span class="line">            print(item[&#39;_source&#39;][&#39;Services&#39;][&#39;XX&#39;][&#39;buffer&#39;])</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/query-dsl-intro.html#query-dsl-intro">参考：查询表达式</a></p><p><a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/bool-query.html#bool-query">参考：组合查询</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;读取xlsx文件&quot;&gt;&lt;a href=&quot;#读取xlsx文件&quot; class=&quot;headerlink&quot; title=&quot;读取xlsx文件&quot;&gt;&lt;/a&gt;读取xlsx文件&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td cl</summary>
+      
+    
+    
+    
+    <category term="文本" scheme="http://example.com/categories/%E6%96%87%E6%9C%AC/"/>
+    
+    
+    <category term="python" scheme="http://example.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shell脚本EOF解析</title>
+    <link href="http://example.com/2022/07/08/shell%E8%84%9A%E6%9C%ACEOF%E5%A6%99%E7%94%A8/"/>
+    <id>http://example.com/2022/07/08/shell%E8%84%9A%E6%9C%ACEOF%E5%A6%99%E7%94%A8/</id>
+    <published>2022-07-07T16:00:00.000Z</published>
+    <updated>2022-07-08T10:08:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>使用EOF结合cat命令可以把多行数据写入文件中</p><p>这个EOF就像是标识符一样，标明开始、结束，换成STD也一样。</p><p>EOF嵌套使用就是把EOF改个名字罢了，不然shell哪知道谁跟谁是一对啊</p><p>通过cat配合重定向能够生成文件并追加操作,在它之前先熟悉几个特殊符号:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt; :输入重定向</span><br><span class="line">&gt; :输出重定向</span><br><span class="line">&gt;&gt; :输出重定向,进行追加,不会覆盖之前内容</span><br><span class="line">&lt;&lt; :标准输入来自命令行的一对分隔号的中间内容.</span><br></pre></td></tr></table></figure><p>因为 &lt;&lt; 的意思是：标准输入来自命令行的一对分隔号的中间内容，也就是你在bash上的标准输入，如果有s=$(data)的话要使用转义字符s=$(data)，不然这个就会执行了，写到文件里的就是s=3点11分。并且 `` 都要改成 $()。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@XX &#x2F;]# cat &lt;&lt; EOF</span><br><span class="line">&gt; hshhs</span><br><span class="line">&gt; ksk</span><br><span class="line">&gt; EOF</span><br><span class="line">hshhs</span><br><span class="line">ksk</span><br><span class="line"></span><br><span class="line">[root@XX &#x2F;]# cat &lt;&lt; STD</span><br><span class="line">&gt; h1</span><br><span class="line">&gt; STD</span><br><span class="line">h1</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="将内容输出到文件中"><a href="#将内容输出到文件中" class="headerlink" title="将内容输出到文件中"></a>将内容输出到文件中</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@XX &#x2F;]# cat &lt;&lt; EOF &gt;&gt; m</span><br><span class="line">&gt; hello m</span><br><span class="line">&gt; EOF</span><br><span class="line">[root@XX &#x2F;]# cat m</span><br><span class="line">hello m</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="嵌套使用"><a href="#嵌套使用" class="headerlink" title="嵌套使用"></a>嵌套使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@XX &#x2F;]# cat &lt;&lt; EOF &gt; m</span><br><span class="line">&gt; hello m</span><br><span class="line">&gt; bye m</span><br><span class="line">&gt; cat &lt;&lt; STD &gt; n</span><br><span class="line">&gt; hello n</span><br><span class="line">&gt; bye n</span><br><span class="line">&gt; EOF</span><br><span class="line"></span><br><span class="line">[root@XX &#x2F;]# cat m</span><br><span class="line">hello m</span><br><span class="line">bye m</span><br><span class="line">cat &lt;&lt; STD &gt; n</span><br><span class="line">hello n</span><br><span class="line">bye n</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://blog.csdn.net/zongshi1992/article/details/71693045">linux shell脚本EOF妙用</a></p><p><a href="https://www.h5w3.com/z/510614.html">shell多行重定向方法（多重嵌套）</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;使用EOF结合cat命令可以把多行数据写入文件中&lt;/p&gt;
+&lt;p&gt;这个EOF就像是标识符一样，标明开始、结束，换成STD也一样。&lt;/p&gt;
+&lt;p</summary>
+      
+    
+    
+    
+    <category term="文本" scheme="http://example.com/categories/%E6%96%87%E6%9C%AC/"/>
+    
+    
+    <category term="EOF" scheme="http://example.com/tags/EOF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>centos7安装nload流量监控</title>
+    <link href="http://example.com/2022/07/06/centos7%E5%AE%89%E8%A3%85nload%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/"/>
+    <id>http://example.com/2022/07/06/centos7%E5%AE%89%E8%A3%85nload%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/</id>
+    <published>2022-07-05T16:00:00.000Z</published>
+    <updated>2022-07-07T04:48:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install nload</span><br></pre></td></tr></table></figure><h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum install -y gcc</span><br><span class="line">yum install -y gcc-c++</span><br><span class="line">yum install -y ncurses-devel</span><br><span class="line"> </span><br><span class="line">wget http:&#x2F;&#x2F;www.roland-riegel.de&#x2F;nload&#x2F;nload-0.7.4.tar.gz</span><br><span class="line">tar zxvf nload-0.7.4.tar.gz</span><br><span class="line">cd nload-0.7.4</span><br><span class="line">.&#x2F;configure</span><br><span class="line">make;make install</span><br></pre></td></tr></table></figure><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nload ppp0 ppp1 ppp2</span><br></pre></td></tr></table></figure><p><a href="https://blog.csdn.net/m0_38110132/article/details/80681261">参考：Centos7安装nload流量监控</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;方法一&quot;&gt;&lt;a href=&quot;#方法一&quot; class=&quot;headerlink&quot; title=&quot;方法一&quot;&gt;&lt;/a&gt;方法一&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;s</summary>
+      
+    
+    
+    
+    <category term="linux" scheme="http://example.com/categories/linux/"/>
+    
+    
+    <category term="linux" scheme="http://example.com/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python拉取elk的数据</title>
+    <link href="http://example.com/2022/07/06/elk%E6%8B%89%E5%8F%96%E6%95%B0%E6%8D%AE/"/>
+    <id>http://example.com/2022/07/06/elk%E6%8B%89%E5%8F%96%E6%95%B0%E6%8D%AE/</id>
+    <published>2022-07-05T16:00:00.000Z</published>
+    <updated>2022-07-06T11:07:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用python中的elasticsearch模块拉取数据，注意elasticsearch模块的版本要与ekl的版本一致（大版本上）</p><h3 id="获取elk的服务信息"><a href="#获取elk的服务信息" class="headerlink" title="获取elk的服务信息"></a>获取elk的服务信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root@Fish ~]# curl 192.168.3.111:9200</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot; : &quot;elk-masterX&quot;,</span><br><span class="line">  &quot;cluster_name&quot; : &quot;XXX&quot;,</span><br><span class="line">  &quot;cluster_uuid&quot; : &quot;XXX&quot;,</span><br><span class="line">  &quot;version&quot; : &#123;</span><br><span class="line">    &quot;number&quot; : &quot;7.5.0&quot;,</span><br><span class="line">    &quot;build_flavor&quot; : &quot;default&quot;,</span><br><span class="line">    &quot;build_type&quot; : &quot;tar&quot;,</span><br><span class="line">    &quot;build_hash&quot; : &quot;e9ccaed468e2fac2275a3761849&quot;,</span><br><span class="line">    &quot;build_date&quot; : &quot;2021-11-26T01:06:52.518XXXX&quot;,</span><br><span class="line">    &quot;build_snapshot&quot; : false,</span><br><span class="line">    &quot;lucene_version&quot; : &quot;8.3.0&quot;,</span><br><span class="line">    &quot;minimum_wire_compatibility_version&quot; : &quot;6.8.0&quot;,</span><br><span class="line">    &quot;minimum_index_compatibility_version&quot; : &quot;6.0.0-beta1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;tagline&quot; : &quot;You Know, for Search&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>elk的版本是 7.5.0，所以elasticsearch 模块的大版本也要是7的版本</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install elasticsearch&#x3D;&#x3D;7.13.0</span><br></pre></td></tr></table></figure><h4 id="查看elasticsearch的版本"><a href="#查看elasticsearch的版本" class="headerlink" title="查看elasticsearch的版本"></a>查看elasticsearch的版本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 list|grep el</span><br></pre></td></tr></table></figure><h3 id="python连接elasticsearch失败"><a href="#python连接elasticsearch失败" class="headerlink" title="python连接elasticsearch失败"></a>python连接elasticsearch失败</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">“URL must include a ‘scheme’, ‘host’, and ‘port’ component (ie ‘https:&#x2F;&#x2F;localhost:9200’)”</span><br><span class="line">ValueError: URL must include a ‘scheme’, ‘host’, and ‘port’ component (ie ‘https:&#x2F;&#x2F;localhost:9200’)</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip3 uninstall elasticsearch</span><br><span class="line"></span><br><span class="line">pip3 install elasticsearch&#x3D;&#x3D;7.13.0</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;使用python中的elasticsearch模块拉取数据，注意elasticsearch模块的版本要与ekl的版本一致（大版本上）&lt;/p&gt;
+&lt;h3 id=&quot;获取elk的服务信息&quot;&gt;&lt;a href=&quot;#获取elk的服务信息&quot; class=&quot;headerlink&quot; title</summary>
+      
+    
+    
+    
+    <category term="linux" scheme="http://example.com/categories/linux/"/>
+    
+    
+    <category term="linux" scheme="http://example.com/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>开机自启 rc.d/rc.loacl</title>
+    <link href="http://example.com/2022/06/30/%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E8%84%9A%E6%9C%AC/"/>
+    <id>http://example.com/2022/06/30/%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E8%84%9A%E6%9C%AC/</id>
+    <published>2022-06-29T16:00:00.000Z</published>
+    <updated>2022-07-06T09:01:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="rc-d-rc-local简介"><a href="#rc-d-rc-local简介" class="headerlink" title="rc.d/rc.local简介"></a>rc.d/rc.local简介</h3><p>/etc/rc.local 是 /etc/rc.d/rc.local的软连接（系统安装时根据/etc/rc.d/rc.local生成的）</p><p>所以开机自启实际上是执行/etc/rc.d/rc.local这个文件（该文件需要可执行权限，文件头为 #!/bin/bash）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root &#x2F;]# ls -l  &#x2F;etc&#x2F;rc.local </span><br><span class="line">lrwxrwxrwx 1 root root 13 Aug 24  2021 &#x2F;etc&#x2F;rc.local -&gt; rc.d&#x2F;rc.local</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="问题一：rc-d-rc-loacl无法执行"><a href="#问题一：rc-d-rc-loacl无法执行" class="headerlink" title="问题一：rc.d/rc.loacl无法执行"></a>问题一：rc.d/rc.loacl无法执行</h3><p>一般来说，造成这种情况的是由于该文件没有可执行权限<br>下面来说下不一般的</p><p>首先看看有没有rc.local这个服务</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-unit-files|grep rc.local</span><br><span class="line">rc-local.service                              static</span><br></pre></td></tr></table></figure><p>再看看rc.local服务的状态</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">systemctl status rc-local.service</span><br><span class="line"></span><br><span class="line">● rc-local.service - &#x2F;etc&#x2F;rc.d&#x2F;rc.local Compatibility</span><br><span class="line">   Loaded: loaded (&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;rc-local.service; static; vendor preset: disabled)</span><br><span class="line">   Active: failed (Result: exit-code) since Thu 2022-06-30 14:39:40 CST; 7min ago</span><br><span class="line">  Process: 1074 ExecStart&#x3D;&#x2F;etc&#x2F;rc.d&#x2F;rc.local start (code&#x3D;exited, status&#x3D;203&#x2F;EXEC)</span><br><span class="line"></span><br><span class="line">Jun 30 14:39:39 cac8821bbb6ae2bd3553cc0552e923ddXX systemd[1]: Starting &#x2F;etc&#x2F;rc.d&#x2F;rc.local Compatibility...</span><br><span class="line">Jun 30 14:39:40 cac8821bbb6ae2bd3553cc0552e923ddXX systemd[1]: rc-local.service: control process exited, code&#x3D;exited status&#x3D;203</span><br><span class="line">Jun 30 14:39:40 cac8821bbb6ae2bd3553cc0552e923ddXX systemd[1]: Failed to start &#x2F;etc&#x2F;rc.d&#x2F;rc.local Compatibility.</span><br><span class="line">Jun 30 14:39:40 cac8821bbb6ae2bd3553cc0552e923ddXX systemd[1]: Unit rc-local.service entered failed state.</span><br><span class="line">Jun 30 14:39:40 cac8821bbb6ae2bd3553cc0552e923ddXX systemd[1]: rc-local.service failed.</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>很显然，服务启动失败</p><p>一般来说服务组件是没问题的，那么我们检查下/etc/rc.d/rc.local文件，看看是不是该文件格式不正确</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;etc&#x2F;rc.d&#x2F;rc.local</span><br><span class="line"></span><br><span class="line">&#x2F;bin&#x2F;bash &#x2F;s.sh</span><br></pre></td></tr></table></figure><p>果然，少了<code>#!/bin/bash</code>作为第一行</p><p>加上后就OK了</p><p>参考：<a href="https://blog.csdn.net/DSK_981029/article/details/120305469">树莓派：【FAILED】 Failed to start /etc/rc.local Compatibility.</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;rc-d-rc-local简介&quot;&gt;&lt;a href=&quot;#rc-d-rc-local简介&quot; class=&quot;headerlink&quot; title=&quot;rc.d/rc.local简介&quot;&gt;&lt;/a&gt;rc.d/rc.local简介&lt;/h3&gt;&lt;p&gt;/etc/rc.local 是 /e</summary>
+      
+    
+    
+    
+    <category term="linux" scheme="http://example.com/categories/linux/"/>
+    
+    
+    <category term="linux" scheme="http://example.com/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux查找字符串所在行</title>
+    <link href="http://example.com/2022/06/23/linux%E6%9F%A5%E6%89%BE%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%80%E5%9C%A8%E8%A1%8C/"/>
+    <id>http://example.com/2022/06/23/linux%E6%9F%A5%E6%89%BE%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%80%E5%9C%A8%E8%A1%8C/</id>
+    <published>2022-06-22T16:00:00.000Z</published>
+    <updated>2022-06-23T05:49:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="模糊匹配-输出行号"><a href="#模糊匹配-输出行号" class="headerlink" title="模糊匹配 输出行号"></a>模糊匹配 输出行号</h3><ol><li><p>grep</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 输出内容同时输出行号</span><br><span class="line">grep -n &quot;要匹配的字符串&quot; 文件名</span><br></pre></td></tr></table></figure></li><li><p>awk</p></li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 输出行号，并不输出内容</span><br><span class="line"># 注意是单引号</span><br><span class="line">awk &#39;&#x2F;要匹配字符串&#x2F;&#123;print NR&#125;&#39; 文件名</span><br></pre></td></tr></table></figure><p>这里涉及一个小的知识点，如何在awk中写变量呢。<br>比如“要匹配字符串”位置想要写入一个变量，要在变量外加单引号，再加双引号：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 变量赋值</span><br><span class="line">word&#x3D;hello</span><br><span class="line"></span><br><span class="line"># 在awk中引入变量, 打印变量所在的行</span><br><span class="line">awk &#39;&#x2F;&quot;&#39;$&#123;word&#125;&#39;&quot;&#x2F;&#123;print $0&#125;&#39; file.txt</span><br><span class="line"># 其中$&#123;word&#125;是变量较好的写法，$word 的写法也可以执行</span><br></pre></td></tr></table></figure><h3 id="精确匹配（全匹配）输出行号"><a href="#精确匹配（全匹配）输出行号" class="headerlink" title="精确匹配（全匹配）输出行号"></a>精确匹配（全匹配）输出行号</h3><ol><li>grep</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -wn &quot;要匹配的字符串&quot; 文件名</span><br></pre></td></tr></table></figure><p>其中 grep -w 是完全匹配要匹配的字符串，字符串只是字段内一部分也可以匹配。比如，</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 结果为abcd, abcde, abc等</span><br><span class="line">grep &quot;abc&quot; </span><br><span class="line"># 结果为abc</span><br><span class="line">grep -w &quot;abc&quot; </span><br></pre></td></tr></table></figure><ol start="2"><li>awk</li></ol><p>awk并不能像grep那样去过滤单词。grep可以过滤到单词，awk只能过滤到字段。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 匹配以逗号为分隔（如csv）的第三列&#x2F;第三个字段，打印行号</span><br><span class="line">awk -F, &#39;$3&#x3D;&#x3D;&quot;要匹配的字符串&quot; &#123;print NR&#125;&#39; 文件名</span><br><span class="line"></span><br><span class="line"># 匹配以逗号为分隔（如csv）的第三列&#x2F;第三个字段</span><br><span class="line"># 打印该行内容 写&#123;print&#125;或&#123;print $0&#125; 都可以</span><br><span class="line">awk -F, &#39;$3&#x3D;&#x3D;&quot;要匹配的字符串&quot; &#123;print&#125;&#39; 文件名</span><br></pre></td></tr></table></figure><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://blog.csdn.net/Olivia_Vang/article/details/104076272">linux查找字符串所在行，输出行号</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;模糊匹配-输出行号&quot;&gt;&lt;a href=&quot;#模糊匹配-输出行号&quot; class=&quot;headerlink&quot; title=&quot;模糊匹配 输出行号&quot;&gt;&lt;/a&gt;模糊匹配 输出行号&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;grep&lt;/p&gt;
+&lt;figure class=&quot;highlight</summary>
+      
+    
+    
+    
+    <category term="文本" scheme="http://example.com/categories/%E6%96%87%E6%9C%AC/"/>
+    
+    
+    <category term="awk" scheme="http://example.com/tags/awk/"/>
+    
+    <category term="grep" scheme="http://example.com/tags/grep/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mariadb数据库使用</title>
+    <link href="http://example.com/2022/06/21/mariadb%E4%BD%BF%E7%94%A8/"/>
+    <id>http://example.com/2022/06/21/mariadb%E4%BD%BF%E7%94%A8/</id>
+    <published>2022-06-20T16:00:00.000Z</published>
+    <updated>2022-06-29T10:35:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>安装：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum -y install mariadb-server mariadb  </span><br><span class="line"></span><br><span class="line">安装完后</span><br><span class="line">systemctl start mariadb</span><br><span class="line">systemctl enable mariadb</span><br></pre></td></tr></table></figure><p>登录</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">第一次登陆不需要输入密码，直接点enter进入就行</span><br></pre></td></tr></table></figure><p>列出所有表</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure><p>列出所有数据库</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br></pre></td></tr></table></figure><p>查看用户信息</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select user,host from mysql.user;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; select user,host from mysql.user;</span><br><span class="line">+------+------------------------------------+</span><br><span class="line">| user | host                               |</span><br><span class="line">+------+------------------------------------+</span><br><span class="line">| root | 127.0.0.1                          |</span><br><span class="line">| root | ::1                                |</span><br><span class="line">|      | cac8821bbb6ae2bd3553cc0552e923ddxx |</span><br><span class="line">| root | cac8821bbb6ae2bd3553cc0552e923ddxx |</span><br><span class="line">| Fish | host                               |</span><br><span class="line">|      | localhost                          |</span><br><span class="line">| root | localhost                          |</span><br><span class="line">+------+------------------------------------+</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>删除用户</p><p>注：在MySQL中，用户帐户由用户名和主机名部分组成，jabba@localhost 和 <a href="mailto:&#x6a;&#97;&#98;&#98;&#x61;&#x40;&#49;&#x30;&#46;&#x31;&#48;&#46;&#x38;&#x2e;&#56;">&#x6a;&#97;&#98;&#98;&#x61;&#x40;&#49;&#x30;&#46;&#x31;&#48;&#46;&#x38;&#x2e;&#56;</a> 是不同的用户帐户。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop user Fish@host;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; drop user Fish@host;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>创建用户</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create user &#39;Fish&#39;@&#39;localhost&#39; identified by &#39;Fish@#666&#39;;</span><br></pre></td></tr></table></figure><p>创建数据库</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database jojo;</span><br></pre></td></tr></table></figure><p>选择数据库</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use jojo;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;安装：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;</summary>
+      
+    
+    
+    
+    <category term="服务器" scheme="http://example.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+    <category term="数据库" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>dell服务器开机无法正常启动</title>
+    <link href="http://example.com/2022/06/21/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%97%AE%E9%A2%98/"/>
+    <id>http://example.com/2022/06/21/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%97%AE%E9%A2%98/</id>
+    <published>2022-06-20T16:00:00.000Z</published>
+    <updated>2022-06-21T06:39:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/weixin_43822878/article/details/120267752">dell服务器开机无法正常启动Strike the F1 key to continue, F2 to run the system setup program</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/weixin_43822878/article/details/120267752&quot;&gt;dell服务器开机无法正常启动Strike the F1 key to continue, F2 to run the sys</summary>
+      
+    
+    
+    
+    <category term="服务器" scheme="http://example.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+    <category term="服务器" scheme="http://example.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>go使用rsa加密</title>
@@ -75,15 +275,17 @@
     <link href="http://example.com/2022/06/10/%E5%A6%82%E4%BD%95%E6%B5%8B%E8%AF%95%E7%AB%AF%E5%8F%A3%E9%80%9A%E4%B8%8D%E9%80%9A/"/>
     <id>http://example.com/2022/06/10/%E5%A6%82%E4%BD%95%E6%B5%8B%E8%AF%95%E7%AB%AF%E5%8F%A3%E9%80%9A%E4%B8%8D%E9%80%9A/</id>
     <published>2022-06-09T16:00:00.000Z</published>
-    <updated>2022-06-10T10:07:20.000Z</updated>
+    <updated>2022-07-06T04:25:34.000Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/swazer_z/article/details/64442730">如何测试端口通不通(四种方法）</a></p><p><a href="https://cloud.tencent.com/developer/article/1473377">Centos查看端口占用情况和开启端口命令</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="查看某一端口是否开放"><a href="#查看某一端口是否开放" class="headerlink" title="查看某一端口是否开放"></a>查看某一端口是否开放</h3><ol><li>lsof </li></ol><p>你可以使用 lsof 命令来查看某一端口是否开放。查看端口可以这样来使用，我就以80端口为例：</p><p>lsof -i:80</p><p>如果有显示说明已经开放了，如果没有显示说明没有开放</p><ol start="2"><li>netstat</li></ol><p>netstat -aptn执行看看，是否监听在0.0.0.0:3306</p><p>netstat -nupl (UDP类型的端口)<br>netstat -ntpl   (TCP类型的端口)</p><ol start="4"><li>telnet </li></ol><p>telnet ip  端口号   方式测试远程主机端口是否打开</p><p><a href="https://blog.csdn.net/swazer_z/article/details/64442730">如何测试端口通不通(四种方法）</a></p><p><a href="https://cloud.tencent.com/developer/article/1473377">Centos查看端口占用情况和开启端口命令</a></p><h3 id="nc-测试端口"><a href="#nc-测试端口" class="headerlink" title="nc 测试端口"></a>nc 测试端口</h3><p>yum -y install nc</p><h4 id="TCP端口测试"><a href="#TCP端口测试" class="headerlink" title="TCP端口测试"></a>TCP端口测试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">在192.168.130.1上执行：</span><br><span class="line">nc -l 8888</span><br><span class="line">然后输入内容，并回车；</span><br><span class="line"></span><br><span class="line">在192.168.130.2上执行：</span><br><span class="line">nc 192.168.130.1 8888</span><br><span class="line">并观察是否有内容输出，如果有，说明端口是通的。</span><br></pre></td></tr></table></figure><h4 id="UDP端口测试"><a href="#UDP端口测试" class="headerlink" title="UDP端口测试"></a>UDP端口测试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在192.168.130.1上执行：</span><br><span class="line">nc -ul 8888  #监听8888端口</span><br><span class="line"></span><br><span class="line">在192.168.130.2上执行：</span><br><span class="line">nc -u 192.168.130.1 8888</span><br><span class="line">然后输入内容，并回车，并观察130.1上是否有内容输出，如果有，说明端口是通的。</span><br></pre></td></tr></table></figure><p><a href="https://blog.csdn.net/d1240673769/article/details/102632178">参考：利用nc测试服务器之间端口之间的连通性</a></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/swazer_z/article/details/64442730&quot;&gt;如何测试端口通不通(四种方法）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://cloud.tencent.com/developer</summary>
+    <summary type="html">&lt;h3 id=&quot;查看某一端口是否开放&quot;&gt;&lt;a href=&quot;#查看某一端口是否开放&quot; class=&quot;headerlink&quot; title=&quot;查看某一端口是否开放&quot;&gt;&lt;/a&gt;查看某一端口是否开放&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;lsof &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;你可以使用 lsof 命</summary>
       
     
     
@@ -92,6 +294,32 @@
     
     
     <category term="端口" scheme="http://example.com/tags/%E7%AB%AF%E5%8F%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iperf3使用方法详解</title>
+    <link href="http://example.com/2022/06/10/%E6%A0%A1%E9%AA%8C%E5%AF%86%E7%A0%81linux/"/>
+    <id>http://example.com/2022/06/10/%E6%A0%A1%E9%AA%8C%E5%AF%86%E7%A0%81linux/</id>
+    <published>2022-06-09T16:00:00.000Z</published>
+    <updated>2022-06-15T09:26:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="rootpw密码生成方法"><a href="#rootpw密码生成方法" class="headerlink" title="rootpw密码生成方法"></a>rootpw密码生成方法</h2><p>linux kickstart文件里rootpw密码可以使用明文，也可以使用加密过的值，这里主要介绍下三种加密方法：md5、sha256、sha512</p><h3 id="使用明文的方法"><a href="#使用明文的方法" class="headerlink" title="使用明文的方法"></a>使用明文的方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rootpw &quot;password&quot;</span><br></pre></td></tr></table></figure><h3 id="使用加密的方法"><a href="#使用加密的方法" class="headerlink" title="使用加密的方法"></a>使用加密的方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rootpw --iscrypted password_hash</span><br><span class="line">authconfig --enableshadow --enablemd5 (--passalgo&#x3D;sha256 or --passalgo&#x3D;sha512) </span><br></pre></td></tr></table></figure><h3 id="加密生成方法，这里统一用password来加密"><a href="#加密生成方法，这里统一用password来加密" class="headerlink" title="加密生成方法，这里统一用password来加密"></a>加密生成方法，这里统一用password来加密</h3><h4 id="1、md5加密"><a href="#1、md5加密" class="headerlink" title="1、md5加密"></a>1、md5加密</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">使用openssl passwd命令：</span><br><span class="line"># openssl passwd -1 &quot;password&quot;</span><br><span class="line">$1$uMOl6YMI$7AAO8YG7l37ipRXCmmame.</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">使用grub-crypt命令，会提示输出密码：</span><br><span class="line"># grub-crypt --md5</span><br><span class="line">Password:</span><br><span class="line">Retype password:</span><br><span class="line">$1$Y9TR8PpY$qm1VzsjKzbXtYInyAQLG70</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用python，同样也会提示输出密码：</span><br><span class="line"># echo &#39;import crypt,getpass; print crypt.crypt(getpass.getpass(), &quot;$1$8_CHARACTER_SALT_HERE&quot;)&#39; | python -</span><br><span class="line">Password:</span><br><span class="line">$1$8_CHARAC$GVWpvO3Hu009C37IYF41L0</span><br></pre></td></tr></table></figure><h4 id="2、sha256加密"><a href="#2、sha256加密" class="headerlink" title="2、sha256加密"></a>2、sha256加密</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">使用grub-crypt命令，会提示输出密码：</span><br><span class="line"></span><br><span class="line"># grub-crypt --sha-256</span><br><span class="line">Password:</span><br><span class="line">Retype password:</span><br><span class="line">$5$NSEqzlxQFNE998rG$gDTEQsndo1pQ9&#x2F;2.bj1knNNqQ0tQgzKH4bdzEjinHKC</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用python，提示输入密码：</span><br><span class="line"></span><br><span class="line"># echo &#39;import crypt,getpass; print crypt.crypt(getpass.getpass(), &quot;$5$16_CHARACTER_SALT_HERE&quot;)&#39; | python -</span><br><span class="line">$5$16_CHARACTER_SAL$sc08xCjatZRZPSxgCvHe2.RN7ocYGCrJZo6JzcOMtk5</span><br></pre></td></tr></table></figure><h4 id="3、sha512加密"><a href="#3、sha512加密" class="headerlink" title="3、sha512加密"></a>3、sha512加密</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">使用grub-crypt命令，会提示输出密码：</span><br><span class="line"></span><br><span class="line"># grub-crypt --sha-512</span><br><span class="line">Password:</span><br><span class="line">Retype password:</span><br><span class="line">$6$twuCoL0kTI5ScTbr$GyUJymp1wU0ouFQFiWXoOfl2i.2G5E5wh3tqdprny4avv9kJWc3MdLR&#x2F;GB9YbfKB1Kx9no9wpO8YcX4d28Mrz.</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用python，提示输入密码：</span><br><span class="line"></span><br><span class="line"># echo &#39;import crypt,getpass; print crypt.crypt(getpass.getpass(), &quot;$6$16_CHARACTER_SALT_HERE&quot;)&#39; | python -</span><br><span class="line">$6$16_CHARACTER_SAL$ykxE75iUZiphsLz40.oQAi7QIM4meq41EYYvQ66JkbODcvIrGIeRxF7dzpfvnk20ztzE3GY359DSSNQuPQdun.</span><br></pre></td></tr></table></figure><p><a href="https://www.cnblogs.com/klb561/p/9261032.html">rootpw密码生成方法</a></p><h2 id="校验方法"><a href="#校验方法" class="headerlink" title="校验方法"></a>校验方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">correct&#x3D;$(&lt;&#x2F;etc&#x2F;shadow awk -v user&#x3D;root -F : &#39;user &#x3D;&#x3D; $1 &#123;print $2&#125;&#39;)</span><br><span class="line"></span><br><span class="line">prefix&#x3D;$&#123;correct%&quot;$&#123;correct#\$*\$*\$&#125;&quot;&#125;</span><br><span class="line"></span><br><span class="line">youEncryptedPwd&#x3D;$(echo &quot;ty123@#,.STD&quot; |perl -e &#39;$_ &#x3D; &lt;STDIN&gt;; chomp; print crypt($_, $ARGV[0])&#39; &quot;$prefix&quot;)</span><br><span class="line"></span><br><span class="line">correct: 系统正确的加密密码</span><br><span class="line">youEncryptedPwd： 用来测试的密码的加密密码</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;rootpw密码生成方法&quot;&gt;&lt;a href=&quot;#rootpw密码生成方法&quot; class=&quot;headerlink&quot; title=&quot;rootpw密码生成方法&quot;&gt;&lt;/a&gt;rootpw密码生成方法&lt;/h2&gt;&lt;p&gt;linux kickstart文件里rootpw密码可以使用</summary>
+      
+    
+    
+    
+    <category term="linux网络" scheme="http://example.com/categories/linux%E7%BD%91%E7%BB%9C/"/>
+    
+    
+    <category term="iper3" scheme="http://example.com/tags/iper3/"/>
+    
+    <category term="测速" scheme="http://example.com/tags/%E6%B5%8B%E9%80%9F/"/>
     
   </entry>
   
@@ -300,238 +528,6 @@
     <category term="lsof" scheme="http://example.com/tags/lsof/"/>
     
     <category term="删除文件" scheme="http://example.com/tags/%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vbox设置共享文件夹</title>
-    <link href="http://example.com/2022/02/20/vbox%E8%AE%BE%E7%BD%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
-    <id>http://example.com/2022/02/20/vbox%E8%AE%BE%E7%BD%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/</id>
-    <published>2022-02-19T16:00:00.000Z</published>
-    <updated>2022-02-20T05:40:06.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h3><p>VirtualBox Win7 虚拟机 共享文件夹设置</p><ol><li>主机(Win10)</li></ol><p>点击共享文件夹，例如D:\VMs\Sharefolder\，选择’属性-&gt;共享-&gt;共享’，选择’Everyone’，点击’添加’，权限级别’读取/写入’，然后一路点确定。</p><p>linux直接创个文件，给vbox权限就行</p><ol start="2"><li>虚拟机(Win7)</li></ol><p>VirtualBox-&gt;打开Win7虚拟机</p><p>VirtualBox-&gt;设备-&gt;安装增强功能-&gt;安装完成后重启虚拟机</p><p>VirtualBox-&gt;设备-&gt;共享文件夹-&gt;添加共享文件夹-&gt;选择Win10系统中共享文件夹，例如D:\VMs\Sharefolder-&gt;勾选’自动挂载’和’固定分配’-&gt;点’确定’</p><p>虚拟机-&gt;开始-&gt;控制面板-&gt;网络和共享中心-&gt;更改高级共享设置-&gt;勾选’启用网络发现’-&gt;勾选’启用文件和打印机共享’</p><p>虚拟机-&gt;开始-&gt;计算机-&gt;映射网络驱动器-&gt;选择驱动器盘符，尽量不用Z，因为Z有特殊用途-&gt;点击’浏览’选择’网络\VBOXSVR\Sharefolder’-&gt;一路点击’确定/完成’</p><h3 id="增强功能"><a href="#增强功能" class="headerlink" title="增强功能"></a>增强功能</h3><p>这就是一个iso镜像（里面封装着安装包），不要下载6.3.1，有bug，用6.1.0的</p><p>下载完后放在<code>~/.config/VirtualBox</code>里面，然后在vbox图像界面把这个镜像加入虚拟光盘即可</p><p>把这个虚拟光盘挂载到虚拟机里安装即可。</p><p>6.1.0下载地址<br><a href="https://download.virtualbox.org/virtualbox/6.1.0/">https://download.virtualbox.org/virtualbox/6.1.0/</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;操作流程&quot;&gt;&lt;a href=&quot;#操作流程&quot; class=&quot;headerlink&quot; title=&quot;操作流程&quot;&gt;&lt;/a&gt;操作流程&lt;/h3&gt;&lt;p&gt;VirtualBox Win7 虚拟机 共享文件夹设置&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;主机(Win10)&lt;/li&gt;
-&lt;/ol&gt;
-</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
-    
-    
-    <category term="vbox" scheme="http://example.com/tags/vbox/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Windows防火墙开启ping,禁ping的配置</title>
-    <link href="http://example.com/2022/01/21/win_ping/"/>
-    <id>http://example.com/2022/01/21/win_ping/</id>
-    <published>2022-01-20T16:00:00.000Z</published>
-    <updated>2022-01-21T08:25:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Windows XP，Windows Server 2003：<br>Windows防火墙 –&gt; 高级 –&gt; ICMP –&gt; 设置 –&gt; 把“允许传入回显请求”前打上勾 –&gt; 确定 –&gt; 大功告成。</p><p>Windows 7，Win 2008 R2，2012 R2：<br>Windows防火墙 –&gt; 高级设置 –&gt; 入站规则 –&gt; 在列表里找到“文件和打印机共享(回显请求 - ICMPv4-In)” –&gt; 右击选择启用规则，并在其属性里设置为‘允许连接’–&gt; 确定 –&gt; 大功告成。<br>要禁止ping,去掉勾选即可.</p><p><a href="https://blog.csdn.net/GGxiaobai/article/details/53895780">Windows防火墙开启ping,禁ping的配置</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Windows XP，Windows Server 2003：&lt;br&gt;Windows防火墙 –&amp;gt; 高级 –&amp;gt; ICMP –&amp;gt; 设置 –&amp;gt; 把“允许传入回显请求”前打上勾 –&amp;gt; 确定 –&amp;gt; 大功告成。&lt;/p&gt;
-&lt;p&gt;Windows 7，Wi</summary>
-      
-    
-    
-    
-    <category term="windows" scheme="http://example.com/categories/windows/"/>
-    
-    
-    <category term="ping" scheme="http://example.com/tags/ping/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>windows远程</title>
-    <link href="http://example.com/2022/01/21/windows%E8%BF%9C%E7%A8%8B%E9%85%8D%E7%BD%AE/"/>
-    <id>http://example.com/2022/01/21/windows%E8%BF%9C%E7%A8%8B%E9%85%8D%E7%BD%AE/</id>
-    <published>2022-01-20T16:00:00.000Z</published>
-    <updated>2022-01-21T08:24:22.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>一朝被蛇咬十年怕井绳…下略</p><h3 id="修改远程端口"><a href="#修改远程端口" class="headerlink" title="修改远程端口"></a>修改远程端口</h3><p>打开注册表编辑器（开始，运行，输入 regedit，回车）</p><ol><li><p>修改『HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\Tds\tcp』对应的『PortNumber』值，然后修改</p></li><li><p>接着修改『HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp』对应的『PortNumber』值，一并改掉</p></li></ol><p>修改端口之后，一定要去windows防火墙里添加允许这个端口远程连接（如果vps的windows防火墙是关闭的就不用这么做了）</p><h3 id="win10-开放防火墙的某一端口"><a href="#win10-开放防火墙的某一端口" class="headerlink" title="win10 开放防火墙的某一端口"></a>win10 开放防火墙的某一端口</h3><ol><li><p>打开控制面板，选择windows 防火墙</p></li><li><p>点击左侧的『高级设置』选项</p></li><li><p>设置入站规则</p><p> 点击『新建规则』，点选『端口』，单击 『下一步』</p><p> 注意：入站规则是指别人电脑访问自己电脑；出站规则实质自己电脑访问别人电脑</p></li><li><p>选择相应的协议</p><p> 例如：添加8080端口，选择TCP；特定本地端口处输入8080；</p></li><li><p>选择『允许连接』，点击『下一步』；</p></li><li><p>勾选『域』，『专用』，『公司』，点击“下一步”</p></li><li><p>输入端口名称，点『完成』即可</p></li></ol><p><strong>修改完之后</strong></p><p>【1】 直接重启服务器，使配置生效</p><p>【2】 或重启远程桌面相关服务（无需重启服务器）</p><ol><li>按『win+r』快捷键，在对话框中输入services.msc</li><li>查找Remote Desktop Services和Remote Desktop Configuration，点击重新启动。</li></ol><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://blog.csdn.net/GX_1_11_real/article/details/84544705">windows修改远程端口操作(无须重启服务器)</a></p><p><a href="https://zhuanlan.zhihu.com/p/24886146">如何修改windows VPS默认3389端口</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;一朝被蛇咬十年怕井绳…下略&lt;/p&gt;
-&lt;h3 id=&quot;修改远程端口&quot;&gt;&lt;a href=&quot;#修改远程端口&quot; class=&quot;headerlink&quot; title=&quot;修改远程端口&quot;&gt;&lt;/a&gt;修改远程端口&lt;/h3&gt;&lt;p&gt;打开注册表编辑器（开始，运行，输入 regedit，回车）&lt;/p&gt;</summary>
-      
-    
-    
-    
-    <category term="windows" scheme="http://example.com/categories/windows/"/>
-    
-    
-    <category term="修改端口" scheme="http://example.com/tags/%E4%BF%AE%E6%94%B9%E7%AB%AF%E5%8F%A3/"/>
-    
-    <category term="rdp" scheme="http://example.com/tags/rdp/"/>
-    
-    <category term="远程" scheme="http://example.com/tags/%E8%BF%9C%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>centos修改网卡mac地址</title>
-    <link href="http://example.com/2022/01/14/centos%E4%BF%AE%E6%94%B9mac%E5%9C%B0%E5%9D%80/"/>
-    <id>http://example.com/2022/01/14/centos%E4%BF%AE%E6%94%B9mac%E5%9C%B0%E5%9D%80/</id>
-    <published>2022-01-13T16:00:00.000Z</published>
-    <updated>2022-01-14T06:24:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="永久修改"><a href="#永久修改" class="headerlink" title="永久修改"></a>永久修改</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth0 down</span><br><span class="line"></span><br><span class="line">cd &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts</span><br><span class="line"></span><br><span class="line">vi ifcfg-eth0</span><br><span class="line"></span><br><span class="line">删掉&quot;HWADDR&#x3D;xx:xx:xx:xx:xx:xx&quot;</span><br><span class="line">编辑&quot;MACADDR&#x3D;xx:xx:xx:xx:xx:xx&quot;</span><br><span class="line"></span><br><span class="line">ifconfig eth0 up</span><br><span class="line"></span><br><span class="line">service network start</span><br><span class="line"></span><br></pre></td></tr></table></figure><h4 id="暂时修改"><a href="#暂时修改" class="headerlink" title="暂时修改"></a>暂时修改</h4><p>方法一</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip link set dev eth0 address 00:00:ff:bb:aa:00</span><br></pre></td></tr></table></figure><p>方法二</p><p>这个没测试过</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth0 down &#x2F;*禁掉eth0网卡，这里以eth0网卡为例*&#x2F;</span><br><span class="line"></span><br><span class="line">ifconfig eth0 hw ether 00:AA:BB:CC:DD:EE &#x2F;*修改eth0网卡的MAC地址*&#x2F;</span><br><span class="line"></span><br><span class="line">ifconfig eth0 up &#x2F;*重新启动eth0网卡*&#x2F;</span><br></pre></td></tr></table></figure><h4 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h4><p><strong>udev规则的mac与网卡配置文件的mac（HWADDR，MACADDR）有啥区别</strong></p><p>udev的mac是网卡的<strong>默认mac</strong>,即网卡出厂时固定的mac地址，被厂家写进芯片里的，需要用特殊的rom工具才能修改</p><p>1.MAC地址属于芯片中的一个属性，因为在接收数据包时需要根据这个值来做包过滤。</p><p>3.HWADDR保存到网卡芯片的ROM中，由芯片厂商出厂前写入，相当于是芯片的序列号一般不能修改。</p><p>3.系统中网卡的MAC地址默认值是从HWADDR中读出，如果我们没有配置MAC地址，它默认就是等于HWADDR的。</p><p>4.MACADDR是配置到网卡的mac地址，也就是ip a显示的mac地址，如果配了该参数，那么网卡的mac地址将变成MACADDR</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h4 id=&quot;永久修改&quot;&gt;&lt;a href=&quot;#永久修改&quot; class=&quot;headerlink&quot; title=&quot;永久修改&quot;&gt;&lt;/a&gt;永久修改&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pr</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
-    
-    
-    <category term="网卡MAC" scheme="http://example.com/tags/%E7%BD%91%E5%8D%A1MAC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>dmsetup</title>
-    <link href="http://example.com/2022/01/04/dmsetup%E5%91%BD%E4%BB%A4/"/>
-    <id>http://example.com/2022/01/04/dmsetup%E5%91%BD%E4%BB%A4/</id>
-    <published>2022-01-03T16:00:00.000Z</published>
-    <updated>2022-01-04T06:00:46.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>管理lvm的工具</p><p>dmsetup ls</p><p>dmsetup remove –force /dev/mapper/111</p><p><a href="https://blog.csdn.net/xixihahalelehehe/article/details/115760829">linux dmsetup管理LVM命令详解</a></p><p><a href="https://www.linuxcool.com/dmsetup">dmsetup命令 – 显示当前的device mapper的信息</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;管理lvm的工具&lt;/p&gt;
-&lt;p&gt;dmsetup ls&lt;/p&gt;
-&lt;p&gt;dmsetup remove –force /dev/mapper/111&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/xixihahalelehehe/article/de</summary>
-      
-    
-    
-    
-    <category term="Linux磁盘" scheme="http://example.com/categories/Linux%E7%A3%81%E7%9B%98/"/>
-    
-    
-    <category term="dmsetup" scheme="http://example.com/tags/dmsetup/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>losetup</title>
-    <link href="http://example.com/2022/01/04/losetup/"/>
-    <id>http://example.com/2022/01/04/losetup/</id>
-    <published>2022-01-03T16:00:00.000Z</published>
-    <updated>2022-01-04T06:15:12.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="loop设备介绍"><a href="#loop设备介绍" class="headerlink" title="loop设备介绍"></a>loop设备介绍</h3><p>在类 UNIX 系统里，loop 设备是一种伪设备(pseudo-device)，或者也可以说是仿真设备。它能使我们像块设备一样访问一个文件。</p><p>在使用之前，一个 loop 设备必须要和一个文件进行连接。这种结合方式给用户提供了一个替代块特殊文件的接口。因此，如果这个文件包含有一个完整的文件系统，那么这个文件就可以像一个磁盘设备一样被 mount 起来。</p><p>上面说的文件格式，我们经常见到的是 CD 或 DVD 的 ISO 光盘镜像文件或者是软盘(硬盘)的 *.img 镜像文件。通过这种 loop mount (回环mount)的方式，这些镜像文件就可以被 mount 到当前文件系统的一个目录下。</p><p>至此，顺便可以再理解一下 loop 之含义：对于第一层文件系统，它直接安装在我们计算机的物理设备之上；而对于这种被 mount 起来的镜像文件(它也包含有文件系统)，它是建立在第一层文件系统之上，这样看来，它就像是在第一层文件系统之上再绕了一圈的文件系统，所以称为 loop。</p><h3 id="losetup命令"><a href="#losetup命令" class="headerlink" title="losetup命令"></a>losetup命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">losetup [ -e encryption ] [ -o offset ] loop_device file</span><br><span class="line">losetup [ -d ] loop_device</span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line">此命令用来设置循环设备。循环设备可把文件虚拟成块设备，籍此来模拟整个文件系统，让用户得以将其视为硬盘驱动器，光驱或软驱等设备，并挂入当作目录来使用。</span><br><span class="line">上面，命令格式中的选项与参数名：</span><br><span class="line">-e 表示加密的方式</span><br><span class="line">-o 设置数据偏移量</span><br><span class="line">-d 卸载设备</span><br><span class="line">loop_device 循环设备名，在 linux 下如 &#x2F;dev&#x2F;loop0 , &#x2F;dev&#x2F;loop1 等。</span><br><span class="line">file 要与循环设备相关联的文件名，这个往往是一个磁盘镜象文件，如 *.img</span><br></pre></td></tr></table></figure><h3 id="使用举例"><a href="#使用举例" class="headerlink" title="使用举例"></a>使用举例</h3><ol><li><p>创建空的磁盘镜像文件，这里创建一个1.44M的软盘</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;floppy.img bs&#x3D;512 count&#x3D;2880</span><br></pre></td></tr></table></figure></li><li><p>使用 losetup将磁盘镜像文件虚拟成快设备</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">losetup &#x2F;dev&#x2F;loop1 floppy.img</span><br></pre></td></tr></table></figure></li><li><p>挂载块设备</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount &#x2F;dev&#x2F;loop0 &#x2F;tmp</span><br></pre></td></tr></table></figure><p>经过上面的三步之后，我们就可以通过/tmp目录，像访问真实快设备一样来访问磁盘镜像文件floppy.img。</p></li><li><p>卸载loop设备</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">umount &#x2F;tmp</span><br><span class="line">losetup -d &#x2F;dev&#x2F;loop1</span><br></pre></td></tr></table></figure></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;loop设备介绍&quot;&gt;&lt;a href=&quot;#loop设备介绍&quot; class=&quot;headerlink&quot; title=&quot;loop设备介绍&quot;&gt;&lt;/a&gt;loop设备介绍&lt;/h3&gt;&lt;p&gt;在类 UNIX 系统里，loop 设备是一种伪设备(pseudo-device)，或者也可以</summary>
-      
-    
-    
-    
-    <category term="Linux磁盘" scheme="http://example.com/categories/Linux%E7%A3%81%E7%9B%98/"/>
-    
-    
-    <category term="losetup" scheme="http://example.com/tags/losetup/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>netstat</title>
-    <link href="http://example.com/2021/12/15/netstat/"/>
-    <id>http://example.com/2021/12/15/netstat/</id>
-    <published>2021-12-14T16:00:00.000Z</published>
-    <updated>2021-12-15T08:39:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>netstat -tunlp</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;netstat -tunlp&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
-    
-    
-    <category term="端口" scheme="http://example.com/tags/%E7%AB%AF%E5%8F%A3/"/>
-    
-    <category term="netstat" scheme="http://example.com/tags/netstat/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>centos修改网卡名称</title>
-    <link href="http://example.com/2021/12/03/centos%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/"/>
-    <id>http://example.com/2021/12/03/centos%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/</id>
-    <published>2021-12-02T16:00:00.000Z</published>
-    <updated>2022-04-11T01:51:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="网卡配置文件参数详解"><a href="#网卡配置文件参数详解" class="headerlink" title="网卡配置文件参数详解"></a>网卡配置文件参数详解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># cat &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-eth0</span><br><span class="line"></span><br><span class="line">TYPE&#x3D;Ethernet    # 设备类型 以太网</span><br><span class="line">DEVICE&#x3D;eth0      # 网卡设备名称</span><br><span class="line">NAME&#x3D;eth0        # 网卡连接名称</span><br><span class="line">BOOTPROTO&#x3D;static # 地址分配模式 启用静态IP地址</span><br><span class="line">ONBOOT&#x3D;yes       # 开机自动启用网络连接</span><br><span class="line"> </span><br><span class="line">DEFROUTE&#x3D;yes          # 把这个eth0设置为默认路由</span><br><span class="line">PEERDNS&#x3D;no            # 不允许DHCP获得的DNS覆盖本地的DNS</span><br><span class="line">PEERROUTES&#x3D;yes        # 不从DHCP服务器获取用于定义接口的默认网关的信息的路由表条目</span><br><span class="line">IPV4_FAILURE_FATAL&#x3D;no # 如果ipv4配置失败不禁用设备</span><br><span class="line"> </span><br><span class="line">IPADDR&#x3D;192.168.56.12  # IP地址</span><br><span class="line">NETMASK&#x3D;255.255.255.0 # 子网掩码</span><br><span class="line">PREFIX&#x3D;24             # 子网掩码（与NETMASK一样）</span><br><span class="line">GATEWAY&#x3D;192.168.56.2  # 网关地址</span><br><span class="line">DNS1&#x3D;223.5.5.5        # DNS地址</span><br><span class="line"> </span><br><span class="line">USERCTL&#x3D;no        # 普通用户不能控制网卡</span><br><span class="line">NM_CONTROLLED&#x3D;no  # 不让Network Manager托管</span><br><span class="line">PROXY_METHOD&#x3D;none # 代理方式：关闭状态</span><br><span class="line">BROWSER_ONLY&#x3D;no   # 支持浏览器：否</span><br><span class="line"> </span><br><span class="line">网卡配置文件的DNS优先于 &#x2F;etc&#x2F;resolv.conf</span><br></pre></td></tr></table></figure><h4 id="内核启用biosdevname，禁用net-ifnames"><a href="#内核启用biosdevname，禁用net-ifnames" class="headerlink" title="内核启用biosdevname，禁用net.ifnames"></a>内核启用biosdevname，禁用net.ifnames</h4><p><a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/networking_guide/sec-consistent_network_device_naming_using_biosdevname">biosdevname详解</a></p><p>net.ifnames（也是一种网卡的命名规范）</p><p>修改/etc/default/grub</p><p>在GRUB_CMDLINE_LINUX后添加 net.ifnames=0 biosdevname=1</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRUB_CMDLINE_LINUX&#x3D;&quot;crashkernel&#x3D;auto rhgb quiet net.ifnames&#x3D;0 biosdevname&#x3D;1&quot;）</span><br></pre></td></tr></table></figure><p>重设一下引导</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo grub2-mkconfig -o &#x2F;etc&#x2F;grub2.cfg</span><br></pre></td></tr></table></figure><h4 id="启用udev的60-net-rules规则"><a href="#启用udev的60-net-rules规则" class="headerlink" title="启用udev的60-net.rules规则"></a>启用udev的60-net.rules规则</h4><p>/usr/lib/udev/rules.d/60-net.rules文件中的规则指示udev辅助工具/lib/udev/renamedevice查看所有/etc/sysconfig/networkscripts/ifcfg-suffix文件。如果是ifcfg文件如果发现包含 HWADDR 条目与接口的 MAC 地址匹配，它将将该接口重命名为 ifcfg 文件中的 DEVICE 指令指定的名称。如果不相符，则按照/etc/udev/rules.d/60-net.rules下的规则来</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp &#x2F;usr&#x2F;lib&#x2F;udev&#x2F;rules.d&#x2F;60-net.rules &#x2F;etc&#x2F;udev&#x2F;rules.d&#x2F;</span><br><span class="line"></span><br><span class="line">cat &#x2F;etc&#x2F;udev&#x2F;rules.d&#x2F;60-net.rules</span><br><span class="line">ACTION&#x3D;&#x3D;&quot;add&quot;, SUBSYSTEM&#x3D;&#x3D;&quot;net&quot;, DRIVERS&#x3D;&#x3D;&quot;?*&quot;, ATTR&#123;type&#125;&#x3D;&#x3D;&quot;1&quot;, PROGRAM&#x3D;&quot;&#x2F;lib&#x2F;udev&#x2F;rename_device&quot;, RESULT&#x3D;&#x3D;&quot;?*&quot;, NAME&#x3D;&quot;$result&quot;</span><br></pre></td></tr></table></figure><p>通过udev指定网卡名</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ACTION&#x3D;&#x3D;&quot;add&quot;, SUBSYSTEM&#x3D;&#x3D;&quot;net&quot;, DRIVERS&#x3D;&#x3D;&quot;?*&quot;, ATTR&#123;type&#125;&#x3D;&#x3D;&quot;1&quot;, ATTR&#123;address&#125;&#x3D;&#x3D;&quot;d8:9e:*:10:*11&quot;, NAME&#x3D;&quot;eth0&quot;</span><br></pre></td></tr></table></figure><h4 id="修改网卡配置文件"><a href="#修改网卡配置文件" class="headerlink" title="修改网卡配置文件"></a>修改网卡配置文件</h4><p>如果要把em2网卡改成eth0</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;</span><br><span class="line">mv ifcfg-em2 ifcfg-eth0</span><br><span class="line">把配置文件里的NAME、DEVICE改为eth0</span><br><span class="line">在对应网卡的配置文件中添加对应网卡的mac地址，HWADDR&#x3D;ec:**:**:e1:0*:c5</span><br></pre></td></tr></table></figure><p>如果没有配置文件，可使用以下命令添加</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nmcli connection add type ethernet ifname em1 con-name em1 autoconnect yes</span><br><span class="line"></span><br><span class="line">警告：名为 &#39;em1&#39; 的连接已存在。使用 uuid &#39;3b563e41-be15-4a21-98b9-9ca9e8777e25&#39; 来指代连接</span><br><span class="line">连接 &quot;em1&quot; (3b563e41-be15-4a21-98b9-9ca9e8777e25) 已成功添加。</span><br></pre></td></tr></table></figure><h4 id="重启机器"><a href="#重启机器" class="headerlink" title="重启机器"></a>重启机器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>上述的方法用了两个网卡命名规范，一个是biosdevname、一个是systemd</p><p>经测试，biosdevname命名规范必须启用，否则修改网卡为eth0（ethX系列）会出现莫名的错误，而非eth的名字则可正常修改</p><p>内核在boot过程是默认使用ethX方式来命名的，每次启动的时候都不确定，启动会后再通过udev等方式去rename，这种不确定因素太多，所以启用biosdevname比较好</p><p>启用biosdevname，禁用net.ifnames，（两种规范用一个就行）</p><p><strong>！！！如果用户自定义了udev rules，则用户自定义的rules优先！</strong></p><p>使用biosdevname命名规范，所命名的网卡名如下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">em1 板载网卡</span><br><span class="line">p3p4 pci网卡</span><br><span class="line">p3p4_1 虚拟网卡</span><br></pre></td></tr></table></figure><p>参考文档</p><p><a href="https://www.cnblogs.com/yanh0606/p/10910808.html">centos7中的网卡名称相关知识</a></p><p><a href="https://git.vcmq.workers.dev/eZioPan/Learning_Linux/blob/markdown/88.3%E3%80%81systemd.net-naming-scheme%20-%20systemd%20%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99.md">systemd.net-naming_scheme - 网络设备命名方案</a></p><p><a href="https://programmer.ink/think/rhel7-centos7-modify-network-card-name-to-eth0.html">RHEL7/centos7 修改网卡名称为eth0</a></p><p><a href="https://www.aikaiyuan.com/12535.html">CentOS 7 CentOS 8 网卡命名规则</a></p><p><a href="https://www.jianshu.com/p/b66981dbb389">Centos 7 中网卡配置文件的优先级</a></p><p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/ch-consistent_network_device_naming">一致的网络设备命名</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h4 id=&quot;网卡配置文件参数详解&quot;&gt;&lt;a href=&quot;#网卡配置文件参数详解&quot; class=&quot;headerlink&quot; title=&quot;网卡配置文件参数详解&quot;&gt;&lt;/a&gt;网卡配置文件参数详解&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;t</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="http://example.com/categories/linux/"/>
-    
-    
-    <category term="网卡" scheme="http://example.com/tags/%E7%BD%91%E5%8D%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>md5校验</title>
-    <link href="http://example.com/2021/12/02/md5%E6%A0%A1%E9%AA%8C/"/>
-    <id>http://example.com/2021/12/02/md5%E6%A0%A1%E9%AA%8C/</id>
-    <published>2021-12-01T16:00:00.000Z</published>
-    <updated>2021-12-02T02:33:34.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CertUtil -hashfile &lt;path to file&gt; MD5</span><br></pre></td></tr></table></figure><h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">md5sum 文件名</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;windows&quot;&gt;&lt;a href=&quot;#windows&quot; class=&quot;headerlink&quot; title=&quot;windows&quot;&gt;&lt;/a&gt;windows&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=</summary>
-      
-    
-    
-    
-    <category term="文本" scheme="http://example.com/categories/%E6%96%87%E6%9C%AC/"/>
-    
-    
-    <category term="md5" scheme="http://example.com/tags/md5/"/>
     
   </entry>
   

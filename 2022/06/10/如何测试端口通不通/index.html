@@ -9,15 +9,15 @@
         <meta name="keywords" content="端口" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="如何测试端口通不通(四种方法） Centos查看端口占用情况和开启端口命令">
+    <meta name="description" content="查看某一端口是否开放 lsof   你可以使用 lsof 命令来查看某一端口是否开放。查看端口可以这样来使用，我就以80端口为例： lsof -i:80 如果有显示说明已经开放了，如果没有显示说明没有开放  netstat  netstat -aptn执行看看，是否监听在0.0.0.0:3306 netstat -nupl (UDP类型的端口)netstat -ntpl   (TCP类型的端口)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何测试端口通不通">
 <meta property="og:url" content="http://example.com/2022/06/10/%E5%A6%82%E4%BD%95%E6%B5%8B%E8%AF%95%E7%AB%AF%E5%8F%A3%E9%80%9A%E4%B8%8D%E9%80%9A/index.html">
 <meta property="og:site_name" content="TQ&#39;s Blog">
-<meta property="og:description" content="如何测试端口通不通(四种方法） Centos查看端口占用情况和开启端口命令">
+<meta property="og:description" content="查看某一端口是否开放 lsof   你可以使用 lsof 命令来查看某一端口是否开放。查看端口可以这样来使用，我就以80端口为例： lsof -i:80 如果有显示说明已经开放了，如果没有显示说明没有开放  netstat  netstat -aptn执行看看，是否监听在0.0.0.0:3306 netstat -nupl (UDP类型的端口)netstat -ntpl   (TCP类型的端口)">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-06-09T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-06-10T10:07:20.000Z">
+<meta property="article:modified_time" content="2022-07-06T04:25:34.000Z">
 <meta property="article:author" content="TQ">
 <meta property="article:tag" content="端口">
 <meta name="twitter:card" content="summary">
@@ -248,7 +248,7 @@
                             &nbsp;
                             linux
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/02/01/linux%E6%80%BB%E7%BB%93/">linux总结</a></li>  <li class="file"><a href="/2020/10/13/linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/">linux磁盘分区</a></li>  <li class="file"><a href="/2020/10/27/VBOX%E4%B8%AD%E7%9A%84centos%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%95%91%E6%8F%B4/">centos虚拟机系统救援</a></li>  <li class="file"><a href="/2021/04/22/linux%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9E%8B%E5%8F%B7/">linux查看服务器的型号</a></li>  <li class="file"><a href="/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/">chattr与lsattr命令</a></li>  <li class="file"><a href="/2021/04/27/du%E5%91%BD%E4%BB%A4/">du查看文件或文件夹的大小</a></li>  <li class="file"><a href="/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/">CentOS7 出現 slice User 信息的解法</a></li>  <li class="file"><a href="/2021/06/24/macvlan/">创建虚拟网卡 vlan macvlan</a></li>  <li class="file"><a href="/2021/07/02/%E6%9F%A5%E7%9C%8Blinux%E5%91%BD%E4%BB%A4%E7%9A%84%E8%B7%AF%E5%BE%84/">linux命令路径</a></li>  <li class="file"><a href="/2021/07/09/yum/">软件包管理器yum</a></li>  <li class="file"><a href="/2021/08/08/CMOS%E6%94%BE%E7%94%B5/">CMOS放电</a></li>  <li class="file"><a href="/2021/08/08/rsync/">rsync用法</a></li>  <li class="file"><a href="/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">只读文件系统 /var/cache/yum/x86 64/7/base/repomd.xml.old.tmp</a></li>  <li class="file"><a href="/2021/08/23/linux_iso%E9%95%9C%E5%83%8F%E8%A7%A3%E6%9E%90/">linux_iso镜像解析</a></li>  <li class="file"><a href="/2021/09/09/dd%E5%91%BD%E4%BB%A4/">dd命令</a></li>  <li class="file"><a href="/2021/09/24/grub_rescue/">grub rescue</a></li>  <li class="file"><a href="/2021/09/24/%E5%88%87%E6%A0%B9/">切换根目录</a></li>  <li class="file"><a href="/2021/10/22/centos%E5%86%85%E6%A0%B8%E5%8D%87%E7%BA%A7/">centos升级内核</a></li>  <li class="file"><a href="/2021/11/16/pcie%E6%8A%A5%E9%94%99/">pcie总线报错</a></li>  <li class="file"><a href="/2021/11/16/%E5%88%A0%E9%99%A4swap%E5%88%86%E5%8C%BA/">CentOS 删除swap分区</a></li>  <li class="file"><a href="/2021/12/03/centos%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/">centos修改网卡名称</a></li>  <li class="file"><a href="/2021/12/15/netstat/">netstat</a></li>  <li class="file"><a href="/2022/01/14/centos%E4%BF%AE%E6%94%B9mac%E5%9C%B0%E5%9D%80/">centos修改网卡mac地址</a></li>  <li class="file"><a href="/2022/02/20/vbox%E8%AE%BE%E7%BD%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/">vbox设置共享文件夹</a></li>  <li class="file"><a href="/2022/02/24/%E5%AE%89%E8%A3%85yum/">centos安装yum</a></li>  <li class="file"><a href="/2022/02/24/%E6%96%87%E4%BB%B6%E5%B7%B2%E5%88%A0%E9%99%A4%E4%BD%86%E7%A9%BA%E9%97%B4%E6%9C%AA%E9%87%8A%E6%94%BE/">文件已经删除，但空间未释放怎么办？</a></li>  <li class="file"><a href="/2022/03/18/%E7%B3%BB%E7%BB%9F%E5%B0%81%E8%A3%85/">linux（centos）系统封装</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/02/01/linux%E6%80%BB%E7%BB%93/">linux总结</a></li>  <li class="file"><a href="/2020/10/13/linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/">linux磁盘分区</a></li>  <li class="file"><a href="/2020/10/27/VBOX%E4%B8%AD%E7%9A%84centos%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%95%91%E6%8F%B4/">centos虚拟机系统救援</a></li>  <li class="file"><a href="/2021/04/22/linux%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9E%8B%E5%8F%B7/">linux查看服务器的型号</a></li>  <li class="file"><a href="/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/">chattr与lsattr命令</a></li>  <li class="file"><a href="/2021/04/27/du%E5%91%BD%E4%BB%A4/">du查看文件或文件夹的大小</a></li>  <li class="file"><a href="/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/">CentOS7 出現 slice User 信息的解法</a></li>  <li class="file"><a href="/2021/06/24/macvlan/">创建虚拟网卡 vlan macvlan</a></li>  <li class="file"><a href="/2021/07/02/%E6%9F%A5%E7%9C%8Blinux%E5%91%BD%E4%BB%A4%E7%9A%84%E8%B7%AF%E5%BE%84/">linux命令路径</a></li>  <li class="file"><a href="/2021/07/09/yum/">软件包管理器yum</a></li>  <li class="file"><a href="/2021/08/08/CMOS%E6%94%BE%E7%94%B5/">CMOS放电</a></li>  <li class="file"><a href="/2021/08/08/rsync/">rsync用法</a></li>  <li class="file"><a href="/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">只读文件系统 /var/cache/yum/x86 64/7/base/repomd.xml.old.tmp</a></li>  <li class="file"><a href="/2021/08/23/linux_iso%E9%95%9C%E5%83%8F%E8%A7%A3%E6%9E%90/">linux_iso镜像解析</a></li>  <li class="file"><a href="/2021/09/09/dd%E5%91%BD%E4%BB%A4/">dd命令</a></li>  <li class="file"><a href="/2021/09/24/grub_rescue/">grub rescue</a></li>  <li class="file"><a href="/2021/09/24/%E5%88%87%E6%A0%B9/">切换根目录</a></li>  <li class="file"><a href="/2021/10/22/centos%E5%86%85%E6%A0%B8%E5%8D%87%E7%BA%A7/">centos升级内核</a></li>  <li class="file"><a href="/2021/11/16/pcie%E6%8A%A5%E9%94%99/">pcie总线报错</a></li>  <li class="file"><a href="/2021/11/16/%E5%88%A0%E9%99%A4swap%E5%88%86%E5%8C%BA/">CentOS 删除swap分区</a></li>  <li class="file"><a href="/2021/12/03/centos%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/">centos修改网卡名称</a></li>  <li class="file"><a href="/2021/12/15/netstat/">netstat</a></li>  <li class="file"><a href="/2022/01/14/centos%E4%BF%AE%E6%94%B9mac%E5%9C%B0%E5%9D%80/">centos修改网卡mac地址</a></li>  <li class="file"><a href="/2022/02/20/vbox%E8%AE%BE%E7%BD%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/">vbox设置共享文件夹</a></li>  <li class="file"><a href="/2022/02/24/%E5%AE%89%E8%A3%85yum/">centos安装yum</a></li>  <li class="file"><a href="/2022/02/24/%E6%96%87%E4%BB%B6%E5%B7%B2%E5%88%A0%E9%99%A4%E4%BD%86%E7%A9%BA%E9%97%B4%E6%9C%AA%E9%87%8A%E6%94%BE/">文件已经删除，但空间未释放怎么办？</a></li>  <li class="file"><a href="/2022/03/18/%E7%B3%BB%E7%BB%9F%E5%B0%81%E8%A3%85/">linux（centos）系统封装</a></li>  <li class="file"><a href="/2022/06/30/%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E8%84%9A%E6%9C%AC/">开机自启 rc.d/rc.loacl</a></li>  <li class="file"><a href="/2022/07/06/centos7%E5%AE%89%E8%A3%85nload%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/">centos7安装nload流量监控</a></li>  <li class="file"><a href="/2022/07/06/elk%E6%8B%89%E5%8F%96%E6%95%B0%E6%8D%AE/">python拉取elk的数据</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -266,7 +266,7 @@
                             &nbsp;
                             linux网络
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/08/20/aircrack-ng/">aircrack-ng的使用</a></li>  <li class="file"><a href="/2021/03/15/ethtool/">ethtool</a></li>  <li class="file"><a href="/2021/03/15/linux%E8%B7%AF%E7%94%B1/">linux路由</a></li>  <li class="file"><a href="/2021/03/18/DNS-Resolv%E8%AE%BE%E7%BD%AE%E5%92%8C%E9%87%8D%E5%90%AF%E6%97%A0%E6%95%88/">DNS Resolv 设置和重启无效的解决方法</a></li>  <li class="file"><a href="/2021/03/18/linux%E5%88%B7%E6%96%B0dns%E6%9C%8D%E5%8A%A1%E5%99%A8/">linux刷新dns服务器</a></li>  <li class="file"><a href="/2021/04/16/%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99ip-rule/">路由规则ip rule</a></li>  <li class="file"><a href="/2021/04/22/Ping%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">ping 的使用方法</a></li>  <li class="file"><a href="/2021/06/25/tcping/">tcping  pingIP的端口</a></li>  <li class="file"><a href="/2021/07/02/tcp_ip/">tcp_ip详解</a></li>  <li class="file"><a href="/2021/07/02/tcp%E9%87%8D%E4%BC%A0/">tcp重传</a></li>  <li class="file"><a href="/2021/07/28/%E4%B8%8B%E8%BD%BD%E7%A6%BB%E7%BA%BF%E7%BD%91%E9%A1%B5/">下载离线网页</a></li>  <li class="file"><a href="/2021/08/08/curl/">curl用法</a></li>  <li class="file"><a href="/2021/08/19/nmcli/">nmcli 命令</a></li>  <li class="file"><a href="/2021/09/10/linux%E9%98%B2%E7%81%AB%E5%A2%99/">linux防火墙</a></li>  <li class="file"><a href="/2021/09/13/ssh/">ssh</a></li>  <li class="file"><a href="/2021/10/22/ubuntu%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81ip/">ubuntu配置静态ip</a></li>  <li class="file"><a href="/2022/06/10/iperf3%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/">iperf3使用方法详解</a></li>  <li class="file active"><a href="/2022/06/10/%E5%A6%82%E4%BD%95%E6%B5%8B%E8%AF%95%E7%AB%AF%E5%8F%A3%E9%80%9A%E4%B8%8D%E9%80%9A/">如何测试端口通不通</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/08/20/aircrack-ng/">aircrack-ng的使用</a></li>  <li class="file"><a href="/2021/03/15/ethtool/">ethtool</a></li>  <li class="file"><a href="/2021/03/15/linux%E8%B7%AF%E7%94%B1/">linux路由</a></li>  <li class="file"><a href="/2021/03/18/DNS-Resolv%E8%AE%BE%E7%BD%AE%E5%92%8C%E9%87%8D%E5%90%AF%E6%97%A0%E6%95%88/">DNS Resolv 设置和重启无效的解决方法</a></li>  <li class="file"><a href="/2021/03/18/linux%E5%88%B7%E6%96%B0dns%E6%9C%8D%E5%8A%A1%E5%99%A8/">linux刷新dns服务器</a></li>  <li class="file"><a href="/2021/04/16/%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99ip-rule/">路由规则ip rule</a></li>  <li class="file"><a href="/2021/04/22/Ping%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">ping 的使用方法</a></li>  <li class="file"><a href="/2021/06/25/tcping/">tcping  pingIP的端口</a></li>  <li class="file"><a href="/2021/07/02/tcp_ip/">tcp_ip详解</a></li>  <li class="file"><a href="/2021/07/02/tcp%E9%87%8D%E4%BC%A0/">tcp重传</a></li>  <li class="file"><a href="/2021/07/28/%E4%B8%8B%E8%BD%BD%E7%A6%BB%E7%BA%BF%E7%BD%91%E9%A1%B5/">下载离线网页</a></li>  <li class="file"><a href="/2021/08/08/curl/">curl用法</a></li>  <li class="file"><a href="/2021/08/19/nmcli/">nmcli 命令</a></li>  <li class="file"><a href="/2021/09/10/linux%E9%98%B2%E7%81%AB%E5%A2%99/">linux防火墙</a></li>  <li class="file"><a href="/2021/09/13/ssh/">ssh</a></li>  <li class="file"><a href="/2021/10/22/ubuntu%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81ip/">ubuntu配置静态ip</a></li>  <li class="file"><a href="/2022/06/10/iperf3%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/">iperf3使用方法详解</a></li>  <li class="file active"><a href="/2022/06/10/%E5%A6%82%E4%BD%95%E6%B5%8B%E8%AF%95%E7%AB%AF%E5%8F%A3%E9%80%9A%E4%B8%8D%E9%80%9A/">如何测试端口通不通</a></li>  <li class="file"><a href="/2022/06/10/%E6%A0%A1%E9%AA%8C%E5%AF%86%E7%A0%81linux/">iperf3使用方法详解</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -347,7 +347,16 @@
                             &nbsp;
                             文本
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/07/10/vim%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">vim使用总结</a></li>  <li class="file"><a href="/2021/03/16/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%83%E5%AD%97%E7%AC%A6%E9%9B%86/">正则表达式元字符集</a></li>  <li class="file"><a href="/2021/03/19/sed%E6%8F%92%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2/">sed命令</a></li>  <li class="file"><a href="/2021/04/23/awk%E5%91%BD%E4%BB%A4/">awk命令</a></li>  <li class="file"><a href="/2021/04/23/paste%E5%91%BD%E4%BB%A4/">paste命令</a></li>  <li class="file"><a href="/2021/04/23/vim%E5%91%BD%E4%BB%A4/">vim命令</a></li>  <li class="file"><a href="/2021/09/01/wget%E5%91%BD%E4%BB%A4/">wget命令</a></li>  <li class="file"><a href="/2021/12/02/md5%E6%A0%A1%E9%AA%8C/">md5校验</a></li>  <li class="file"><a href="/2022/04/13/shell%E5%AD%97%E7%AC%A6%E4%B8%B2/">Linux shell字符串截取、替换、删除以及trim</a></li>  <li class="file"><a href="/2022/04/20/vim%E9%85%8D%E7%BD%AE/">vim配置</a></li>  <li class="file"><a href="/2022/04/21/vim82%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/">vim82编译安装</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/07/10/vim%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">vim使用总结</a></li>  <li class="file"><a href="/2021/03/16/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%83%E5%AD%97%E7%AC%A6%E9%9B%86/">正则表达式元字符集</a></li>  <li class="file"><a href="/2021/03/19/sed%E6%8F%92%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2/">sed命令</a></li>  <li class="file"><a href="/2021/04/23/awk%E5%91%BD%E4%BB%A4/">awk命令</a></li>  <li class="file"><a href="/2021/04/23/paste%E5%91%BD%E4%BB%A4/">paste命令</a></li>  <li class="file"><a href="/2021/04/23/vim%E5%91%BD%E4%BB%A4/">vim命令</a></li>  <li class="file"><a href="/2021/09/01/wget%E5%91%BD%E4%BB%A4/">wget命令</a></li>  <li class="file"><a href="/2021/12/02/md5%E6%A0%A1%E9%AA%8C/">md5校验</a></li>  <li class="file"><a href="/2022/04/13/shell%E5%AD%97%E7%AC%A6%E4%B8%B2/">Linux shell字符串截取、替换、删除以及trim</a></li>  <li class="file"><a href="/2022/04/20/vim%E9%85%8D%E7%BD%AE/">vim配置</a></li>  <li class="file"><a href="/2022/04/21/vim82%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/">vim82编译安装</a></li>  <li class="file"><a href="/2022/06/23/linux%E6%9F%A5%E6%89%BE%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%80%E5%9C%A8%E8%A1%8C/">linux查找字符串所在行</a></li>  <li class="file"><a href="/2022/07/08/shell%E8%84%9A%E6%9C%ACEOF%E5%A6%99%E7%94%A8/">shell脚本EOF解析</a></li>  <li class="file"><a href="/2022/07/11/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E6%A8%A1%E5%9D%97/">数据读取模块</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            服务器
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/06/21/mariadb%E4%BD%BF%E7%94%A8/">mariadb数据库使用</a></li>  <li class="file"><a href="/2022/06/21/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%97%AE%E9%A2%98/">dell服务器开机无法正常启动</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -490,13 +499,33 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%80%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE"><span class="toc-number">1.</span> <span class="toc-text">查看某一端口是否开放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nc-%E6%B5%8B%E8%AF%95%E7%AB%AF%E5%8F%A3"><span class="toc-number">2.</span> <span class="toc-text">nc 测试端口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E7%AB%AF%E5%8F%A3%E6%B5%8B%E8%AF%95"><span class="toc-number">2.1.</span> <span class="toc-text">TCP端口测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UDP%E7%AB%AF%E5%8F%A3%E6%B5%8B%E8%AF%95"><span class="toc-number">2.2.</span> <span class="toc-text">UDP端口测试</span></a></li></ol></li></ol>
                 </div>
             
         
         
-            <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/swazer_z/article/details/64442730">如何测试端口通不通(四种方法）</a></p>
+            <h3 id="查看某一端口是否开放"><a href="#查看某一端口是否开放" class="headerlink" title="查看某一端口是否开放"></a>查看某一端口是否开放</h3><ol>
+<li>lsof </li>
+</ol>
+<p>你可以使用 lsof 命令来查看某一端口是否开放。查看端口可以这样来使用，我就以80端口为例：</p>
+<p>lsof -i:80</p>
+<p>如果有显示说明已经开放了，如果没有显示说明没有开放</p>
+<ol start="2">
+<li>netstat</li>
+</ol>
+<p>netstat -aptn执行看看，是否监听在0.0.0.0:3306</p>
+<p>netstat -nupl (UDP类型的端口)<br>netstat -ntpl   (TCP类型的端口)</p>
+<ol start="4">
+<li>telnet </li>
+</ol>
+<p>telnet ip  端口号   方式测试远程主机端口是否打开</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/swazer_z/article/details/64442730">如何测试端口通不通(四种方法）</a></p>
 <p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1473377">Centos查看端口占用情况和开启端口命令</a></p>
+<h3 id="nc-测试端口"><a href="#nc-测试端口" class="headerlink" title="nc 测试端口"></a>nc 测试端口</h3><p>yum -y install nc</p>
+<h4 id="TCP端口测试"><a href="#TCP端口测试" class="headerlink" title="TCP端口测试"></a>TCP端口测试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">在192.168.130.1上执行：</span><br><span class="line">nc -l 8888</span><br><span class="line">然后输入内容，并回车；</span><br><span class="line"></span><br><span class="line">在192.168.130.2上执行：</span><br><span class="line">nc 192.168.130.1 8888</span><br><span class="line">并观察是否有内容输出，如果有，说明端口是通的。</span><br></pre></td></tr></table></figure>
+
+<h4 id="UDP端口测试"><a href="#UDP端口测试" class="headerlink" title="UDP端口测试"></a>UDP端口测试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在192.168.130.1上执行：</span><br><span class="line">nc -ul 8888  #监听8888端口</span><br><span class="line"></span><br><span class="line">在192.168.130.2上执行：</span><br><span class="line">nc -u 192.168.130.1 8888</span><br><span class="line">然后输入内容，并回车，并观察130.1上是否有内容输出，如果有，说明端口是通的。</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/d1240673769/article/details/102632178">参考：利用nc测试服务器之间端口之间的连通性</a></p>
 
             </div>
         
@@ -519,9 +548,9 @@
         </a>
     
     
-        <a href="/2022/04/21/vim82%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2022/06/10/%E6%A0%A1%E9%AA%8C%E5%AF%86%E7%A0%81linux/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">vim82编译安装</div>
+            <div class="article-nav-title">iperf3使用方法详解</div>
         </a>
     
 </nav>
