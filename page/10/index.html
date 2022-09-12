@@ -288,7 +288,7 @@
                             &nbsp;
                             shell
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/17/shell%E8%84%9A%E6%9C%AC%E5%B8%B8%E8%AF%86/">shell脚本常识</a></li>  <li class="file"><a href="/2021/03/31/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC/">linux中/etc/rc.local脚本的作用</a></li>  <li class="file"><a href="/2021/04/15/shell%E8%84%9A%E6%9C%AC%E9%97%AE%E9%A2%98/">shell脚本问题</a></li>  <li class="file"><a href="/2021/06/17/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%A2%9E/">shell脚本自增</a></li>  <li class="file"><a href="/2021/06/17/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FIFS/">利用环境变量IFS自定义分隔符</a></li>  <li class="file"><a href="/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/">shell后台运行脚本</a></li>  <li class="file"><a href="/2021/07/28/shell%E6%97%B6%E9%97%B4%E6%88%B3/">shell时间戳</a></li>  <li class="file"><a href="/2021/07/28/shell%E8%BF%90%E7%AE%97/">shell运算</a></li>  <li class="file"><a href="/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/">expect 介绍和用法</a></li>  <li class="file"><a href="/2021/08/08/sort%E6%8E%92%E5%BA%8F/">sort排序</a></li>  <li class="file"><a href="/2021/08/31/shell%E4%B8%AD%E7%BB%99%E5%91%BD%E4%BB%A4%E8%AE%BE%E7%BD%AE%E8%B6%85%E6%97%B6%E6%97%B6%E9%97%B4/">shell 中给命令设置超时时间</a></li>  <li class="file"><a href="/2021/11/16/shell%E6%95%B0%E7%BB%84/">shell数组</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/17/shell%E5%B9%B6%E5%8F%91/">shell并发操作</a></li>  <li class="file"><a href="/2021/03/17/shell%E8%84%9A%E6%9C%AC%E5%B8%B8%E8%AF%86/">shell脚本常识</a></li>  <li class="file"><a href="/2021/03/31/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC/">linux中/etc/rc.local脚本的作用</a></li>  <li class="file"><a href="/2021/04/15/shell%E8%84%9A%E6%9C%AC%E9%97%AE%E9%A2%98/">shell脚本问题</a></li>  <li class="file"><a href="/2021/06/17/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%A2%9E/">shell脚本自增</a></li>  <li class="file"><a href="/2021/06/17/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FIFS/">利用环境变量IFS自定义分隔符</a></li>  <li class="file"><a href="/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/">shell后台运行脚本</a></li>  <li class="file"><a href="/2021/07/28/shell%E6%97%B6%E9%97%B4%E6%88%B3/">shell时间戳</a></li>  <li class="file"><a href="/2021/07/28/shell%E8%BF%90%E7%AE%97/">shell运算</a></li>  <li class="file"><a href="/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/">expect 介绍和用法</a></li>  <li class="file"><a href="/2021/08/08/sort%E6%8E%92%E5%BA%8F/">sort排序</a></li>  <li class="file"><a href="/2021/08/31/shell%E4%B8%AD%E7%BB%99%E5%91%BD%E4%BB%A4%E8%AE%BE%E7%BD%AE%E8%B6%85%E6%97%B6%E6%97%B6%E9%97%B4/">shell 中给命令设置超时时间</a></li>  <li class="file"><a href="/2021/11/16/shell%E6%95%B0%E7%BB%84/">shell数组</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -920,6 +920,110 @@
 
 
     
+        <article id="post-shell并发" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/shell/">shell</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/03/17/shell%E5%B9%B6%E5%8F%91/">
+            <time datetime="2021-03-16T16:00:00.000Z" itemprop="datePublished">2021-03-17</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/shell并发.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/shell并发.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/shell并发.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/03/17/shell%E5%B9%B6%E5%8F%91/">shell并发操作</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h3 id="普通多进程"><a href="#普通多进程" class="headerlink" title="普通多进程"></a>普通多进程</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>shell中实现并发，就是把循环体的命令用&amp;符号放入后台运行，1000个任务就会并发1000个线程，运行时间2s左右，比起方案一的1000s，已经非常快了。</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line"># bam to bed</span><br><span class="line"></span><br><span class="line">date # 脚本开始时间</span><br><span class="line"></span><br><span class="line">for ((i&#x3D;1;i&lt;&#x3D;1000;i++))</span><br><span class="line">do</span><br><span class="line">&#123;</span><br><span class="line">        sleep 1  #sleep 1用以模仿执行一条命令需要花费的时间（可以用真实命令来代替）</span><br><span class="line">        echo &#39;success&#39;$i; </span><br><span class="line"> &#125;&amp;              #用&#123;&#125;把循环体括起来，后加一个&amp;符号，代表每次循环都把命令放入后台运行</span><br><span class="line">                 #一旦放入后台，就意味着&#123;&#125;里面的命令交给操作系统的一个线程处理了</span><br><span class="line">                 #循环了1000次，就有1000个&amp;将任务放入后台，操作系统会并发1000个线程来处理     </span><br><span class="line">done    </span><br><span class="line">wait             #wait命令表示。等待上面的命令（放入后台的任务）都执行完毕了再往下执行</span><br><span class="line">     </span><br><span class="line">date # 脚本结束时间</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用FIFO实现“多进程”"><a href="#使用FIFO实现“多进程”" class="headerlink" title="使用FIFO实现“多进程”"></a>使用FIFO实现“多进程”</h3><p>可以控制每次并发的数量</p>
+<h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><p>先新建一个FIFO，写入一些字符。一个进程开始前会先从这个FIFO中读走一个字符，执行完之后再写回一个字符。如果FIFO中没有字符，该线程就会等待，fifo就成了一个锁。</p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2021/03/17/shell%E5%B9%B6%E5%8F%91/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-shell脚本常识" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -998,11 +1102,11 @@
                 
                 
                     
-                    <p><p><strong>比较运算符</strong></p>
-<font color=black size=2>
+                    <p><h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><font color=black size=2>
 
 <table>
 <tr>
+    <td colspan="2"><b>文件比较运算符</b>
 <p>
                 
             
@@ -1304,110 +1408,6 @@
         
             <h4 id="给网卡点灯"><a href="#给网卡点灯" class="headerlink" title="给网卡点灯"></a>给网卡点灯</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ethtool --identify eth2 20</span><br><span class="line"></span><br><span class="line">这个意思是说，让eth2标识的网卡的灯点亮20秒！如果网卡标号与网卡实际的物理位置关系乱了，你又不知道eth2是哪个网卡，上述网卡点灯程序就会让你知道了。</span><br></pre></td></tr></table></figure>
 
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-linux路由" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/linux%E7%BD%91%E7%BB%9C/">linux网络</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2021/03/15/linux%E8%B7%AF%E7%94%B1/">
-            <time datetime="2021-03-14T16:00:00.000Z" itemprop="datePublished">2021-03-15</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/raw/writing/source/_posts/linux路由.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/edit/writing/source/_posts/linux路由.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/callmelord/Wiki-site/commits/writing/source/_posts/linux路由.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2021/03/15/linux%E8%B7%AF%E7%94%B1/">linux路由</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>比如说进一栋大楼找一个人，你要先找大爷问问，有没有这个人，大爷就是路由表，你问的人就是网络地址，如果有的话，大爷会说这个人在402室，402就是那个网卡</p>
-<p>找一个路由表看一下吧</p>
-<h4 id="路由表详解"><a href="#路由表详解" class="headerlink" title="路由表详解"></a>路由表详解</h4><p><strong>介绍路由表之前需要知道一些ip的常识</strong></p>
-<p>ip地址是一个网卡在网络世界的通讯地址，也就是：街道地址+门牌号</p>
-<p>例如：小树林67号、小池塘67号，都是67号，但是街道不同，在外面你说你家门牌号是67号人家不一定知道是哪里，但你说你家在小树林，那就知道了。</p>
-<p>
-                
-            
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2021/03/15/linux%E8%B7%AF%E7%94%B1/#more">Read More</a>
             </div>
         
         <footer class="article-footer">
