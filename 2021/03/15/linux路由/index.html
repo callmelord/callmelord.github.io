@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>linux路由 | Hexo</title>
+    
+    
+        <meta name="keywords" content="技巧" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="简介比如说进一栋大楼找一个人，你要先找大爷问问，有没有这个人，大爷就是路由表，你问的人就是网络地址，如果有的话，大爷会说这个人在402室，402就是那个网卡 找一个路由表看一下吧 路由表详解介绍路由表之前需要知道一些ip的常识 ip地址是一个网卡在网络世界的通讯地址，也就是：街道地址+门牌号 例如：小树林67号、小池塘67号，都是67号，但是街道不同，在外面你说你家门牌号是67号人家不一定知道是哪">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux路由">
+<meta property="og:url" content="http://example.com/2021/03/15/linux%E8%B7%AF%E7%94%B1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="简介比如说进一栋大楼找一个人，你要先找大爷问问，有没有这个人，大爷就是路由表，你问的人就是网络地址，如果有的话，大爷会说这个人在402室，402就是那个网卡 找一个路由表看一下吧 路由表详解介绍路由表之前需要知道一些ip的常识 ip地址是一个网卡在网络世界的通讯地址，也就是：街道地址+门牌号 例如：小树林67号、小池塘67号，都是67号，但是街道不同，在外面你说你家门牌号是67号人家不一定知道是哪">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-10-18T07:27:38.000Z">
+<meta property="article:author" content="TQ">
+<meta property="article:tag" content="技巧">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Hexo</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Linux定时任务
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/31/linux%E4%B8%8A%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">关于 /etc/crontab 及 /var/spool/cron/$USER 中定义定时任务</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Linux磁盘
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/11/%E7%A3%81%E7%9B%98%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BD/">磁盘无法挂载（VMFS_volume_member的解决办法）</a></li>  <li class="file"><a href="/2021/04/29/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/">linux磁盘挂载</a></li>  <li class="file"><a href="/2021/06/04/linux%E7%A3%81%E7%9B%98%E5%9D%8F%E9%81%93/">linux磁盘坏道的检测和修复</a></li>  <li class="file"><a href="/2021/09/09/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%94%99%E8%AF%AF/">文件系统错误</a></li>  <li class="file"><a href="/2022/01/04/dmsetup%E5%91%BD%E4%BB%A4/">dmsetup</a></li>  <li class="file"><a href="/2022/01/04/losetup/">losetup</a></li>  <li class="file"><a href="/2022/03/10/lsof%E5%91%BD%E4%BB%A4/">lsof</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Xshell
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/11/Xshell%E7%AA%81%E5%87%BA%E6%98%BE%E7%A4%BA%E9%9B%86%E6%AD%A3%E5%88%99/">Xshell突出显示集正则配置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            bbr网络加速
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/07/15/centos%E5%BC%80%E5%90%AFbbr/">centos 7 开启bbr网络加速</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            galgame
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2019/12/01/%E6%96%87%E4%BB%B6%E6%8F%90%E5%8F%96%E6%95%B4%E5%90%88/">文件提取整合</a></li>  <li class="file"><a href="/2020/07/08/%E5%AF%86%E8%AF%AD%E6%8F%90%E5%8F%96CG%E8%AE%B0%E5%BD%95/">密语提取CG记录</a></li>  <li class="file"><a href="/2021/04/13/clarias/">clarias提取记录</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            github仓库
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/09/01/git%E4%BD%BF%E7%94%A8/">git进行项目管理和版本控制</a></li>  <li class="file"><a href="/2021/09/01/git%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D/">git修改分支名</a></li>  <li class="file"><a href="/2021/09/02/git%E5%91%BD%E4%BB%A4/">git常用命令</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            go语言
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/04/11/go%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/">go学习笔记</a></li>  <li class="file"><a href="/2022/06/10/go%E4%BD%BF%E7%94%A8rsa%E5%8A%A0%E5%AF%86/">go使用rsa加密</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/02/01/linux%E6%80%BB%E7%BB%93/">linux总结</a></li>  <li class="file"><a href="/2020/10/13/linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/">linux磁盘分区</a></li>  <li class="file"><a href="/2020/10/27/VBOX%E4%B8%AD%E7%9A%84centos%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%95%91%E6%8F%B4/">centos虚拟机系统救援</a></li>  <li class="file"><a href="/2021/04/22/linux%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9E%8B%E5%8F%B7/">linux查看服务器的型号</a></li>  <li class="file"><a href="/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/">chattr与lsattr命令</a></li>  <li class="file"><a href="/2021/04/27/du%E5%91%BD%E4%BB%A4/">du查看文件或文件夹的大小</a></li>  <li class="file"><a href="/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/">CentOS7 出現 slice User 信息的解法</a></li>  <li class="file"><a href="/2021/06/24/macvlan/">创建虚拟网卡 vlan macvlan</a></li>  <li class="file"><a href="/2021/07/02/%E6%9F%A5%E7%9C%8Blinux%E5%91%BD%E4%BB%A4%E7%9A%84%E8%B7%AF%E5%BE%84/">linux命令路径</a></li>  <li class="file"><a href="/2021/07/09/yum/">软件包管理器yum</a></li>  <li class="file"><a href="/2021/08/08/CMOS%E6%94%BE%E7%94%B5/">CMOS放电</a></li>  <li class="file"><a href="/2021/08/08/rsync/">rsync用法</a></li>  <li class="file"><a href="/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">只读文件系统 /var/cache/yum/x86 64/7/base/repomd.xml.old.tmp</a></li>  <li class="file"><a href="/2021/08/23/linux_iso%E9%95%9C%E5%83%8F%E8%A7%A3%E6%9E%90/">linux_iso镜像解析</a></li>  <li class="file"><a href="/2021/09/09/dd%E5%91%BD%E4%BB%A4/">dd命令</a></li>  <li class="file"><a href="/2021/09/24/grub_rescue/">grub rescue</a></li>  <li class="file"><a href="/2021/09/24/%E5%88%87%E6%A0%B9/">切换根目录</a></li>  <li class="file"><a href="/2021/10/22/centos%E5%86%85%E6%A0%B8%E5%8D%87%E7%BA%A7/">centos升级内核</a></li>  <li class="file"><a href="/2021/11/16/pcie%E6%8A%A5%E9%94%99/">pcie总线报错</a></li>  <li class="file"><a href="/2021/11/16/%E5%88%A0%E9%99%A4swap%E5%88%86%E5%8C%BA/">CentOS 删除swap分区</a></li>  <li class="file"><a href="/2021/12/03/centos%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/">centos修改网卡名称</a></li>  <li class="file"><a href="/2021/12/15/netstat/">netstat</a></li>  <li class="file"><a href="/2022/01/14/centos%E4%BF%AE%E6%94%B9mac%E5%9C%B0%E5%9D%80/">centos修改网卡mac地址</a></li>  <li class="file"><a href="/2022/02/20/vbox%E8%AE%BE%E7%BD%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/">vbox设置共享文件夹</a></li>  <li class="file"><a href="/2022/02/24/%E5%AE%89%E8%A3%85yum/">centos安装yum</a></li>  <li class="file"><a href="/2022/02/24/%E6%96%87%E4%BB%B6%E5%B7%B2%E5%88%A0%E9%99%A4%E4%BD%86%E7%A9%BA%E9%97%B4%E6%9C%AA%E9%87%8A%E6%94%BE/">文件已经删除，但空间未释放怎么办？</a></li>  <li class="file"><a href="/2022/03/18/%E7%B3%BB%E7%BB%9F%E5%B0%81%E8%A3%85/">linux（centos）系统封装</a></li>  <li class="file"><a href="/2022/06/30/%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E8%84%9A%E6%9C%AC/">开机自启 rc.d/rc.loacl</a></li>  <li class="file"><a href="/2022/07/06/centos7%E5%AE%89%E8%A3%85nload%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/">centos7安装nload流量监控</a></li>  <li class="file"><a href="/2022/09/20/%E7%B3%BB%E7%BB%9F%E5%B0%81%E8%A3%85%E7%9A%84%E5%BC%82%E5%B8%B8/">系统封装的一些异常报错</a></li>  <li class="file"><a href="/2022/10/06/elk%E6%8B%89%E5%8F%96%E6%95%B0%E6%8D%AE/">python拉取elk的数据</a></li>  <li class="file"><a href="/2022/11/17/EFI%E3%80%81UEFI%E3%80%81MBR%E3%80%81GPT%E7%9A%84%E5%8C%BA%E5%88%AB/">EFI、UEFI、MBR、GPT的区别</a></li>  <li class="file"><a href="/2023/01/16/linux%E7%BD%91%E5%8D%A1%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">linux网卡命名规范</a></li>  <li class="file"><a href="/2023/01/16/%E7%BD%91%E5%8D%A1mac%E6%BC%82%E7%A7%BB/">网卡mac漂移</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux文件系统
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/08/08/lvm%E4%BB%8B%E7%BB%8D/">lvm分区</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            linux网络
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/08/20/aircrack-ng/">aircrack-ng的使用</a></li>  <li class="file"><a href="/2021/03/15/ethtool/">ethtool</a></li>  <li class="file active"><a href="/2021/03/15/linux%E8%B7%AF%E7%94%B1/">linux路由</a></li>  <li class="file"><a href="/2021/03/18/DNS-Resolv%E8%AE%BE%E7%BD%AE%E5%92%8C%E9%87%8D%E5%90%AF%E6%97%A0%E6%95%88/">DNS Resolv 设置和重启无效的解决方法</a></li>  <li class="file"><a href="/2021/03/18/linux%E5%88%B7%E6%96%B0dns%E6%9C%8D%E5%8A%A1%E5%99%A8/">linux刷新dns服务器</a></li>  <li class="file"><a href="/2021/04/16/%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99ip-rule/">路由规则ip rule</a></li>  <li class="file"><a href="/2021/04/22/Ping%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">ping 的使用方法</a></li>  <li class="file"><a href="/2021/06/25/tcping/">tcping  pingIP的端口</a></li>  <li class="file"><a href="/2021/07/02/tcp_ip/">tcp_ip详解</a></li>  <li class="file"><a href="/2021/07/02/tcp%E9%87%8D%E4%BC%A0/">tcp重传</a></li>  <li class="file"><a href="/2021/07/28/%E4%B8%8B%E8%BD%BD%E7%A6%BB%E7%BA%BF%E7%BD%91%E9%A1%B5/">下载离线网页</a></li>  <li class="file"><a href="/2021/08/08/curl/">curl用法</a></li>  <li class="file"><a href="/2021/08/19/nmcli/">nmcli 命令</a></li>  <li class="file"><a href="/2021/09/10/linux%E9%98%B2%E7%81%AB%E5%A2%99/">linux防火墙</a></li>  <li class="file"><a href="/2021/09/13/ssh/">ssh</a></li>  <li class="file"><a href="/2021/10/22/ubuntu%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81ip/">ubuntu配置静态ip</a></li>  <li class="file"><a href="/2022/06/10/iperf3%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/">iperf3使用方法详解</a></li>  <li class="file"><a href="/2022/06/10/%E5%A6%82%E4%BD%95%E6%B5%8B%E8%AF%95%E7%AB%AF%E5%8F%A3%E9%80%9A%E4%B8%8D%E9%80%9A/">如何测试端口通不通</a></li>  <li class="file"><a href="/2022/06/10/%E6%A0%A1%E9%AA%8C%E5%AF%86%E7%A0%81linux/">iperf3使用方法详解</a></li>  <li class="file"><a href="/2022/11/02/ipv6/">ipv6详解</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux解压
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/07/16/linux%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/">linux解压命令大全</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/11/20/pip%E5%AE%89%E8%A3%85%E6%9C%AC%E5%9C%B0%E5%8C%85/">pip安装本地包</a></li>  <li class="file"><a href="/2021/05/06/python%E5%AE%89%E8%A3%85face_recognition%E5%92%8Cdlib/">python安装face_recognition和dlib</a></li>  <li class="file"><a href="/2021/07/09/pip%E5%AE%89%E8%A3%85python3.6/">pip问题</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            shell
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/17/shell%E8%84%9A%E6%9C%AC%E5%B8%B8%E8%AF%86/">shell脚本常识</a></li>  <li class="file"><a href="/2021/03/31/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC/">linux中/etc/rc.local脚本的作用</a></li>  <li class="file"><a href="/2021/04/15/shell%E8%84%9A%E6%9C%AC%E9%97%AE%E9%A2%98/">shell脚本问题</a></li>  <li class="file"><a href="/2021/06/17/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%A2%9E/">shell脚本自增</a></li>  <li class="file"><a href="/2021/06/17/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FIFS/">利用环境变量IFS自定义分隔符</a></li>  <li class="file"><a href="/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/">shell后台运行脚本</a></li>  <li class="file"><a href="/2021/07/28/shell%E6%97%B6%E9%97%B4%E6%88%B3/">shell时间戳</a></li>  <li class="file"><a href="/2021/07/28/shell%E8%BF%90%E7%AE%97/">shell运算</a></li>  <li class="file"><a href="/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/">expect 介绍和用法</a></li>  <li class="file"><a href="/2021/08/08/sort%E6%8E%92%E5%BA%8F/">sort排序</a></li>  <li class="file"><a href="/2021/08/31/shell%E4%B8%AD%E7%BB%99%E5%91%BD%E4%BB%A4%E8%AE%BE%E7%BD%AE%E8%B6%85%E6%97%B6%E6%97%B6%E9%97%B4/">shell 中给命令设置超时时间</a></li>  <li class="file"><a href="/2021/11/16/shell%E6%95%B0%E7%BB%84/">shell数组</a></li>  <li class="file"><a href="/2022/08/17/shell%E5%B9%B6%E5%8F%91/">shell并发操作</a></li>  <li class="file"><a href="/2022/11/02/shell%E5%88%9B%E5%BB%BA%E9%9A%8F%E6%9C%BA%E6%95%B0/">shell创建随机数</a></li>  <li class="file"><a href="/2022/11/18/shell%E6%98%BE%E7%A4%BA%E7%99%BE%E5%88%86%E6%AF%94/">shell显示百分比</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            systemed
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/09/05/systemed%E4%BD%BF%E7%94%A8/">systemctl,Systemd 入门教程</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ubuntu
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/06/28/ubuntu%E4%BF%AE%E6%94%B9%E6%97%B6%E5%8C%BA/">ubuntu修改时区</a></li>  <li class="file"><a href="/2021/06/28/%E6%9F%A5%E7%9C%8Bubuntu%E7%89%88%E6%9C%AC/">ubuntu版本</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            windows
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/01/21/win_ping/">Windows防火墙开启ping,禁ping的配置</a></li>  <li class="file"><a href="/2022/01/21/windows%E8%BF%9C%E7%A8%8B%E9%85%8D%E7%BD%AE/">windows远程</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            内网穿透
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/06/25/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">npc内网穿透</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            博客主题日志
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/11/26/Hexo%E4%B8%BB%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%80/">Hexo主题记录一</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            文件传输
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/07/21/lrzsz%E4%B9%B1%E7%A0%81/">lrzsz乱码问题</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            文本
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/07/10/vim%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">vim使用总结</a></li>  <li class="file"><a href="/2021/03/16/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%83%E5%AD%97%E7%AC%A6%E9%9B%86/">正则表达式元字符集</a></li>  <li class="file"><a href="/2021/03/19/sed%E6%8F%92%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2/">sed命令</a></li>  <li class="file"><a href="/2021/04/23/awk%E5%91%BD%E4%BB%A4/">awk命令</a></li>  <li class="file"><a href="/2021/04/23/paste%E5%91%BD%E4%BB%A4/">paste命令</a></li>  <li class="file"><a href="/2021/04/23/vim%E5%91%BD%E4%BB%A4/">vim命令</a></li>  <li class="file"><a href="/2021/09/01/wget%E5%91%BD%E4%BB%A4/">wget命令</a></li>  <li class="file"><a href="/2021/12/02/md5%E6%A0%A1%E9%AA%8C/">md5校验</a></li>  <li class="file"><a href="/2022/04/13/shell%E5%AD%97%E7%AC%A6%E4%B8%B2/">Linux shell字符串截取、替换、删除以及trim</a></li>  <li class="file"><a href="/2022/04/20/vim%E9%85%8D%E7%BD%AE/">vim配置</a></li>  <li class="file"><a href="/2022/04/21/vim82%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/">vim82编译安装</a></li>  <li class="file"><a href="/2022/06/23/linux%E6%9F%A5%E6%89%BE%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%80%E5%9C%A8%E8%A1%8C/">linux查找字符串所在行</a></li>  <li class="file"><a href="/2022/07/08/shell%E8%84%9A%E6%9C%ACEOF%E5%A6%99%E7%94%A8/">shell脚本EOF解析</a></li>  <li class="file"><a href="/2022/07/11/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E6%A8%A1%E5%9D%97/">数据读取模块</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            服务器
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/06/21/mariadb%E4%BD%BF%E7%94%A8/">mariadb数据库使用</a></li>  <li class="file"><a href="/2022/06/21/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%97%AE%E9%A2%98/">dell服务器开机无法正常启动</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            服务器容器
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&查看服务器信息</a></li>  <li class="file"><a href="/2021/03/15/docker%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/">docker启动失败</a></li>  <li class="file"><a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">容器部署常见问题</a></li>  <li class="file"><a href="/2021/03/29/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%A8%E5%8F%B7%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">服务器拨号注意事项</a></li>  <li class="file"><a href="/2021/04/30/docker%E5%AE%B9%E5%99%A8%E5%BC%82%E5%B8%B8/">docker容器启动失败</a></li>  <li class="file"><a href="/2021/08/20/docker%E5%AE%B9%E5%99%A8%E4%B8%80%E7%9B%B4%E9%87%8D%E5%90%AF/">docker容器在部署服务后一直重启</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2020/09/13/FFmpeg/">FFmpeg</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-linux路由" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/linux%E7%BD%91%E7%BB%9C/">linux网络</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/03/15/linux%E8%B7%AF%E7%94%B1/">
+            <time datetime="2021-03-14T16:00:00.000Z" itemprop="datePublished">2021-03-15</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/linux路由.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/linux路由.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/linux路由.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            linux路由
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E8%A1%A8%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.1.</span> <span class="toc-text">路由表详解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Flags-%E5%90%AB%E4%B9%89%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">Flags 含义：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linux%E5%86%85%E6%A0%B8%E7%9A%84%E8%B7%AF%E7%94%B1%E7%A7%8D%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">linux内核的路由种类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1"><span class="toc-number">2.1.</span> <span class="toc-text">默认路由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E8%B7%AF%E7%94%B1"><span class="toc-number">2.2.</span> <span class="toc-text">主机路由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%B7%AF%E7%94%B1"><span class="toc-number">2.3.</span> <span class="toc-text">网络路由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="toc-number">2.4.</span> <span class="toc-text">示意图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E4%B8%80%E4%B8%AAip%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="toc-number">2.5.</span> <span class="toc-text">访问一个ip的流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%85%B3linux%E8%B7%AF%E7%94%B1%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">有关linux路由的命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%B7%AF%E7%94%B1"><span class="toc-number">3.1.</span> <span class="toc-text">查看路由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E7%9A%84%E6%B7%BB%E5%8A%A0%E4%B8%8E%E5%88%A0%E9%99%A4"><span class="toc-number">3.2.</span> <span class="toc-text">路由的添加与删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E3%80%81%E5%85%B3%E9%97%AD%E4%B8%8E%E9%85%8D%E7%BD%AE%E8%A3%85%E7%BD%AE%E7%9A%84%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF"><span class="toc-number">3.3.</span> <span class="toc-text">启动、关闭与配置装置的相关信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E3%80%90%E7%BD%91%E5%8D%A1%E4%BB%A3%E5%8F%B7%E3%80%81-MAC-%E5%9C%B0%E5%9D%80%E4%BF%A1%E6%81%AF%E3%80%91"><span class="toc-number">3.4.</span> <span class="toc-text">更改【网卡代号、 MAC 地址信息】</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%85%E7%A9%BA%E8%B7%AF%E7%94%B1%E8%A1%A8"><span class="toc-number">3.5.</span> <span class="toc-text">清空路由表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rt-tables"><span class="toc-number">3.6.</span> <span class="toc-text">rt_tables</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E7%BD%91%E5%85%B3"><span class="toc-number">3.7.</span> <span class="toc-text">增加网关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E5%85%B3%E5%8F%AA%E8%83%BD%E5%8A%A0%E8%B7%AF%E7%94%B1%E6%9D%A1%E7%9B%AE%E9%87%8C%E5%B7%B2%E6%9C%89%E7%9A%84%E8%B7%AF%E7%94%B1%E7%BD%91%E6%AE%B5%E9%87%8C%E7%9A%84%E4%B8%80%E4%B8%AAIP-ping%E4%B8%8D%E9%80%9A%E6%AD%A4IP%E9%83%BD%E5%8F%AF%E4%BB%A5%EF%BC%89-%E5%8A%A0%E7%BD%91%E5%85%B3%E4%B8%8D%E9%9C%80%E8%A6%81%E6%8C%87%E5%AE%9A%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81"><span class="toc-number">3.8.</span> <span class="toc-text">网关只能加路由条目里已有的路由网段里的一个IP (ping不通此IP都可以） 加网关不需要指定子网掩码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">4.</span> <span class="toc-text">参考链接</span></a></li></ol>
+                </div>
+            
+        
+        
+            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>比如说进一栋大楼找一个人，你要先找大爷问问，有没有这个人，大爷就是路由表，你问的人就是网络地址，如果有的话，大爷会说这个人在402室，402就是那个网卡</p>
+<p>找一个路由表看一下吧</p>
+<h4 id="路由表详解"><a href="#路由表详解" class="headerlink" title="路由表详解"></a>路由表详解</h4><p><strong>介绍路由表之前需要知道一些ip的常识</strong></p>
+<p>ip地址是一个网卡在网络世界的通讯地址，也就是：街道地址+门牌号</p>
+<p>例如：小树林67号、小池塘67号，都是67号，但是街道不同，在外面你说你家门牌号是67号人家不一定知道是哪里，但你说你家在小树林，那就知道了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">route -n</span><br><span class="line"></span><br><span class="line">Destination     Gateway         Genmask         Flags  Iface</span><br><span class="line">0.0.0.0         192.168.10.1    0.0.0.0         UG     em1</span><br><span class="line">100.82.128.1    0.0.0.0         255.255.255.255 UH     ppp1</span><br><span class="line">100.82.128.1    0.0.0.0         255.255.255.255 UH     ppp2</span><br><span class="line">100.82.128.1    0.0.0.0         255.255.255.255 UH     ppp3</span><br><span class="line">100.82.128.1    0.0.0.0         255.255.255.255 UH     ppp4</span><br><span class="line">100.82.128.1    0.0.0.0         255.255.255.255 UH     ppp5</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Destination: 目标网络或目标主机。 Destination 为 default（0.0.0.0）时，表示这个是默认网关，所有数据都发到这个网关（这里是192.168.10.1)</span><br><span class="line"></span><br><span class="line">这个可以是网络地址（街道）、主机地址、拨号网络播出ip的网关</span><br><span class="line">比如：</span><br><span class="line">IP：100.82.243.66 网关：100.82.128.1/32</span><br><span class="line">掩码是32，代表只有一台主机</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Gateway: 网关地址，0.0.0.0 表示当前记录对应的 Destination 跟本机在同一个网段，通信时不需要经过网关</span><br><span class="line"></span><br><span class="line">Genmask: Destination 字段的网络掩码，Destination 是主机时需要设置为 255.255.255.255，是默认路由时会设置为 0.0.0.0</span><br><span class="line"></span><br><span class="line">Flags: 标记，含义参考表格后面的解释</span><br><span class="line"></span><br><span class="line">Iface： 这个路由传递封包的接口。网卡名字，例如 ppp1</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>Destination, Genmask</strong>：这两个玩意儿就是分别是 network 与 netmask,这两个可以组成一个完整的网络<br><strong>Gateway</strong>：该网域是通过那个 gateway 连接出去的？ 如果显示 0.0.0.0 表示该路由是直接由本机传送，亦即可以透过局域网络的 MAC 直接传讯； 如果有显示 IP 的话，表示该路由需要经过路由器 (通讯闸) 的帮忙才能够传送出去。 </p>
+<h4 id="Flags-含义："><a href="#Flags-含义：" class="headerlink" title="Flags 含义："></a>Flags 含义：</h4><ul>
+<li><strong>U</strong> (route is up)：该路由是启动的；  </li>
+<li><strong>H</strong> (target is a host)：目标是一部主机 (IP) 而非网域；  </li>
+<li><strong>G</strong> (use gateway)：需要透过外部的主机 (gateway) 来转递封包；  </li>
+<li><strong>R</strong> (reinstate route for dynamic routing)：使用动态路由时，恢复路由信息的旗标；  </li>
+<li><strong>D</strong> (dynamically installed by daemon or redirect)：已经由服务或转 port 功能配置为动态路由  </li>
+<li><strong>M</strong> (modified from routing daemon or redirect)：路由已经被修改了；  </li>
+<li><strong>!</strong> (reject route)：这个路由将不会被接受(用来抵挡不安全的网域！)</li>
+</ul>
+<h3 id="linux内核的路由种类"><a href="#linux内核的路由种类" class="headerlink" title="linux内核的路由种类"></a>linux内核的路由种类</h3><h4 id="默认路由"><a href="#默认路由" class="headerlink" title="默认路由"></a>默认路由</h4><p>当目标主机的ip，或者是目标主机的网络地址不在路由表中，数据包就会发送到默认路由（默认网关）上</p>
+<p>默认路由的 Destination 是 default 或 0.0.0.0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">route -n</span><br><span class="line"></span><br><span class="line">Destination     Gateway         Genmask         Flags Metric Ref    Use Iface</span><br><span class="line">0.0.0.0         192.168.10.1    0.0.0.0         UG    100    0        0 em1</span><br></pre></td></tr></table></figure>
+
+<h4 id="主机路由"><a href="#主机路由" class="headerlink" title="主机路由"></a>主机路由</h4><p>主机可以到达的网络。下面示例中，对于 10.0.0.0&#x2F;24 这个网络，通过网关 10.139.128.1 网关路由</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">route -n</span><br><span class="line"></span><br><span class="line">Destination     Gateway         Genmask         Flags Metric Ref    Use Iface</span><br><span class="line">10.0.0.0        10.139.128.1    255.255.255.0   UG    0      0        0 eth0</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="网络路由"><a href="#网络路由" class="headerlink" title="网络路由"></a>网络路由</h4><p>意思就是主机能把数据包送到那个网络，或者说能从那个网络接收数据包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">route -n</span><br><span class="line"></span><br><span class="line">Destination     Gateway         Genmask         Flags Metric Ref    Use Iface</span><br><span class="line">39.165.91.0     0.0.0.0         255.255.255.128 U     0      0        0 ppp0</span><br></pre></td></tr></table></figure>
+<p>这里的 39.165.91.0 就是网络地址</p>
+<h4 id="示意图"><a href="#示意图" class="headerlink" title="示意图"></a>示意图</h4><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA4oAAAFMCAIAAAACwdUvAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7EAAAOxAGVKw4bAACAAElEQVR42u2dfXgbV5XwjzyKEsVKXUzSFOgssVWHpPVHyi5vtwJj4krppobSGLDZLATiFbVLSL/cVrQ1CLVJW7UkaQlh7VY4S4CADeuwYd3QaOIQ/CKWhZclstOkcWUZhq+0qVslspUoGuv9Y0bSzGgkjT5sjaTze/LkkaU7d879mJkz555zriocDgOiQFx2k9Vr7u9tJ4Ee6OpwVNmcFkO+hUIQBEEQBJlv1Pw/XHaTleI+61nNqAShB7o6HB4AADDOi0rIO0HiU9C0F6CKJAGAdh33gHEL6qYIgiAIgpQC6hzUkUtcdpOVSqYaC3S7nCvRfAU9r/BVUnrKA/r1JfmqgCAIgiBI6VEW943e3O90Op1KNJ3SA12mDkeVzclhM3ocHV0DdG7Pojf3O539Zv28NYNs73U6U5yCnvKAfhUJAOAapUC/3qC84UAQBEEQBJkHlGY9TYLL3uHwCNbCDRabkbI6dg4YcqVMGyxOJwAA5Fjlld9GvvXW0WFyCD7Oj7MBgiAIgiCIgkhDPWVVJ6PNaSGjC+yCxXWhbiWhSiUuIFyy9/D0ssgZXHYrBUabqEpDoxEoaooGINnKxav9YqH1Ztv641aHB/Tm/l6Diz1r6frZIgiCIAiCKI2ytI8QaJIex052bZ0e6BJ5bVJWE3/dPWWB5LhGKQBjoyFWmclkMpm6RkEP4KVpAMNmsx7Ac9xFiw+LHQfgcVhZ4T2OnV07uXZEW5F3DBbOayHqZNFv1gMYOX8GNJ0iCIIgCFL0pK2eUg4HsIoTqzxVAQCA66DDAzE1ilWwwOM46OIOS1GAc8fkvtbHTsD5wAq008gqv9PZv95LRW2upGG9WD+N0045CdiTe6pin6dyop5G1WaTyWQy2V38H3h/paxGHLXfiGopgiAIgiClQvrWU6ONtxBOtlvayagaaBO6hQIANcoqZSkLJIemvbHPAwco0Js3GwCAbN9ijJUS66f0wAEKIkU52HAjcpVe9NlLZ6+f0gM7Yw4KrHk4Qofgh1T18FRSXogUgiAIgiBIKZB2aFRiS55IiyJX6QE8XpoGIGUWSA53OD3lATCSJK+SaI2G9XqHx3PcRbe3k6yWt7Ax71V8J1a+F4Te3J96YV7gmuuxmqKfMS4KQRAEQZDSoYAi92VAtm8xOqyU46Cr3UIuuHZKtlvaBX/2OtuzqA5BEARBEKQUSX9xPyEi/016ygMRD0qZBRJCklXRw8lVet5aPFtJDEMj5zKQB9tptsTHRfE+YlwUgiAIgiClQW7UU04ptMbCf1x2Kz8qKWUBAaLwe6FOSrZvMUZiqljvUklR2IxRhaSdRjomloWfFyKFIAiCIAhSIuRocd+w2aynHB6K5zAJgqiklAUi5RqNQFG8xKdsTlKSrAJg85sCGCz9Zm+H1UQB6I1GvYeSqAEAAIxb0s1mKsy/ChFxFzAxalzU/hY0miIIgiAIUkrkanGfbO9lUzRFMdoEG6OmLMBhsEhu9mnYbNYDdYBLTxrNQ9VrsfSKN2BlE6AmjeJSLhi1jyAIgiBIiaMKh8PRP1x2k5VS7BZKypYufVhLLcbjIwiCIAiC8Im3nnocHSaTKY0NnRYKg8VpM3ocHaY0EtwrEi55f1q5UBEEQRAEQUqEwkosZbA4nZsHujpMpsg3RWRNRRAEQRAEQUSL+wiCIAiCIAiSX3KY9xRBEARBEARBsgXVUwRBEARBEERBoHqKIAiCIAiCKAhUT5WKyx5Nn0APdJkKPl8BgiAIgiCILASR+y67yRrZgql0Q+J5O0fNT1JSwdZUiU6Bu0chCIIgCFKaKC2xVMrc+8JtR3OtRPMV9LzCV0npKQ/o15fkqwKCIAiCIKVH/OK+3tzvdDqdSjSd0gNdpg5Hlc3JYTN6HB053z9Ab+53OiV3Vs0R3JasSU/B29DUNUqBfr1BecOBIAiCIAgyDyjNepoEl128B6jBYjNSVsfOAUOulGmDxekEAIA8bZkltN46OkwOwUfcARVBEARBkKInDfWUVZ2MNqeFjC6wCxbXhbqVhCqVuIBwyd7D08siZ3DZrRQYbaIqDY1GoKgpGoBkKxev9ouF1ptt649bHR7Qm/t7DS72rKXrZ4sgCIIgCKI00o/cF2iSHsfOWHC50GuTspr46+4pCyTHNUoBGBsNscpMJpPJ1DUKegAvTQMYNpv1AJ7jLlp8WOw4AI/Dygrvcezs2sm1I9qKvGOwcF4LUSeLfrMewMj5M6DpFEEQBEGQoidt9ZRyOIBVnFjlqQoAAFwHHR6IqVGsggUex8FINqQUBTh3TO5rfewEnA+sQDuNrPI7nf3rvVTU5koa1ov10zjtlJOAPbmnKvZ5KifqaVRtNplMglRQ9EBXGomh4qL2G1EtRRAEQRCkVEjfemq08RbCyXZLOxlVA21Ct1AAoEZZpSxlgeTQtDf2eeAABXrzZgMAkO1bjLFSYv2UHjhAQaQoBxtuRK7Siz576ez1U3pgZ8xBgTUPR+gQ/JCqHp5KyguRQhAEQRAEKQXSDo1KbMkTaVHkKj2Ax0vTAKTMAsnhDqenPABGkuRVEq3RsF7v8HiOu+j2dpLV8hY25r2K78TK94LQm/tTL8wLXHM9VlP0M8ZFIQiCIAhSOhRQ5L4MyPYtRoeVchx0tVvIBddOyXZLu+DPXmd7FtUhCIIgCIKUIjnc1FTkv0lPeSDiQSmzQEJIsip6OLlKz1uLZyuJYWjkXAbyYDvNlvi4KN5HjItCEARBEKQ0yI16yimF1lj4j8tu5UclpSwgQBR+L9RJyfYtxkhMFetdKikKmzGqkLTTSMfEsvDzQqQQBEEQBEFKhBwt7hs2m/WUw0PxHCZBEJWUskCkXKMRKIqX+JTNSUqSVQBsflMAg6Xf7O2wmigAvdGo91ASNQAAgHFLutlMhflXISLuAiZGjYva34JGUwRBEARBSolcLe6T7b1siqYoRptgY9SUBTgMFsnNPg2bzXqgDnDpSaN5qHotll7xBqxsAtSkUVzKBaP2EQRBEAQpcVThcDj6h8tuslKK3UJJ2dKlD2upxXh8BEEQBEEQPvHWU4+jw2QypbGh00JhsDhtRo+jw5RGgntFwiXvTysXKoIgCIIgSIlQWImlDBanc/NAV4fJFPmmiKypCIIgCIIgiGhxH0EQBEEQBEHySw7zniIIgiAIgiBItqB6iiAIgiAIgigIVE8RBEEQBEEQBYHqqVJx2aPpE+iBLlPB5ytAEARBEASRhSBy32U3WSNbMJVuSDxv56j5SUoq2Joq0Slw9ygEQRAEQUoTpSWWSpl7X7jtaK6VaL6Cnlf4Kik95QH9+pJ8VUAQBEEQpPSIX9zXm/udTqdTiaZTeqDL1OGosjk5bEaPoyPn+wfozf1Op+TOqjmC25I16Sl4G5q6RinQrzcobzgQBEEQBEHmAaVZT5Pgsov3ADVYbEbK6tg5YMiVMm2wOJ0AAJCnLbOE1ltHh8kh+Ig7oCIKZsRP7iVOHNJW51sQBEEQpMBJIzTKZTeZ2AgdbldO8danbIEIEqE8iQtEa7RSsX1VBWdw2a0UGG0i7czQaATwTNHRysW2VLHQXQMu9lRdA3T0rMrbwBVBxHgDLTW+Pm/kzxE/WeOX6Ygy6fCRNdMtDkb+2dhDukcWqHGUZZqsif6LNpPp2zRNbgpMLpAUmSIamiRfpobp2yQ1UiN+0hKUKJ7ONGChLGl06aTDJ33eJOWVP14IghQA6VtP6YEua9T50xMxXQpdQgEAKKvJy/MMTVkgOa5RCsDYaBBVpjca9QBemgYwbDbrKYfnuItuj1XpGqWAO47mBLZ6IpJ3HfdEP+fOAJsVBovTaWGNqFzf0ANdHY4qtJoiGTPib7Izba2aQbu/79aKziq5h9TXEoOd/o0TOmPc75MOX5NdWtltqgnEfafZP6EzAtO3ybdjXPqEbX2VtD2FUJRleusQW9V8kEw8KYieo1xnUr0Bd6tuWNixk8eC7lbtcHxvj/jJzmCS2iLC+GF37JvJKqJtyE+CjrZrZEnnDbRsCLh5X9RbKobNBHgDe4agrQ8t3AiCKJy01VPK4dCb+52cLkcPsDZQ10GHRxCG7rKbrJTHcdDVzn6RogDZ3utsh8ShUQLtNLbKTw90dTgAWB9O0rBe7/AI9FOedhrBaHNaDOzJPVU2Zy/3eYoGyF49FergvKV4eqDrINkrV8XEqH0kV4z4yc5gW1/lrmbYVuNr2uDXp1TveIdQlumtmwLx6/XV5grazP+C6dvkO7taM3iWqR+HO45KKsFE56HKTsE3we4aP/RV7mqW3x7G4wWjHA07beLFY7uC6TmaWKeP6Zp+coj9ilWgg/vsDO9LAACo1XI9yX7wBlo2MPdzirtfVLF+NWzd4IPIqaurtLuOwpkN/paaimEzIbNFEcmZvk2+wwCcJg3g7pwe5JVrS28I4tsuIiDxihJtO4IgiCzSz3tqtPFUR7Ld0k5G1UCb0C0UAKhRdgU/ZYHk0HRsjYweOECB3rzZAABk+xbeo5Y0rNcDeI67aF7JSFEONtyIXKUXffbS2a/v0wM7BfZhyhp1URAZjlPU4zruiejUvBAppBShLNNyVlclF2EnHT6yk+k5yikf1eaKExZma9K1YNEhRnvl/tWBphTLx8HuGt/Z7ZW7bgMAzd4JHTwg7RUgXMGfJmv8gwCDnaIv+Yv7Aoz2SnpCnvV3IanVnpiopNl/fZpINwbOWCro6PcTlftbAVYTEf2M2bcp0qXSq/aE0V5xwgI7enk/VWmH+zTu4WDmS+fewJ4hgFZdVKoTFgJAszGim8YN0HSTnYEhf9wA+SkAaNbxGxirkN8h0X+omyIIkh5pW08FpkgBIi2KXKUH8HjpmFkyZYHkcIfTUx4AI0nyKonWKLCf0q7jHljYmPcqvtmXb0rVm/tTm04FcVEeqyn6GeOikGRwq95HiUmAiBIQ7K7xD9ZqT0wI1IJqcwVd7SdrpqUMZsHuGv8ga/wb8ZO9GnYd2WivPFHja5I+hF3lJ/ZPVBoBgFNJic5DlZRlmnxZvBJttPNW8L2Blg2BNZnZ7RSON7DdTtw/kcTGSWxsCe7pBQA48nKw7bYKOCvxBlJtrhC/Mzfr6My7i+l7IAAWbZvd331b5a5m1oUDeo4KremtglGbdPiaJrSCcRzxk51pnRdBECQDimvXKNaa6nEcdEEetFPOlBz7szeSAUuRabqQwoPZsSFiX+RsaMHumumtoKMndMYqzjhHWabJGj/0VfRAoKkmzjbZyfQcrVi9VxAfwx5yxlJBT+iMAJNVmp6z/miBanMFPaGDzmlBFM6In6yZ3s6eOk5Qo72Svi2YJB5r8ljQzbPbyYEVkoq0mrQEWRnYfwJ7rTfQIjq1N9DClWH6NokNtKzVMFdxYEd6A2DRJvegqDZXDHcRALDRHlHQj7Ft8e0YB7fdFzMkjwZaIm1MK7iNP1t2jANMBA+Ddq9Zu6tPM9g53bLJl8JvQe6IxFlbx+NnXXrBWwiCIDlNLCXy36SnPBDxoJRZICEkWQVAsYeTqyLBUGSkEp4B1dBoBIqiRl2bVy247TRb4uOieB8RRBBAM+LfAcGtNUzP0Uo6pmEEu2v8g606ekIDANBcmdDOdaiyc4Q1o+qgk3cIAABUV2k6D1XAJt++EW3EuqnZNVG5S3jICQvTZPeRwpAmkd+h2+4j7dDWV7F6b3zgEbO1ZjqRgPWWimEzJIMNFZrQcfbjTt9qWcoWwTZtxwMBE7viPOLfOpTM//LwA9M7xtMIydpor9wFwe5NwW2JVrTHY96ZkR4genbraHPET7RF4GDaOaHl+4/ymZxkACCBPy7Rc7TCdCzO/Nms2986vXWIgVqtKTtPCYE5nJXH4Wsa1qCbKYIgWZMb66mh0QgAlDWWK8plt/KjklIWEBBzH40Q00lZCylrIOW8SyVF6XAUmnYa6ZhYFn5eiBSCxKPZL/bF1OyaqJQb3N2soycqdzUnOoToPBSnscUf0irhgMhzxNTsn6ikJyp3NROdh6I/VfTUJj1wopKeqEwdAFSrPRER29ilrQfm8DGZxkWic7e2fjyw3cEABLs7g9CqS+xjwKzZXrm/Nbg1LeOll1i9OtCUyGmY9c48qq3n+qeipzZ2urPj4J6Qe6LJCQYkG16lHZby02XzhW0FHT3BehUXQt4uBEFKkRxZT7msThTPYRIEUUkpC0TKNRqBojyxhPRsFD/ffAoGS7/Z22E1UWxiKQ8lUQMAABi3pGt2FKW/ioib671Tk0mAUftIlohDqjX7J3TGuExDgmDq+F8lkLIgDgmD0+MOif+Ksvh2jAOMJzxQbiB5LNIIoIpYA3BGfhdVafdagk32QPdEcJCn5kpBrK4Co72S7gq0bPCR9rhOGBcFqmtYeTrturM1gkD7+hoCpP1Hic5DFdxHL3MGAM4yPDfiJDCes9DWqhmcYABE2nywuyaw+miFKfrFiJ/sDNZbKuiIUyxr+5x0+JpqArE+lxjQ+G80SfNwSUXuizNnIQiCJCdXi/tke6+TFGx5JIrkSVmAg9U94wLdWfX2wMBmQzvJy0MFAGCxSBX1JIviUi58lZSe8oB+PdpOkfSJqp6CQBaeajXiJ/fyyldphye0CWvjNBspf8rWxJk4JWJoIjpNwjRDTN8m39kF6aFqs65n2LdjiOg5Km8luko7PKGlLNNbRVFi/LYIe3tXn4bsZHPNMp6zADWxzowWii3us9qbl3HXatog6PRqUytz3uDhceKO3Zq2DUHKrknoezDkJ4eg3lLBOkLE9YMwR5jc0Kj4PFxM3ybfjtWatiFGnpcFgiBIEtJQTznXyPksAAAi3ZP37RajQ94GpokqiH2b6HOCQxcQvgDRHVYRJCUZ5BCVhzfQ0hmEVp3sdJvJJBxs1dHbg2SnpIGNo21hOmwksGOcqK9lYk6oMjDaK+nb/KRMP9dm3f7W6T3HmE6z4Et6ItKxXN7TGNTLQVit2wj+PceYzkQd7g30ebWdzdHtADRUq3+PgzEmKh/VOKUzleZkp4PI4No1kzW+pt5gJ6fRsi8k87eZAoIgxUq8esotrC/gerZMDBanDUzWDtNUgWdYit9AC0FyALE69yarYPeGgDvJ8rfcxX1Oe6abAUaC8249rSLWAPCXvCePBd0Aa6IFvIGWzmC9pWLYzHTX+JsshFyHXb5+KQOjvdIIABDzDaUs01t5PRYNDmvrq9zVHDwyRPQc1Ri9mq17g5NmqS7iLNmazqrgniFo69MAgPG2xOXjRkSgKeYiS1RkCzHNfruGNcfut0yTNdyv9ZYK+lCWLzYIgpQgOYzcXwAMFqdz80BXhynqUaU8LRpB5hHOSZTosQgf+V7mDBAbZaunk5Px3ooxD1RuA0xg+jb5B0GzP4lxUe7ivmbXRGXsp/H5tp5qNrbC4FCgr0vTWcUmIuUHD0V0bjMBQGyzEIPRVKDzyZpqIlG0+3bQ7WqGSUdgsFZzogqgStuzl582gcNt95FA9Byt7Kxi+jYF3K26YbZAs7Znr2+7Q5O1hTtNOHMs0WPR7OA1ymiv3A/TW+VvwYogCCJGoJ7KW3zPM3lff8cWIAsLz0Lp3gsnJiqrAcAbOMxTuSaPBd21mpgSKdD/+CoCm3sfAKDeohErnawH6oif7Iymi0q2LCuRN55PEivj/PueGu0VPWd9OzZM72BbcVS7Z0OA1wNEz25OAM4JtXN6XlwjIu06G4siCnbXBDf2wdaXNfRtQXIvceJQxf2W6W6H9owdIo6wROd2Ddnp3xjrfLYGbjgmHf4d45r9h6IjS3Tu1h7e4OuuFjWBt7dqq46+LYctim7iwO7I4N8R+SGSW6qSHvGTNf5kLzAIgiAJKSzrKYKUEFwgUcSWKaRKc0etj583tK2Pp/BJh0ZF0pcmP22zjp6IrNjWEomUyARR25LERW3LtZ4K4m94dsf4VgitsyARu2PkYr/ij42P8kkHych9ESPBQSB6qoDd73SwVburGdo6A31duh7wbXdohu26IzV+sPB6ic1OuinAjaMXoFaz/xCrm/okdnuq0g73MSSnZLNmb4ANwf38xo4EAYJxuWaFAsuN3I/vRmbPpumt47zVfPb9hFVS5SdkQBAEAQCAMIIgxc/k7O3XX3Smd0yo9843r7tz1pNbSY5dTFxnqPfONx84lr9eihf1+rd7J2W35djF6yKd7Hnx7euufzP67/YXQ+FwOBy+/IBUhZ4X377u4ctxtV9+4Pq43uCdIm2B448VfuN8+E0pMVIL4Hz4zevuvOicDCMIguQIVTgczreGjCAIgiAIgiAcudk1Csk9LrvJ1DVAAxvqbzLFNtxCEARBEAQpYgS+py5e2vzSDYnn5X0yzksKK0FiqUSnwN2jipNwmPFOhX79myv//T+q8qXlTz6eb4EQBEEQRHEoLTTKZTdZqWSqsTBpaK6VaJdgX6s8grtHFRFzc8xrntB//8+V//6f0H//Zu6NNwAA1ESF86V8S4YgCIIgSiRePVWw2ZRVTY02Zy9rSXTZTdaOLsixvHpzf287zGPqfC6xVNLs/DyV1DVKgd5sUOaQICkIzwZmvtwTPHRY9P2Sz3+WuF7mVkUIgiAIUloozXqaBJed1U1ja+EGi81IydvoVCbRfUTprKvKsI186y27fxfv4/w4GyDziGqpVveNXbPLl196sT/25Tuu1t73pXyLhiAIgiAKJQ31lFWdjDanhYza/QSmVqFuJaFKJS4gtCR6eHpZ5Awuu5UCo01UpaHRCBQ1RQOQbOVi269YaL3Ztv641eEBvbm/1+Biz6pggzFS6ITDlxz7Lzn2879b+tADqoqKfEuGIAiCIAol/ch9gSbpceyMBZcLvTYpayTwHGQVSI5rlAIwNhpilZlMJpOpaxT0AF6aBjBsNusBPMddtPiw2HEAHoeVFd7j2Nm1k2tHtBV5x2BxOp1Op80IoDf3O51OZ79ZD2C0OZ1OpxNNp4VGiJl5zDr7+FPAS99GrHnf4n/OxcadCIIgCFKkpK2eUg4HsIoTqzyxu5y4Djo8EFOjWAULPI6DkWxIKQqQ7b28r/WxEzhZs6ZAO42s8jud/eu9VNTmShrWi/XTOO2Uk4A9uacq9nkqJ+ppVG02mUyCVFD0QFcaiaHiovYbUS0tPMIXLlz8nPnyd3/A/rmoqXFZfx8ALP3aY6Be2K3REQRBEKSgSN96arTxFsLJdks7GVUDbUK3UACgRlmlLGWB5NC0N/Z54AAFevNmAwCQ7Vt4G/uJ9VN64AAFkaIc+lUkAJCr9KLPXjp7/ZQe2CkIdaKsUU01rTArvkpKT3k4OZFCYu6P9IU726/84v8CgKqiony3fdl3v71ofZOm9eOLPnhLvqVDEARBEEWTdmhUYkueSIsiV+kBPF6aBiBlFkgOdzg95QEwkiSvkmiNhvV6h8dz3EW3t5Oslgf69QsY817Fd2Lle0Hozf2pF+YFrrkeqyn6GeOiCovQ//z24he+GJ5+CwA0t5mWPmkru2YFAICaKH/qiXxLhyAIgiBKp4Ai92VAtm8xOqyU46Cr3UIuuHZKtlvaBX/2OtuzqA4pSC4P/seMpQdCIdU7ri7fYdV8rAVUquivqqXafAuIIAiCIEonh5uaivw36SkPRDwoZRZICElWRQ8nV+l5a/FsJTEMjZzLQB5sp9kSHxfF+4hxUconxMw+/uRM95chFNLcZqoYOaK546N83RRBEARBEDnkRj3llEJrLPzHZbfyo5JSFhAgCr8X6qRk+xZjJKaK9S6VFIXNGFVI2mmkY0apiNy8EClE4YR9vouf/8KlF/erli3TPf913Yv7ypYvz7dQCIIgCFKQ5Ghx37DZrKccHornMAmCqKSUBSLlGo1AUbzEp2xOUpKsAmDzmwIYLP1mb4fVRAHojUa9h5KoAQAAjFvSzWYq2skpIu4CJkaNi9rfgkZTxcO85vF3dDHeqUXrm8qf2Vl27cp8S4QgCIIgBUyuFvfJ9l42RVMUo83JV+lSFuAwWPrN+vj6DZvNeqAOcOlJo3moei2WXqeoGjYBatIoLuWCUfsFx5VjP7/wsU/O/e1c+ZOPL/vOi6ibIgiCIEiWqMK8hOEuu8lKKXYLJWVLlz6spRbj8QuYubnAN74V2P0NdUNd+Td2EVWr8i0QgiAIghQD8Yv73MK68vRAg8VpA5O1wzRV4BqdyIMAKUjCFy7473voysgJ7X1f0t7zRVAXVxIMBEEQBMkfhfVMNViczs0DXR0mU+Qb5WnRSAnATLzm/9e7wwxz1dAP1e9fl29xEARBEKSoECzuIwXHhY99IvR7d76lKDwW3XLzssHvZXZs8KfDMw8+omnZuPTxr6p05fluCoIgCIIUG6ieFjbTZE2+RShUKumJtI8JhWZ32i8P/Ee5/QnNx1ry3QIEQRAEKU4Ka3EfkSYTTauEyUynn/vbOf8X74W5uYqXD5eR1+W7EQiCIAhStORw1ygEKVquuP77wu2bFt1y81U//gHqpgiCIAgyr6B6qlRcdpOpi83zSg90mUyxDbeQBSUcvtTrmHnAUv7N3dqH7gc1kW+BEARBEKTIESzuu+wma2QLptINieflfZqfpKSCxFKJToG7RymBsH9m5oGHYS5cceQ/Ve+4Ot/iIAiCIEhJoDTrqctuihoNJaEHukwxkpXM9PSKyElaELtHpRyswmbuT3++2P7ZRU2Nuhf3oW6KIAiCIAtGfGiUgs2m0X2WellLostusnZ0QY7l1Zv7e9thHlPnk+29zvYU2fnpKQ/o15MAAK5RCvRmgzKHpKhZtKh87y6iuirfciAIgiBIaVFAkfsuu3gPUIPFZqSsjp0DhlwpqAaL0wkAAHmyCPLdKwDY/bt4H3EH1IWkbOU1+RYBQRAEQUqRNNRTVnUy2pwWMmr3E5hahbqVhCqVuIDQkujh6WWRM7jsVgqMNlGVhkYjUNQUDUCylYttv2Kh9Wbb+uNWhwf05v5eg4s9q4INxpmSxWDRXEeJC0e/ST1YUufIrWodEzIyiEU5jAiCIAhSiqTveypQTjyOnbHgcp66AwCUVeCWmLJAclyjFER8MXkOqF2joAfw0jSAYbNZD+A57qLFh8WOA/A4rKzwHsfOrp1cO6KtyDsGi9PpdDptRgC9ud/pdDr7zXoAo83pdDqd6et3GQ5WDnDZTcJz5P4UADB1UNC+DkxvgCAIgiCFT9rqKeVwAKs4scoT65jnOujwQEyNYhUs8DgORtSFFAXI9l7e1/rYCZysPUygnUZW+Z3O/vVeKmrGIw3rxfppnHbKScCe3FMV+zyVE8VJGLfF05Xoga40NKe4qP3GDM2OGQ5WClINFgDQAwcowSmcNuM8vAZ4KKrKFmmcHgCoUdRPEQRBEKTQSd96arTxVlDJdks7GVUDbUK3UJ66kLJAcmjaG/s8cIACvXmzAQDI9i3GWCmxfsrqSFxRDjYCnlylF3320tnrTfTATkGoE2WNaqpphVnlMGo/o8HKHlYBFrhicMbt3LwG8NoXOQU7+DkZRwRBEARB8kraoVGJLXkiLYpcpQfweGkagJRZIDnc4fSUB8BIkrxKojUa1usdHs9xF93eTrJaHujXL2DMexXf+5G/sK4396demBe4anqspujnjOOishisHEDxmhAhvVMIHWTjfUv5rSDJKgAFpARDEARBECRLCihyXwZk+xajw0o5DrraLeSCa6dku6Vd8Gevsz2L6hAEQRAEQUqRHKqnnimBYYye8kDEg1JmgYSQZBUAG6DPGvqiRjh6ygPAM6CyofzUqGvzqgW3nWaLweJ0WliToZc1FPI+5pgkYxFvhuT7VsgnB4H0XI8gCIIgCFJK5GbXKEOjEQAoayz8x2W38qOSUhYQIAq/jyw+s36FZPsWYySOh4vAkRKFzRhVSNpppGNGqYjcvBCpHJJyLNiV/miklNilVkT8YHGniAukd9lNGFmPIAiCIEgqcmQ9NWw26ymHR+RtyItKSlkgUq7RCBTFy6XJ2uD45lMwWPrN3g6riQLQG416DyVRAwAAGLeka70T7eQUEXcBM2rGRe1vyXke/lRjwbnwxn43Go0eipKoSHqwohsmUHHep8bGBelEpOgZ8ZOdsH9CZ8xBXQiCIIhcKMv0npqKYTMh+nIr6Gi7JnfnyY31lHW0tAkeFUabk6/SpSzAYbCwKYLEX28264E6wOUliqY26rVYep2iatgY8aSBQcolh1H7iUk1FmT7Y7ExMNqclkRKZYLBAm5dXngO3POq+GD6Nvn6pDw/Jh0+0hLMRf1+at4PieANtNQImjPp8LU4mFx3mhQjfnJTYDL94yjLtPwDMxiUSYcvM8GKgEmHj6yZ7h7JecXzfdUAjPjJmkyvguJi3gYxG5i+TdMLc2NJu/lx90BJjF1asPuFxRjPWWi7LYe6KQCowuFw9A/h5kBKQ9nSpQ9rqc1SZ5smawCgkp7Id2sKCew0EUzfJt+OcTkliZ6jFZ1VsQMnHYEmexBahS/NI36yM9hmqdhmJqqzFwy0Jw5pq0f8ZGfyJzcrG+8Q9oV+SGZbYNLhaxrWsAdyeAMtGwJr+ip3Nc9bV7NdN+In9xKCUwNQlukjt1XuaubEcPN+qrdUDJuJdMWbdPiaJrRpmTck+iRli6TgBE5WmOixEDvswfijkg6isAbhgGZFrM81CYz0ir1q5IxaosYmI5tBhBQXY3x3ye9eyU4WtUuT05WWtOZ8HCN+spPJ5VxNhLzmC2aLN9CyIXhHatmYSS9RXSU6l5wD0yJ+cZ9bq1WeHmiwOG1gsnaYpgrcCifyIEAQBdCWWssJdtcEhN8Q1WYdXe0nO/3dt0UO9wZaOoMyapMD0XlId7bG32QhaLtO8DqRcHGf6DxUAZt8TZvgxCGt0V5J22W2JbjPzrT1CZ/oVdq9lmDTy8FdzbmyChCdhyo7I39Qlumt0sXY55+mp4sBYJ9w0acv07fJd5g9vDfgBnB3Tg/yjsy85xO+AASaxH0FUKvlaz8Jn8QgEJjX/GB3TXDjhNazyQ+7Y4+0TrPkURDV5AQaNl+n9wZaNuTC7sgR7N4QcLfqaDt01/i3WoKJdHpFXjUwOcHUt2gEM1lqcIWnE6h3cQpuLgYxvXEUXClxC8rB7prA6hTKkNxBzAzZc15aL9+xYXqH9LG5esuS2Xyp+17iRkkq5fWWir0QdAPjFjYq6/lcWImlDBanc/NAV4fJFPlGeVo0gpQConvuoFBJ4ulMWdotNLv6NGdehklgnHE3x60107E/YrYoonO39vADaZ5nJDgImv3Nks8SPxn7JqcmOklYm0et9sRE0meGN7BniN9qmHT4muzExsjzIIGxit8Wroe5AWrWxa8npG2HmyeG+GILmsBTnYk7cnOyYHeNf7BWe8KuAYBdR7VnNvhbapLoImkwv1eNQAf1kdyLGdFztKJTXGewu8afm95Ki4Ubx3kcxHThvySzF+n8O83LbT5l8Q8CgGgexqnOrC4uemEQno6J3Yu8gZYNzP05aKNAPS2IPD6Fn0608FuAFB9n9vrIl3n2DIFtMthd4z9j0a7hlY83TM7XnbdZN9wMACC4OSYPjarSDh9K6xxM394g1GqrAaoF7WL6NvkOt+TyqTbp8DXZeW5nrYJfWfWl3lJBpzgj0/dAACzaNnvEAjfib7JDz1FhhwiXjyUW90f8ZCcsKDwVarAmCADAPguF5lg+0jMtTS8F2USe61FhqrTDR6Flg68FJKaBsq4a9gWDrxykYVRm4ux5Yqt5fUvkU/qDmNE4xpvrojo3xE4K8S+N6Q3iAhLcZ2fqLQulm6Zs/oh/65DwRSj1Gn3Ubs30bfKd3V65qxkmHYFBADjLTAJUA4CXSekoIo/Csp4iCDI/rNmuu2Ovr8VRMWyGvr1BaNUcqfEDe+diLYtm4og9ByeSTbC7xj8IC2KwHAnsGAeolVeYtW62ZhijOjkRMzOIF/dH/FuHEjVWoD3Urw4eBu1es7a6miE7p8/UEu5xyL6XEhhc4xf3s7WI75/QHOGtC5uO+ZqG0xJJ0gyc9VRhta74ka3SDk8Q3TU+ckL8k/KuGpg8FnTX8lf2CX0VQOrM1fIX91nSGMRsxjGyQCx8URTY54TuE+kP4oLBmSrtQiU7wRBkiPzmR/xJ0riQvYGWDQGw6LYBt0jVsmG6xaJdY4cei2aHnVNPJycZqNXkYr0F1VMEQSCyJr7B31etOTxO9OzWdd7mJzcFThzSTr4chFadEeDIgsqj2TVRuYt79ki7PQkW9wHqv7AEXrzEvrin4/YU7O7ModtiauprOAOG0V4pyBkstbwegeg5WmE6Fmdtatbtb53eOsRArdaUtQYvbd/K6+K+pPfwPFhP2QlG9BytjOoHlGWaZ1vS7Jqo3GiZJmtEOoTSrhqYnGBgdSS4ysu4a7MNtMoJWY8jc3Yc1mxPtaSQ4SAuBJMOH7swksB8G++jnC5pNV8HDwTAUpGOb2iwe0PwDl7lEZU3uHGiwugNHLYHPV4wVkm5PmcIqqfFABuKjiDZwUYCdQagVTdcBVCl7dnra9oUrB8neo5qABZUhxOSxO1JyMNL2dv02cgXic02RA9XwD/YqjtRE0hi+xH10vCElvssL+SZz7Ur4Rre1cpf65eIQOIMKtwZRQmeuGNbdfSEhrJMN9UEkq+uKggvc6aW2CbanS4+QUFkNTmVQzDP8pT+iNRblq6xzw626uhDKfQko72S7gq0bJg+bKkYjgYAKeuqCR4ZgrY+riHUy0FYrZM3H9JZ3GdJcxDTG0eIOxcATDLQTEhZiCOLLWkP4kIt9I/4m+xQn9b6TDrVpz+HfZB28zW7JjTgDbRYiOGo/fUB2DuhqwaAKmINMIePMZ1m5sgQrOnLSceielrYLLrl5iu/+nW+pSg8Ft1yc75FUCTVt2rq7QHgzHusZSjgZp+7PBLrfIzIogmQu6wuye7ayU4hZbGI2iqCR4Y0+yc04AgkPMs4bzFOtGrGV1VlwfRt8u3gre7VWyroCSIavDwpndqa8/eKRoSyS3jcsQBR69Skw9dUE4hZjofiV04lQqNigknnygkk1pu5P9wJ1ysjzRRqNp5jQfdqVo1mznrBJFFtwqBvCfgelmmPCAAAmJfsklkyVn/MgVhBV81IcBCIHu68jOcs1LfIVBTSXdzPaBDlj6OQyWNBdy1Rb+e8JycnGBgP7BvR8ox/7GJLuoOYOWnMeTZlWF/lxpentyY7inthXsA5HHWgEjZN/KLCn4rEmrN+0qKj7RqqNwAtFZEZotnYCoPDwclqho0xzQXqBPlEI8mPFJNKXZiNKaOA/QQJnWJ1SRZQdm6AZYPfS/yjy26yUsoZwjRgRyJZ1+dgPiBxMH0PBNwAYA9QZt6jMerzHkFqqY690+U2v2A8UvVnEt+j2TWh4X+IGSYFz4ach0bxzcBM3ybf2WpBzcYubf2GIGXXJOzDIT/Jxk5N6OJ/rDZX0Gbe32mERsXbp5m+Tb4dqzVtQ0yqDD5pJNkBAIDgDjtrWQT9atjBRg2LDUtx8gxJOinGyucobD8DlHTVNGvawL+jN9hp14A3eHicuGO3jKmbWh+Knx4ZDWJm4+gNbLczbX2Vu5qD3TUB6lZizxDR06c53DndncucxOkhe84HuzsZdsGdenleF/czIE6nTxkaVaXZdUgHNewgavZPxNpi7NLWbwg0dUK9pSJHjwBp66nL3uHw4DMfgMsDq8BMqwWxSUFBCIlEGQnsGGfdknxsnjyqlw0PD2x3aIbNyQ6ddAQGa7X7W4J7HIxxHpfMglJ2pqgJsPCp0txR60vWh1GNUzpNaa4UnchSqV0zWeNrYtUdiCVk5VtTIioI0yfIf8kmxdQZJXSU2OExo29Kz4qMrG4LgbKuGs2uiYrVm3zkJm3P6oC7Vrs3VX71TKzmkOkgZjKOXP7O4Wa2dUTfJp+7VTfcrOnsY8hO3+qj2dpB0yetOR99Ey4aNLsmdFDjH2wVvkVXae9vDWwd0tyfs/u/hHrK2tyUplREsjFlkdM+mtApuVVR8D17Ospqb1ScgpqagkgUliE5mA+IgMlAiz1Yb6norCJgt/bwhiB1W3DrkGb/hNZYzZCd/r5bEz8GOPOG1tis8WzydVfPn0kjV9bTiPFye96sL2y0RxyRUJtb5YRuCHsjR1miIu6wmv12DWuR3W+JebfXWyroQxKPH8ri2zFOtHkZqGJjq4nVrcGtNdNSMWpS7xgSbnnCAVKm9VSJVw3ReahSb5neOgQy0q3HvTx4Ay0bgmtaYfAs0QbM6t2SnqCZDmL64zjY6Rcm9/XvGNfsZz0sm3UnLL6m3mBbTrotfdKZ88UE07fJPwgAQ8JcqiP+rUMAENy6KZAjD3ixespqbmC0KUo3zR9k+2Pm4x0Oj5emAbBHkKJl0B6AWu0J9l5TpR2eYPo2+bi0I826/a3Te44xaySP5LKNsEGgXLYRmYtulGV661lZ0TyTDr+zmkjTehrstsDGhFVKaocyyC6xFK8e5gwQd4ie/SP+lkntXkuwaYMPFjy4OGKRJXosmh28ZWijvXI/SDrFcj0ZZ1IFqCI67ZWmGl9T5/QZ8YKm+B0jgeFNOECKtJ4u/FUj65Jht2wAGOz0b0zDmh7ZEHiiAhy+wbPEtkNa56ZpcrVkz2c0iOmPo1DVC+4TJvetNlfQEOweyuWyuLybUrpznsMtx/dU0UQniRYcviZ75LUq4g0/fGuwZUOgyULkIrGGQD2lB7pY3VTaUsipriwShWJGSTJq0mKNsDFXQoNL+EuapygIEveDVCsFzZTwuRQukAuNhdwGtCA6Q+L6BadIPha8Sow252Y6lTMoiE+RQsh4w6fkeAvFSH8+FMWMWgjEb/ze4OHVXD58VkExQrBbMjWMnRE4VHHZRqZbUkeGsqEbKVOQMDs2TO9o1dG3MoflW09f5nKkQ6L1Ay9zBjT359HI4WXcQNzP24p936bpQdCeOERUQ8UJ8MVpqMF9doaLbWrV0bflVpqoE2SlEQBG/NHYiEiUTCU94idr/HHqRTLvyWpzBV3tJzt95HBmKQWI1QusoKfJgl81Mi4Z3uvTpMPXVOOLLMeLX+14Rkd2EImeo5V0FfBcsYnOQ5Wd7LhnnhQih4MotVDuZc4ArM7VGWTdlDKf8wrzPU2XmM8PAIC5Yv/E9J5JZnLS38Q5BwMAuwWAn4Ts88vG1FN6oMvq8CR6ggs1HgCgrCavtLLCVcTicewcMPRyFU4d7HJQsV867CT/XGmcYuGgB3Y6PABQRaYthUQ/tJMSi9H5aWY6Y0FZTV69PrfnjxttAMpqooTTb+pgl0MoRlodpcgZVShUaYdFj1XRY4CLcNfsn4h3hNfsmqjo2+Qj7Unzj8oJ3WATyrA3RK/M2zdzdhwGx7n9eygA90R05/oYUrlpEiQHGBcaPFp19ERlxv3KzyQVzYk9OcnAOHOGt1kU95Db4IOjOnjAPwgAG4L7+XEMI0EpW7LweZBG5H584DOzZ9P01nHeaj6blpVVVljNDPxkZzCF4tKso48GWjYEmmqYyOM8wbpwFbEGmLNegCqugYMAq2JBxMkXhblw4/qFzBYUz3xfNSkvmWhKBzPBzqIT4Gt6IGDanmhTU7FiKkF0M6qaaTc37mkNIrEfAi010ctK/jgm7Wq+73VqF1vZyOvh9Od8yvPmVslOSRKfY4lNTQGgrU8Hnf4zwg3tjPbKaoevyQ49EvlQs99FNqKeehxWVlehRl0Wg1g/pQcOUELjk8tuslIRlUsA5XDozf1O7mt6wO6K/OKhKKPN2WuIuXTyzpXOKeYXymoS6U1gtKVvdJPuB9dBh0fQTJfdZKU8joOudlmnEPrPJrBmRnxOJVRAWWPhslupeCHlN12WkHG2TJfdZKUE048nZNodpaQZVdhIPAZi+Z+HEz4VWJ+2YHfNNJk4l6G7VpP8uTJ5LJhoGZ2v5wliRUeC/A39jF3a+g2JdqaJe8DkIuNMcsTB9QAAjHOYkdBIoln6E+Z8TeV7mtIDIYG7KvVyEGo19++uMMaPTmzvgGB3TTD1KaJ7Kj7ARPYuSrQurNnYClt523/nWdfMhnm6apJfMt5ASyRIPAo330b8CY6RnY+Jf2mMpDeIxirCmNFl1Xko8Xtgsj0ssiDFTSnY3Zn+nE98ixNscRyXiWw+kZ1Jmo/Ua7nUDY2bV1kLyVvc15tt649bHRJhQKxOJdDRDJvNesrhmZLwyBT4rZLtlnYAOvJLpAbSsF7v8PA8OtM7xUKScYyYRD+Aa5QSabsGi81IidSyhSDZWCQSMpfnN1ic5ECXySSOahI4+WbTUcqdUcqDSPMxIP/WlvTh16yjU62tV5srYvsqVWmHJ4Q/mWVUK0/jTFjbQpC0/xMRPy7Cb8RbUsmsRP6x6WaaPMR+kDhjtPOrpfYWyhfGFMLk46pJfskkmepieVJoDykuh+aiGUSppiW7KWU053nCiCyp833bSbv5yiKinnJKmMF8vMORIE5dwqoIEhFDxsZEyoN+VawkSVaJdptI4xTzS44cFOX1AwCQq/QACx17lXIsJIXM3fllBdznoKMUMaMQBEEQBEmHMuGfZPtjZj0AZY0tySNIzon5OMToN+fYvRVBEARBkIIkLu8pl0kp3oK6AIlQ5ZxC2uxaUIhWl+mpWOxVfOto2qscIXOL3ryZP8HiT5Gko6Iknw9Ky96LIAiCIEhqyuK/iregGhqNbHS3wKTqsptyZ2NN8xSe4y4ZvlHKw9BoBKFxOhKGxLkCsAvYjoPc75HEAQmYn26ICNk1EKmcEzIzEgrJ/4HLaSYiSUelPMcCTFoFMkf/6fKPD116cX/gmT0zj37Vf/c9F9s/69vwsbc/8KHZx5/Kt3QIgiAIIgvJTU3jLKiRsBSxI5+xMWeCyD4FF98STaYp30Am8neMnGpBLWyc9KJmxuyIXJxS7Hej0eihJHRDQ6MRKIqXUzTaDHGYPa8umV613FjwKzca9RSVtgE1oZBxP0ieQm80eq0mk2RHiXs0fj4swKRVHmXvupZ55cylF/tF3y+65ealjz6Ub+kQBEEQRBZl0l9HLagRC5rB4nTahFFnuc5xLvcUZHtvAbspku29olYabU5BiP9jscYZbU5LImXKYJnHXjBY+EIabb2bV2VYTwIhDRaBr6nR5pQ6xarNvQIxnFLvEYnnwwJMWsVBEOp//IDq6gr+d2XXvUfXuxfU6syrRRAEQZAFRBUOh/MtA6J8WMtz0St3hQ1zdmL2azuvjP6S/6Vqqfaq//wRseZ9+ZYOQRAEQeRSloM6kKKDHuiKeZ5GXWAT58pC8kv4bd/sVx73bfiYSDcFgPJv7ELdFEEQBCkscL0PkUbgGArSfp9I/gmFLn33YGDXN8I+H/fNokWLP9W66MMf8ndt1z50v+Y2U5ZnQBAEQZAFBhf3EWmEEVa4rK88wuErx0/MPvEU89ok+4VKp1u8ZfMS8+fLVqyY+8MfZ+27dfv2gEqVb0ERBEEQJD1QPUWQwoN59eys7cnoUn7ZihVLzJ9f/Nl/Vi1bxn4TDgQAQKWd3w3kEQRBEGQ+QPUUQQqJufNvBnY9d/ngIMzNAUAZeZ327i9o2j6hWrw436IhCIIgSG5A31MEKQzCly9f7j8Q+Ma3wn4/ABA112u/1KW546OgJvItGoIgCILkElRPEUTxhMPB/3pp9sln5/70ZwBQN9Qv2d6lMd0KZZh5A0EQBClC1PG7DOV7o3JWnvzG4ihBhrwj3GWrxDsjf4R++7vZJ54K/e73ALDI8I9LvnT3og/dko+Ap0KfD3hR54q4RwYH9+QQTpQ8P05SNEEgXUTwPIg8T5NTcqSyOItgaJVzKUn23oLn6hZtSxlBejYptCeVhZT1xePoMM3TzuQuu8lk4mfUzANKkEHx0ANdJuGlFttBTD7Y1Vkx94c/+u++58Km9tDvfr+o+SNXDf1w2cB3FzUa8qCb5mY+IIjC8Bx3RWcx7Tqe9r7NhXiXo6wZPt9ddin1C0kf7ElZRBf3Y/o7q9ZT1q5V+XnrNVicTkueu0UJMuSRyMXDf6lz2bsK5wZc6ITfejvw/Dcvfef7EAppbr9Ne8824sa1+RMH5wMSR2ITI9ne62xPbE1SEHq93nPcRbe3k5x2ajQaKYrKQc3pMq9PHIFxjrU0UgcGNhvSfLy7Rim09CUhMu9Tm8KxJ+UhYT2N7GHOf69ESgnJi8dgUeASXfERvnTp0r6+tz/YfKn/gGbjbRXO/9L1fTOvuinOB6RYqVq/Xh95ztGu4x79qlX5FmneMVjYx/tUuk93mvYCgH4VXvXZgj0pE+nQKLJ9i9FhpaLvlSwCPxYJzV/8siw2yEa+5+9HxHsFT5oHnq1Bb+7vNbgidUm8vicWIQcySHWDoIxMIZWOa5SSsUdUtl0NCWdUMp8h4XtpEhm4kuLujw2R8gaFYS4P/Wfg2T1z515f3PrxJdu6iOur8y0TyJ4PSe4PKa+LSAHb+uNWhwf4Jfnlkg233BKSpZU5H4qc1GPFm1BGm3MzHXfppjfcUpCG9XrHcRfd3g6u4x79+sfIKYewRIpZHfkl8V0udssiB+Jnv6zdTxbAmTfJw10oIq+hhWf9S2vO5b6BsnpSxqROOR/mtRULSKLIX3KV8AXLZTcJfawpq9DdxmU3iRdy5sE7beogb1w8jg6BB42kCLn1oqUHukSu5uJ+SCWk8mFf7arIZDfAHHR14hlFklUAQI1KVMbKZmw0pJbBsFliCcB10OEBMG5RmC4SDl8Z+bnvtjtmHnp00YcMFT9/uXzPMwrRTeXNh9T3BxnXhcdhZX/2OHZ27eRKehw72WpST7n0bkGR0npzvxN104VG1mjyJhRlNe08LqOKtJ84pIG1n9Ku4x79ekPcUz7lrJaLQKWIzmpZx4nameUjhR7Y6fBEbqI5b6aCSTlhFNAPqa+LlPNBAa3IGfISS9EDB0TLey67yUo5dg4YIi+Bo5TEa2PEO03olJHg7S/ifZMoLBQAPBRltDl7Y4YzatRlMfDeDEQvCi67yUpxZXIhA6vd8M7ispuslMdx0NUeO21KIRUOPSW4PPi3VX73ZtfVSWeUodEIFOWlaQCRcdx13MNfFEkiQ3QJgD843Cp1o5IGI/S7388+9WzoN/9v8SfuXPbtfyt779/lWyIRMuZD6vuDrOvCaHNaDOwl5amyOXu5z1OReZB0uFPcgoREru8CNizkHb69ECB9q17S0XTZReMTd0dOZ7iTwdpPDx4Ej379YyTwjk8xq2U9UKJQDofe3O/kitAD0bfo5E8cTpcUm9cOptdGymoS1q039/OqS3HxRkRU8sqTDFJNGFk3seyQ1ZNJr4uU82EBWrGAyFJPOZuTjddrhs1mPeWIPTlYa6vH0WGainaMwdKba3FjMpCG9XqHx8PXYQwWJznQZTKJnfEl9JzMiPjgxfrBYLEZKf4zMqWQxUG2XZ1iRrGzifUt4S/1s5oSZ8hLLQOr5kaDANgrV8Yq9QLBeLyBZ3cHX3Yubr1Tt+vpsr8r1Cki4/4AMq4L9rWDHXv+Z7ZYyuGWfQtC3TT/pBjNhHfaWMmcPXFIw3q9w0GB3vwYCTz1VOaslovRxlMPyHZLu5yDWBn4yiRr7MkuiEogSo6bqVxSTBhl9EOq6yLVfFBGK3JGGmn5417BBM8G1lQlKJb72z/fmZgkqwD4o7hAcaIih2b+E1SGkAUA26LYn+29znZR5+aoqxPPKFZ9maIBgE324qVpAOAt7cuSgbsyOT2XNb2KF/DywdzfzgV2f+Pyjw8t/vhHr/75UeVZTPnImA8Aqe4PWV8XqYdb5i2IslpZcRTzmlKgZGNGk3UDkbzTxv7M2ROHvduA9I0h1ayWSxZLNtnfskRRIBJZeXLVTAUja8LkuR/kXRcp50PRjGYi31N6ypNmaJnB4mTpN+sjnbSQXpexhfcYUVEQ+bCun6w+KM38d3XM/ZSe8ujNZmPEPSw6KeXJQBrW6wE8joMuhbidht/2zT75jK/JFL50qYIaLt/zjLJ1U1nzYQGQNdxyb0F6vb4QncKLh9zcQHL2xCHbe50l4n9MtvfajGn5vhYE5Co5kyffKkpKUIcRIW095ZZBBVq67Jdl1rzispus1IJr7CKTiMhtLieIrOSC9ebigF0TFzrUxpN9VyebURH30wGg9Ov728kpxwGXq0ps/UwtA/fKTI3aIc9up+FA4HL/gcC/vbho/YevGj5EXF8wdx2582HefdJkT7lktyBWTtajy2pvxPX9+SO5jTzlaEreaSXPM39PHCV4WnpEGXSyhFtSElzPSmjmApJwwiihH1JfF6nmgxJakRskrKfRnd2iioCh0ShhbXDZeQFlgj+ibprSzGNCVcEeIANdVkpOQdkYGo2iN66IB7+igm2yJtLOpPF+WXV16hnFLuU5HJR+vYEEcpXe43BQ4hcBOTKwEfwUlUe301Do8vd+6GvaEDp1+qqfDOj27i4g3RRkzAcZ94eckHy4Zd6C2AnEJX/Era/mn0S32mSjGT/juDttjHSeOBmR3qyen4cal34kLkVNVhcW2b7FGEuNslAX77zCrbZZBZkfOoQJClJMGMX0Q9LrItV8UEwrckPUeip2VxC4T0cigMQuDcZG3h/xDg/xThKsIYYX8xlV9MWRi2k7FMVVDaA3GvUU5UlVUL4M3IunqKXF58VmsPSbvR0OcWxuxNkjB12dckZFLC/cHGKdUXl3G9kyRBxZ8+J2OjcXPHI08OxuoqZm2XdeJNauWeDz54gU80He/SE7CWQNt5xbUASy/THz8Q6Hp0BjWguCiKEuMmqRyz/1aHIzin/ryG64M5Fe5qxOfJdLSconTmSWioQw2rIKjmLHhYsZnf+LdwFI0AjRoznphMm+H0Seo5Ga5E+H1NdFyvlQFKMZRWpxX6o7DRans1F4LQnURoPFaYPEP/PqYR9089AUg8XZv0qY9IYc6KKkCmYsA9ne6yTlJFJWNhc+9onQ793JyzwZ/9WZHiB7pgEAYED8kwMAvgBTYKiZ5n29RlSSV8Oa+EoA4Mznpr/JffwCwBcA4MHm6Qd58rTH6pcpQ+zYSFUZsOiWm5cNfi+tQ6786teBJ58pu/Za3b7n87ztU/aQ7b1OA//uK7pJpLo/ZE3qq1vuLYjXJk5B7eiCYlkNUxhke28/SER7yLhXC4fTaOvdTGc33Bkgc1bP40NN4soTB25nVimbdI99NZv3i3chEE2peDUm9YTJfz/IuC5Szof8tyJ3qMLhcL5lQBaaabIm3yIUHpX0hMySc3/568xjVpV6kfbebUTtDfkWHEGKgGSbySEIUnykkVgKKTLk61uFDLfiks1jLW1tniCWPvQAcUOBLuUjSP6hB7p2wmO8DW3Fex0hCFLcoHqKFCt8x64FfayVrbwGVl6T7+YjSGEjsS9VsXn5IwiSkLIc1IEgigYXBBGkwOAydMYw2kokNymCIADoe1qisKvVpbG4nwOwuxAEQRBkIUHrKYIgCIIgCKIgUD1FEARBEARBFASqpwiCIAiCIIiC4EXu8wOdM9u1tThqQFheG+2tGTkHAAB1L1lbN8YVODJku32M+2xo3vbLxuU5P8V818BvAgDc1WbtK/D8+fOHEq5NJdRQ6rA9KAo3lExKKtxFR5kBiiUyH0qkmdlTAB0l3GpMQsiUBQoGznpKD3QJthnwODrS3KW1OGpAWE532mwRtU+S88/3ChQ718g+1dDpnJ5ivmsQNwEAXhi0pdmKEkEJ16YSakDkQg90mYQbKVHWroF52JY+SxlLYD6USDOzpwA6ymU3CbfBBY+jw8S7sFIWKChY9dR10OFh32+dTqfT2W/WAwB1II02FUcNCA9D87awddtzK6V+O/2L+86xBktr2GoNb2s2AMDYiefP5+4UC1LDXW3WsDXyr60OMmpF8aOEa1MJNSAycdk7BH3tdDqdwjRRCqBE5kOJNDN7CqSj9OZ+p+iq8jgOutIoUDiUAQC4RikAMNoiay9k+2NmPYDnuEvuyBRHDUiEtX1Wa5LF+iOnxwDgrrbIYvryxu80rwQ4N3havmaX4hTzX8Pye7uES/lrWyeaVwKce+WNXHdngaOEa1MJNSAyiXS1U7gXuLLWGEtkPpRIM7OnIDrKYBEl/zVYbEYAoEZdMgsUFGUAQNNe8b46pGG9HsAzJXNgiqMGRCbnz74OAHV38nS769feaABwvVEMmt0Lp3F9n48Srk0l1IDIxDVKKX+HpxKZDyXSzOzJWUe57KYYfN8AeqDLZDJ1DdDcJxP3V5wk0V/j60iEfhWZZQFFUgYA9JQnTnySrAIALy1vZIqjBkQmb7xyDmDlCsFG9MuX1wLA6+dfy7dw2TDxxjkAMKxYkW9BFIUSrk0l1IDIg33QV5HKfh6WyHwokWZmT046Ks7zk7LGaaBTB3kBgx5Hh1D7dNlFLtvJnbbpgS4rBaBfbyAzLKBohImlWMU/G2/g4qgBkcmRIZvKZussDmvj6aHbxwCgricrl4NiRgnXphJqQJJBTwker3xjkCI7vUTmQ4k0M3sy7ih64AAldLi2GQE8jp187dJDUVVC71b+sjvrYSDhPSohoclkMnU4PAli95MXKBAw7ymCAMDpIdWg0KEWQRAEQWTBhlbFnFcBwLDZHOcewPNuNazXi6yz5Cp9XMqAVE7bKb0PCtePQy34y2BxOi1Z1VccNSAy2dhqDbfmW4jsiemmmPc0GUq4NpVQA5IMcpUeIGZAJdt7ne2iHKiKokTmQ4k0M3uy6yjKaqLE33lpGoDTMPn+AyRZxb9SAIBs32J0WClBPfEJg3kS0gNdHQ6rySs0kKYsUCCURW8nQg07Pf+h4qgBkcmKG1YCnHtjgv/d+fPjAHDN8uvzLVzaoG6aAiVcm0qoAQGIGniSFSgI18YSmQ8l0szsUUpHGSxO/tI/AFDWJI4GZHuvzZgsv0DKAkqmLHo7EbhA0K7jnjSivYqjBkQmy1dfAwBjP+G5nL52+pSrEIOKON105XPbUDdNhBKuTSXUgMjE0GhUfqrFEpkPJdLM7MlRRwndRjkysluS7b0Rx1Olv+rNG2UQuZ3wlHR6YKfDIxXtxXncxivzBVUDki0b19YBwAuDQ0fYv8+Pfm7kHMDKtrWioKLTnbYsY6fmswZWN13ZPGHtuhejoRJTUFc33h/mGe45zjfpcFn4o1l5Il2t6M1qSmQ+lEgzsyfrjuLeyuJD8dOIshKXZkOlItADXeLKuMh8zsSbskCBwfqeGjab9ZTDI3Cb0JsfS0PnL44aEI7zz/fuuy+2XejY7bYxAICVzRNdjdcDwNoPP7dy7L5zke8BAMDQ/Ml0lLxUp5j3Gs4/f2IMAODcSI1thP+DoXlbdvsFFB1KuDaVUAMCXKJvykqJnez4iU4Nln6zt8PhcXSYHPwiirLYlch8KJFmZk/WHZXgwgBjYzpixDuvCjRkKd9WwbWXskABwUXuk+29gvwF6aciKI4aEJksv7fL+lJd7G9U6YoaJVybSqgBAWD946KecQDckqawK8n2XmGZ+CJ5p0TmQ4k0M3uy7yiDJS4PVHxgU4oK4o+PChF3UXEFoiVSFigwVOFwON8yIAvNNFkDAJX0RA7qKgGwuxAEQRBkIcG8pwiCIAiCIIiCQPUUQRAEQRAEURConiIIgiAIgiAKQn3hY58I/d6dbzEKjEW33Lxs8Hv5liJbWJdKBEEQBEEQRaFG3TQDrvzq1/kWISsW3XJzoTdhgVl0y835FmHewTfVoqQ43qURBCk1VG9edz1GJacFxnEjRQla04sVvFkhCFJwqPMtAIIgCgJVmWICXzkQZP642PaZ4liHVOYaC089fW20t2aE3YSn7iVr68a4skeGbLdHNgnKLA17ylMsQA3Zt6JEcNlN1sj2E5llci6OGhBRN8bnmqYHujocnriDYqVSFkAZ0trUJZ+zmj23ZMvTbkf+KZH7Q4k0M3vS7Kji0E0V2xBOPT3daRt8IVk50QaS4BrZp3qjLdy6VvaZUp5iAWrIvhUlgvgx6nF0mKbSevYURw2ItE5FWU3UguoiKENCMXBWZ0qJ9GSJNDN7Mu6ohVtxEr0ec/D06JQFpFDsGgvPempo3vbLRhApcBynf3HfOZ7B8vzoB/eNuMZOPP/htelss570FAtQQ45aUfy4Djo8PKMOe9lSBwY2G+S+dRdHDUgEgQ7G3gLjejKlsSFLsw3KADirc0iJ9GSJNDN7CqSjhHcPl91kpTyOg6726H0pZYHCgct7urbPak2yzH3k9BgA3NUWWUxf3vid5pUA5wZPn5d9phSnWIAactGKksA1SgGA0RaZz2T7Y2Y9gOe4iy6pGhAAbiNnwa3NYOk36wE8UwvXkSgDB87qXFEiPVkizcyegugog8UpfLM1WGxGAKBGXTILFBSy0vKfP/s6ANTdyVsDv37tjQYA1xtv5LsB8imOViwANO0FAGMj70lMGtan8xwujhqQFCjhlldiMuCszhUl0pMl0szsyVlHueymGHbenYEe6DKZTF0DNPfJxP0VJ0n01/g6EqFfRWZZQJHIitx/45VzACtXCPwTli+vBXC9fv41gOvz3Qh5FEcrFgB6yhM3nUmyCsDjpWkAGdO8OGpAEkJPeeJveR5Hh8nBfZZcv05ZAGWQdUKc1TmgRHqyRJqZPTnpqDjPT8pq8oqu8KmDXQ4q4uHqcXTYSf6ajITvKGXtWpXoJkEPdFkpAP16QwIBUxZQNGluanpkyKay2TpP51vs7CiOViwA7IugnLe34q4BEeCyWykAMG5JrFd5HB2SlgH5BVCGVCfHWZ0bSqQnS6SZ2ZNxR9EDB1j/AGcEmxHA49jJv749FFXFFeg368VrL6yHgd7c73QKKpGS0GQymTocHqk33JQFCoQ01VMEQUqayOt9zEkLQHhPjtx3hffllAVQBgRBChY2tEpwPzBsjndO53m3GtbrAcBLx34mV+m5d9aYemywJFcuU3ofFK4fR5pp+Te2WsOt+ZY5a4qjFQuAweJ0WrAGJEJMJxMECZHtvYIOJtt7+6Grw+E57qLb20kZBVCGdGXAWZ0rSqQnS6SZ2ZNdR1FWU1xiJ757AN9/gHUe4Jck27cYHVZKUE985jqehPRAV4cjzoMgZYECQZb1dMUNKwHOvSHI7XX+/DgAXLO8cFw2i6MVCwC5Kt4hnHUcryLlTfDiqAERkkAnk4Ykq5K/t6csgDJIlc7/rGYNPAWPAnoSm6kglNJRBotgZQUAKGsSRwOyvddmTJZfIGUBJSNLPV2++hoAGPsJz1nztdOnXACGFSvy3QD5FEcrFgD2gSlwiaFdxz1pRP8VRw0ID04n05v75eXzZu/sSfo6ZQGUQQKc1bmiRHqyRJqZPTnqKKHbKEdGdkuyvTfieMpf/i8p5PmeblxbBwAvDA4dYf8+P/q5kXMAK9vWirKQnu60ZRl1NI81yG5FqWNoNApe2uiBnQ6PVPQf54Ed/3JXUDUgqWB1Mr25X/JGSw90ibo/sv0K19cpCwjOlCAuAWUAUMSs5p7jfJOOy97h8Iiy8iie/PckNlNJZN1RhkYjG4ovuGhd9nSirMSl2VCpCPE3kEhkPmfiTVmgwOB8T0W7fY7dbhsDAFjZPNHVeD0ArP3wcyvH7jsX+R4AAAzNn0xns6VUp1iAGnLQitLAsNmspxwegRuN3vxYGu+AxVEDArGAVEE+JABhUiQpjytBX6csgDLII/+z2mCxGSkrJW6J3ry5kLRTJfQkNlNJZN1RCS4MMDamI0b8HUKgIUvdQATXXsoCBYTcyP3l93ZZX6qL/W1o3pbdFlB5YYFbMXfudcY7le9GZwLZ3ivIZ5F+aoriqAGRAdneG/WTiiCwMKYsgDKkd5p8z2qDxSlsSI57coFQQE9iMxVE9h1lsMTlgZLloc6vIP54/g3EGXcHMdpi3gMpCxQYqjevux4AKumJHFRWGkyTNTJ7bO7Pf/Hf063ZeNuSji1Qhjm8EEUjf2IjhQKOKYLMH8VxfSm2FWkmlkLSoew9775q4LuB57558V+2lj+zs4y8Lt8SIUgK2FsVgiAIguQRTj3FZ9J8oVZrH7wv9L8n/Z1fWvyZf178z22gUuVbJgSRYNEtN1/51a/zLQWSYxbdcnO+RUAQBEkbNT6TMiDdO776poZlP/7B7BNPBo8cLX/2ybJrV+a7BQgiZtng9/ItAoIgiFKYO/8m4x4jbryhbOU1+ZalFFGFw+F8y1BCXDn289kdT2m3f1Gz6Q40oyIIgiCIQgj7fCH3qdBJN+Mem/vr31Qrlqvr6xb/c1si9bSYlp0V6HuK6ulCE35zesbSA2Wq8qeeUL2zMt/iIAiCIEgpEvb7Q2OnGPdY6OT43NSUqqJCva6eaKhTN9SXXbsypQnpwsc+Efq9O9+NyAGLbrlZgatnqJ7mg3D48o8PXfrGt7SPPaz5pw35lgZBEARBip9wIMCcOh1yj4dOuplXz6qWLFHX1RINdep19UR1FSbYURSonuaNuT/92X/vg8TfkUsf/4pq2bJ8i4MgCIIgxUUwGDrzKnNyPOQeY069Ep6bU994g3pdA7GuTr3mfbBoUb7lQxLCU09fG+2tGWE3Zap7ydq6Mb7w+dEP7huJbJm18rltXcL9lk532gZfiPyRQcb7I0O222PbOcFdbda+tbE/eeLxSSGqqJJ0xcgsb7/8GhjmUt+3L/9gcOlTjy/6kMK2deB2FwfIOJNzcdRQYsz95a9AEGJfK343xueajuzNKSJWKmUBOShBBpyTnPSSvZ92X+Yf3qyQlj7lYCUvkHzSLhiFPeXSJMQwExOhk2Mh9xhzcjw8O0usXaNeV6duqCduvEGlKy/wjhJOKQkhUxYoGDhT9ulOm01K+Yvx2mivKqabAsC5+/ZFNq9n1UGebgoArpF9qqHTIJfzz/cKdFMAeGHQlk4Nwtp+PCJ/n9skYqTZirRrIIglX7xL98I3Z3c8PfuVx8OzgYyam3vogS7BXdXj6Ehn5+CiqaHkYBj/vQ+G/TP878TdyG6ct7A9qQQZcE4WGS67yST1xhIl5WAlL1A0k1bpMAxzduLyj4Zmv/rEhTvb3v6wcfbZPXPnXtdsMC77Xn/F8Z/pvvXckrv+VX3zB5LrpgXQUS67STSlPI4OU9cALbtAQcFLy29o3vbLRhDuax/h/OjnRs4JbYHnn+/9RfRnTh2sawu3ro38uu++sRPPf3it/B3tBZbO00OqwTGIq0GWOfP0L+47V3dX3dgLY5Aep39x3zmeRZY1wabVikxqINauqTj849mvP3dh48fLv/6U+gN/n8lI5hLXQYeH96rPWhioAwObDXJfw4qjhpLj0ov7Fxn+kdBXiX8QWH3Yt/O4nkz5mp7le3z+ZcA5WXTozf297SBtWE85WDJGU86knV+KccqFw8wf/sicHAuddIdOjs394Y/E9XqioU59y81Lusxl77o2o6w4BdJRwjuYy26yUh7HQVd7dJqlLFA4cNbTtX1WaxK178gvOO2TV2b5vV3RVfU3XmF1sta1sV8/2WyAc4Onz8uTY/m9XcJV+LWtE80rAc698ka6TTrdOThmaP7wnel3xpHTYwBwV1ukXcsbv9O8EtJoReY1aDRLH324/Jmd/vsfnn3yGQgG05c+d7hGKQAw2iLzmWx/zKwH8Bx3yX0HK44aSgzG4w3+9CXtl7pE35PtvcIVSYOl36wH8EwtXEcqQQack0WGwZJ0M/KUg5WqQJFMWiUQDs/96c/Bl16effrrFzd/7u0PfGjmvodCv/tfde2N5c88efX/jC774YGljzyk2bih7N3vyjBjY0F0lMEimrEGi80IANSoS2aBgkJWnNr5s68DwMrnPpzUi3PlCkEKsOXLawFcp06/lp2AL5xOb33/tdETL6xs/k76DqORZtbdyWvl9WtvNAC43pCpI2dZg/rmD1T87HD4bZ/vo59gTp/JruMyh6a9AGBs5N1YScP6dG6rxVFDacEwMw89snSHNY1YASXc8hZQBpyTJUXKwcp8NAtq0uaLuXOvB53HAs/uufjZf337Hz540Xz3lROjxN+RS3seufq/f3HVTwaX2r6iaf04oc9NuH3OOsplN8Xg+wbQA10mk6lrgOY+mbi/4iSJ/hpfRyL0q8gsCygStZxCrHH0mtXLz/OW/uNiks69MQFwffTP8+fHsxNt4o1zAGBYsYL/pWtkn2qE+yyx0H9+9HMj5+5q67oeIP0Us2+8ci6Bkv36+df4TZvHGlS68vJndl6hjl/8/F2LP7tZ2/UFUBPZ9WPa0FOeuOlMklUAHi9NA8iY5sVRQ0lx6dv/rr7xBvVNDbJK01Oe+Fuex9FhcnCfJdfQUxZIiwWXAedkSZFysDIZTclJm9dWKIfw9Fsh91jo5Bhzciw0Nq4qX0o01Ksb6rX3fYm4ca1qyRLld5QoEA6Aspq8orvM1MEuBxXxJPE4Ouwk38QeVwMAZe1alehGRQ90WSkA/XpDAgFTFlA08l87VsJPBG6pY7fbep/nlqxX3LASAMZuj8UAZRycFOH00O1jAFDXk9gO6hrZp+od5Vlnzz//4xHXyuaH0gzVj+fIkE1ls3VmFpeVgxoWGddXvPQT5uTYhU1tjMebbXMyhn0RzMY7vDhqKHaYSe/lgwPaLz8or7jLbqUAwLglsW6X0h8/W4f9vMqAc7KkSDlYckdTxqTNYysWnPDFi1d++atL33rB37X97Vs+4tv48csHB1Rq9eJ//VzFyJGKnx/VPf/1JR1b1H9/03zrprnpKHrgAOsf4IxgMwJ4HDv59xgPRVVxBfrNerEpnfUw0Jv7nU5BJVISmkxsZJ907H7yAgWCLOspAACcG3uhri3cxYt8Onfuvl+cvrd1LcDye5vq7hscg7FBVTQaqa7urnNjL8iuXgAbF8V34gQQx06xUUfnRj43upazoZ7+xX3nVj63rVGGkVL5qN5ZqXvhm5d/fOjiJzcv2X73ks9/BjMGI/PC3NzMQ48u/cqjqvKlMkpHXu9jTloA4hAQNqrA49g5YIjeF1MWSAMlyIAgaZFg0pYS4dkAc+pU6OR46KSbcY/Pvf22uq5Wva5+8Sc2LX3iq2XChdKCgw2tEgyvYbNZTzk8U3zzK8+71bBe7/AIrLPkKj2Ax+PoME1F71UGS2/S8wqrz6SAYpGvnsZFPg3uG4mtWa9tDW9bEcuKWtcW/vD5D6YbOM8S000FwVLXN3b18Ystb/zlNvjgvhHXqdOvNTZeD6c7B8egrk1+ooAkbGy1hlvzXAMAqFSLP9W66Jab/fc9dOUoVf71p8que08OWicfg8XptGANxc2lf/9e2bXXLrr1IzLKxh6xgpgPsr1X0MFke28/dHU4PMdddHs7KaNAGihABpyTJUXKwUo9mgkmraJaMR8Eg6HTZ5iTY6GTY6GTY3N/O6e+YQ3RUKfZYFQ//EDZde/JMIxJwR1FWU2U+Du+Asr3H2CdB/glyfYtRoeVEtQTP2d4EtIDXR2OOA+ClAUKBPnqqaRLJd/fdHnjL62NsQKnh1wAcM3y9GyZCXRTafgynD79AoDAfAvAJk99QWIHAUlW3LAygQet3FZkX0M8Zde956qB7156od/Xsmlpz5cXf3LTfF/S7Buc8I2LdRyvIuVN8OKooRRgpv5wqc9R8dJPZJRN6xHL3nmTvLenLKA4GXBO8hqRbykWqp1JBkv2aOZTN13oKcdPif/7McbrJa7Xq9c1qG+5ecnddxHVqxS7BqiUazOqWUY3jKCs9saEE4ds77VNmaxUwnfslAWUjKy5svbOOk7risFqXSKdlffz8yfG4gObUsDppiuf2yZvq6cUMqTL8tXXAMDYT3gOo6+dPuVKoxXZ1yANQSy5+wtX/eDApRf3+//17jm5iQQyhCSrxC4xtOu4Jw2P/uKoofiZm5t58JGllm7VOytTFeUesXpzv7xHLHtnT9LXKQsoTgackyVFysGSN5rpTtqFbkW2zM0xHm9w6D9nv7bjwqb2t2rf79/eHfrN/1OvXbPU/sQ73L+56qf/sfSJry7+5Cbi+mrF6qa56yih2yhHRnZLsr034njqpRWeZWG+kDddNq6tk458ihoFz49+kLc30pEhNogqPrDpdKctQcwQq5uubJ6wSlk6z49+0MbbpIq3banhxrWcd4HVyv/3Uh2wVtiwNX7zVWkZNq6tA4AXBiMn4jYjWNm2Vm4rZNeQAcQNayr+6z+I99Vc2PCx4PDPsq4vMYZGI/vSxl2q9MBOh0cq+o/zwI73Ii+oGkqWy9/7gWrJEs2mO1IVZB+xenO/5I2WHugSdX/kxZ/r65QFBGdKEJegABlwTkLsOW7ltc5l73B4RFl5Cp+Ug5V6NJNPWmW0Il3YFKT/dWT2yWcutn/2rdp/uPg5c/DYz8ve/a6lX37w6v/3qwpquHzX04s/u1ldV1tIO9pn3VGGRiMbii+47F32dKKsxKXZUKkI8TexSGQ+Z+JNWaDA4Bb3zz8vjsofAwBY2TzR1Xg9AKz98HMrx+4TL53zvVElFtZFgU1J4aytcG6kxjbC/4GXPSoiFZ8MU5wmgG3mOcGJDM2fTMOfNfsakqLRaC3di25d77/3weDPjpY/YVVdXZGz1sfgPLoFbjR682Np3GGLo4ZiZo7+U+C5fVcd/lFKXxEuIFWQkwlAmJhJyuNK0NcpCyhfBpyTXBssNiNlpcS9qTdvLjDtlBZuFhVpUHRKpRysFAXkTNr5JwdTbu7c6yH3GPN7d8g9HnKPqdRq9boGYl3dkm2d6vq6+XkGLTxZd1SCCwOMjXJrAMm7lEBDlrqJCa69lAUKCLnG9uX3dnH2SI6VzRP8vKfLG3/Zxv+57iWrvAV6uedv/OW2ZlEHG5q3hbtyG6cvbqasPVRzXENK1P/w/oqXf6rSan3G268cP5HTujnI9l5BPov076fFUUPREg7PPPToku1duQi2I9t72RQpPAQGo5QFsmeBZMA5CcD6xwk7M6/2wfkj5WAVxGhmIGR4+q0rP/9F4Pl9/o6ut//e4DPefvnfvwfh8OLPfLri5Z9e/f9cum//m3b7Fxd9+EPFoptm2FEiDJa4PFDpORwbLBLH829izri7mNEW8x5IWaDAUIXD4XzLgGTIFer4zEOPLrrNuPQrj8jLCoQgAACXv//Dy4P/cdXQD4FY6E0fEARRGuELF0Jjpxj3OLuLffitt4jaG9UN9ep1deqG+jLyOiWG2CPFDqqnhU34zemZhx8LnT6je+5Z9f/5h3yLgxQAc3/5q2/jx6/60feJ1TkKKkQQpKAIz8wyp17hQuxPjjF//ot67RqioU69rl7dUEfoq/HFFck7qJ4WPuHw5cH/mH38qcWf/pT24ftVixfnWyBEwYTDF7eY1X9/k/a+L+VbFARBFojwpUvMK2dC7jHGPR76vZvxeonqanVDnXpdPbGuXr3mfaDR5FtGBBGA6mmRMPenP888YJl743z588+q6+tyUCNSjFz+0dClF/orXjpUSEG1CIKkSyjEvDrBLtaHTrqZVyfK3vPu6Ho9ceMN6A+GKBxUT4uIublL3/73wNefW9L1Be32u0GdxpZgSCkwd+51n6ll2YFvq9fV51sWBEFyytwcM+kNnRxj2CX78VdUV11FrKtTr2tQN9Sp6+tU77g63yIiSBqgelpsMK+e9d/TrVqkKX/uGeJ6fQ5qRIqDcNhv/mLZe8mlX30036IgCJI14fAc/afQSTe3i/34KSDU6vpadUMd0VCnrq8re9e1GNKEFC6onhYjV64Edn/j0re/o33w3iX/+nl0ckcAIPjT4dmnvl5BvaRaqs23LAiCpE84PPfXv0X9R0PucQgGidobufX6hjrivX+H+ihSNKB6WrSEfvNb/70Plb3rWt1zz5aR1+VbHCSfzJ1/03frRt2+5xZ9qBDTMyNIiTJ3/jzz+7GQmw2xH597+y312jXEunp1Q726oY64/npQo/UBKU546ulro701I+zOUXUvWeM3fDrdaRt8IfJHfLb5I0O223mbOt3Vlkla/lQyxPYyBQCAlc9ti9+wNCZkbNer3MmQspk56Qd+JVkk9g/7Z2Z3PB38yeGlX3108T+3pfdizW0WDZBxuuniqKEo8HdtV5WXl+96OsPj+d0Yn2tatP1OfKmUBVCGtN4a8jmr2XNLtjztduQf5d0fwj5fyD3OuZCedM/99W9EdRWnj66rJ25cm0luFuU1U6EsUEdJXkQpYa+yXIhVIPOB2zXqdKfNFtHJpDg/+kG+2gfgGtmnGopuOX/++V6BTgYALwzaeAXkkEoGgNdGe1Ux3RQAzt23L7K7vZSQcG6kxsYrkK0MKZuZk34QVyLs6rRQ6crLn35C983nAs/uufj5u+Zef0PmgfRAl+Ax7HF0pLNzcNHUUBwEX3o59OvfLv3KI5kdLu5GduO8he1JlCGhGKU6q7NHIT0Z9s+Efv2bSy/2+7fd72s0vlX7DzMPP8aMn1K/f135nmfe8crvKk4c1T3/9SUdW9TvX5eBbqqQZiqfEumoAmomL7jb0Lztl43wfO+++8Tq2fnnfzziAoC6tnDrWu6b3n33jZ14/sNro8ZLgZnw9JBqcAyEBeSQWAaA86OfGzkntCaef773F9Hfj/xCSshzYztGP7wxHetjMhlkNDPbfjj9i/vO8Qy3rLU4/Z7ksci4/irn8Kylx9e8sfzJr2nu+GiqI1wHHR6eUYd9aaMODGw2yH3LKo4aioHwW2/PPva1pTu/ltX2g4L3fPbVO64nU76FZ/majjIAzuockree5FKQnnQzrJX0NU/ZOyuJhjp1Q/3iT3xc3VCvemdlETSz0FjIjjJYnE5L8TczWzjr6do+qzXxCvIbr7AKU2tU7Vp+7yebDXBu8PR57s8u4RL22taJ5pUA516Ra65LKUNM++SVWX5vV3Tx/fzZ1wFg5XMf5gnZVAcArjfkC5FchpTNzEE/HDk9BgB3tUXatbzxO80rIdbVmVG2/J06x7eWWh+dsfT4v3hvePqtZKVdoxQAGG2RBzHZ/phZD+A57qJlnq84aigKZqxPqP/+Js3tt2VcA9neK1yDMlj6zXoAz9TCdSTKwIGzOlcsZE9euRJyj13+7g9mHnrUd9vH3lqz7uK/fP7Kz5yqFcu13fde/aufX/27Xy379xe1929f1PyRnOqmOGFkUyIdVVDNLJNdcuUKwQ6Iy5fXArhOnX4t6UEvnM5sVTqeeO1TxPLV10j/YFixIsedln4zZfcD28y6O3mtvH7tjYb0lGxpVKrFn2qtcA7Pvf6G79bbr1DHExWkaS8AGBt5T2LSsD6d53Bx1FAEBJ3HrjhHlu782rzUTo3mf0moxGTAWZ0r5rcnQwxz5tXLg/8x86j1Qkvr9PsaLtzZfnnwx6rFi5d8oaOCGn7Hqd8tG/ju0kcf1rT8U9l73j1/4fY4YWSSfUe57CaTydQ1QEt8G1k8Z/+KIL2kHjuCHujiSkrXmqiSJDUU1nyQn7n93BsTALEwo/Pnx5MWn3jjXE5VQ9aCe83q5ed5y+6C0KWNa+tgbOy+X5y+N7q4f2IMYGXb2gwXxeWQsplp9sMbr5xL8Cbw+vnX+P2fIWXXveeqge9ecuy/eNe2xZ+4c6n1UZVOJypDT3kA9KsEln6SrALweGkaQMYKQHHUUOiE3/bNWr6ytMdStvKaHFTHh57yQFzvehwdJgf3WXL9OmUBlEHWCUt6VueKHPfk3Bzj/QNz0h1yj4Xc48z4K+FLl4ia69UNdYs//cmlDXXqtWvysk8bThiZZN9Rhs1mPeXwHHfR7bErmjNWNqYfMUgPdFmjYZQex84BQy9XydTBLkfMd5SymrzSNxGJGtoLaz7Isp6uuGElAIzdzo8B+vFIMovB6aHbxwCgrifDkPMErISfCFxCx2639T4fXfRe2xpuq4OxQZXNprLZVLZ9952LD+3PKSmbmUU/HBmyqWy2zlxZn3kQxJJOc8VLh0Inx3ymj15x/XfCksI3v0wojhoKk1nbTuL66sWb23NdsctupQDAuCWxXuVxdMS98adXAGVIdfLSnNW5J7OeDIfn/kgHf/rS7A77xbbPvHXj+30f2TC76/m5189r/sm07Lvffsfp31cce6l8t33xZzer6+vyv4cwThiZZNxRnBmSv0wu1k4NFqfT6XQ6bcZUlVEOB5j7nRz95qroLx6KqrJFfrAZAcDjOOhKp4bsmrmAyLKeLr+3qe6+wTEYG1RFI8rr6u46N/aCZHE2HojvQJkrzo29UNcW7uJHPp3jmUs5x03+AYOnz9+bWxVZfjPnrx9yALHmfRX/9R+zX3/u4ubPL9nyL9pHHlRpMVt78XBl5OfBn750FTWc63XDSEqSmPcSgDhmiHW3597XSZkFUIacjhOSY8Lhub/8NeQeZ9xjoZNjIfd42Ocru2aFuqFe/SHDkm2duGtoyUMa1usdnpj9lB44QAHozZszybZmtPFuCWS7pR2AjvwSu4MYLDYjZaWoUZfFYEhdAyhwBT8JMhf317aGt62IJRytawt/+PwHx6RKxnSyTPJ9pkIcnjW4byS66s3mCuVnCT0yZLt9ZN8HIeO8oYlJ2cys+2FjqzXcmvMOFKDRLH30Yc2t6/33PXTlxGj5nmfU718nKJB9fGFx1FBohC9cmHn4sSX3fYlY9d6cVhzTyQRBQmR7r6CDyfbefujqiC10pSyAMqQrQ+nN6vkicU/Ovf4Gu3996ORYyD0WfnNaddVV6oZadUP94i2b1esayq5dmW/pc9BMREAWHSXUT2nXcQ+Afr0hkxfPxP4A4qX5VXrppfkUHgWFMB/kh0Ytb/yl1Rpm/7WuhTfecAHANcsF3pDzq5tKO2WyTrEAp38yBrCy+Ts8TXRja9tdMuK30mYeddMVN6yMtigC6+Yr6uqcob75AxXO/1L//U0XNrUHntkNV66w813oKc16VFeR8i604qihcJl9/CnViuXaLnNOa02gk0lDklWQ1N8+ZQGUQap0/mc1uUq/MCdagGaIe/Jvr841zCxa95Nv+f/17rc/8KG3/97g33bflV/+N3F9dfnXeip+4XzH+G+XHfyO1tKt+acNBaGbKmDCFAa56SiyfYsxstielXaq7GYuFPLVUwFs1JEw4ofTyVY+t20+dNO1d9Yl0NtEOut8k7KZWfUDm39g7Cc8l9PXTp9yzW/+AZVOV77bruvbe+n7P/S1tL57rkIcjsxdaatkTmD2kVvoNRQoV06MXv7xofJnngS1/MDHlHA6md7cL2+jE/aWl6SvUxZAGSQo2Vmdc9ie/OXIsSu/+vWlPof/i/e+ffMnPuL845f/dLTypZdV1yzXdt9bcfSn73jlf68a+sHSrz6qufNjRNWqgtvRHieMTHLVUYZGI1vPvGmnYuVyypOO1aag5oNM9fT86Ad5GxcdGWLjk3gRP6xOtrJ5wpo8FOl0py3DiJ+Na+ukw7P4ZsVzI58bjeUHPTI0KOUdm7kMqZuZdT9sXFsHAC8MRja74jYjmN/8AwAAoPmnDRXUcNm7r/U9+p8Pnn+bcFojbtP0wE6H5JXGpbeId6/mrtHCqKGYCF+8OPPQo0u+sFVdd2PuamV1Mr2535kgQFTU/ZG9O7m+TllAcKbEyVJQBiXMau4BZ+XJ5rJ3ODyZxScvNOHZQOg3/+/St7/j/+GpFyb/9O99XRfbPnP5+wNAXD59teqr733X154cXnHkP8ufemLxpz9FrF1T8Dva53/CFAi56qhIPR3z1s38ay8Snin70iuo+cDZV84/L46IHwPRnvX8uCgAYcQPZ0yFcyM1thFBX6SxX3wqGdZ++LmVY/eJxYh6o67ta6t7YXDMNbJPJRBh5XOfbJS9LJ5chpTNzEU/sM08Fzk1d/gn5zH/QIyyFSuW7X/h8vcHPmD92uMzgX2PrDdpIhY4vfmxNJzjuCQblNUUy4BReDUUHrNPPA0ajfaBe3JYJ+vgL8yHBCBMiiTo5OjPvL5OWQBlkEf+Z3UkGkPUkgwjQOadYDB0+gxzkotnYs5OwNxc2buuVTfUa299747xmckli2YIgDMegKug1tz/mflxosob+Z8wBUKuOsrQaASKrUKU1IO/0z0IbgayHIUiMhmNXqvJxP8mnUuvkOaDTOvp8sZfttXx/q57yTo/3qVJhbi3y/oSX4qVzRO8vKewtjW8rVk4THUvWeczsdSCNDMdFT8HqFSLP/PpCupna95zld37539664IqHM4gQyTZ3ivInlGYNRQWV0Z/efkHg+VPP7GwSRjI9t5+s8gfUWBhTFkAZUjvNPme1QaLU9iQHPdkdoRCzKnTl38wOPPIVy7cvmn6fQ0XPvqJ2Wf2zJ17XXObcZnj367+nevq/xnVvbjv2hd+tvvrH50hIvbRIr0/KGDCFAa56ijDZu7imKflhFWbe3liGm2FdwORiyocDudbBkSRhJjAt/oCe76x6P98oHzX02XXvSffAiHJCPtnfMbbF33wlvJdT+dbFgRZQBiG8UyGTo4x7vHQSXfo1GkIBlVLlhB1N6ob6tTrGtTr6sv+jiw4t1EEKXFQPUWSERobn7mne+6vf1v6lUcWb27HW7ximXnkK8EjR6/++VHV1RX5lgVB5pO5OWbqD5wyenKcGT8VDgRATRBr3qduqFevq1c31BE1NQXvNoogpQ2qp0gKwpcuBZ589tL+A4vWN5U/+2Tud8hEsubKL/7vxX/Zqtu3R3PHR/MtC4LkmnB4jv5TyD0eco8x7vGQezx88SKoVIS+St1QTzTUqRvqiRvWqJYsybegCILkDFRPEVlcGf3lzP0Phy9dLt9h1Xz8o2hGVQ5hv9936+3Emvct+/cXcFyQYkBqiyYAKLvuPex6PdFQp667UaXT5VtQBEHmC1RPi4of/ehHyQt86lOfyrjy8Nu+mUe/GvzpS5rbbyt/8nHVOyvz3VwEAGDm0a8Gh/6z4tiRsve8O9+yIEiGxLZoco8z7rG5828CgOodV6vXNURV0rLl78y3mAiCLBA5TNyNFDmqqyt0+54Lmm6dedT69q0by59+QvNPG/ItVKlz5f+6Ln/3B0sf/wrqpkhhEX5zmlNGT46F3GNz514HANVSLVFXq2m9U72uTt1QX0ZehwsCCFKaoPW0qJhX62mUuT//Zeb+h6/86teaTXeUP/FVVQXG4uSHsN/vM7aUrVh+1U8GgcBAEETRhH2+kPsU4+ZMpHN/+jMAgFqtvmEtsS4S0qSvxpmMIAhaTxWMy26yetmMZPRAV4ejKo3EvfNM2XveveyHBy59+zuzT3895Prv8l1PL2pqzLdQpcjs40/NnXt92XdexCc6okDC/hlm/FTIPRY6OR466Z77wx/Z7wl91aKbP0B0/qt6XYP6hjWg0eRbUgRBFIdAPeVvaqDgXK3zTGSjwTT3csjoBIlPQdPeyEa6tOu4B4xbFKKbcpSVLfnC1kUf/qD/nu6Ln+lY/JlPL+15RFW+NN9ilRBXToxe/sGg9r4vEe9bnW9ZEAQAIBwIMK+cCbnH2F2aGM8khMMAUHbtSnVDPdH+SfVNDer6WtVVV+VbUgRBlI7SrKcuu8lKJVONBbpdzpVo8a5jeYOvktJTHtCvV+KrAvG+1RU//Y/ZXc9f+rcXr5z4v7o9z6hv/kC+hSoJwn7/zMOPEddXa7ffnW9ZkNIlfPkyc/rVaHw9M/EaMAwAqCoq1A11mo23EawLKWajQxAkTeLVUwWbTVnV1Ghz9rKWRJfdZO3oghzLqzf397aDQAvOLWR7r7NdrGiLmxpTSV2jFOjNBmUOCYBGs/SRhzTNH/Hf99CFT/3LEvPntQ8/gAkI55vZx5+a+8tfr/rxQVwYRRaUK1dCZ84y7jEuC+mZVyHEAAC7S9OSrZ9lQ+yJ9/4dhjQhCJINSrOeJsFlZ3XT2Fq4wWIzUlbHzgFDrhRUg8XpBAAAOl9t5FtvHR0mh+Dj/Dgb5AD1zR+ocP7X7FefuPTi/isjPy/f86z6poZ8C1W0sMv6i//l02irRuadEMNMTITc49yuoa+chitXAAAIgnhfzeK2T3JZn1bjLk0IguSSNNRTVnUy2pwWMmr3E5hahbqVhCqVuIDQkujh6WWRM7jsVgqMNlGVhkYjUNQUDUCylYttv2Kh9Wbb+uNWhwf05v5eg4s9q4INxoWDSqcr321fZGye+XLPhTvbltz9haUP3IO2vZwTvnhx5qFHy1asWProQ/mWBSlGGIaZ9HLKqHuMGX8lfPky+wux6r2aln9iNw4lblyr0mrzLSuCIEVL+tZTeqDLGtUkPRHTZfxKNWU1eXlqX8oCyXGNUgDGRoOoMr3RqAfw0jSAYbNZTzk8x110e6xK1ygF3HE0J7DVE5G867gn+jl3BtisMFicTouio/ZToLn9NvU/vH+m+8uX9vVdoY6X73lGXXdjvoUqKmYff2rur3/Tfes5jC9BckN0C3v3WOjkGDN+KjwbYH8pW7Fi0Yc/xGV9qq9TXY0p5BAEWSDSVk8ph0Nv7ndyuhw9YHcBALgOOjwCg6jLbrJSHsdBVzv7RYoCnDtmwtAogXYaW+WnB7o6HAB6AAAgDev1Do9AP+VppxGMNqfFwJ7cU2Vz9nKfp2iA7NVToQ7OMw/TA10HyV65KqbSo/aTU3bNimUHHJcOfD/wxNMX7viE9p5t2u13g7qA3EiUy5Wf/+LyD3+06NaPaD56e75lQQqWcHjuT38OnRzjQuzd42G/n/1FpdOpb1oXyUJaX3btSnQhRRAkL6SvNBhtPNWRbLe0x9RAm9gtlKJGXRaDQUaB5NC0N/Z54AAFevNmAwCQ7VuMjqi/gFg/pQcOUBApyqFfRQIAuUoP4OF/9tLZ66f0wE6BfZiymnhZAIw22fUURNR+UlSqJZ/7zKIPGmbu6Q7s/kbwKKV77lnMf5QlYZ9v5sFHVOVLy3faUGlA0iAcnvvbudBJN+MeZ7XS8Ns+7qdFi9S1N6gb6ol19eqGeqJ6FZSV5VtcBEGQ9NVTgSlSAKvtRYlX+1IWSA53OD3lATCSJK+SaI0C/ZR2HfcA6NcvYMx7Fd/syzel6s39qU2nAtdcD0+3VXhcVCKI66uvOvyjwHPfDOz9N9/GO5c+dP+SuzowgXzGzNqenDv3Ou5fishh7o03mJPjITdrIh2fO3+e+0GlImquV5tuVd/UQKyrV695HyxalG9hEQRBxBTXkitnTXUcdLVbyAXXTjlTcuxPzmGhlFGrtQ/et6j5I/57umeffCb4srN8zzNE1ap8i1V4XDn288s/GlLf1LBky7/kWxZEicydf5MZGw+5x1kv0rm/nYv+VHbdezQf3ciFNNXeqNKV51tYBEGQFORQPRX5b9JTHoh4UMoskBCSrAJgA/RZe2nU5kpPeSK+pwDRUH5q1LV51YLbTrMlPi6K97GQUb9/XcXLP5194qnL3//hhQ0f0z760JLPfQbXEOUT9vlmLI+Bmii370DzM8ISfuttdvN6Th/9y1+jP6kq37FofRPrP0o01JUtf2e+hUUQBEmP3KinnFJotTfGIp+s/KiklAUEiMLvI2v4rE7KWkjZmCrWu1RSlA6AAtNOOXhZ+HkhUoWOqnxp+dNPaIzNMw89MvvVJ64cOVq+6+ky8rp8y1UYzH5t59y517Xb7ybWrsm3LEjeCF+4EBo7xbjHQyfdoZNjc3/6c/QnlVarvvkDrH1Uva6+7Lr3oHcygiAFTY6sp1xWJ2EwED8qKWWBSLlGI1AUL/EpG8XPN5+CwdJv9nZYTRSbWMpDSdQAAADGLemaHUXpryLiLmBi1MKO2k/BIuP6q5zDMw8/esU54jO1LP3KI4s3t+NzNDlB57HLPz5ErHrvknu+mG9ZkAUl7J9hTr3C5XtyjzPeqdhvakJddyPRUKde16BuqCOuvx6z4iMIUkzkanGfbO91ksnS8qcswMHqnnGbfbLq7YGBzYZ2UuTWabFIFfUki+JSLkUQtZ+csuXvXPbt3ss//NHs13bMfPkrwSNHy599suxd1+ZbLoUSfuvt2Yd7AGDpU4/jVrFFT3g2wJx6hdsv1D3GeLwQDkd/JaqrOH10XT1xwxqcDwiCFDGqMO/2lyDpqEJQtnTpw1pqcxuP/6Mf/Sh5gU996lP5bjcHM/WHmXu6Q/97UrVs2dLHv7L4E3eiGTUe/xfvC/50ePEn7ix/7tl8y4LknvClS8wrZ0LuMTblE/OaB+bmor+WXbNCva6BWFenXtegrq9VVWBWfARBSoV46ym3sK48PdBgcdrAZO0wTRVahiUR8RtolSLEqvdeNTQQ2PutwPP7Zu5/+MpLLy+1P1G2YkW+5VIQwZ++FPzpsOodVy/9yiP5lgXJEcFg6MyrsZRPr04Aw0R/VC1bpl5XF81CWnbtynyLiyAIkh8KK7GUweJ0bh7o6jCZIt8oT4tG5KMmtPdvX9TU6L+nO+g8duU3vy3f+TXNx1rQjAoAc+fPzzxmBYClX3lE9c7KfIuDZEooxJw5GxobZ/OPhk6fgVAo9qtGo26o40Ls19UTq96LGS0QBEHEi/tIoVNAi/t8wjOzs7adl38wCACa229butNW6qlwwmH/XV8K/uzoIsM/LvvhAdTXC4lQiDn7WmhsPHRyjBkbD71yBoLB2K9lZcTqGlYfVa+rJ9asxv1+EQRB4kH1FFEKwaPUzEOPhqffUr2zsvypJzQbN+Rbovx1xaHD/nu6QaOpoIZxFwOlwzCMZ5INrg+5x5hTp8OXL/N/LyOvU69rUK+rU69rIGpvVC3V5ltiBEEQpYPqKaIg5s6fn3nwkSvHfg4Amjs/Vv6EVXV1yYWDzJ173Xfr7WGfT/vwA9rtd+dbHCSOuTnG+wfGPRZyj4VOjjPjp8KBAP93VeU72Ph69bp6dX0d+mYgCIKkC6qniMIIhy9/f2D28SfDgUDZNSvKn31yUfNH8i3Tgjb/4ufvujLyc6Lm+oqXD+N+6Ipgbo75wx+ZsfHQyXFmbDw0Nh72z/B/V2m1RN2NURMpZsVHEATJElRPESXCTHpn7n0w9Hs3ACz+9KeWWh9V6XT5FmohuDzw45kHHwGAq4Z+oP7AP+RbnFIlHJ77Ix3bMnTsVPjiRUEBgiDWvi+6SxNmxUcQBMktqJ4iSiUUCnzjW4FvfAsYpuw97y5/9qlFBbjPQlrM/fkvPuPtYf/M4n/5dPnTT+RbnFIiHJ77819CJ8e4FKTu8fCFC6IixKr3EtGQphvXqrToQoogCDJfoHqKKJrQ737vv6d77g9/BIDFn/n00se+rNKV51uo+WFu7uJntl4ZdZUtX17x859hDvb5JRye++vfovnwQ+6x8Ns+UZGy5cvVNzUQURfS0nODRhAEyReoniJKJzwzO/v4k5cPDgBA2XXvKd/19CLDP+ZbqNxz+cD3Zx77GgDovvWc5mMt+RanCJk793rIPcacHAuNnWLcY3Pn3xQVUJUvjabEV6+rL3vXtehCiiAIkhdQPUUKg6Dz2MxDj4bfnAaAJZ//rPaRh4opQc/cH/7oM300HAgsWt+07DsvolaUE+beeINxn+L2Z3KPz73+hriEmlCvXUusq1ff1KBeV09UVwGBLqQIgiD5B9VTpGDgp50qe+/f6fbYiyR4iGEufOozod/8VqXVVowcKbvuPfkWqFAJvzkdGhsPuceZk2Mh99jc387FlyGqVnH20ZsaiBvXqhYvzrfUCIIgiBhUT5GCIhy+/L0fzj7+ZPjSJVCplpi3ah++X7VkSb7FyopLfY7ZHXYAWNpjWdJpzrc4hUT4rbc5fdQ9FnKPz/35L/Fl0IUUQRCk4ED1FCk8GI935p7ukHsMAAh9VfmeZ9U3NeRbqEzb8upZ38Y74coVYu2aipcO4RaXyQn7fKGxU4x7nN01dI7+U3wZVflSdX0dsa6ezY2PLtq0rkkAABw5SURBVKQIgiAFB6qnSGESCgX27A18sxfm5qCsbMndX1j6wD2g0eRbrLRb4fvYJ5jxV0Cluuong+r3r8u3QIojfPEip4+y9tE//FGikFqtvmEt0VCHLqQIgiDFAaqnSAET+u3v/Pc+OPdHGgCI1TXle+zq+rp8C5UGgd3fCOzZCwCLt/xL+c6v5VscRRD2+0Njp6JbNDHeKcliRHWV+qYGoqFOva6BuGENupAiCIIUE6ieIoVN2D8za33i8uB/AAAQhHZbp/a+LxXEXqChsVMX7vgEhJiya1ZU/Pxl1bJl+ZYoP4T9M8ypV6JbNDGTXsliZStWRFxIG9QNtaqrrsq34AiCIMh8geopUgwEX3p5xvIYm1mdWLtGt+cZ4sa1+RYqucRB38Y7mbMTAKDr3atp+ad8C7RwhGdmmVdeCZ0cD7nHmLFxxuMFqbuQSlcucCG9diW6kCIIgpQIqJ4iRcLc387NPPDwlVEXAICa0N77Je2XuhQbaTT79Ncv7esDgEW3fmTZ/heKW/EKBwLMqdMh9zgzNh46Oca85pHURzkX0nWRjezRhRRBEKRUQfUUKSLm5i71H5h96lkIBgFAXXdj+Z5niPetzrdYYkK//d2FT/wzzM2pliypOP6z4kt0Gr50iTn9amyLprMTMDcnWZLQV6nXoQspgiAIIgDVU6TYYM686t/ezZx5FQBArdY+cI/27rtArRQ7XHg2cOG2jzFTfwCApY8+vOTuL+RbolwQDIZOn2Hc4yH3eMg9xrw6AQwjWZDnQlqvbqhDF1IEQRAkHlRPkWIkGJx9Zs+lF77NLiKrG+rL99iJmuvzLRYAwGyP7dJ3vgcAxJr3VRz5iWLdD1Jw5UrozKvMyfHQ2HjIPcacOQuhkGTB2Eb26EKKIAiCyAPVU6RoufLLX83c//DcX/8GALBo0dKH7l9yV0d+3RmvjP7y4ubPs5+v+smg+u9vyncnyRf9SujMWWZsPDQ2zpwcD515Fa5ckS7JbWRfp75pHbqQIgiCIBmA6ilSzIR9vplHrMGfDrN/qt+/rnz3M4S+Kj/CXLjgM7aw6vLiz/5z+ZOP57t7khIKMWfOhqL66OkzCfVRAKK6ivUfVa+rx43sEQRBkCxB9RQpdsLh4KHDM499Lez3A4Bq8WLtlx9c0rEFysoW5vxz58+XLV8OADP3P3z5x4fYXeArTrysOLfLUIh5dSKyhf146PQZNsJMEm4j+5vq1esa1PW1qgrcyB5BEATJGaieIiXB3J/+7L/3wdD//Jb9U/1//kG321723r9bgFMHnt2jvuXmsN/v/8I29hvdN/doPv7RfHcJQCjEnH2N3byeGRsPvZJMHxVkIW2ow43sEQRBkPkD1VOkZGCYS72O2a/vgRADACqtVvvIg0s+95n5NqP6O7pCZyfCfn/4zWkAWNRoWPb9f58/3Y7xThFVq6R/CzHMxERo7BSnj546nUQfxSykCIIgSL5A9RQpLUJjp2bueYB5bZL9U/2P/0e36+myvyPn74xvG9bP0X/i/tBoKo69RKx677yc6cqVwJ69DP0n3d7dkdYyjMfDLda7x5hXzoQvXUpSAVFdFdFHMQspgiAIkjdQPUVKjnAgMLvDfvnA99k/VUu1Sx+zLP7MP8+HGTXsn3lr7bron2XXrtR8rEX9gb/XbNyQ2xMxZyf89z7IjL+y5AsdxI1rGXYL+1Onw4FAkqPKlr+TuKmBDWlSN9ShCymCIAiiBFA9RUqUK8d+PvPgl+fOv8n+ucjwj+W7ns75Bk6h/z154Y5P8r/RfPyj5U9YVe+4OmfnEO6VlRyVVkvU16ob6tU3NajX1Ze9593oQoogCIIoDVRPkdJl7vz5mQcfuXLs5+yfqvKlSx/78uLPfDqHGtvlHwzOPPwY+7ls+TuXPvl4bu2mc3/568wDliu//FXCEgRBrH2fOhLSRFx/vXI20EIQBEEQSVA9RUqbcPjy934w+/hTUafMRY0fLP/6U2XvfldOqp+1PnGp/wAAaD7WUr7Dqqp8Rw5lD/7kpzOPWsMXL4q+J1a9NxpiT9TeoFqyZOH6E0EQBEGyBtVTBAHmtcmZex4IjZ1i/1TpdEttPYs/1cqZUefmMnZLvdj+2dCrZ8t32jQt/5RzsefOvR5yjzEnx0Lu8dBJd3j6Lfb78ueeXfyJO/PYnwiCIAiSDaieIggAAFy5Mrvr+UvfegEiV8Si5o+U23eUXbsy9N//E2aYRR+8JYNaZ3ts2vu3q95ZOe/yh8Nzf/5LyD0eco/NvTa5dOfXylZes/C9iCAIgiDZg+opgsQI/fo3/nsfnPvzX9g/VcuWLf3aY3D58qUX+q9y/heukiMIgiDIAoDqKYIICF+8OPPY14KHDke/Uel0Yb9fu/1u7cMP5Fs6BFEW02QNAFTSE/kWBEGQomKBth1HkEJBtWyZ7hu7dPv2qJYtY78J+/0AEPi3F5gzr+ZbOgRBEAQpflA9RRAJNHd8tML5X+p/eH/sqxAz8/BjwDD5Fg1BEARBihxUTxFEilAoeOQoc+as4Lv/PXnpez/It2QIgiAIUuSg7ymCSBD2+0O//m3IPRYaG2fc43PnXme/V+nKK0Z+Vvaua/MtIIIgCIIULaieIkhq5l5/g3GPh8bGQ+6xsne/u3zn1/ItEYIgCIIULaieIgiCIAiCIAoCfU8RBEEQBEEQBYHqKYIgCIIgCKIgUD1FEARBEARBFASqpwiCIAiCIIiCQPUUQRAEQRAEURConiIIgiAIgiAKAtVTBEEQBEEQREGgeoogCIIgCIIoCFRPEQRBEARBEAWB6imCIAiCIAiiIFA9RRAEQRAEQRQEqqcIgiAIgiCIgkD1FEEQBEEQBFEQqJ4iCIIgCIIgCgLVUwRBEARBEERBoHqKICXLiJ+smW5xMPmWQ8kwfZv8lMT3we6a6e6RfEuXE3AaFAQjfrJGMBUnHT5yU2Ay33IhyYgbNUQ2qJ4iiOKhLNPyn0OTDh9pCcooGOzuDEKtdq+ZyHf7kjZcVltydK6a6D9fnzfWUVslZNBsbIXBvfOgHHgDLWIB0j2cd2zqp+OCToO8a1TzJMD8t4vp2xust2iNsW+C++xMfYumOuEhwW7BLGL6NuFLyDyR6CU2PRbydqcIvIGWZHcndb7lQxCExRto2RBw876ot1QMmwnwBvYMQVuftjqLuuOhLP5BABgPNNUEJH6u1Z44xD8j07fJt2M8eZVEz9GKzir55Vk0+yd0RjkFJZB1Fq4bU5Vv66uk7RKN6tytPbwh0NeliTSNw9ilrd/ATALEjYv8tkd7THBIW1/lcDMAq1x2Ch5XbX2Vu5oz7CxJ0pkG6c6BTJh0+JrsclQoedPGG2h5APYeSnbtUJbpI7fxezXrZsZdyFHqLRXDZkh/egCMBHaMa/Yfir1CTDoCgwBg95H2BIeAZldfkNwwfZib/8zZcYAWecMw4ic7QaKH+U0T3yLSqSezkrLOHuyu8Q+26mi7hvsc/SXBIeyU490lMiO4dVPgxCFtddw1CwBba6YTjJEioCzTW4e4z/F3mAS/ZnCXSxdUTxFEQQj0lcMAAED1BtwA7s7pQV65LNWUyB1H4sbB3qzbtkvd+rmbvhTeQMsG/k2Z6DxU2QlxNQ9rUj/SRAz5yaH4b2OSJ32uxLoxgVTB7ho/JO/MKu39rYGtvcHO24KpHjysziTRdjkkaEhUDwt21/jTrzUZmUwD+XNA6jkNAABSqnBEdag2V9Dm3LWwSnv/6ummGiaR3kNZprcOEfU1QWgWNiqNqS5x0uEJbeKfGXnXb7A71ktM395gW1+lkRsXYv9RYo+dEenolGV661mNiT+OzTr6aKBlQ4Ayy34DjKmAcc0f8ZOdwci7U7C7xt+0CRJezknqyaykzLOPBAeB6OnSsBbNM5YKmrumEh0S3CfrdSg5ROch3dkaf5OFoO06ekIktjwFPU+wr2fcm/mIn+ycPsO7ESX/Nc1pLF1AeAvl+rPnaEVnFaqnCKJkvIE9Q4KHJft82hi5KfBfbXnEq3SxJxn7SO45WtHp9ZMbps+KX4iJnqOV2b3cJ3mxlrbSJVMxkygK6SPdXULVH0CssRm7tPUbgpTowbMw1BJytHnKMr0VUnfUpMPXNKFli837NGiW6K4MX1GywGiv3A/TW2t8cSo428xsjPcgtM+xczvLCiWYdPh3rNbRzQDewHY7U2/RHNkQcLfq9oN/qyXIDfqIf+sQ0XM0rmOrtMO8UVhTncxASFmmt57VnpionJS4TJi+vUFo1UUmiWZXn2awM7BvRBuvoCStJ7OSMs/O9O0NQq2W1dFNu/kTWPoQbvUgB2h29WnOvAyTwDjj7n4CDSx2QxMadznEt+6szbopMNorY9O1WdtTG9wxHJw0cxMp+a856bfE1wuqpwiiXJi+BwJg0bbZ/d3s+uOIv8kOPUeF17NQgeOrIBwjfjJqzfMG9gxF7ghVrHFlmqzVntjONHUGoVZ7YiL7W4+0+XDhVZN4jHbeCr430LIhsEaOHVr4jBfjDbRsCN6R9YKdm79Q26qj7ZrJSQYgZ08myjK9dUiz/ygxCVC9ENNAKRjtFT1nfYePMZ1m/uK4fwdk30zNronKXVE1S/bcPrPXR76sjWqWQgNbsLvGf8aiXRMVdYKJrSHUak/cCtuHtSfsmmrQtdX4W2oqhqsDrGUxNgMTma4l3sRiCpDRXkmzZ4w/0Bs8PA5t23l3lWZNGwQHXw7uaha/FCWrJ7OSMs/uDR4eh3oL649LVIuuxyqiHuDMJAPNkWnA+k1ZtGfsyS188mjWsT45grtfMuspN3miyHzJnE8I/WqAIUmfJYlf05rG6YPqKYIoCGbHhukdkT/qVwcPg3avWVtdzZCd02dqCfc4ZOu3JNK0qrTDfQzZGWjqBADN/uTPV+l19ijEHfy/pD3wxNZToW1A0uwad9Ic2VMnjwXdoLk/mW4aM29ElrGC3TXBjcKHzeSxoBuI+7N2Jos3k0xOJI99SUR0FhE9ltjK5mCrjp6I9FvG0yCdOZDAtB9vQc/C4shOsxRTQuJ9KYUXQVpTHRjP2ehnSZNYjLa+itUAa7br7tjra3FUDJuhb28QWjVHavzAdsJIcBA0+83Ekci7CvdONeInO5me3drqKhg+xPXbrqPalg0+Mn6ZNd50Lf0yJvJ+SQg7ye8QTHJidS3A2USqTC6ReXb2it6fyNboZdwAbdW8u80DAXerbvhWpsUOWRAd8QVxKhXcVwWeP4OtOprngNQmNdbc3TWh5y7jOQvQqklwMYp/TWsapw+qpwiiIIieoxWmY3Hmz2bd/tbprUNMdN0qe3iqg2b/RKWR/YZdhEr0sE/bIU9wv463nlKW6T1xxyT3Z6Is01szbLGk7stIeT5x1Fsqhicqd/GdPr3E6tagcKU4uM/O1FvmwbdsxL91SLN/Ivo01WyzEE2d04OpXb74ITX+HRDcWsP0HK2kpWZO2tMgnTkgsFUDpLCgJ44oSjZAtyb5PZGTSbx+HKdYpDXVvcHD42y1wZ6jFXyTmMRSBjB9e6Mhd/6+as3hcaJnt67zNj+5KXDikHby5SC06owAR0Rt2Rust4i0n2D3hoAbiPpaZrBzOoULtZeRehlLJ14KCL1QQdSvBjgr89jsSXn24D47A63aRKpV394ggCbqFjXp8O8YJ3p2awCyNJ2yRlDWyVJ6yoluMpmv14/4yc5gfcShlrIIvVaG/CTo6Akd91OnbzXvNsXpr4c0AADeQLeD2RUnA2Xx7RjX7D8kPfOlfpU/jRN6fCW4AxM9R1E9RRCFEImoEK1zcbHMrTp6QkNZpptqArJiZqURmANjqgO3LsNzgY8oZNnFYAmMwQCS1tMF61++CY3p2+TbsTp9K2wV0WmvNNX4miLOmpTFP1irPSG+0acwoUXanvgp5Q20dDI9Ryv4z9pMw4bibZMLPA1k9m2iiCJ2lTBRXyWJQ5IXo5Yy1CkVk8eYNa2E+6ymZ3VgxwMBk8xrs0q71xJs6gxAq264CqBK27PX17QpWD9O9BzVAAhE4txP49YZopoKG7YymNiAR70chFpttVQqg+QOqSkYXwjrqayzjwQHAdpuk7yio90VUV45L96KziqAzDK4SSM3LDJxhgpJsz17CQe7O4PQqoteCEa7rm3Iv6M32MlesLXaE5EbmrFLWz8UiDm0iDqnSrsrdifhKY78BRZZv8qfxhkEjKJ6iiBKIdhdE1h9tMIU/SL6rjwRvR9V0naYdPiaagIxjUFiIVIiNIr9X+TtJE1zrmKAMrGepotbnFtHTH2ccYiy+HaMA4wnXMBNro1VmyvoalYbYNsYr47I6+ckDWnV7W9ltoqV+yzzcKUpXlbTIN3wOMFUiUv2FMEbaNnA3K+sOGjGOQyrWwDOgsleAZv8Tq9W38u5okbKSCeIqL5VU28PQA17dXMpzNzsY17Y6u12oq3VT9bEvqu3VNC8PFPsYE06Yi9OQoJHhlinTGYNJI24Txd5oXvzBe/srP69TXrOBNyCt8FgN+sQMk8hR8nWAbjrV/pVM3mYv4T+HfVwIAAAVvPGoopYA3BGWMFgp3+jROU8xZF9IxUsHST/FdKYxtIdleRyRvUUQRTIkJ8cgnpLBbtSI0J8a0srNCrxi7t4kSV+fTM9h7wMGZSK3hAKJvgrncRSPLUpsfdV3yZf6hXLZh3d5yc7g9CqzZW3WVxDdG1DgdVi/T5n2kCG00DuHIg3lrAWa03bELM6uYveiH/rENF2m2RYGLGmNhALV58/5E/1kcCO1ZoTENjBtboCvIGWSKLiyEqIZmMrbN0b2NYszCX8QMANAHZh4qc4b87JY0E3MFATe01lU+5LvZVJ51uYdAQGOadMYtehitWbfJyG6mXOAMgOXmE8XjBW8f5cuJX9VGf3BvYMRYOi+A1nJ7no5cc/CJr98zuFpF4jhfdhthV9m3yHW9JY65e4PdbKOIwNuh/nsjglfP1u1p2w+JqikbiyfpU7jRNxxDK9p0ayB1A9RRAFEtUJpCNwszKhSby4y0zOl7bvaSaL++n4nkZ1IKZvkx928x2t2AAmkZIUccDaHiQ7EySiZ2VI1YdcKu9WDQz5yXRCttNBs7HVv7U32Gnn3MW220HKUpsWMTNehtMgw4SgsWTpkzW+pmijJLI7Bbs7g/WWil3NUg/sKs2u3dozG/wtNfKe6Alzr4qIe7OS20ymby/Ts1sDx2JzafJY0F2r3Sucw8Yubf0GYVajkcCOcaLnqA4e8LEKN9XLpukIbHdohnlDk8CpI24dP2H/i9yj2SSdAadX2wkAQKyW8X5VXU0ABM96AXgK4tlxCY1wPkh5djZ2qudWYWQhq5uKXkTZVH3x6TbtPtKewyxOwQQuleKl87PjxB27iSQHikRKcHtMOcmJzkOVnZHLYbBzejDBDK+uJtjUvIkHQvir7GmcqKMANG67j7TH+6WgeoogSkeojEq8gmeGSKWLVh7MzT06zpVQRmIpovNQZfJao5lo+FAW345xos3LQBUBsQCmaeGtnNPM6GaAkWAW1lPO/spV3hVo2RBIkvg9G4z2SOagW4Ns2HUuLLUidWSep0HMgsXZq6rNFfst09F1atEidQJfXh5ckgFfd7UMd1g5/glZ+Z4yZ1drd1Xx/cWD++yMxB5v7OYOewPb2ERIk4EWOxvqRMBu7eENQeq24NYhzf4JrbGaITv9fbfGOdRGVe1a7YlDaYyLVJdqdrFOhCOMG0DWokd8Iic2Af6tC7IlcoqzM85hBlp1orixffG6qaSLszfQsiEAOU4vKs96OhIcrNWcqEp1IK8TBImx0u5G9nIIdtf4BxNYN9lkdoneWMS/ZjCN4zpqo123y875pewQKM1luRsOBEEKBW+gpca3Y7XGJPq+WUdPVN4/4SNrprPcQ1y4hf00WTPdZGdgPNBUI/qety24N9DCnTTYXRPdH5z/GSiLaN9wpm/T9NYhzf4Jnr2tiui0V56wEIOd/MKaXRM8hUZCEk4esceklzkjaBRr7YtUVaUdPqqth+DWmhxsuj3p8Am7RbOrT+O2+8gNAbBUCLQxb6ClJvEW6t5AC1uJaAi9zBl+BPR8T4MRP1kz3WSHHovATmO0V+5vZSMtKocFuUh9W4dSZTfjElnAYKefirY0bzuVa3YJTVCsLrhNSm823qaB8aDTCwAwaA+4a7V72bZXaYcntJ69wbY+nZFrHXP4GMOrc5qsmSZf1tATlfREJZ2OqX7S4ds6RPTslj6E1Tb0st55NNssBAz5u0fYP9kwnYhni/xRyLBk0rOPBHaMxwVFsZ6a23OzrEFZ5F4Ikw5/n5czgorvLWJDPtO3NxidEjKHwG33RTqBe1Xuk3P4iJ93FLG6NuKoGrvlcsWa7IxgWJP8muY0Tk61uYKeqOg56+c9EdB6iiDKgt1kz0+ym0XdlvsTsLmEYjG/7FOqNrZIxwZgUZbpbIyC6SUVgqgPE/u2rdnYCoPc9iT8z2C8TbO10993K2vtYyPQpe0NkQAmHzksZSiVaz1lc/eAe29gGzBbh6QW16q0wxNE96aAZwSMmYS3R+Lox33bLXz/wsjQAACAW7RZi5cRr2by3CXde+HERCX7+DnMczCdPBZ0RwZ6nqdBdGgqjVx+K9E0qKTFkRaMc5hp66uI2+edORMXXc5m2j8ywndGVALBIxGvUwmatT21vsPHmDvil2i9wcOruaTuka16gt2ivKdi4j1n4rwURvxNdqYtodE9eSYmMcKIQMHMWQCSnJ16WZAxio+Up2YGrjiM5yzIyEDM7GDtf7cyh+VYT0cCO8Y1PZbIUTJ8YUWdkEam1WbdRst09Oyx3qvSDu8OtNRMRwO5BDMz+a9pTmMZRDwQNvgANzVFEMXA9G3yDwLAhuB+flT1SFDKjSllxFKiyP2IgYq9dfIiTON9yCQeinLjRZKkVUq4qele8O8Y1+yP7OLD7iPq9Go7q8B4mwaGuM9cCtgHAqbo/kZJHjaRPcclFKxxOb6nwe4a/2Ct9sQhYl+Nv6kzomxJoNl1iO9MKXvYgeg5WrFromJ1fIQEt5ir2T9RYQSmb5OvqSYQXXCnXg5GVjNjOYYkVierNHfU+vjzhwvZyXgayJ0D8ckBmD2bpreO81bz2aXGSPqqtr7KXTzXDkFK/zhXTp4fSOLEUnIdT6V8TzOMAtTsmhB4p0xO8K1HrCc00zccd1yVdlh0rXmZMwCrk8qc3PeU7UCxAiHuE+kIoQQKcWJniQRJwSTqyaak9NnZpARxSrb8vBNVSXKTsR0bPCz2EI0vw5yJuix7ZSRS9QZa2I2+mqHTzPRt8kXdXRLvQZ+kXfGXm3gqJhzT5M1P2TmiwmlP4zhiDUT1FEEUQZK0cKl8T1O+efMOEYRZpHXrSSNeJIO0SsHuGqHlrEpzR20kb1+zpg380Rx+RruurebSo50hWdtHVWmHj0LLAwwI4ipkWk81G1s1G+3aaoBdE5XbHL6mxDn8WVgdK2vfYKHpEXiazSYfaYe2vorVZ6N7PCZPKCj9a+bTIKPQKOrlINRq7t9dIWHsTKBGJHyaykemgiIpdoYRYBy8rAhs9kfZ8NXHWu3ehIaxiPMoH944Cl4/MuiTwmHSEZh3F1gv467V7E1qpJw8Fky0dRk/RUa9hbvFUb18d50McoIqG7nTODn/H7fecKuQELGoAAAAAElFTkSuQmCC" alt="avatar"></p>
+<p><strong>问题1</strong>: 按上面的路由表来看,如果要访问10.1.1.1这个IP,请问会怎么走?</p>
+<p>答: 会通过10.1.1.0&#x2F;255.255.255.0这个路由条目后面指示的ens33网卡去寻找10.1.1.1。</p>
+<p><strong>问题2</strong>: 按上面的路由表来看,如果要访问119.75.217.26这个IP,请问会怎么走?</p>
+<p>答: 会通过网关10.1.1.2去寻找。</p>
+<p><strong>问题3</strong>: 为什么route -n能看到这几条路由(不同机器可能还不一样)</p>
+<p>答:因为本机ens33这个网卡有10.1.1.0&#x2F;24这个网段的IP,所以就会默认产生类似下面的路由条目</p>
+<p>10.1.1.0 0.0.0.0 255.255.255.0 U 0 0 0 ens33</p>
+<p>169.254.0.0&#x2F;24是保留网关</p>
+<p>10.1.1.2是配置的网关</p>
+<h4 id="访问一个ip的流程"><a href="#访问一个ip的流程" class="headerlink" title="访问一个ip的流程"></a>访问一个ip的流程</h4><p><strong>当在一台linux机器上要访问一个目标ip时，请记住linux以下四步口诀(linux默认的是单路由表)，如果本机有目标ip，则会直接访问本地; 如果本地没有目标ip，则看第2步</strong>  </p>
+<ol>
+<li>用route -n查看路由，如果路由条目里包含了目标ip的网段，则数据包就会从对应路由条目后面的网卡出去</li>
+<li>如果没有对应网段的路由条目，则全部都走网关</li>
+<li>如果网关也没有，则报错：网络不可达</li>
+</ol>
+<p>（注意: 当不能直接到达目标ip, 那么每到达一个机器都会重复上面四步，直到找到目标)  </p>
+<h3 id="有关linux路由的命令"><a href="#有关linux路由的命令" class="headerlink" title="有关linux路由的命令"></a>有关linux路由的命令</h3><h4 id="查看路由"><a href="#查看路由" class="headerlink" title="查看路由"></a>查看路由</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@linux ~]# ip route show  &lt;==单纯的显示出路由的配置而已</span><br><span class="line">[root@linux ~]# ip route [add|del] [IP或网域] [via gateway] [dev 装置]</span><br><span class="line">参数：</span><br><span class="line">show ：单纯的显示出路由表，也可以使用 list ；</span><br><span class="line">add|del ：添加 (add) 或删除 (del) 路由的意思。</span><br><span class="line">    IP或网域：可使用 192.168.50.0/24 之类的网域或者是单纯的 IP ；</span><br><span class="line">    via     ：从那个 gateway 出去，不一定需要；</span><br><span class="line">    dev     ：由那个装置连出去，这就需要了！</span><br><span class="line">    mtu     ：可以额外的配置 MTU 的数值喔！</span><br><span class="line"></span><br><span class="line">范例一：显示出目前的路由数据</span><br><span class="line">[root@linux ~]# ip route show</span><br><span class="line">192.168.1.0/24 dev eth0  proto kernel  scope link  src 192.168.1.2</span><br><span class="line">169.254.0.0/16 dev eth1  scope link</span><br><span class="line">default via 192.168.1.254 dev eth1</span><br></pre></td></tr></table></figure>
+
+<p>如上表所示，最简单的功能就是显示出目前的路由信息，其实跟 route 这个命令相同啦！ 指示必须要注意几个小东西：  </p>
+<ul>
+<li>proto：此路由的路由协议，主要有 redirect, kernel, boot, static, ra 等， 其中 kernel 指的是直接由核心判断自动配置。</li>
+<li>scope：路由的范围，主要是 link ，亦即是与本装置有关的直接联机。</li>
+</ul>
+<h4 id="路由的添加与删除"><a href="#路由的添加与删除" class="headerlink" title="路由的添加与删除"></a>路由的添加与删除</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">范例二：添加路由，主要是本机直接可沟通的网域</span><br><span class="line">[root@linux ~]# ip route add 192.168.5.0/24 dev eth0</span><br><span class="line"># 针对本机直接沟通的网域配置好路由，不需要透过外部的路由器</span><br><span class="line">[root@linux ~]# ip route show</span><br><span class="line">192.168.5.0/24 dev eth0  scope link</span><br><span class="line">....以下省略....</span><br><span class="line"></span><br><span class="line">范例三：添加可以通往外部的路由，需透过 router 喔！</span><br><span class="line">[root@linux ~]# ip route add 192.168.10.0/24 via 192.168.5.100 dev eth0</span><br><span class="line">[root@linux ~]# ip route show</span><br><span class="line">192.168.5.0/24 dev eth0  scope link</span><br><span class="line">....其他省略....</span><br><span class="line">192.168.10.0/24 via 192.168.5.100 dev eth0</span><br><span class="line"># 仔细看喔，因为我有 192.168.5.0/24 的路由存在 (我的网卡直接联系)，</span><br><span class="line"># 所以才可以将 192.168.10.0/24 的路由丢给 192.168.5.100 </span><br><span class="line"># 那部主机来帮忙传递喔！与之前提到的 route 命令是一样的限制！</span><br><span class="line"></span><br><span class="line">范例四：添加默认路由</span><br><span class="line">[root@linux ~]# ip route add default via 192.168.1.2 dev eth0</span><br><span class="line"># 那个 192.168.1.2 就是我的默认路由器 (gateway) 的意思啊！ ^_^</span><br><span class="line"># 真的记得，只要一个默认路由就 OK ！</span><br><span class="line"></span><br><span class="line">范例五：删除路由</span><br><span class="line">[root@linux ~]# ip route del 192.168.10.0/24</span><br><span class="line">[root@linux ~]# ip route del 192.168.5.0/24</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="启动、关闭与配置装置的相关信息"><a href="#启动、关闭与配置装置的相关信息" class="headerlink" title="启动、关闭与配置装置的相关信息"></a>启动、关闭与配置装置的相关信息</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@linux ~]# ip link set eth0 up</span><br><span class="line"># 启动 eth0 这个装置接口</span><br><span class="line"></span><br><span class="line">[root@linux ~]# ip link set eth0 down</span><br><span class="line"># 关闭 eth0 这个装置接口</span><br><span class="line"></span><br><span class="line">[root@linux ~]# ip link set eth0 mtu 1000</span><br><span class="line"># 更改 MTU 的值，达到 1000 bytes</span><br><span class="line"># MTU：网络上传送的最大数据包</span><br></pre></td></tr></table></figure>
+
+<h4 id="更改【网卡代号、-MAC-地址信息】"><a href="#更改【网卡代号、-MAC-地址信息】" class="headerlink" title="更改【网卡代号、 MAC 地址信息】"></a>更改【网卡代号、 MAC 地址信息】</h4><p><strong>配置前要先关闭该网络卡，否则不会成功</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">范例三：修改网络卡代号、MAC 等参数</span><br><span class="line">[root@linux ~]# ip link set eth0 name vbird</span><br><span class="line">SIOCSIFNAME: Device or resource busy</span><br><span class="line"># 因为该装置目前是启动的，所以不能这样做配置。你应该要这样做：</span><br><span class="line"></span><br><span class="line">[root@linux ~]# ip link set eth0 down       &lt;==关闭界面</span><br><span class="line">[root@linux ~]# ip link set eth0 name vbird &lt;==重新配置</span><br><span class="line">[root@linux ~]# ip link show                &lt;==观察一下</span><br><span class="line">2. vbird: &lt;BROADCAST,MILTICASE&gt; mtu 900 qdisc pfifo_fast qlen 1000</span><br><span class="line">    link/ehter 00:40:d0:13:c3:46 brd ff:ff:ff:ff:ff:ff</span><br><span class="line"># 怕了吧！连网络卡代号都可以改变！不过，玩玩后记得改回来啊！</span><br><span class="line"># 因为我们的 ifcfg-eth0 还是使用原本的装置代号！避免有问题，要改回来</span><br><span class="line">[root@linux ~]# ip link set vbird name eth0 &lt;==界面改回来</span><br><span class="line"></span><br><span class="line">[root@linux ~]# ip link set eth0 address aa:aa:aa:aa:aa:aa</span><br><span class="line">[root@linux ~]# ip link show eth0</span><br><span class="line"># 如果你的网络卡支持硬件地址 (MAC) 可以更改的话，</span><br><span class="line"># 那么上面这个动作就可以更改你的网络卡地址了！厉害吧！</span><br><span class="line"># 不过，还是那句老话，测试完之后请立刻改回来啊！</span><br></pre></td></tr></table></figure>
+
+<h4 id="清空路由表"><a href="#清空路由表" class="headerlink" title="清空路由表"></a>清空路由表</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip route flush table enp1s0f0</span><br></pre></td></tr></table></figure>
+
+<h4 id="rt-tables"><a href="#rt-tables" class="headerlink" title="rt_tables"></a>rt_tables</h4><p>文件位置：&#x2F;etc&#x2F;iproute2&#x2F;rt_tables</p>
+<p>rt_tables就是给路由表命名的东西</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/iproute2/rt_tables </span><br><span class="line">#</span><br><span class="line"># reserved values</span><br><span class="line">#</span><br><span class="line">255	local</span><br><span class="line">254	main</span><br><span class="line">253	default</span><br><span class="line">0	unspec</span><br><span class="line">#</span><br><span class="line"># local</span><br><span class="line">#</span><br><span class="line">#1	inr.ruhep</span><br><span class="line">250   mgt</span><br><span class="line">10   ppp0</span><br><span class="line">11   ppp1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>11————-ppp1</p>
+<p>优先级——–路由表名字</p>
+<p><strong>一个路由表可以有多个路由</strong></p>
+<p><strong>一个路由表可以有多个路由规则</strong></p>
+<h4 id="增加网关"><a href="#增加网关" class="headerlink" title="增加网关"></a>增加网关</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip route add default via 117.158.200.129 dev enp1s0f0 src 117.158.200.187 table enp1s0f0</span><br><span class="line">ip route add default via 网关 dev 网卡名 src 网卡IP table 路由表名</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="网关只能加路由条目里已有的路由网段里的一个IP-ping不通此IP都可以）-加网关不需要指定子网掩码"><a href="#网关只能加路由条目里已有的路由网段里的一个IP-ping不通此IP都可以）-加网关不需要指定子网掩码" class="headerlink" title="网关只能加路由条目里已有的路由网段里的一个IP (ping不通此IP都可以） 加网关不需要指定子网掩码"></a>网关只能加路由条目里已有的路由网段里的一个IP (ping不通此IP都可以） 加网关不需要指定子网掩码</h4><p>临时配置与删除(立即生效,重启网络服务就没了)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">route add default gw x.x.x.x  </span><br><span class="line">route del default gw x.x.x.x</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/LutsbzjVMFkxzY8f8MpZJw">linux网络科普：路由器，集线器，交换机，网桥，光猫有啥区别？</a></p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2021/03/15/ethtool/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    ethtool
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">容器部署常见问题</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            TQ &copy; 2024 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

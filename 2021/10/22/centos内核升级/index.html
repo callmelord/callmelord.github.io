@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>centos升级内核 | Hexo</title>
+    
+    
+        <meta name="keywords" content="秘术：升核" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="centos自带的内核一般比较老旧，会导致一些技术无法使用，这时候就需要升级内核了 升级内核的方式一般有两种：  手动编译 使用rmp包自动升级  手动升级Linux 最新版本的内核可以通过 https:&#x2F;&#x2F;www.kernel.org&#x2F; 网站获取 下载并解压1234567[root@centos_vbox ~]# ls &#x2F;data2linux-5.14.10  linux-5.14.10.tar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos升级内核">
+<meta property="og:url" content="http://example.com/2021/10/22/centos%E5%86%85%E6%A0%B8%E5%8D%87%E7%BA%A7/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="centos自带的内核一般比较老旧，会导致一些技术无法使用，这时候就需要升级内核了 升级内核的方式一般有两种：  手动编译 使用rmp包自动升级  手动升级Linux 最新版本的内核可以通过 https:&#x2F;&#x2F;www.kernel.org&#x2F; 网站获取 下载并解压1234567[root@centos_vbox ~]# ls &#x2F;data2linux-5.14.10  linux-5.14.10.tar">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-10-22T10:40:14.000Z">
+<meta property="article:author" content="TQ">
+<meta property="article:tag" content="秘术：升核">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Hexo</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Linux定时任务
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/31/linux%E4%B8%8A%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">关于 /etc/crontab 及 /var/spool/cron/$USER 中定义定时任务</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Linux磁盘
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/11/%E7%A3%81%E7%9B%98%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BD/">磁盘无法挂载（VMFS_volume_member的解决办法）</a></li>  <li class="file"><a href="/2021/04/29/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/">linux磁盘挂载</a></li>  <li class="file"><a href="/2021/06/04/linux%E7%A3%81%E7%9B%98%E5%9D%8F%E9%81%93/">linux磁盘坏道的检测和修复</a></li>  <li class="file"><a href="/2021/09/09/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%94%99%E8%AF%AF/">文件系统错误</a></li>  <li class="file"><a href="/2022/01/04/dmsetup%E5%91%BD%E4%BB%A4/">dmsetup</a></li>  <li class="file"><a href="/2022/01/04/losetup/">losetup</a></li>  <li class="file"><a href="/2022/03/10/lsof%E5%91%BD%E4%BB%A4/">lsof</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Xshell
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/11/Xshell%E7%AA%81%E5%87%BA%E6%98%BE%E7%A4%BA%E9%9B%86%E6%AD%A3%E5%88%99/">Xshell突出显示集正则配置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            bbr网络加速
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/07/15/centos%E5%BC%80%E5%90%AFbbr/">centos 7 开启bbr网络加速</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            galgame
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2019/12/01/%E6%96%87%E4%BB%B6%E6%8F%90%E5%8F%96%E6%95%B4%E5%90%88/">文件提取整合</a></li>  <li class="file"><a href="/2020/07/08/%E5%AF%86%E8%AF%AD%E6%8F%90%E5%8F%96CG%E8%AE%B0%E5%BD%95/">密语提取CG记录</a></li>  <li class="file"><a href="/2021/04/13/clarias/">clarias提取记录</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            github仓库
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/09/01/git%E4%BD%BF%E7%94%A8/">git进行项目管理和版本控制</a></li>  <li class="file"><a href="/2021/09/01/git%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D/">git修改分支名</a></li>  <li class="file"><a href="/2021/09/02/git%E5%91%BD%E4%BB%A4/">git常用命令</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            go语言
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/04/11/go%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/">go学习笔记</a></li>  <li class="file"><a href="/2022/06/10/go%E4%BD%BF%E7%94%A8rsa%E5%8A%A0%E5%AF%86/">go使用rsa加密</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/02/01/linux%E6%80%BB%E7%BB%93/">linux总结</a></li>  <li class="file"><a href="/2020/10/13/linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/">linux磁盘分区</a></li>  <li class="file"><a href="/2020/10/27/VBOX%E4%B8%AD%E7%9A%84centos%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%95%91%E6%8F%B4/">centos虚拟机系统救援</a></li>  <li class="file"><a href="/2021/04/22/linux%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9E%8B%E5%8F%B7/">linux查看服务器的型号</a></li>  <li class="file"><a href="/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/">chattr与lsattr命令</a></li>  <li class="file"><a href="/2021/04/27/du%E5%91%BD%E4%BB%A4/">du查看文件或文件夹的大小</a></li>  <li class="file"><a href="/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/">CentOS7 出現 slice User 信息的解法</a></li>  <li class="file"><a href="/2021/06/24/macvlan/">创建虚拟网卡 vlan macvlan</a></li>  <li class="file"><a href="/2021/07/02/%E6%9F%A5%E7%9C%8Blinux%E5%91%BD%E4%BB%A4%E7%9A%84%E8%B7%AF%E5%BE%84/">linux命令路径</a></li>  <li class="file"><a href="/2021/07/09/yum/">软件包管理器yum</a></li>  <li class="file"><a href="/2021/08/08/CMOS%E6%94%BE%E7%94%B5/">CMOS放电</a></li>  <li class="file"><a href="/2021/08/08/rsync/">rsync用法</a></li>  <li class="file"><a href="/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">只读文件系统 /var/cache/yum/x86 64/7/base/repomd.xml.old.tmp</a></li>  <li class="file"><a href="/2021/08/23/linux_iso%E9%95%9C%E5%83%8F%E8%A7%A3%E6%9E%90/">linux_iso镜像解析</a></li>  <li class="file"><a href="/2021/09/09/dd%E5%91%BD%E4%BB%A4/">dd命令</a></li>  <li class="file"><a href="/2021/09/24/grub_rescue/">grub rescue</a></li>  <li class="file"><a href="/2021/09/24/%E5%88%87%E6%A0%B9/">切换根目录</a></li>  <li class="file active"><a href="/2021/10/22/centos%E5%86%85%E6%A0%B8%E5%8D%87%E7%BA%A7/">centos升级内核</a></li>  <li class="file"><a href="/2021/11/16/pcie%E6%8A%A5%E9%94%99/">pcie总线报错</a></li>  <li class="file"><a href="/2021/11/16/%E5%88%A0%E9%99%A4swap%E5%88%86%E5%8C%BA/">CentOS 删除swap分区</a></li>  <li class="file"><a href="/2021/12/03/centos%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/">centos修改网卡名称</a></li>  <li class="file"><a href="/2021/12/15/netstat/">netstat</a></li>  <li class="file"><a href="/2022/01/14/centos%E4%BF%AE%E6%94%B9mac%E5%9C%B0%E5%9D%80/">centos修改网卡mac地址</a></li>  <li class="file"><a href="/2022/02/20/vbox%E8%AE%BE%E7%BD%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/">vbox设置共享文件夹</a></li>  <li class="file"><a href="/2022/02/24/%E5%AE%89%E8%A3%85yum/">centos安装yum</a></li>  <li class="file"><a href="/2022/02/24/%E6%96%87%E4%BB%B6%E5%B7%B2%E5%88%A0%E9%99%A4%E4%BD%86%E7%A9%BA%E9%97%B4%E6%9C%AA%E9%87%8A%E6%94%BE/">文件已经删除，但空间未释放怎么办？</a></li>  <li class="file"><a href="/2022/03/18/%E7%B3%BB%E7%BB%9F%E5%B0%81%E8%A3%85/">linux（centos）系统封装</a></li>  <li class="file"><a href="/2022/06/30/%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E8%84%9A%E6%9C%AC/">开机自启 rc.d/rc.loacl</a></li>  <li class="file"><a href="/2022/07/06/centos7%E5%AE%89%E8%A3%85nload%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/">centos7安装nload流量监控</a></li>  <li class="file"><a href="/2022/09/20/%E7%B3%BB%E7%BB%9F%E5%B0%81%E8%A3%85%E7%9A%84%E5%BC%82%E5%B8%B8/">系统封装的一些异常报错</a></li>  <li class="file"><a href="/2022/10/06/elk%E6%8B%89%E5%8F%96%E6%95%B0%E6%8D%AE/">python拉取elk的数据</a></li>  <li class="file"><a href="/2022/11/17/EFI%E3%80%81UEFI%E3%80%81MBR%E3%80%81GPT%E7%9A%84%E5%8C%BA%E5%88%AB/">EFI、UEFI、MBR、GPT的区别</a></li>  <li class="file"><a href="/2023/01/16/linux%E7%BD%91%E5%8D%A1%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">linux网卡命名规范</a></li>  <li class="file"><a href="/2023/01/16/%E7%BD%91%E5%8D%A1mac%E6%BC%82%E7%A7%BB/">网卡mac漂移</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux文件系统
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/08/08/lvm%E4%BB%8B%E7%BB%8D/">lvm分区</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux网络
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/08/20/aircrack-ng/">aircrack-ng的使用</a></li>  <li class="file"><a href="/2021/03/15/ethtool/">ethtool</a></li>  <li class="file"><a href="/2021/03/15/linux%E8%B7%AF%E7%94%B1/">linux路由</a></li>  <li class="file"><a href="/2021/03/18/DNS-Resolv%E8%AE%BE%E7%BD%AE%E5%92%8C%E9%87%8D%E5%90%AF%E6%97%A0%E6%95%88/">DNS Resolv 设置和重启无效的解决方法</a></li>  <li class="file"><a href="/2021/03/18/linux%E5%88%B7%E6%96%B0dns%E6%9C%8D%E5%8A%A1%E5%99%A8/">linux刷新dns服务器</a></li>  <li class="file"><a href="/2021/04/16/%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99ip-rule/">路由规则ip rule</a></li>  <li class="file"><a href="/2021/04/22/Ping%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">ping 的使用方法</a></li>  <li class="file"><a href="/2021/06/25/tcping/">tcping  pingIP的端口</a></li>  <li class="file"><a href="/2021/07/02/tcp_ip/">tcp_ip详解</a></li>  <li class="file"><a href="/2021/07/02/tcp%E9%87%8D%E4%BC%A0/">tcp重传</a></li>  <li class="file"><a href="/2021/07/28/%E4%B8%8B%E8%BD%BD%E7%A6%BB%E7%BA%BF%E7%BD%91%E9%A1%B5/">下载离线网页</a></li>  <li class="file"><a href="/2021/08/08/curl/">curl用法</a></li>  <li class="file"><a href="/2021/08/19/nmcli/">nmcli 命令</a></li>  <li class="file"><a href="/2021/09/10/linux%E9%98%B2%E7%81%AB%E5%A2%99/">linux防火墙</a></li>  <li class="file"><a href="/2021/09/13/ssh/">ssh</a></li>  <li class="file"><a href="/2021/10/22/ubuntu%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81ip/">ubuntu配置静态ip</a></li>  <li class="file"><a href="/2022/06/10/iperf3%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/">iperf3使用方法详解</a></li>  <li class="file"><a href="/2022/06/10/%E5%A6%82%E4%BD%95%E6%B5%8B%E8%AF%95%E7%AB%AF%E5%8F%A3%E9%80%9A%E4%B8%8D%E9%80%9A/">如何测试端口通不通</a></li>  <li class="file"><a href="/2022/06/10/%E6%A0%A1%E9%AA%8C%E5%AF%86%E7%A0%81linux/">iperf3使用方法详解</a></li>  <li class="file"><a href="/2022/11/02/ipv6/">ipv6详解</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux解压
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/07/16/linux%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/">linux解压命令大全</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/11/20/pip%E5%AE%89%E8%A3%85%E6%9C%AC%E5%9C%B0%E5%8C%85/">pip安装本地包</a></li>  <li class="file"><a href="/2021/05/06/python%E5%AE%89%E8%A3%85face_recognition%E5%92%8Cdlib/">python安装face_recognition和dlib</a></li>  <li class="file"><a href="/2021/07/09/pip%E5%AE%89%E8%A3%85python3.6/">pip问题</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            shell
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/17/shell%E8%84%9A%E6%9C%AC%E5%B8%B8%E8%AF%86/">shell脚本常识</a></li>  <li class="file"><a href="/2021/03/31/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC/">linux中/etc/rc.local脚本的作用</a></li>  <li class="file"><a href="/2021/04/15/shell%E8%84%9A%E6%9C%AC%E9%97%AE%E9%A2%98/">shell脚本问题</a></li>  <li class="file"><a href="/2021/06/17/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%A2%9E/">shell脚本自增</a></li>  <li class="file"><a href="/2021/06/17/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FIFS/">利用环境变量IFS自定义分隔符</a></li>  <li class="file"><a href="/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/">shell后台运行脚本</a></li>  <li class="file"><a href="/2021/07/28/shell%E6%97%B6%E9%97%B4%E6%88%B3/">shell时间戳</a></li>  <li class="file"><a href="/2021/07/28/shell%E8%BF%90%E7%AE%97/">shell运算</a></li>  <li class="file"><a href="/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/">expect 介绍和用法</a></li>  <li class="file"><a href="/2021/08/08/sort%E6%8E%92%E5%BA%8F/">sort排序</a></li>  <li class="file"><a href="/2021/08/31/shell%E4%B8%AD%E7%BB%99%E5%91%BD%E4%BB%A4%E8%AE%BE%E7%BD%AE%E8%B6%85%E6%97%B6%E6%97%B6%E9%97%B4/">shell 中给命令设置超时时间</a></li>  <li class="file"><a href="/2021/11/16/shell%E6%95%B0%E7%BB%84/">shell数组</a></li>  <li class="file"><a href="/2022/08/17/shell%E5%B9%B6%E5%8F%91/">shell并发操作</a></li>  <li class="file"><a href="/2022/11/02/shell%E5%88%9B%E5%BB%BA%E9%9A%8F%E6%9C%BA%E6%95%B0/">shell创建随机数</a></li>  <li class="file"><a href="/2022/11/18/shell%E6%98%BE%E7%A4%BA%E7%99%BE%E5%88%86%E6%AF%94/">shell显示百分比</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            systemed
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/09/05/systemed%E4%BD%BF%E7%94%A8/">systemctl,Systemd 入门教程</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ubuntu
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/06/28/ubuntu%E4%BF%AE%E6%94%B9%E6%97%B6%E5%8C%BA/">ubuntu修改时区</a></li>  <li class="file"><a href="/2021/06/28/%E6%9F%A5%E7%9C%8Bubuntu%E7%89%88%E6%9C%AC/">ubuntu版本</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            windows
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/01/21/win_ping/">Windows防火墙开启ping,禁ping的配置</a></li>  <li class="file"><a href="/2022/01/21/windows%E8%BF%9C%E7%A8%8B%E9%85%8D%E7%BD%AE/">windows远程</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            内网穿透
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/06/25/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">npc内网穿透</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            博客主题日志
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/11/26/Hexo%E4%B8%BB%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%80/">Hexo主题记录一</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            文件传输
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/07/21/lrzsz%E4%B9%B1%E7%A0%81/">lrzsz乱码问题</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            文本
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/07/10/vim%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">vim使用总结</a></li>  <li class="file"><a href="/2021/03/16/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%83%E5%AD%97%E7%AC%A6%E9%9B%86/">正则表达式元字符集</a></li>  <li class="file"><a href="/2021/03/19/sed%E6%8F%92%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2/">sed命令</a></li>  <li class="file"><a href="/2021/04/23/awk%E5%91%BD%E4%BB%A4/">awk命令</a></li>  <li class="file"><a href="/2021/04/23/paste%E5%91%BD%E4%BB%A4/">paste命令</a></li>  <li class="file"><a href="/2021/04/23/vim%E5%91%BD%E4%BB%A4/">vim命令</a></li>  <li class="file"><a href="/2021/09/01/wget%E5%91%BD%E4%BB%A4/">wget命令</a></li>  <li class="file"><a href="/2021/12/02/md5%E6%A0%A1%E9%AA%8C/">md5校验</a></li>  <li class="file"><a href="/2022/04/13/shell%E5%AD%97%E7%AC%A6%E4%B8%B2/">Linux shell字符串截取、替换、删除以及trim</a></li>  <li class="file"><a href="/2022/04/20/vim%E9%85%8D%E7%BD%AE/">vim配置</a></li>  <li class="file"><a href="/2022/04/21/vim82%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/">vim82编译安装</a></li>  <li class="file"><a href="/2022/06/23/linux%E6%9F%A5%E6%89%BE%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%80%E5%9C%A8%E8%A1%8C/">linux查找字符串所在行</a></li>  <li class="file"><a href="/2022/07/08/shell%E8%84%9A%E6%9C%ACEOF%E5%A6%99%E7%94%A8/">shell脚本EOF解析</a></li>  <li class="file"><a href="/2022/07/11/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E6%A8%A1%E5%9D%97/">数据读取模块</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            服务器
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/06/21/mariadb%E4%BD%BF%E7%94%A8/">mariadb数据库使用</a></li>  <li class="file"><a href="/2022/06/21/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%97%AE%E9%A2%98/">dell服务器开机无法正常启动</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            服务器容器
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&查看服务器信息</a></li>  <li class="file"><a href="/2021/03/15/docker%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/">docker启动失败</a></li>  <li class="file"><a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">容器部署常见问题</a></li>  <li class="file"><a href="/2021/03/29/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%A8%E5%8F%B7%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">服务器拨号注意事项</a></li>  <li class="file"><a href="/2021/04/30/docker%E5%AE%B9%E5%99%A8%E5%BC%82%E5%B8%B8/">docker容器启动失败</a></li>  <li class="file"><a href="/2021/08/20/docker%E5%AE%B9%E5%99%A8%E4%B8%80%E7%9B%B4%E9%87%8D%E5%90%AF/">docker容器在部署服务后一直重启</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2020/09/13/FFmpeg/">FFmpeg</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-centos内核升级" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/linux/">linux</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E7%A7%98%E6%9C%AF%EF%BC%9A%E5%8D%87%E6%A0%B8/" rel="tag">秘术：升核</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/10/22/centos%E5%86%85%E6%A0%B8%E5%8D%87%E7%BA%A7/">
+            <time datetime="2021-10-21T16:00:00.000Z" itemprop="datePublished">2021-10-22</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/centos内核升级.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/centos内核升级.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/centos内核升级.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            centos升级内核
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%8D%87%E7%BA%A7"><span class="toc-number">1.</span> <span class="toc-text">手动升级</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%A7%A3%E5%8E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">下载并解压</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text">编译配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E5%8C%85"><span class="toc-number">1.3.</span> <span class="toc-text">安装依赖包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-number">1.4.</span> <span class="toc-text">编译</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%86%85%E6%A0%B8"><span class="toc-number">1.5.</span> <span class="toc-text">安装内核</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%86%85%E6%A0%B8%E6%A0%B8%E5%BF%83%E6%96%87%E4%BB%B6"><span class="toc-number">1.6.</span> <span class="toc-text">安装内核核心文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">可能遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gcc%E7%89%88%E6%9C%AC%E8%BF%87%E4%BD%8E"><span class="toc-number">2.1.</span> <span class="toc-text">gcc版本过低</span></a></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <p>centos自带的内核一般比较老旧，会导致一些技术无法使用，这时候就需要升级内核了</p>
+<p>升级内核的方式一般有两种：</p>
+<ul>
+<li>手动编译</li>
+<li>使用rmp包自动升级</li>
+</ul>
+<h3 id="手动升级"><a href="#手动升级" class="headerlink" title="手动升级"></a>手动升级</h3><p>Linux 最新版本的内核可以通过 <a target="_blank" rel="noopener" href="https://www.kernel.org/">https://www.kernel.org/</a> 网站获取</p>
+<h4 id="下载并解压"><a href="#下载并解压" class="headerlink" title="下载并解压"></a>下载并解压</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@centos_vbox ~]# ls /data2</span><br><span class="line">linux-5.14.10  linux-5.14.10.tar</span><br><span class="line">[root@centos_vbox ~]# cd /data2/linux-5.14.10</span><br><span class="line">arch   COPYING  Documentation  include  Kbuild   lib          Makefile         modules.builtin.modinfo  Module.symvers  samples   sound       usr      vmlinux.o</span><br><span class="line">block  CREDITS  drivers        init     Kconfig  LICENSES     mm               modules-only.symvers     net             scripts   System.map  virt     vmlinux.symvers</span><br><span class="line">certs  crypto   fs             ipc      kernel   MAINTAINERS  modules.builtin  modules.order            README          security  tools       vmlinux</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="编译配置"><a href="#编译配置" class="headerlink" title="编译配置"></a>编译配置</h4><p>将&#x2F;boot下的配置文件拷贝过来使用，作为编译目标目录下的.config文件。这样对内核没有精简。 </p>
+<p>cp &#x2F;boot&#x2F;config-3.10.0-1160.el7.x86_64 .&#x2F;.config</p>
+<p>从boot目录拷贝原内核的config文件过来主要是为了方便，这个文件保存了在安装系统时内核所安装的模块配置信息（这个是最简单的，否则需要重新手动指定每一个模块的编译配置）。 </p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Hamlee67/article/details/71727705">参考链接：精简Linux内核编译的简单方法</a></p>
+<h4 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h4><p>使用menuconfig，安装开发工具包组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y groupinstall &quot;development tools&quot;</span><br></pre></td></tr></table></figure>
+
+<p>安装ncurse-devel包 （make menuconfig 文本界面窗口依赖包）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install ncurses-devel</span><br></pre></td></tr></table></figure>
+
+<h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><p>运行 make menuconfig，开启文本界面的编译选项菜单窗口，可以对内核加载的模块编译选项进行调整，如修改编译后的内核名称、新添加之前系统缺少的模块等。</p>
+<p><a target="_blank" rel="noopener" href="https://www.linuxidc.com/Linux/2019-11/161257.htm">参考链接：CentOS 7下源码编译安装新版本内核</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -j 4  #根据CPU核数开启多线程编译以加快编译速度</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装内核"><a href="#安装内核" class="headerlink" title="安装内核"></a>安装内核</h4><p>编译完成后执行 <code>make modules_install</code> 安装内核模块</p>
+<p>用此方法安装的内核极大（4G左右）</p>
+<p>原因分析：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">默认内核配置配置为支持尽可能多的硬件。 具有默认配置的非剥离内核导致大小为 1897996 kB（包括内核 + 模块）。 当剥离许多不必要的驱动程序和选项时，它的大小为 892892 kB，与库存内核相比，大小减少了 53%。</span><br><span class="line"></span><br><span class="line">安装内核模块时，附加 INSTALL_MOD_STRIP=1 选项。 这将去除所有调试符号并将我的大小减少 92%（从 892892 kB 到 69356 kB）。 请注意，这只会影响要安装的模块，而不影响内核 (vmlinuz) 本身。</span><br><span class="line"></span><br><span class="line">使用 INSTALL_MOD_STRIP 选项删除调试符号：</span><br></pre></td></tr></table></figure>
+
+<p>想让内核变得更小（200M左右）执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make INSTALL_MOD_STRIP=1 modules_install</span><br></pre></td></tr></table></figure>
+<h4 id="安装内核核心文件"><a href="#安装内核核心文件" class="headerlink" title="安装内核核心文件"></a>安装内核核心文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>重启系统 reboot</p>
+<p>如需将新版本内核设置为默认启动内核，可以使用此命令</p>
+<p>grub2-set-default 0  #0表示 &#x2F;boot&#x2F;grub2&#x2F;grub.cfg 文件中排在第一位的 menuentry 段</p>
+<h3 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h3><h4 id="gcc版本过低"><a href="#gcc版本过低" class="headerlink" title="gcc版本过低"></a>gcc版本过低</h4><p><img src="data:image/png;base64,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"></p>
+<p>升级gcc</p>
+<p>安装centos-release-scl</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install centos-release-scl</span><br></pre></td></tr></table></figure>
+<p>安装devtoolset，注意，如果想安装7.<em>版本的，就改成devtoolset-7-gcc</em>，以此类推</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install devtoolset-7-gcc*</span><br></pre></td></tr></table></figure>
+<p>激活对应的devtoolset，所以你可以一次安装多个版本的devtoolset，需要的时候用下面这条命令切换到对应的版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scl enable devtoolset-7 bash</span><br><span class="line"></span><br><span class="line">这条激活命令只对本次会话有效，重启会话后还是会变回原来的4.8.5版本，要想随意切换可按如下操作。</span><br></pre></td></tr></table></figure>
+<p>切换到某个版本，只需要执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /opt/rh/devtoolset-7/enable</span><br></pre></td></tr></table></figure>
+
+<p>查看gcc版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -v</span><br></pre></td></tr></table></figure>
+
+<p><strong>直接替换旧的gcc</strong></p>
+<p>旧的gcc是运行的 &#x2F;usr&#x2F;bin&#x2F;gcc，所以将该目录下的gcc&#x2F;g++替换为刚安装的新版本gcc软连接，免得每次enable</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mv /usr/bin/gcc /usr/bin/gcc-4.8.5</span><br><span class="line"></span><br><span class="line">ln -s /opt/rh/devtoolset-7/root/bin/gcc /usr/bin/gcc</span><br><span class="line"></span><br><span class="line">mv /usr/bin/g++ /usr/bin/g++-4.8.5</span><br><span class="line"></span><br><span class="line">ln -s /opt/rh/devtoolset-7/root/bin/g++ /usr/bin/g++</span><br><span class="line"></span><br><span class="line">gcc --version</span><br><span class="line"></span><br><span class="line">g++ --version</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jixiaohua/p/11732225.html">参考链接：CentOS 7升级gcc版本</a></p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2021/11/16/%E5%88%A0%E9%99%A4swap%E5%88%86%E5%8C%BA/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    CentOS 删除swap分区
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2021/10/22/ubuntu%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81ip/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">ubuntu配置静态ip</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            TQ &copy; 2024 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

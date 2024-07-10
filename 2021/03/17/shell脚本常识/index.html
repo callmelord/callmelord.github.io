@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>shell脚本常识 | Hexo</title>
+    
+    
+        <meta name="keywords" content="常识" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="比较运算符        文件比较运算符            运算符 描述 示例    -e filename 如果 filename 存在，则为真 [ -e &#x2F;var&#x2F;log&#x2F;syslog ]   -d filename 如果 filename 为目录，则为真 [ -d &#x2F;tmp&#x2F;mydir ]   -f filename 如果 filenam">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell脚本常识">
+<meta property="og:url" content="http://example.com/2021/03/17/shell%E8%84%9A%E6%9C%AC%E5%B8%B8%E8%AF%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="比较运算符        文件比较运算符            运算符 描述 示例    -e filename 如果 filename 存在，则为真 [ -e &#x2F;var&#x2F;log&#x2F;syslog ]   -d filename 如果 filename 为目录，则为真 [ -d &#x2F;tmp&#x2F;mydir ]   -f filename 如果 filenam">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-05T02:32:46.000Z">
+<meta property="article:author" content="TQ">
+<meta property="article:tag" content="常识">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Hexo</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Linux定时任务
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/31/linux%E4%B8%8A%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">关于 /etc/crontab 及 /var/spool/cron/$USER 中定义定时任务</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Linux磁盘
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/11/%E7%A3%81%E7%9B%98%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BD/">磁盘无法挂载（VMFS_volume_member的解决办法）</a></li>  <li class="file"><a href="/2021/04/29/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/">linux磁盘挂载</a></li>  <li class="file"><a href="/2021/06/04/linux%E7%A3%81%E7%9B%98%E5%9D%8F%E9%81%93/">linux磁盘坏道的检测和修复</a></li>  <li class="file"><a href="/2021/09/09/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%94%99%E8%AF%AF/">文件系统错误</a></li>  <li class="file"><a href="/2022/01/04/dmsetup%E5%91%BD%E4%BB%A4/">dmsetup</a></li>  <li class="file"><a href="/2022/01/04/losetup/">losetup</a></li>  <li class="file"><a href="/2022/03/10/lsof%E5%91%BD%E4%BB%A4/">lsof</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Xshell
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/11/Xshell%E7%AA%81%E5%87%BA%E6%98%BE%E7%A4%BA%E9%9B%86%E6%AD%A3%E5%88%99/">Xshell突出显示集正则配置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            bbr网络加速
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/07/15/centos%E5%BC%80%E5%90%AFbbr/">centos 7 开启bbr网络加速</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            galgame
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2019/12/01/%E6%96%87%E4%BB%B6%E6%8F%90%E5%8F%96%E6%95%B4%E5%90%88/">文件提取整合</a></li>  <li class="file"><a href="/2020/07/08/%E5%AF%86%E8%AF%AD%E6%8F%90%E5%8F%96CG%E8%AE%B0%E5%BD%95/">密语提取CG记录</a></li>  <li class="file"><a href="/2021/04/13/clarias/">clarias提取记录</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            github仓库
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/09/01/git%E4%BD%BF%E7%94%A8/">git进行项目管理和版本控制</a></li>  <li class="file"><a href="/2021/09/01/git%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D/">git修改分支名</a></li>  <li class="file"><a href="/2021/09/02/git%E5%91%BD%E4%BB%A4/">git常用命令</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            go语言
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/04/11/go%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/">go学习笔记</a></li>  <li class="file"><a href="/2022/06/10/go%E4%BD%BF%E7%94%A8rsa%E5%8A%A0%E5%AF%86/">go使用rsa加密</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/02/01/linux%E6%80%BB%E7%BB%93/">linux总结</a></li>  <li class="file"><a href="/2020/10/13/linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/">linux磁盘分区</a></li>  <li class="file"><a href="/2020/10/27/VBOX%E4%B8%AD%E7%9A%84centos%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%95%91%E6%8F%B4/">centos虚拟机系统救援</a></li>  <li class="file"><a href="/2021/04/22/linux%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9E%8B%E5%8F%B7/">linux查看服务器的型号</a></li>  <li class="file"><a href="/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/">chattr与lsattr命令</a></li>  <li class="file"><a href="/2021/04/27/du%E5%91%BD%E4%BB%A4/">du查看文件或文件夹的大小</a></li>  <li class="file"><a href="/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/">CentOS7 出現 slice User 信息的解法</a></li>  <li class="file"><a href="/2021/06/24/macvlan/">创建虚拟网卡 vlan macvlan</a></li>  <li class="file"><a href="/2021/07/02/%E6%9F%A5%E7%9C%8Blinux%E5%91%BD%E4%BB%A4%E7%9A%84%E8%B7%AF%E5%BE%84/">linux命令路径</a></li>  <li class="file"><a href="/2021/07/09/yum/">软件包管理器yum</a></li>  <li class="file"><a href="/2021/08/08/CMOS%E6%94%BE%E7%94%B5/">CMOS放电</a></li>  <li class="file"><a href="/2021/08/08/rsync/">rsync用法</a></li>  <li class="file"><a href="/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">只读文件系统 /var/cache/yum/x86 64/7/base/repomd.xml.old.tmp</a></li>  <li class="file"><a href="/2021/08/23/linux_iso%E9%95%9C%E5%83%8F%E8%A7%A3%E6%9E%90/">linux_iso镜像解析</a></li>  <li class="file"><a href="/2021/09/09/dd%E5%91%BD%E4%BB%A4/">dd命令</a></li>  <li class="file"><a href="/2021/09/24/grub_rescue/">grub rescue</a></li>  <li class="file"><a href="/2021/09/24/%E5%88%87%E6%A0%B9/">切换根目录</a></li>  <li class="file"><a href="/2021/10/22/centos%E5%86%85%E6%A0%B8%E5%8D%87%E7%BA%A7/">centos升级内核</a></li>  <li class="file"><a href="/2021/11/16/pcie%E6%8A%A5%E9%94%99/">pcie总线报错</a></li>  <li class="file"><a href="/2021/11/16/%E5%88%A0%E9%99%A4swap%E5%88%86%E5%8C%BA/">CentOS 删除swap分区</a></li>  <li class="file"><a href="/2021/12/03/centos%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/">centos修改网卡名称</a></li>  <li class="file"><a href="/2021/12/15/netstat/">netstat</a></li>  <li class="file"><a href="/2022/01/14/centos%E4%BF%AE%E6%94%B9mac%E5%9C%B0%E5%9D%80/">centos修改网卡mac地址</a></li>  <li class="file"><a href="/2022/02/20/vbox%E8%AE%BE%E7%BD%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/">vbox设置共享文件夹</a></li>  <li class="file"><a href="/2022/02/24/%E5%AE%89%E8%A3%85yum/">centos安装yum</a></li>  <li class="file"><a href="/2022/02/24/%E6%96%87%E4%BB%B6%E5%B7%B2%E5%88%A0%E9%99%A4%E4%BD%86%E7%A9%BA%E9%97%B4%E6%9C%AA%E9%87%8A%E6%94%BE/">文件已经删除，但空间未释放怎么办？</a></li>  <li class="file"><a href="/2022/03/18/%E7%B3%BB%E7%BB%9F%E5%B0%81%E8%A3%85/">linux（centos）系统封装</a></li>  <li class="file"><a href="/2022/06/30/%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E8%84%9A%E6%9C%AC/">开机自启 rc.d/rc.loacl</a></li>  <li class="file"><a href="/2022/07/06/centos7%E5%AE%89%E8%A3%85nload%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/">centos7安装nload流量监控</a></li>  <li class="file"><a href="/2022/09/20/%E7%B3%BB%E7%BB%9F%E5%B0%81%E8%A3%85%E7%9A%84%E5%BC%82%E5%B8%B8/">系统封装的一些异常报错</a></li>  <li class="file"><a href="/2022/10/06/elk%E6%8B%89%E5%8F%96%E6%95%B0%E6%8D%AE/">python拉取elk的数据</a></li>  <li class="file"><a href="/2022/11/17/EFI%E3%80%81UEFI%E3%80%81MBR%E3%80%81GPT%E7%9A%84%E5%8C%BA%E5%88%AB/">EFI、UEFI、MBR、GPT的区别</a></li>  <li class="file"><a href="/2023/01/16/linux%E7%BD%91%E5%8D%A1%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">linux网卡命名规范</a></li>  <li class="file"><a href="/2023/01/16/%E7%BD%91%E5%8D%A1mac%E6%BC%82%E7%A7%BB/">网卡mac漂移</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux文件系统
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/08/08/lvm%E4%BB%8B%E7%BB%8D/">lvm分区</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux网络
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/08/20/aircrack-ng/">aircrack-ng的使用</a></li>  <li class="file"><a href="/2021/03/15/ethtool/">ethtool</a></li>  <li class="file"><a href="/2021/03/15/linux%E8%B7%AF%E7%94%B1/">linux路由</a></li>  <li class="file"><a href="/2021/03/18/DNS-Resolv%E8%AE%BE%E7%BD%AE%E5%92%8C%E9%87%8D%E5%90%AF%E6%97%A0%E6%95%88/">DNS Resolv 设置和重启无效的解决方法</a></li>  <li class="file"><a href="/2021/03/18/linux%E5%88%B7%E6%96%B0dns%E6%9C%8D%E5%8A%A1%E5%99%A8/">linux刷新dns服务器</a></li>  <li class="file"><a href="/2021/04/16/%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99ip-rule/">路由规则ip rule</a></li>  <li class="file"><a href="/2021/04/22/Ping%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">ping 的使用方法</a></li>  <li class="file"><a href="/2021/06/25/tcping/">tcping  pingIP的端口</a></li>  <li class="file"><a href="/2021/07/02/tcp_ip/">tcp_ip详解</a></li>  <li class="file"><a href="/2021/07/02/tcp%E9%87%8D%E4%BC%A0/">tcp重传</a></li>  <li class="file"><a href="/2021/07/28/%E4%B8%8B%E8%BD%BD%E7%A6%BB%E7%BA%BF%E7%BD%91%E9%A1%B5/">下载离线网页</a></li>  <li class="file"><a href="/2021/08/08/curl/">curl用法</a></li>  <li class="file"><a href="/2021/08/19/nmcli/">nmcli 命令</a></li>  <li class="file"><a href="/2021/09/10/linux%E9%98%B2%E7%81%AB%E5%A2%99/">linux防火墙</a></li>  <li class="file"><a href="/2021/09/13/ssh/">ssh</a></li>  <li class="file"><a href="/2021/10/22/ubuntu%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81ip/">ubuntu配置静态ip</a></li>  <li class="file"><a href="/2022/06/10/iperf3%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/">iperf3使用方法详解</a></li>  <li class="file"><a href="/2022/06/10/%E5%A6%82%E4%BD%95%E6%B5%8B%E8%AF%95%E7%AB%AF%E5%8F%A3%E9%80%9A%E4%B8%8D%E9%80%9A/">如何测试端口通不通</a></li>  <li class="file"><a href="/2022/06/10/%E6%A0%A1%E9%AA%8C%E5%AF%86%E7%A0%81linux/">iperf3使用方法详解</a></li>  <li class="file"><a href="/2022/11/02/ipv6/">ipv6详解</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux解压
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/07/16/linux%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/">linux解压命令大全</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/11/20/pip%E5%AE%89%E8%A3%85%E6%9C%AC%E5%9C%B0%E5%8C%85/">pip安装本地包</a></li>  <li class="file"><a href="/2021/05/06/python%E5%AE%89%E8%A3%85face_recognition%E5%92%8Cdlib/">python安装face_recognition和dlib</a></li>  <li class="file"><a href="/2021/07/09/pip%E5%AE%89%E8%A3%85python3.6/">pip问题</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            shell
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/2021/03/17/shell%E8%84%9A%E6%9C%AC%E5%B8%B8%E8%AF%86/">shell脚本常识</a></li>  <li class="file"><a href="/2021/03/31/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC/">linux中/etc/rc.local脚本的作用</a></li>  <li class="file"><a href="/2021/04/15/shell%E8%84%9A%E6%9C%AC%E9%97%AE%E9%A2%98/">shell脚本问题</a></li>  <li class="file"><a href="/2021/06/17/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%A2%9E/">shell脚本自增</a></li>  <li class="file"><a href="/2021/06/17/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FIFS/">利用环境变量IFS自定义分隔符</a></li>  <li class="file"><a href="/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/">shell后台运行脚本</a></li>  <li class="file"><a href="/2021/07/28/shell%E6%97%B6%E9%97%B4%E6%88%B3/">shell时间戳</a></li>  <li class="file"><a href="/2021/07/28/shell%E8%BF%90%E7%AE%97/">shell运算</a></li>  <li class="file"><a href="/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/">expect 介绍和用法</a></li>  <li class="file"><a href="/2021/08/08/sort%E6%8E%92%E5%BA%8F/">sort排序</a></li>  <li class="file"><a href="/2021/08/31/shell%E4%B8%AD%E7%BB%99%E5%91%BD%E4%BB%A4%E8%AE%BE%E7%BD%AE%E8%B6%85%E6%97%B6%E6%97%B6%E9%97%B4/">shell 中给命令设置超时时间</a></li>  <li class="file"><a href="/2021/11/16/shell%E6%95%B0%E7%BB%84/">shell数组</a></li>  <li class="file"><a href="/2022/08/17/shell%E5%B9%B6%E5%8F%91/">shell并发操作</a></li>  <li class="file"><a href="/2022/11/02/shell%E5%88%9B%E5%BB%BA%E9%9A%8F%E6%9C%BA%E6%95%B0/">shell创建随机数</a></li>  <li class="file"><a href="/2022/11/18/shell%E6%98%BE%E7%A4%BA%E7%99%BE%E5%88%86%E6%AF%94/">shell显示百分比</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            systemed
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/09/05/systemed%E4%BD%BF%E7%94%A8/">systemctl,Systemd 入门教程</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ubuntu
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/06/28/ubuntu%E4%BF%AE%E6%94%B9%E6%97%B6%E5%8C%BA/">ubuntu修改时区</a></li>  <li class="file"><a href="/2021/06/28/%E6%9F%A5%E7%9C%8Bubuntu%E7%89%88%E6%9C%AC/">ubuntu版本</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            windows
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/01/21/win_ping/">Windows防火墙开启ping,禁ping的配置</a></li>  <li class="file"><a href="/2022/01/21/windows%E8%BF%9C%E7%A8%8B%E9%85%8D%E7%BD%AE/">windows远程</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            内网穿透
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/06/25/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">npc内网穿透</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            博客主题日志
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/11/26/Hexo%E4%B8%BB%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%80/">Hexo主题记录一</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            文件传输
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/07/21/lrzsz%E4%B9%B1%E7%A0%81/">lrzsz乱码问题</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            文本
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/07/10/vim%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">vim使用总结</a></li>  <li class="file"><a href="/2021/03/16/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%83%E5%AD%97%E7%AC%A6%E9%9B%86/">正则表达式元字符集</a></li>  <li class="file"><a href="/2021/03/19/sed%E6%8F%92%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2/">sed命令</a></li>  <li class="file"><a href="/2021/04/23/awk%E5%91%BD%E4%BB%A4/">awk命令</a></li>  <li class="file"><a href="/2021/04/23/paste%E5%91%BD%E4%BB%A4/">paste命令</a></li>  <li class="file"><a href="/2021/04/23/vim%E5%91%BD%E4%BB%A4/">vim命令</a></li>  <li class="file"><a href="/2021/09/01/wget%E5%91%BD%E4%BB%A4/">wget命令</a></li>  <li class="file"><a href="/2021/12/02/md5%E6%A0%A1%E9%AA%8C/">md5校验</a></li>  <li class="file"><a href="/2022/04/13/shell%E5%AD%97%E7%AC%A6%E4%B8%B2/">Linux shell字符串截取、替换、删除以及trim</a></li>  <li class="file"><a href="/2022/04/20/vim%E9%85%8D%E7%BD%AE/">vim配置</a></li>  <li class="file"><a href="/2022/04/21/vim82%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/">vim82编译安装</a></li>  <li class="file"><a href="/2022/06/23/linux%E6%9F%A5%E6%89%BE%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%80%E5%9C%A8%E8%A1%8C/">linux查找字符串所在行</a></li>  <li class="file"><a href="/2022/07/08/shell%E8%84%9A%E6%9C%ACEOF%E5%A6%99%E7%94%A8/">shell脚本EOF解析</a></li>  <li class="file"><a href="/2022/07/11/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E6%A8%A1%E5%9D%97/">数据读取模块</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            服务器
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/06/21/mariadb%E4%BD%BF%E7%94%A8/">mariadb数据库使用</a></li>  <li class="file"><a href="/2022/06/21/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%97%AE%E9%A2%98/">dell服务器开机无法正常启动</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            服务器容器
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&查看服务器信息</a></li>  <li class="file"><a href="/2021/03/15/docker%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/">docker启动失败</a></li>  <li class="file"><a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">容器部署常见问题</a></li>  <li class="file"><a href="/2021/03/29/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%A8%E5%8F%B7%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">服务器拨号注意事项</a></li>  <li class="file"><a href="/2021/04/30/docker%E5%AE%B9%E5%99%A8%E5%BC%82%E5%B8%B8/">docker容器启动失败</a></li>  <li class="file"><a href="/2021/08/20/docker%E5%AE%B9%E5%99%A8%E4%B8%80%E7%9B%B4%E9%87%8D%E5%90%AF/">docker容器在部署服务后一直重启</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2020/09/13/FFmpeg/">FFmpeg</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-shell脚本常识" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/shell/">shell</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E5%B8%B8%E8%AF%86/" rel="tag">常识</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/03/17/shell%E8%84%9A%E6%9C%AC%E5%B8%B8%E8%AF%86/">
+            <time datetime="2021-03-16T16:00:00.000Z" itemprop="datePublished">2021-03-17</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/shell脚本常识.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/shell脚本常识.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/shell脚本常识.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            shell脚本常识
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.</span> <span class="toc-text">比较运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shell%E9%87%8C%E9%9D%A2%E7%9A%84%E8%B5%8B%E5%80%BC%E6%96%B9%E6%B3%95%E6%9C%89%E4%B8%A4%E7%A7%8D%EF%BC%8C%E6%A0%BC%E5%BC%8F%E4%B8%BA"><span class="toc-number">2.</span> <span class="toc-text">shell里面的赋值方法有两种，格式为</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shell%E5%88%A4%E6%96%AD%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="toc-number">3.</span> <span class="toc-text">shell判断文件是否存在</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shell-%E8%84%9A%E6%9C%AC%E4%B8%AD-%EF%BC%9F%E5%88%86%E5%88%AB%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">shell 脚本中$$,$#,$？分别代表什么意思？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shell%E4%B8%AD%E8%AE%BE%E7%BD%AE%E6%96%87%E5%AD%97%E8%BE%93%E5%87%BA%E7%9A%84%E9%A2%9C%E8%89%B2%E5%8F%8A%E5%AD%97%E4%BD%93%E6%A0%BC%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">shell中设置文字输出的颜色及字体格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0%E7%9A%84%E4%B8%AA%E6%95%B0%EF%BC%88%E5%91%BD%E4%BB%A4%E8%A1%8C%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">判断输入参数的个数（命令行）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E8%BF%9E%E6%8E%A5"><span class="toc-number">7.</span> <span class="toc-text">软连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ossec"><span class="toc-number">8.</span> <span class="toc-text">ossec</span></a></li></ol>
+                </div>
+            
+        
+        
+            <h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><font color=black size=2>
+
+<table>
+<tr>
+    <td colspan="2"><b>文件比较运算符</b>
+    </td>
+<tr>
+</table>
+
+<table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">描述</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-e filename</td>
+<td align="center">如果 filename 存在，则为真</td>
+<td align="center">[ -e &#x2F;var&#x2F;log&#x2F;syslog ]</td>
+</tr>
+<tr>
+<td align="center">-d filename</td>
+<td align="center">如果 filename 为目录，则为真</td>
+<td align="center">[ -d &#x2F;tmp&#x2F;mydir ]</td>
+</tr>
+<tr>
+<td align="center">-f filename</td>
+<td align="center">如果 filename 为常规文件，则为真</td>
+<td align="center">-f &#x2F;usr&#x2F;bin&#x2F;grep ]</td>
+</tr>
+<tr>
+<td align="center">-L filename</td>
+<td align="center">如果 filename 为符号链接，则为真</td>
+<td align="center">[ -L &#x2F;usr&#x2F;bin&#x2F;grep ]</td>
+</tr>
+<tr>
+<td align="center">-r filename</td>
+<td align="center">如果 filename 可读，则为真</td>
+<td align="center">[ -r &#x2F;var&#x2F;log&#x2F;syslog ]</td>
+</tr>
+<tr>
+<td align="center">-w filename</td>
+<td align="center">如果 filename 可写，则为真</td>
+<td align="center">[ -w &#x2F;var&#x2F;mytmp.txt ]</td>
+</tr>
+<tr>
+<td align="center">-x filename</td>
+<td align="center">如果 filename 可执行，则为真</td>
+<td align="center">[ -L &#x2F;usr&#x2F;bin&#x2F;grep ]</td>
+</tr>
+<tr>
+<td align="center">-s filename</td>
+<td align="center">如果文件存在且至少有一个字符则为真</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">-c filename</td>
+<td align="center">如果文件存在且为字符型特殊文件则为真</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">-b filename</td>
+<td align="center">如果文件存在且为块特殊文件则为真</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">filename1 -nt filename2</td>
+<td align="center">如果 filename1 比 filename2 新，则为真</td>
+<td align="center">[ &#x2F;tmp&#x2F;install&#x2F;etc&#x2F;services -nt &#x2F;etc&#x2F;services ]</td>
+</tr>
+<tr>
+<td align="center">filename1 -ot filename2</td>
+<td align="center">如果 filename1 比 filename2 旧，则为真</td>
+<td align="center">[ &#x2F;boot&#x2F;bzImage -ot arch&#x2F;i386&#x2F;boot&#x2F;bzImage ]</td>
+</tr>
+</tbody></table>
+<table>
+<tr>
+    <td colspan="2"><b>字符串比较运算符 （请注意引号的使用，这是防止空格扰乱代码的好方法</b>
+    </td>
+<tr>
+</table>
+
+<table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">描述</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-z string	如果 string</td>
+<td align="center">长度为零，则为真</td>
+<td align="center">[ -z “$myvar” ]</td>
+</tr>
+<tr>
+<td align="center">-n string	如果 string</td>
+<td align="center">长度非零，则为真</td>
+<td align="center">[ -n “$myvar” ]</td>
+</tr>
+<tr>
+<td align="center">string1 &#x3D; string2</td>
+<td align="center">如果 string1 与 string2 相同，则为真</td>
+<td align="center">[ “$myvar” &#x3D; “one two three” ]</td>
+</tr>
+<tr>
+<td align="center">string1 !&#x3D; string2</td>
+<td align="center">如果 string1 与 string2 不同，则为真</td>
+<td align="center">[ “$myvar” !&#x3D; “one two three” ]</td>
+</tr>
+</tbody></table>
+<table>
+<tr>
+    <td colspan="2"><b>算术比较运算符</b>
+    </td>
+<tr>
+</table>
+
+<table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">描述</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">num1 -eq num2</td>
+<td align="center">等于</td>
+<td align="center">[ 3 -eq $mynum ]</td>
+</tr>
+<tr>
+<td align="center">num1 -ne num2</td>
+<td align="center">不等于</td>
+<td align="center">[ 3 -ne $mynum ]</td>
+</tr>
+<tr>
+<td align="center">num1 -lt num2</td>
+<td align="center">小于</td>
+<td align="center">[ 3 -lt $mynum ]</td>
+</tr>
+<tr>
+<td align="center">num1 -le num2</td>
+<td align="center">小于或等于</td>
+<td align="center">[ 3 -le $mynum ]</td>
+</tr>
+<tr>
+<td align="center">num1 -gt num2</td>
+<td align="center">大于</td>
+<td align="center">[ 3 -gt $mynum ]</td>
+</tr>
+<tr>
+<td align="center">num1 -ge num2</td>
+<td align="center">大于或等于</td>
+<td align="center">[ 3 -ge $mynum ]</td>
+</tr>
+</tbody></table>
+</font>
+
+
+
+<h3 id="shell里面的赋值方法有两种，格式为"><a href="#shell里面的赋值方法有两种，格式为" class="headerlink" title="shell里面的赋值方法有两种，格式为"></a>shell里面的赋值方法有两种，格式为</h3><ol>
+<li>arg&#x3D;&#96;(命令)</li>
+<li>arg&#x3D;$(命令)</li>
+</ol>
+<p>如果想要把某一文件的总行数赋值给变量nlines，可以表达为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nlines=`(awk &#x27;END&#123;print NR&#125;&#x27; filename)`</span><br><span class="line">或者</span><br><span class="line">nlines=$(awk &#x27;END&#123;print NR&#125;&#x27; filename)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="shell判断文件是否存在"><a href="#shell判断文件是否存在" class="headerlink" title="shell判断文件是否存在"></a>shell判断文件是否存在</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">1. shell判断文件,目录是否存在或者具有权限</span><br><span class="line">2. #!/bin/sh</span><br><span class="line">3.</span><br><span class="line">4. myPath=&quot;/var/log/httpd/&quot;</span><br><span class="line">5. myFile=&quot;/var /log/httpd/access.log&quot;</span><br><span class="line">6.</span><br><span class="line">7. # 这里的-x 参数判断$myPath是否存在并且是否具有可执行权限</span><br><span class="line">8. if [ ! -x &quot;$myPath&quot;]; then</span><br><span class="line">9. mkdir &quot;$myPath&quot;</span><br><span class="line">10. fi</span><br><span class="line">11.</span><br><span class="line">12. # 这里的-d 参数判断$myPath是否存在</span><br><span class="line">13. if [ ! -d &quot;$myPath&quot;]; then</span><br><span class="line">14. mkdir &quot;$myPath&quot;</span><br><span class="line">15. fi</span><br><span class="line">16.</span><br><span class="line">17. # 这里的-f参数判断$myFile是否存在</span><br><span class="line">18. if [ ! -f &quot;$myFile&quot; ]; then</span><br><span class="line">19. touch &quot;$myFile&quot;</span><br><span class="line">20. fi</span><br><span class="line">21.</span><br><span class="line">22. # 其他参数还有-n,-n是判断一个变量是否是否有值</span><br><span class="line">23. if [ ! -n &quot;$myVar&quot; ]; then</span><br><span class="line">24. echo &quot;$myVar is empty&quot;</span><br><span class="line">25. exit 0</span><br><span class="line">26. fi</span><br><span class="line">27.</span><br><span class="line">28. # 两个变量判断是否相等</span><br><span class="line">29. if [ &quot;$var1&quot; = &quot;$var2&quot; ]; then</span><br><span class="line">30. echo &#x27;$var1 eq $var2&#x27;</span><br><span class="line">31. else</span><br><span class="line">32. echo &#x27;$var1 not eq $var2&#x27;</span><br><span class="line">33. fi</span><br></pre></td></tr></table></figure>
+
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">-f 和-e的区别</span><br><span class="line">Conditional Logic on Files</span><br><span class="line"></span><br><span class="line">-a file exists.</span><br><span class="line">-b file exists and is a block special file.</span><br><span class="line">-c file exists and is a character special file.</span><br><span class="line">-d file exists and is a directory.</span><br><span class="line">-e file exists (just the same as -a).</span><br><span class="line">-f file exists and is a regular file.</span><br><span class="line">-g file exists and has its setgid(2) bit set.</span><br><span class="line">-G file exists and has the same group ID as this process.</span><br><span class="line">-k file exists and has its sticky bit set.</span><br><span class="line">-L file exists and is a symbolic link.</span><br><span class="line">-n string length is not zero.</span><br><span class="line">-o Named option is set on.</span><br><span class="line">-O file exists and is owned by the user ID of this process.</span><br><span class="line">-p file exists and is a first in, first out (FIFO) special file or</span><br><span class="line">named pipe.</span><br><span class="line">-r file exists and is readable by the current process.</span><br><span class="line">-s file exists and has a size greater than zero.</span><br><span class="line">-S file exists and is a socket.</span><br><span class="line">-t file descriptor number fildes is open and associated with a</span><br><span class="line">terminal device.</span><br><span class="line">-u file exists and has its setuid(2) bit set.</span><br><span class="line">-w file exists and is writable by the current process.</span><br><span class="line">-x file exists and is executable by the current process.</span><br><span class="line">-z string length is zero.</span><br></pre></td></tr></table></figure>
+
+<h3 id="shell-脚本中-？分别代表什么意思？"><a href="#shell-脚本中-？分别代表什么意思？" class="headerlink" title="shell 脚本中$$,$#,$？分别代表什么意思？"></a>shell 脚本中$$,$#,$？分别代表什么意思？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$0 这个程式的执行名字</span><br><span class="line">$n 这个程式的第n个参数值，n=1..9</span><br><span class="line">$* 这个程式的所有参数,此选项参数可超过9个。</span><br><span class="line">$# 这个程式的参数个数</span><br><span class="line">$$ 这个程式的PID(脚本运行的当前进程ID号)</span><br><span class="line">$! 执行上一个背景指令的PID(后台运行的最后一个进程的进程ID号)</span><br><span class="line">$? 执行上一个指令的返回值 (显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误)</span><br><span class="line">$- 显示shell使用的当前选项，与set命令功能相同</span><br><span class="line">$@ 跟$*类似，但是可以当作数组用</span><br><span class="line"></span><br><span class="line">sh -x  显示执行该脚本执行所有变量的值</span><br><span class="line">sh -n  返回所有语法错误信息</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36663951/article/details/78960107">shell 脚本中$$,$#,$?分别代表什么意思?</a></p>
+<h3 id="shell中设置文字输出的颜色及字体格式"><a href="#shell中设置文字输出的颜色及字体格式" class="headerlink" title="shell中设置文字输出的颜色及字体格式"></a>shell中设置文字输出的颜色及字体格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">#下面是字体输出颜色及终端格式控制 </span><br><span class="line"> </span><br><span class="line">#字体色范围：30-37 </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[30m 黑色字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[31m 红色字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[32m 绿色字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[33m ×××字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[34m 蓝色字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[35m 紫色字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[36m 天蓝字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[37m 白色字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">#字背景颜色范围：40-47 </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[40;37m 黑底白字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[41;30m 红底黑字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[42;34m 绿底蓝字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[43;34m 黄底蓝字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[44;30m 蓝底黑字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[45;30m 紫底黑字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[46;30m 天蓝底黑字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[47;34m 白底蓝字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">#控制选项说明 </span><br><span class="line"> </span><br><span class="line">#\033[0m 关闭所有属性 </span><br><span class="line"> </span><br><span class="line">#\033[1m 设置高亮度 </span><br><span class="line"> </span><br><span class="line">#\033[4m 下划线 </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[4;31m 下划线红字 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">#闪烁 </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[5;34m 红字在闪烁 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">#反影 </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[8m 消隐 \033[0m &quot; </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">#\033[30m-\033[37m 设置前景色 </span><br><span class="line"> </span><br><span class="line">#\033[40m-\033[47m 设置背景色 </span><br><span class="line"> </span><br><span class="line">#\033[nA光标上移n行 </span><br><span class="line"> </span><br><span class="line">#\033[nB光标下移n行 </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[4A 光标上移4行 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">#\033[nC光标右移n行 </span><br><span class="line"> </span><br><span class="line">#\033[nD光标左移n行 </span><br><span class="line"> </span><br><span class="line">#\033[y;xH设置光标位置 </span><br><span class="line"> </span><br><span class="line">#\033[2J清屏 </span><br><span class="line"> </span><br><span class="line">#\033[K清除从光标到行尾的内容 </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[K 清除光标到行尾的内容 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">#\033[s 保存光标位置 </span><br><span class="line"> </span><br><span class="line">#\033[u 恢复光标位置 </span><br><span class="line"> </span><br><span class="line">#\033[?25| 隐藏光标 </span><br><span class="line"> </span><br><span class="line">#\033[?25h 显示光标 </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[?25l 隐藏光标 \033[0m&quot; </span><br><span class="line"> </span><br><span class="line">echo -e &quot;\033[?25h 显示光标 \033[0m&quot;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yetugeng/article/details/89978787">shell中设置文字输出的颜色及字体格式</a></p>
+<h3 id="判断输入参数的个数（命令行）"><a href="#判断输入参数的个数（命令行）" class="headerlink" title="判断输入参数的个数（命令行）"></a>判断输入参数的个数（命令行）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">if [ $# != 3 ] ; then</span><br><span class="line">echo &quot;USAGE: $0 from to&quot;</span><br><span class="line">echo &quot; e.g.: $0 ~/oucaijun/from ~/oucaijun/to&quot;</span><br><span class="line">exit 1;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">————————————————————————</span><br><span class="line"></span><br><span class="line">$#代表了命令行的参数数量</span><br><span class="line">位置参数 $1， $2,..., $N，$#代表了命令行的参数数量， $0代表了脚本的名字</span><br><span class="line"></span><br><span class="line">-ne    不等于</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mylinux/p/4834332.html">linux脚本：shell, 判断输入参数的个数（命令行）</a></p>
+<h3 id="软连接"><a href="#软连接" class="headerlink" title="软连接"></a>软连接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s 源文件 目标文件</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kex1n/p/5193826.html">linux 创建连接命令 ln -s 软链接</a></p>
+<h3 id="ossec"><a href="#ossec" class="headerlink" title="ossec"></a>ossec</h3><p><a target="_blank" rel="noopener" href="https://paper.seebug.org/papers/Archive/drops2/OSSEC%20%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B%E4%B8%80.html">OSSEC安装</a></p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2021/03/18/linux%E5%88%B7%E6%96%B0dns%E6%9C%8D%E5%8A%A1%E5%99%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    linux刷新dns服务器
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2021/03/16/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%83%E5%AD%97%E7%AC%A6%E9%9B%86/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">正则表达式元字符集</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            TQ &copy; 2024 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

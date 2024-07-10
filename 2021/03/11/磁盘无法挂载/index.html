@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>磁盘无法挂载（VMFS_volume_member的解决办法） | Hexo</title>
+    
+    
+        <meta name="keywords" content="技巧" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="问题1在挂载磁盘时总是报【mount: 未知的文件系统类型“VMFS_volume_member”】这样的错误解决方法   123456789101112131415dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;dev&#x2F;sdb1 bs&#x3D;4M count&#x3D;1dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;dev&#x2F;sdb bs&#x3D;1M count&#x3D;16 查看磁盘类型cat &#x2F;etc&#x2F;fstab格式化磁盘mkfs.xf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="磁盘无法挂载（VMFS_volume_member的解决办法）">
+<meta property="og:url" content="http://example.com/2021/03/11/%E7%A3%81%E7%9B%98%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BD/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="问题1在挂载磁盘时总是报【mount: 未知的文件系统类型“VMFS_volume_member”】这样的错误解决方法   123456789101112131415dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;dev&#x2F;sdb1 bs&#x3D;4M count&#x3D;1dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;dev&#x2F;sdb bs&#x3D;1M count&#x3D;16 查看磁盘类型cat &#x2F;etc&#x2F;fstab格式化磁盘mkfs.xf">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-09-26T09:58:44.000Z">
+<meta property="article:author" content="TQ">
+<meta property="article:tag" content="技巧">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Hexo</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Linux定时任务
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/31/linux%E4%B8%8A%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">关于 /etc/crontab 及 /var/spool/cron/$USER 中定义定时任务</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Linux磁盘
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/2021/03/11/%E7%A3%81%E7%9B%98%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BD/">磁盘无法挂载（VMFS_volume_member的解决办法）</a></li>  <li class="file"><a href="/2021/04/29/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/">linux磁盘挂载</a></li>  <li class="file"><a href="/2021/06/04/linux%E7%A3%81%E7%9B%98%E5%9D%8F%E9%81%93/">linux磁盘坏道的检测和修复</a></li>  <li class="file"><a href="/2021/09/09/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%94%99%E8%AF%AF/">文件系统错误</a></li>  <li class="file"><a href="/2022/01/04/dmsetup%E5%91%BD%E4%BB%A4/">dmsetup</a></li>  <li class="file"><a href="/2022/01/04/losetup/">losetup</a></li>  <li class="file"><a href="/2022/03/10/lsof%E5%91%BD%E4%BB%A4/">lsof</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Xshell
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/11/Xshell%E7%AA%81%E5%87%BA%E6%98%BE%E7%A4%BA%E9%9B%86%E6%AD%A3%E5%88%99/">Xshell突出显示集正则配置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            bbr网络加速
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/07/15/centos%E5%BC%80%E5%90%AFbbr/">centos 7 开启bbr网络加速</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            galgame
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2019/12/01/%E6%96%87%E4%BB%B6%E6%8F%90%E5%8F%96%E6%95%B4%E5%90%88/">文件提取整合</a></li>  <li class="file"><a href="/2020/07/08/%E5%AF%86%E8%AF%AD%E6%8F%90%E5%8F%96CG%E8%AE%B0%E5%BD%95/">密语提取CG记录</a></li>  <li class="file"><a href="/2021/04/13/clarias/">clarias提取记录</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            github仓库
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/09/01/git%E4%BD%BF%E7%94%A8/">git进行项目管理和版本控制</a></li>  <li class="file"><a href="/2021/09/01/git%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D/">git修改分支名</a></li>  <li class="file"><a href="/2021/09/02/git%E5%91%BD%E4%BB%A4/">git常用命令</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            go语言
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/04/11/go%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/">go学习笔记</a></li>  <li class="file"><a href="/2022/06/10/go%E4%BD%BF%E7%94%A8rsa%E5%8A%A0%E5%AF%86/">go使用rsa加密</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/02/01/linux%E6%80%BB%E7%BB%93/">linux总结</a></li>  <li class="file"><a href="/2020/10/13/linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/">linux磁盘分区</a></li>  <li class="file"><a href="/2020/10/27/VBOX%E4%B8%AD%E7%9A%84centos%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%95%91%E6%8F%B4/">centos虚拟机系统救援</a></li>  <li class="file"><a href="/2021/04/22/linux%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9E%8B%E5%8F%B7/">linux查看服务器的型号</a></li>  <li class="file"><a href="/2021/04/27/charrt%E4%B8%8Elsattr%E5%91%BD%E4%BB%A4/">chattr与lsattr命令</a></li>  <li class="file"><a href="/2021/04/27/du%E5%91%BD%E4%BB%A4/">du查看文件或文件夹的大小</a></li>  <li class="file"><a href="/2021/04/29/CentOS7%E5%87%BA%E7%8F%BE%20slice%20User%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E6%B3%95/">CentOS7 出現 slice User 信息的解法</a></li>  <li class="file"><a href="/2021/06/24/macvlan/">创建虚拟网卡 vlan macvlan</a></li>  <li class="file"><a href="/2021/07/02/%E6%9F%A5%E7%9C%8Blinux%E5%91%BD%E4%BB%A4%E7%9A%84%E8%B7%AF%E5%BE%84/">linux命令路径</a></li>  <li class="file"><a href="/2021/07/09/yum/">软件包管理器yum</a></li>  <li class="file"><a href="/2021/08/08/CMOS%E6%94%BE%E7%94%B5/">CMOS放电</a></li>  <li class="file"><a href="/2021/08/08/rsync/">rsync用法</a></li>  <li class="file"><a href="/2021/08/08/%E5%8F%AA%E8%AF%BB%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">只读文件系统 /var/cache/yum/x86 64/7/base/repomd.xml.old.tmp</a></li>  <li class="file"><a href="/2021/08/23/linux_iso%E9%95%9C%E5%83%8F%E8%A7%A3%E6%9E%90/">linux_iso镜像解析</a></li>  <li class="file"><a href="/2021/09/09/dd%E5%91%BD%E4%BB%A4/">dd命令</a></li>  <li class="file"><a href="/2021/09/24/grub_rescue/">grub rescue</a></li>  <li class="file"><a href="/2021/09/24/%E5%88%87%E6%A0%B9/">切换根目录</a></li>  <li class="file"><a href="/2021/10/22/centos%E5%86%85%E6%A0%B8%E5%8D%87%E7%BA%A7/">centos升级内核</a></li>  <li class="file"><a href="/2021/11/16/pcie%E6%8A%A5%E9%94%99/">pcie总线报错</a></li>  <li class="file"><a href="/2021/11/16/%E5%88%A0%E9%99%A4swap%E5%88%86%E5%8C%BA/">CentOS 删除swap分区</a></li>  <li class="file"><a href="/2021/12/03/centos%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/">centos修改网卡名称</a></li>  <li class="file"><a href="/2021/12/15/netstat/">netstat</a></li>  <li class="file"><a href="/2022/01/14/centos%E4%BF%AE%E6%94%B9mac%E5%9C%B0%E5%9D%80/">centos修改网卡mac地址</a></li>  <li class="file"><a href="/2022/02/20/vbox%E8%AE%BE%E7%BD%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/">vbox设置共享文件夹</a></li>  <li class="file"><a href="/2022/02/24/%E5%AE%89%E8%A3%85yum/">centos安装yum</a></li>  <li class="file"><a href="/2022/02/24/%E6%96%87%E4%BB%B6%E5%B7%B2%E5%88%A0%E9%99%A4%E4%BD%86%E7%A9%BA%E9%97%B4%E6%9C%AA%E9%87%8A%E6%94%BE/">文件已经删除，但空间未释放怎么办？</a></li>  <li class="file"><a href="/2022/03/18/%E7%B3%BB%E7%BB%9F%E5%B0%81%E8%A3%85/">linux（centos）系统封装</a></li>  <li class="file"><a href="/2022/06/30/%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E8%84%9A%E6%9C%AC/">开机自启 rc.d/rc.loacl</a></li>  <li class="file"><a href="/2022/07/06/centos7%E5%AE%89%E8%A3%85nload%E6%B5%81%E9%87%8F%E7%9B%91%E6%8E%A7/">centos7安装nload流量监控</a></li>  <li class="file"><a href="/2022/09/20/%E7%B3%BB%E7%BB%9F%E5%B0%81%E8%A3%85%E7%9A%84%E5%BC%82%E5%B8%B8/">系统封装的一些异常报错</a></li>  <li class="file"><a href="/2022/10/06/elk%E6%8B%89%E5%8F%96%E6%95%B0%E6%8D%AE/">python拉取elk的数据</a></li>  <li class="file"><a href="/2022/11/17/EFI%E3%80%81UEFI%E3%80%81MBR%E3%80%81GPT%E7%9A%84%E5%8C%BA%E5%88%AB/">EFI、UEFI、MBR、GPT的区别</a></li>  <li class="file"><a href="/2023/01/16/linux%E7%BD%91%E5%8D%A1%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">linux网卡命名规范</a></li>  <li class="file"><a href="/2023/01/16/%E7%BD%91%E5%8D%A1mac%E6%BC%82%E7%A7%BB/">网卡mac漂移</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux文件系统
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/08/08/lvm%E4%BB%8B%E7%BB%8D/">lvm分区</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux网络
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/08/20/aircrack-ng/">aircrack-ng的使用</a></li>  <li class="file"><a href="/2021/03/15/ethtool/">ethtool</a></li>  <li class="file"><a href="/2021/03/15/linux%E8%B7%AF%E7%94%B1/">linux路由</a></li>  <li class="file"><a href="/2021/03/18/DNS-Resolv%E8%AE%BE%E7%BD%AE%E5%92%8C%E9%87%8D%E5%90%AF%E6%97%A0%E6%95%88/">DNS Resolv 设置和重启无效的解决方法</a></li>  <li class="file"><a href="/2021/03/18/linux%E5%88%B7%E6%96%B0dns%E6%9C%8D%E5%8A%A1%E5%99%A8/">linux刷新dns服务器</a></li>  <li class="file"><a href="/2021/04/16/%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99ip-rule/">路由规则ip rule</a></li>  <li class="file"><a href="/2021/04/22/Ping%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">ping 的使用方法</a></li>  <li class="file"><a href="/2021/06/25/tcping/">tcping  pingIP的端口</a></li>  <li class="file"><a href="/2021/07/02/tcp_ip/">tcp_ip详解</a></li>  <li class="file"><a href="/2021/07/02/tcp%E9%87%8D%E4%BC%A0/">tcp重传</a></li>  <li class="file"><a href="/2021/07/28/%E4%B8%8B%E8%BD%BD%E7%A6%BB%E7%BA%BF%E7%BD%91%E9%A1%B5/">下载离线网页</a></li>  <li class="file"><a href="/2021/08/08/curl/">curl用法</a></li>  <li class="file"><a href="/2021/08/19/nmcli/">nmcli 命令</a></li>  <li class="file"><a href="/2021/09/10/linux%E9%98%B2%E7%81%AB%E5%A2%99/">linux防火墙</a></li>  <li class="file"><a href="/2021/09/13/ssh/">ssh</a></li>  <li class="file"><a href="/2021/10/22/ubuntu%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81ip/">ubuntu配置静态ip</a></li>  <li class="file"><a href="/2022/06/10/iperf3%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/">iperf3使用方法详解</a></li>  <li class="file"><a href="/2022/06/10/%E5%A6%82%E4%BD%95%E6%B5%8B%E8%AF%95%E7%AB%AF%E5%8F%A3%E9%80%9A%E4%B8%8D%E9%80%9A/">如何测试端口通不通</a></li>  <li class="file"><a href="/2022/06/10/%E6%A0%A1%E9%AA%8C%E5%AF%86%E7%A0%81linux/">iperf3使用方法详解</a></li>  <li class="file"><a href="/2022/11/02/ipv6/">ipv6详解</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux解压
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/07/16/linux%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/">linux解压命令大全</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/11/20/pip%E5%AE%89%E8%A3%85%E6%9C%AC%E5%9C%B0%E5%8C%85/">pip安装本地包</a></li>  <li class="file"><a href="/2021/05/06/python%E5%AE%89%E8%A3%85face_recognition%E5%92%8Cdlib/">python安装face_recognition和dlib</a></li>  <li class="file"><a href="/2021/07/09/pip%E5%AE%89%E8%A3%85python3.6/">pip问题</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            shell
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/17/shell%E8%84%9A%E6%9C%AC%E5%B8%B8%E8%AF%86/">shell脚本常识</a></li>  <li class="file"><a href="/2021/03/31/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC/">linux中/etc/rc.local脚本的作用</a></li>  <li class="file"><a href="/2021/04/15/shell%E8%84%9A%E6%9C%AC%E9%97%AE%E9%A2%98/">shell脚本问题</a></li>  <li class="file"><a href="/2021/06/17/shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%A2%9E/">shell脚本自增</a></li>  <li class="file"><a href="/2021/06/17/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FIFS/">利用环境变量IFS自定义分隔符</a></li>  <li class="file"><a href="/2021/07/28/shell%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/">shell后台运行脚本</a></li>  <li class="file"><a href="/2021/07/28/shell%E6%97%B6%E9%97%B4%E6%88%B3/">shell时间戳</a></li>  <li class="file"><a href="/2021/07/28/shell%E8%BF%90%E7%AE%97/">shell运算</a></li>  <li class="file"><a href="/2021/08/08/expect%E4%BB%8B%E7%BB%8D%E5%92%8C%E7%94%A8%E6%B3%95/">expect 介绍和用法</a></li>  <li class="file"><a href="/2021/08/08/sort%E6%8E%92%E5%BA%8F/">sort排序</a></li>  <li class="file"><a href="/2021/08/31/shell%E4%B8%AD%E7%BB%99%E5%91%BD%E4%BB%A4%E8%AE%BE%E7%BD%AE%E8%B6%85%E6%97%B6%E6%97%B6%E9%97%B4/">shell 中给命令设置超时时间</a></li>  <li class="file"><a href="/2021/11/16/shell%E6%95%B0%E7%BB%84/">shell数组</a></li>  <li class="file"><a href="/2022/08/17/shell%E5%B9%B6%E5%8F%91/">shell并发操作</a></li>  <li class="file"><a href="/2022/11/02/shell%E5%88%9B%E5%BB%BA%E9%9A%8F%E6%9C%BA%E6%95%B0/">shell创建随机数</a></li>  <li class="file"><a href="/2022/11/18/shell%E6%98%BE%E7%A4%BA%E7%99%BE%E5%88%86%E6%AF%94/">shell显示百分比</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            systemed
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/09/05/systemed%E4%BD%BF%E7%94%A8/">systemctl,Systemd 入门教程</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ubuntu
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/06/28/ubuntu%E4%BF%AE%E6%94%B9%E6%97%B6%E5%8C%BA/">ubuntu修改时区</a></li>  <li class="file"><a href="/2021/06/28/%E6%9F%A5%E7%9C%8Bubuntu%E7%89%88%E6%9C%AC/">ubuntu版本</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            windows
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/01/21/win_ping/">Windows防火墙开启ping,禁ping的配置</a></li>  <li class="file"><a href="/2022/01/21/windows%E8%BF%9C%E7%A8%8B%E9%85%8D%E7%BD%AE/">windows远程</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            内网穿透
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/06/25/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">npc内网穿透</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            博客主题日志
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/11/26/Hexo%E4%B8%BB%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%80/">Hexo主题记录一</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            文件传输
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/07/21/lrzsz%E4%B9%B1%E7%A0%81/">lrzsz乱码问题</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            文本
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/07/10/vim%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">vim使用总结</a></li>  <li class="file"><a href="/2021/03/16/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%83%E5%AD%97%E7%AC%A6%E9%9B%86/">正则表达式元字符集</a></li>  <li class="file"><a href="/2021/03/19/sed%E6%8F%92%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2/">sed命令</a></li>  <li class="file"><a href="/2021/04/23/awk%E5%91%BD%E4%BB%A4/">awk命令</a></li>  <li class="file"><a href="/2021/04/23/paste%E5%91%BD%E4%BB%A4/">paste命令</a></li>  <li class="file"><a href="/2021/04/23/vim%E5%91%BD%E4%BB%A4/">vim命令</a></li>  <li class="file"><a href="/2021/09/01/wget%E5%91%BD%E4%BB%A4/">wget命令</a></li>  <li class="file"><a href="/2021/12/02/md5%E6%A0%A1%E9%AA%8C/">md5校验</a></li>  <li class="file"><a href="/2022/04/13/shell%E5%AD%97%E7%AC%A6%E4%B8%B2/">Linux shell字符串截取、替换、删除以及trim</a></li>  <li class="file"><a href="/2022/04/20/vim%E9%85%8D%E7%BD%AE/">vim配置</a></li>  <li class="file"><a href="/2022/04/21/vim82%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/">vim82编译安装</a></li>  <li class="file"><a href="/2022/06/23/linux%E6%9F%A5%E6%89%BE%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%80%E5%9C%A8%E8%A1%8C/">linux查找字符串所在行</a></li>  <li class="file"><a href="/2022/07/08/shell%E8%84%9A%E6%9C%ACEOF%E5%A6%99%E7%94%A8/">shell脚本EOF解析</a></li>  <li class="file"><a href="/2022/07/11/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E6%A8%A1%E5%9D%97/">数据读取模块</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            服务器
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/06/21/mariadb%E4%BD%BF%E7%94%A8/">mariadb数据库使用</a></li>  <li class="file"><a href="/2022/06/21/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%97%AE%E9%A2%98/">dell服务器开机无法正常启动</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            服务器容器
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/">更改uuid&查看服务器信息</a></li>  <li class="file"><a href="/2021/03/15/docker%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/">docker启动失败</a></li>  <li class="file"><a href="/2021/03/15/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2%E5%B8%B8%E8%A7%81%E9%97%AE%E8%85%BF/">容器部署常见问题</a></li>  <li class="file"><a href="/2021/03/29/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%A8%E5%8F%B7%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">服务器拨号注意事项</a></li>  <li class="file"><a href="/2021/04/30/docker%E5%AE%B9%E5%99%A8%E5%BC%82%E5%B8%B8/">docker容器启动失败</a></li>  <li class="file"><a href="/2021/08/20/docker%E5%AE%B9%E5%99%A8%E4%B8%80%E7%9B%B4%E9%87%8D%E5%90%AF/">docker容器在部署服务后一直重启</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2020/09/13/FFmpeg/">FFmpeg</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-磁盘无法挂载" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Linux%E7%A3%81%E7%9B%98/">Linux磁盘</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%8A%80%E5%B7%A7/" rel="tag">技巧</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/03/11/%E7%A3%81%E7%9B%98%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BD/">
+            <time datetime="2021-03-10T16:00:00.000Z" itemprop="datePublished">2021-03-11</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/磁盘无法挂载.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/磁盘无法挂载.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/磁盘无法挂载.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            磁盘无法挂载（VMFS_volume_member的解决办法）
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%981"><span class="toc-number">1.</span> <span class="toc-text">问题1</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98%E6%97%B6%E6%80%BB%E6%98%AF%E6%8A%A5%E3%80%90mount-%E6%9C%AA%E7%9F%A5%E7%9A%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%B1%BB%E5%9E%8B%E2%80%9CVMFS-volume-member%E2%80%9D%E3%80%91%E8%BF%99%E6%A0%B7%E7%9A%84%E9%94%99%E8%AF%AF"><span class="toc-number">1.1.</span> <span class="toc-text">在挂载磁盘时总是报【mount: 未知的文件系统类型“VMFS_volume_member”】这样的错误</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%982"><span class="toc-number">2.</span> <span class="toc-text">问题2</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#umount-data-device-is-busy"><span class="toc-number">2.1.</span> <span class="toc-text">umount: &#x2F;data: device is busy</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%983"><span class="toc-number">3.</span> <span class="toc-text">问题3</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#device-mapper-remove-ioctl-failed-Device-or-resource-busy"><span class="toc-number">3.1.</span> <span class="toc-text">device-mapper: remove ioctl failed: Device or resource busy</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%984"><span class="toc-number">4.</span> <span class="toc-text">问题4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">5.</span> <span class="toc-text">相关的命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%91%BD%E4%BB%A4"><span class="toc-number">5.1.</span> <span class="toc-text">磁盘分区命令</span></a></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <h3 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h3><h4 id="在挂载磁盘时总是报【mount-未知的文件系统类型“VMFS-volume-member”】这样的错误"><a href="#在挂载磁盘时总是报【mount-未知的文件系统类型“VMFS-volume-member”】这样的错误" class="headerlink" title="在挂载磁盘时总是报【mount: 未知的文件系统类型“VMFS_volume_member”】这样的错误"></a>在挂载磁盘时总是报【mount: 未知的文件系统类型“VMFS_volume_member”】这样的错误</h4><p><strong>解决方法</strong>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/zero of=/dev/sdb1 bs=4M count=1</span><br><span class="line"></span><br><span class="line">dd if=/dev/zero of=/dev/sdb bs=1M count=16 </span><br><span class="line"></span><br><span class="line">查看磁盘类型</span><br><span class="line">cat /etc/fstab</span><br><span class="line"></span><br><span class="line">格式化磁盘</span><br><span class="line">mkfs.xfs /dev/sdb1 -f</span><br><span class="line"></span><br><span class="line">mount /dev/sdb1 /data1</span><br><span class="line"></span><br><span class="line">看看有没有挂载成功</span><br><span class="line">lsblk</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h3><h4 id="umount-data-device-is-busy"><a href="#umount-data-device-is-busy" class="headerlink" title="umount: &#x2F;data: device is busy"></a>umount: &#x2F;data: device is busy</h4><p>解决方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fuser -m /data</span><br><span class="line">/data: 10278c 10279c </span><br><span class="line">然后吧占用的进程kill掉就行</span><br><span class="line">kill -9 pid</span><br></pre></td></tr></table></figure>
+
+<p>其他相关的命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fuser -kvm /data</span><br><span class="line">删除相关程序</span><br><span class="line"></span><br><span class="line">umount -l /data</span><br><span class="line">强行解除挂载</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题3"><a href="#问题3" class="headerlink" title="问题3"></a>问题3</h3><h4 id="device-mapper-remove-ioctl-failed-Device-or-resource-busy"><a href="#device-mapper-remove-ioctl-failed-Device-or-resource-busy" class="headerlink" title="device-mapper: remove ioctl failed: Device or resource busy"></a>device-mapper: remove ioctl failed: Device or resource busy</h4><p>分区时遇到</p>
+<p>The resulting partition is not properly aligned for best performance.</p>
+<p>生成的分区未正确对齐，无法获得最佳性能    </p>
+<p>通常是磁盘下面有这样的东东<br><img src="data:image/png;base64,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" alt="1.png"></p>
+<p>这时候使用parted进去给他分区，如下图所示<br><img src="data:image/png;base64,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" alt="2.png"></p>
+<p><img src="data:image/png;base64,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" alt="3.png"></p>
+<p>一般遇到上面这种情况，磁盘在&#x2F;dev&#x2F;mapper下，使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">使用这个强制删除就行</span><br><span class="line">dmsetup remove --force /dev//mapper/ddf1_44656c6c202020201000005b10281f34</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="问题4"><a href="#问题4" class="headerlink" title="问题4"></a>问题4</h3><p><strong>mkfs.xfs: cannot open &#x2F;dev&#x2F;sdl1: 设备或资源忙</strong><br>格式化分区时遇到上面的问题  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dmsetup ls 查看谁在占用</span><br><span class="line">dmsetup remove 删除占用的程序</span><br><span class="line">dmsetup remove --force /dev//mapper/ddf1_44656c6c202020201000005b10281f34</span><br></pre></td></tr></table></figure>
+
+<h3 id="相关的命令"><a href="#相关的命令" class="headerlink" title="相关的命令"></a>相关的命令</h3><h4 id="磁盘分区命令"><a href="#磁盘分区命令" class="headerlink" title="磁盘分区命令"></a>磁盘分区命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parted -s /dev/sdb mklabel gpt mkpart primary ext4 0% 100%</span><br><span class="line"></span><br><span class="line">parted -s /dev/sdb mklabel gpt</span><br></pre></td></tr></table></figure>
+
+
+
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2021/03/11/%E6%9B%B4%E6%94%B9uuid/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    更改uuid&amp;查看服务器信息
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/11/20/pip%E5%AE%89%E8%A3%85%E6%9C%AC%E5%9C%B0%E5%8C%85/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">pip安装本地包</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            TQ &copy; 2024 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
